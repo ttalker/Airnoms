@@ -27,21 +27,21 @@ Partial Class Form1
         ' 
         ' Button1
         ' 
-        Button1.Location = New Point(149, 100)
-        Button1.Margin = New Padding(2, 2, 2, 2)
+        Button1.BackColor = SystemColors.ActiveCaption
+        Button1.Location = New Point(22, 69)
+        Button1.Margin = New Padding(2)
         Button1.Name = "Button1"
-        Button1.Size = New Size(321, 149)
+        Button1.Size = New Size(1255, 662)
         Button1.TabIndex = 0
-        Button1.Text = "Cashier to"
-        Button1.UseVisualStyleBackColor = True
+        Button1.UseVisualStyleBackColor = False
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(640, 360)
+        ClientSize = New Size(1298, 749)
         Controls.Add(Button1)
-        Margin = New Padding(2, 2, 2, 2)
+        Margin = New Padding(2)
         Name = "Form1"
         Text = "Cashier Form"
         ResumeLayout(False)
