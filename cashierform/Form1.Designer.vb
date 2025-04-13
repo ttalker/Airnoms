@@ -28,7 +28,7 @@ Partial Class Form1
         ' Button1
         ' 
         Button1.BackColor = SystemColors.ActiveCaption
-        Button1.Location = New Point(22, 69)
+        Button1.Location = New Point(32, 59)
         Button1.Margin = New Padding(2)
         Button1.Name = "Button1"
         Button1.Size = New Size(1255, 662)
