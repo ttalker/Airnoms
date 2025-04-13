@@ -22,32 +22,28 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Button1 = New Button()
+        Label1 = New Label()
         SuspendLayout()
         ' 
-        ' Button1
+        ' Label1
         ' 
-        Button1.BackColor = SystemColors.ActiveCaption
-        Button1.Location = New Point(32, 59)
-        Button1.Margin = New Padding(2)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(1255, 662)
-        Button1.TabIndex = 0
-        Button1.UseVisualStyleBackColor = False
+        Label1.Location = New Point(21, 68)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(1255, 662)
+        Label1.TabIndex = 0
+        Label1.Text = "Label1"
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1298, 749)
-        Controls.Add(Button1)
+        Controls.Add(Label1)
         Margin = New Padding(2)
         Name = "Form1"
         Text = "Cashier Form"
         ResumeLayout(False)
     End Sub
-
-    Friend WithEvents Button1 As Button
 
     Public Sub New()
 
@@ -57,4 +53,6 @@ Partial Class Form1
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Friend WithEvents Label1 As Label
 End Class
