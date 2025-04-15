@@ -22,23 +22,23 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Label1 = New Label()
+        lblMain = New Label()
         SuspendLayout()
         ' 
-        ' Label1
+        ' lblMain
         ' 
-        Label1.Location = New Point(21, 68)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(1255, 662)
-        Label1.TabIndex = 0
-        Label1.Text = "Label1"
+        lblMain.BackColor = SystemColors.ActiveCaption
+        lblMain.Location = New Point(27, 78)
+        lblMain.Name = "lblMain"
+        lblMain.Size = New Size(1359, 725)
+        lblMain.TabIndex = 0
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1298, 749)
-        Controls.Add(Label1)
+        ClientSize = New Size(1413, 833)
+        Controls.Add(lblMain)
         Margin = New Padding(2)
         Name = "Form1"
         Text = "Cashier Form"
@@ -54,5 +54,5 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblMain As Label
 End Class
