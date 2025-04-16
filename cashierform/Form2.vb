@@ -1,0 +1,18 @@
+﻿Public Class Form2
+    Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
+        Me.Hide()
+        Form1.Show()
+    End Sub
+
+    Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
+        Me.Show()
+        Form1.Hide()
+    End Sub
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lblArrivalDateTicket.Visible = False
+        lblArrivalTimeTicket.Visible = False
+    End Sub
+
+
+End Class

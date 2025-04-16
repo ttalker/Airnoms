@@ -25,15 +25,16 @@ Partial Class Form1
         lblMainBooking = New Label()
         btnBooking = New Button()
         btnTicket = New Button()
-        pnlRightInfo = New Panel()
-        lblGenderPassenger = New Label()
-        lblContactNumberPassenger = New Label()
-        lblFullnamePassenger = New Label()
-        lblNumber = New Label()
-        lblPassengers = New Label()
         btnClear = New Button()
         btnBook = New Button()
         pnlleftInfo = New Panel()
+        cbxSeatNumber = New ComboBox()
+        cbxArrivalTime = New ComboBox()
+        lblArrivalTime = New Label()
+        cbxDepartureTime = New ComboBox()
+        lblDepartureTime = New Label()
+        tbxGender = New TextBox()
+        Label2 = New Label()
         tbxEmail = New TextBox()
         lblEmail = New Label()
         tbxContactNumber = New TextBox()
@@ -49,7 +50,7 @@ Partial Class Form1
         dtpBookingDate = New DateTimePicker()
         lblBookingDate = New Label()
         lblCustomerData = New Label()
-        dtpArrival = New DateTimePicker()
+        dtpArrivalDate = New DateTimePicker()
         lblArrivalDate = New Label()
         dtpDeparture = New DateTimePicker()
         lblDepartureDate = New Label()
@@ -60,37 +61,42 @@ Partial Class Form1
         rbnRoundTrip = New RadioButton()
         rbnOneWayTrip = New RadioButton()
         Label1 = New Label()
-        tbxGender = New TextBox()
-        Label2 = New Label()
+        lblSeatNumber = New Label()
+        lblPassengers = New Label()
+        lblNumber = New Label()
+        lblFullnamePassenger = New Label()
+        lblSeatNumberPassengers = New Label()
+        lblGenderPassenger = New Label()
         lblNumberOnePassenger = New Label()
         lblNumberTwoPassenger = New Label()
         lblNumberThreePassenger = New Label()
         Label5 = New Label()
-        Label6 = New Label()
-        Label7 = New Label()
         lblNumberFourPassenger = New Label()
+        Label6 = New Label()
         lblNumberFivePassenger = New Label()
+        Label7 = New Label()
         lblNumberSixPassenger = New Label()
         TextBox1 = New TextBox()
         TextBox2 = New TextBox()
-        TextBox3 = New TextBox()
-        TextBox4 = New TextBox()
-        TextBox5 = New TextBox()
         TextBox6 = New TextBox()
-        TextBox7 = New TextBox()
-        TextBox8 = New TextBox()
+        TextBox5 = New TextBox()
         TextBox9 = New TextBox()
-        TextBox10 = New TextBox()
-        TextBox11 = New TextBox()
+        TextBox8 = New TextBox()
         TextBox12 = New TextBox()
-        TextBox13 = New TextBox()
-        TextBox14 = New TextBox()
+        TextBox11 = New TextBox()
         TextBox15 = New TextBox()
-        TextBox16 = New TextBox()
-        TextBox17 = New TextBox()
+        TextBox14 = New TextBox()
         TextBox18 = New TextBox()
-        pnlRightInfo.SuspendLayout()
+        TextBox17 = New TextBox()
+        pnlRightInfo = New Panel()
+        ComboBox2 = New ComboBox()
+        ComboBox3 = New ComboBox()
+        ComboBox4 = New ComboBox()
+        ComboBox5 = New ComboBox()
+        ComboBox6 = New ComboBox()
+        ComboBox7 = New ComboBox()
         pnlleftInfo.SuspendLayout()
+        pnlRightInfo.SuspendLayout()
         SuspendLayout()
         ' 
         ' lblMainBooking
@@ -119,99 +125,9 @@ Partial Class Form1
         btnTicket.Text = "TICKET"
         btnTicket.UseVisualStyleBackColor = True
         ' 
-        ' pnlRightInfo
-        ' 
-        pnlRightInfo.BackColor = Color.Snow
-        pnlRightInfo.Controls.Add(TextBox16)
-        pnlRightInfo.Controls.Add(TextBox17)
-        pnlRightInfo.Controls.Add(TextBox18)
-        pnlRightInfo.Controls.Add(TextBox13)
-        pnlRightInfo.Controls.Add(TextBox14)
-        pnlRightInfo.Controls.Add(TextBox15)
-        pnlRightInfo.Controls.Add(TextBox10)
-        pnlRightInfo.Controls.Add(TextBox11)
-        pnlRightInfo.Controls.Add(TextBox12)
-        pnlRightInfo.Controls.Add(TextBox7)
-        pnlRightInfo.Controls.Add(TextBox8)
-        pnlRightInfo.Controls.Add(TextBox9)
-        pnlRightInfo.Controls.Add(TextBox4)
-        pnlRightInfo.Controls.Add(TextBox5)
-        pnlRightInfo.Controls.Add(TextBox6)
-        pnlRightInfo.Controls.Add(TextBox3)
-        pnlRightInfo.Controls.Add(TextBox2)
-        pnlRightInfo.Controls.Add(TextBox1)
-        pnlRightInfo.Controls.Add(lblNumberSixPassenger)
-        pnlRightInfo.Controls.Add(Label7)
-        pnlRightInfo.Controls.Add(lblNumberFivePassenger)
-        pnlRightInfo.Controls.Add(Label6)
-        pnlRightInfo.Controls.Add(lblNumberFourPassenger)
-        pnlRightInfo.Controls.Add(Label5)
-        pnlRightInfo.Controls.Add(lblNumberThreePassenger)
-        pnlRightInfo.Controls.Add(lblNumberTwoPassenger)
-        pnlRightInfo.Controls.Add(lblNumberOnePassenger)
-        pnlRightInfo.Controls.Add(lblGenderPassenger)
-        pnlRightInfo.Controls.Add(lblContactNumberPassenger)
-        pnlRightInfo.Controls.Add(lblFullnamePassenger)
-        pnlRightInfo.Controls.Add(lblNumber)
-        pnlRightInfo.Controls.Add(lblPassengers)
-        pnlRightInfo.Location = New Point(843, 122)
-        pnlRightInfo.Name = "pnlRightInfo"
-        pnlRightInfo.Size = New Size(648, 642)
-        pnlRightInfo.TabIndex = 4
-        ' 
-        ' lblGenderPassenger
-        ' 
-        lblGenderPassenger.AutoSize = True
-        lblGenderPassenger.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblGenderPassenger.Location = New Point(371, 93)
-        lblGenderPassenger.Name = "lblGenderPassenger"
-        lblGenderPassenger.Size = New Size(74, 25)
-        lblGenderPassenger.TabIndex = 6
-        lblGenderPassenger.Text = "Gender"
-        ' 
-        ' lblContactNumberPassenger
-        ' 
-        lblContactNumberPassenger.AutoSize = True
-        lblContactNumberPassenger.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblContactNumberPassenger.Location = New Point(494, 93)
-        lblContactNumberPassenger.Name = "lblContactNumberPassenger"
-        lblContactNumberPassenger.Size = New Size(92, 25)
-        lblContactNumberPassenger.TabIndex = 5
-        lblContactNumberPassenger.Text = "Contact #"
-        ' 
-        ' lblFullnamePassenger
-        ' 
-        lblFullnamePassenger.AutoSize = True
-        lblFullnamePassenger.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblFullnamePassenger.Location = New Point(134, 93)
-        lblFullnamePassenger.Name = "lblFullnamePassenger"
-        lblFullnamePassenger.Size = New Size(88, 25)
-        lblFullnamePassenger.TabIndex = 4
-        lblFullnamePassenger.Text = "Fullname"
-        ' 
-        ' lblNumber
-        ' 
-        lblNumber.AutoSize = True
-        lblNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblNumber.Location = New Point(35, 93)
-        lblNumber.Name = "lblNumber"
-        lblNumber.Size = New Size(41, 25)
-        lblNumber.TabIndex = 3
-        lblNumber.Text = "No."
-        ' 
-        ' lblPassengers
-        ' 
-        lblPassengers.AutoSize = True
-        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPassengers.Location = New Point(33, 31)
-        lblPassengers.Name = "lblPassengers"
-        lblPassengers.Size = New Size(159, 38)
-        lblPassengers.TabIndex = 1
-        lblPassengers.Text = "Passengers"
-        ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(1083, 785)
+        btnClear.Location = New Point(1083, 792)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(194, 58)
         btnClear.TabIndex = 5
@@ -220,7 +136,7 @@ Partial Class Form1
         ' 
         ' btnBook
         ' 
-        btnBook.Location = New Point(1297, 785)
+        btnBook.Location = New Point(1297, 792)
         btnBook.Name = "btnBook"
         btnBook.Size = New Size(194, 58)
         btnBook.TabIndex = 7
@@ -230,6 +146,12 @@ Partial Class Form1
         ' pnlleftInfo
         ' 
         pnlleftInfo.BackColor = Color.Snow
+        pnlleftInfo.Controls.Add(lblSeatNumber)
+        pnlleftInfo.Controls.Add(cbxSeatNumber)
+        pnlleftInfo.Controls.Add(cbxArrivalTime)
+        pnlleftInfo.Controls.Add(lblArrivalTime)
+        pnlleftInfo.Controls.Add(cbxDepartureTime)
+        pnlleftInfo.Controls.Add(lblDepartureTime)
         pnlleftInfo.Controls.Add(tbxGender)
         pnlleftInfo.Controls.Add(Label2)
         pnlleftInfo.Controls.Add(tbxEmail)
@@ -247,7 +169,7 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(dtpBookingDate)
         pnlleftInfo.Controls.Add(lblBookingDate)
         pnlleftInfo.Controls.Add(lblCustomerData)
-        pnlleftInfo.Controls.Add(dtpArrival)
+        pnlleftInfo.Controls.Add(dtpArrivalDate)
         pnlleftInfo.Controls.Add(lblArrivalDate)
         pnlleftInfo.Controls.Add(dtpDeparture)
         pnlleftInfo.Controls.Add(lblDepartureDate)
@@ -262,6 +184,71 @@ Partial Class Form1
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(744, 739)
         pnlleftInfo.TabIndex = 3
+        ' 
+        ' cbxSeatNumber
+        ' 
+        cbxSeatNumber.FormattingEnabled = True
+        cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumber.Location = New Point(542, 181)
+        cbxSeatNumber.Name = "cbxSeatNumber"
+        cbxSeatNumber.Size = New Size(123, 28)
+        cbxSeatNumber.TabIndex = 31
+        ' 
+        ' cbxArrivalTime
+        ' 
+        cbxArrivalTime.FormattingEnabled = True
+        cbxArrivalTime.Location = New Point(460, 313)
+        cbxArrivalTime.Name = "cbxArrivalTime"
+        cbxArrivalTime.Size = New Size(209, 28)
+        cbxArrivalTime.TabIndex = 30
+        ' 
+        ' lblArrivalTime
+        ' 
+        lblArrivalTime.AutoSize = True
+        lblArrivalTime.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblArrivalTime.Location = New Point(334, 312)
+        lblArrivalTime.Name = "lblArrivalTime"
+        lblArrivalTime.Size = New Size(116, 25)
+        lblArrivalTime.TabIndex = 29
+        lblArrivalTime.Text = "Arrival Time:"
+        lblArrivalTime.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' cbxDepartureTime
+        ' 
+        cbxDepartureTime.FormattingEnabled = True
+        cbxDepartureTime.Location = New Point(460, 264)
+        cbxDepartureTime.Name = "cbxDepartureTime"
+        cbxDepartureTime.Size = New Size(209, 28)
+        cbxDepartureTime.TabIndex = 28
+        ' 
+        ' lblDepartureTime
+        ' 
+        lblDepartureTime.AutoSize = True
+        lblDepartureTime.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblDepartureTime.Location = New Point(334, 263)
+        lblDepartureTime.Name = "lblDepartureTime"
+        lblDepartureTime.Size = New Size(120, 25)
+        lblDepartureTime.TabIndex = 27
+        lblDepartureTime.Text = "Depart Time:"
+        lblDepartureTime.TextAlign = ContentAlignment.MiddleCenter
+        ' 
+        ' tbxGender
+        ' 
+        tbxGender.Location = New Point(559, 518)
+        tbxGender.Name = "tbxGender"
+        tbxGender.Size = New Size(126, 27)
+        tbxGender.TabIndex = 26
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(424, 517)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(79, 25)
+        Label2.TabIndex = 25
+        Label2.Text = "Gender:"
+        Label2.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' tbxEmail
         ' 
@@ -399,12 +386,12 @@ Partial Class Form1
         lblCustomerData.TabIndex = 10
         lblCustomerData.Text = "Customer Data"
         ' 
-        ' dtpArrival
+        ' dtpArrivalDate
         ' 
-        dtpArrival.Location = New Point(176, 311)
-        dtpArrival.Name = "dtpArrival"
-        dtpArrival.Size = New Size(125, 27)
-        dtpArrival.TabIndex = 9
+        dtpArrivalDate.Location = New Point(176, 311)
+        dtpArrivalDate.Name = "dtpArrivalDate"
+        dtpArrivalDate.Size = New Size(125, 27)
+        dtpArrivalDate.TabIndex = 9
         ' 
         ' lblArrivalDate
         ' 
@@ -505,23 +492,65 @@ Partial Class Form1
         Label1.TabIndex = 0
         Label1.Text = "Booking Details"
         ' 
-        ' tbxGender
+        ' lblSeatNumber
         ' 
-        tbxGender.Location = New Point(559, 518)
-        tbxGender.Name = "tbxGender"
-        tbxGender.Size = New Size(126, 27)
-        tbxGender.TabIndex = 26
+        lblSeatNumber.AutoSize = True
+        lblSeatNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblSeatNumber.Location = New Point(463, 180)
+        lblSeatNumber.Name = "lblSeatNumber"
+        lblSeatNumber.Size = New Size(64, 25)
+        lblSeatNumber.TabIndex = 32
+        lblSeatNumber.Text = "Seat #"
         ' 
-        ' Label2
+        ' lblPassengers
         ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(424, 517)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(79, 25)
-        Label2.TabIndex = 25
-        Label2.Text = "Gender:"
-        Label2.TextAlign = ContentAlignment.MiddleCenter
+        lblPassengers.AutoSize = True
+        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblPassengers.Location = New Point(33, 31)
+        lblPassengers.Name = "lblPassengers"
+        lblPassengers.Size = New Size(159, 38)
+        lblPassengers.TabIndex = 1
+        lblPassengers.Text = "Passengers"
+        ' 
+        ' lblNumber
+        ' 
+        lblNumber.AutoSize = True
+        lblNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblNumber.Location = New Point(35, 93)
+        lblNumber.Name = "lblNumber"
+        lblNumber.Size = New Size(41, 25)
+        lblNumber.TabIndex = 3
+        lblNumber.Text = "No."
+        ' 
+        ' lblFullnamePassenger
+        ' 
+        lblFullnamePassenger.AutoSize = True
+        lblFullnamePassenger.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblFullnamePassenger.Location = New Point(134, 93)
+        lblFullnamePassenger.Name = "lblFullnamePassenger"
+        lblFullnamePassenger.Size = New Size(88, 25)
+        lblFullnamePassenger.TabIndex = 4
+        lblFullnamePassenger.Text = "Fullname"
+        ' 
+        ' lblSeatNumberPassengers
+        ' 
+        lblSeatNumberPassengers.AutoSize = True
+        lblSeatNumberPassengers.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblSeatNumberPassengers.Location = New Point(506, 93)
+        lblSeatNumberPassengers.Name = "lblSeatNumberPassengers"
+        lblSeatNumberPassengers.Size = New Size(64, 25)
+        lblSeatNumberPassengers.TabIndex = 5
+        lblSeatNumberPassengers.Text = "Seat #"
+        ' 
+        ' lblGenderPassenger
+        ' 
+        lblGenderPassenger.AutoSize = True
+        lblGenderPassenger.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblGenderPassenger.Location = New Point(371, 93)
+        lblGenderPassenger.Name = "lblGenderPassenger"
+        lblGenderPassenger.Size = New Size(74, 25)
+        lblGenderPassenger.TabIndex = 6
+        lblGenderPassenger.Text = "Gender"
         ' 
         ' lblNumberOnePassenger
         ' 
@@ -563,26 +592,6 @@ Partial Class Form1
         Label5.TabIndex = 10
         Label5.Text = "1"
         ' 
-        ' Label6
-        ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(41, 467)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(19, 25)
-        Label6.TabIndex = 11
-        Label6.Text = "1"
-        ' 
-        ' Label7
-        ' 
-        Label7.AutoSize = True
-        Label7.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(41, 559)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(19, 25)
-        Label7.TabIndex = 12
-        Label7.Text = "1"
-        ' 
         ' lblNumberFourPassenger
         ' 
         lblNumberFourPassenger.AutoSize = True
@@ -593,6 +602,16 @@ Partial Class Form1
         lblNumberFourPassenger.TabIndex = 10
         lblNumberFourPassenger.Text = "4"
         ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label6.Location = New Point(41, 467)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(19, 25)
+        Label6.TabIndex = 11
+        Label6.Text = "1"
+        ' 
         ' lblNumberFivePassenger
         ' 
         lblNumberFivePassenger.AutoSize = True
@@ -602,6 +621,16 @@ Partial Class Form1
         lblNumberFivePassenger.Size = New Size(22, 25)
         lblNumberFivePassenger.TabIndex = 11
         lblNumberFivePassenger.Text = "5"
+        ' 
+        ' Label7
+        ' 
+        Label7.AutoSize = True
+        Label7.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label7.Location = New Point(41, 559)
+        Label7.Name = "Label7"
+        Label7.Size = New Size(19, 25)
+        Label7.TabIndex = 12
+        Label7.Text = "1"
         ' 
         ' lblNumberSixPassenger
         ' 
@@ -627,19 +656,12 @@ Partial Class Form1
         TextBox2.Size = New Size(91, 27)
         TextBox2.TabIndex = 16
         ' 
-        ' TextBox3
+        ' TextBox6
         ' 
-        TextBox3.Location = New Point(478, 153)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(131, 27)
-        TextBox3.TabIndex = 17
-        ' 
-        ' TextBox4
-        ' 
-        TextBox4.Location = New Point(478, 229)
-        TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(131, 27)
-        TextBox4.TabIndex = 20
+        TextBox6.Location = New Point(98, 229)
+        TextBox6.Name = "TextBox6"
+        TextBox6.Size = New Size(240, 27)
+        TextBox6.TabIndex = 18
         ' 
         ' TextBox5
         ' 
@@ -648,19 +670,12 @@ Partial Class Form1
         TextBox5.Size = New Size(91, 27)
         TextBox5.TabIndex = 19
         ' 
-        ' TextBox6
+        ' TextBox9
         ' 
-        TextBox6.Location = New Point(98, 229)
-        TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(240, 27)
-        TextBox6.TabIndex = 18
-        ' 
-        ' TextBox7
-        ' 
-        TextBox7.Location = New Point(478, 312)
-        TextBox7.Name = "TextBox7"
-        TextBox7.Size = New Size(131, 27)
-        TextBox7.TabIndex = 23
+        TextBox9.Location = New Point(98, 312)
+        TextBox9.Name = "TextBox9"
+        TextBox9.Size = New Size(240, 27)
+        TextBox9.TabIndex = 21
         ' 
         ' TextBox8
         ' 
@@ -669,19 +684,12 @@ Partial Class Form1
         TextBox8.Size = New Size(91, 27)
         TextBox8.TabIndex = 22
         ' 
-        ' TextBox9
+        ' TextBox12
         ' 
-        TextBox9.Location = New Point(98, 312)
-        TextBox9.Name = "TextBox9"
-        TextBox9.Size = New Size(240, 27)
-        TextBox9.TabIndex = 21
-        ' 
-        ' TextBox10
-        ' 
-        TextBox10.Location = New Point(478, 388)
-        TextBox10.Name = "TextBox10"
-        TextBox10.Size = New Size(131, 27)
-        TextBox10.TabIndex = 26
+        TextBox12.Location = New Point(98, 388)
+        TextBox12.Name = "TextBox12"
+        TextBox12.Size = New Size(240, 27)
+        TextBox12.TabIndex = 24
         ' 
         ' TextBox11
         ' 
@@ -690,19 +698,12 @@ Partial Class Form1
         TextBox11.Size = New Size(91, 27)
         TextBox11.TabIndex = 25
         ' 
-        ' TextBox12
+        ' TextBox15
         ' 
-        TextBox12.Location = New Point(98, 388)
-        TextBox12.Name = "TextBox12"
-        TextBox12.Size = New Size(240, 27)
-        TextBox12.TabIndex = 24
-        ' 
-        ' TextBox13
-        ' 
-        TextBox13.Location = New Point(478, 469)
-        TextBox13.Name = "TextBox13"
-        TextBox13.Size = New Size(131, 27)
-        TextBox13.TabIndex = 29
+        TextBox15.Location = New Point(98, 469)
+        TextBox15.Name = "TextBox15"
+        TextBox15.Size = New Size(240, 27)
+        TextBox15.TabIndex = 27
         ' 
         ' TextBox14
         ' 
@@ -711,19 +712,12 @@ Partial Class Form1
         TextBox14.Size = New Size(91, 27)
         TextBox14.TabIndex = 28
         ' 
-        ' TextBox15
+        ' TextBox18
         ' 
-        TextBox15.Location = New Point(98, 469)
-        TextBox15.Name = "TextBox15"
-        TextBox15.Size = New Size(240, 27)
-        TextBox15.TabIndex = 27
-        ' 
-        ' TextBox16
-        ' 
-        TextBox16.Location = New Point(478, 561)
-        TextBox16.Name = "TextBox16"
-        TextBox16.Size = New Size(131, 27)
-        TextBox16.TabIndex = 32
+        TextBox18.Location = New Point(98, 561)
+        TextBox18.Name = "TextBox18"
+        TextBox18.Size = New Size(240, 27)
+        TextBox18.TabIndex = 30
         ' 
         ' TextBox17
         ' 
@@ -732,12 +726,99 @@ Partial Class Form1
         TextBox17.Size = New Size(91, 27)
         TextBox17.TabIndex = 31
         ' 
-        ' TextBox18
+        ' pnlRightInfo
         ' 
-        TextBox18.Location = New Point(98, 561)
-        TextBox18.Name = "TextBox18"
-        TextBox18.Size = New Size(240, 27)
-        TextBox18.TabIndex = 30
+        pnlRightInfo.BackColor = Color.Snow
+        pnlRightInfo.Controls.Add(ComboBox7)
+        pnlRightInfo.Controls.Add(ComboBox6)
+        pnlRightInfo.Controls.Add(ComboBox5)
+        pnlRightInfo.Controls.Add(ComboBox4)
+        pnlRightInfo.Controls.Add(ComboBox3)
+        pnlRightInfo.Controls.Add(ComboBox2)
+        pnlRightInfo.Controls.Add(TextBox17)
+        pnlRightInfo.Controls.Add(TextBox18)
+        pnlRightInfo.Controls.Add(TextBox14)
+        pnlRightInfo.Controls.Add(TextBox15)
+        pnlRightInfo.Controls.Add(TextBox11)
+        pnlRightInfo.Controls.Add(TextBox12)
+        pnlRightInfo.Controls.Add(TextBox8)
+        pnlRightInfo.Controls.Add(TextBox9)
+        pnlRightInfo.Controls.Add(TextBox5)
+        pnlRightInfo.Controls.Add(TextBox6)
+        pnlRightInfo.Controls.Add(TextBox2)
+        pnlRightInfo.Controls.Add(TextBox1)
+        pnlRightInfo.Controls.Add(lblNumberSixPassenger)
+        pnlRightInfo.Controls.Add(Label7)
+        pnlRightInfo.Controls.Add(lblNumberFivePassenger)
+        pnlRightInfo.Controls.Add(Label6)
+        pnlRightInfo.Controls.Add(lblNumberFourPassenger)
+        pnlRightInfo.Controls.Add(Label5)
+        pnlRightInfo.Controls.Add(lblNumberThreePassenger)
+        pnlRightInfo.Controls.Add(lblNumberTwoPassenger)
+        pnlRightInfo.Controls.Add(lblNumberOnePassenger)
+        pnlRightInfo.Controls.Add(lblGenderPassenger)
+        pnlRightInfo.Controls.Add(lblSeatNumberPassengers)
+        pnlRightInfo.Controls.Add(lblFullnamePassenger)
+        pnlRightInfo.Controls.Add(lblNumber)
+        pnlRightInfo.Controls.Add(lblPassengers)
+        pnlRightInfo.Location = New Point(843, 122)
+        pnlRightInfo.Name = "pnlRightInfo"
+        pnlRightInfo.Size = New Size(648, 642)
+        pnlRightInfo.TabIndex = 4
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Items.AddRange(New Object() {"AC1"})
+        ComboBox2.Location = New Point(481, 152)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(123, 28)
+        ComboBox2.TabIndex = 32
+        ' 
+        ' ComboBox3
+        ' 
+        ComboBox3.FormattingEnabled = True
+        ComboBox3.Items.AddRange(New Object() {"AC1"})
+        ComboBox3.Location = New Point(481, 230)
+        ComboBox3.Name = "ComboBox3"
+        ComboBox3.Size = New Size(123, 28)
+        ComboBox3.TabIndex = 33
+        ' 
+        ' ComboBox4
+        ' 
+        ComboBox4.FormattingEnabled = True
+        ComboBox4.Items.AddRange(New Object() {"AC1"})
+        ComboBox4.Location = New Point(481, 313)
+        ComboBox4.Name = "ComboBox4"
+        ComboBox4.Size = New Size(123, 28)
+        ComboBox4.TabIndex = 34
+        ' 
+        ' ComboBox5
+        ' 
+        ComboBox5.FormattingEnabled = True
+        ComboBox5.Items.AddRange(New Object() {"AC1"})
+        ComboBox5.Location = New Point(481, 388)
+        ComboBox5.Name = "ComboBox5"
+        ComboBox5.Size = New Size(123, 28)
+        ComboBox5.TabIndex = 35
+        ' 
+        ' ComboBox6
+        ' 
+        ComboBox6.FormattingEnabled = True
+        ComboBox6.Items.AddRange(New Object() {"AC1"})
+        ComboBox6.Location = New Point(481, 471)
+        ComboBox6.Name = "ComboBox6"
+        ComboBox6.Size = New Size(123, 28)
+        ComboBox6.TabIndex = 36
+        ' 
+        ' ComboBox7
+        ' 
+        ComboBox7.FormattingEnabled = True
+        ComboBox7.Items.AddRange(New Object() {"AC1"})
+        ComboBox7.Location = New Point(481, 560)
+        ComboBox7.Name = "ComboBox7"
+        ComboBox7.Size = New Size(123, 28)
+        ComboBox7.TabIndex = 37
         ' 
         ' Form1
         ' 
@@ -754,11 +835,11 @@ Partial Class Form1
         Controls.Add(lblMainBooking)
         Margin = New Padding(2)
         Name = "Form1"
-        Text = " "
-        pnlRightInfo.ResumeLayout(False)
-        pnlRightInfo.PerformLayout()
+        Text = " CASHIER"
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
+        pnlRightInfo.ResumeLayout(False)
+        pnlRightInfo.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -774,7 +855,6 @@ Partial Class Form1
     Friend WithEvents lblMainBooking As Label
     Friend WithEvents btnBooking As Button
     Friend WithEvents btnTicket As Button
-    Friend WithEvents pnlRightInfo As Panel
     Friend WithEvents btnClear As Button
     Friend WithEvents btnBook As Button
     Friend WithEvents pnlleftInfo As Panel
@@ -787,7 +867,7 @@ Partial Class Form1
     Friend WithEvents lblDeparture As Label
     Friend WithEvents dtpDeparture As DateTimePicker
     Friend WithEvents lblDepartureDate As Label
-    Friend WithEvents dtpArrival As DateTimePicker
+    Friend WithEvents dtpArrivalDate As DateTimePicker
     Friend WithEvents lblArrivalDate As Label
     Friend WithEvents dtpBookingDate As DateTimePicker
     Friend WithEvents lblBookingDate As Label
@@ -804,38 +884,45 @@ Partial Class Form1
     Friend WithEvents lblPostalCode As Label
     Friend WithEvents tbxEmail As TextBox
     Friend WithEvents lblEmail As Label
-    Friend WithEvents lblNumber As Label
-    Friend WithEvents lblPassengers As Label
-    Friend WithEvents lblGenderPassenger As Label
-    Friend WithEvents lblContactNumberPassenger As Label
-    Friend WithEvents lblFullnamePassenger As Label
-    Friend WithEvents lblNumberSixPassenger As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents lblNumberFivePassenger As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents lblNumberFourPassenger As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents lblNumberThreePassenger As Label
-    Friend WithEvents lblNumberTwoPassenger As Label
-    Friend WithEvents lblNumberOnePassenger As Label
     Friend WithEvents tbxGender As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox16 As TextBox
-    Friend WithEvents TextBox17 As TextBox
-    Friend WithEvents TextBox18 As TextBox
-    Friend WithEvents TextBox13 As TextBox
-    Friend WithEvents TextBox14 As TextBox
-    Friend WithEvents TextBox15 As TextBox
-    Friend WithEvents TextBox10 As TextBox
-    Friend WithEvents TextBox11 As TextBox
-    Friend WithEvents TextBox12 As TextBox
-    Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents cbxDepartureTime As ComboBox
+    Friend WithEvents lblDepartureTime As Label
+    Friend WithEvents cbxArrivalTime As ComboBox
+    Friend WithEvents lblArrivalTime As Label
+    Friend WithEvents cbxSeatNumber As ComboBox
+    Friend WithEvents lblSeatNumber As Label
+    Friend WithEvents lblPassengers As Label
+    Friend WithEvents lblNumber As Label
+    Friend WithEvents lblFullnamePassenger As Label
+    Friend WithEvents lblSeatNumberPassengers As Label
+    Friend WithEvents lblGenderPassenger As Label
+    Friend WithEvents lblNumberOnePassenger As Label
+    Friend WithEvents lblNumberTwoPassenger As Label
+    Friend WithEvents lblNumberThreePassenger As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents lblNumberFourPassenger As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents lblNumberFivePassenger As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents lblNumberSixPassenger As Label
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox12 As TextBox
+    Friend WithEvents TextBox11 As TextBox
+    Friend WithEvents TextBox15 As TextBox
+    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents pnlRightInfo As Panel
+    Friend WithEvents ComboBox7 As ComboBox
+    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents ComboBox2 As ComboBox
 End Class
