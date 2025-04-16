@@ -50,7 +50,6 @@ Partial Class Form2
         lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
-        BTNFILL = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -58,7 +57,7 @@ Partial Class Form2
         ' btnTicket
         ' 
         btnTicket.Location = New Point(301, 26)
-        btnTicket.Margin = New Padding(4, 4, 4, 4)
+        btnTicket.Margin = New Padding(4)
         btnTicket.Name = "btnTicket"
         btnTicket.Size = New Size(242, 72)
         btnTicket.TabIndex = 5
@@ -68,7 +67,7 @@ Partial Class Form2
         ' btnBooking
         ' 
         btnBooking.Location = New Point(34, 28)
-        btnBooking.Margin = New Padding(4, 4, 4, 4)
+        btnBooking.Margin = New Padding(4)
         btnBooking.Name = "btnBooking"
         btnBooking.Size = New Size(242, 72)
         btnBooking.TabIndex = 4
@@ -90,7 +89,7 @@ Partial Class Form2
         pnlRightInfo.Controls.Add(btnCalculateTicket)
         pnlRightInfo.Controls.Add(lblPassengers)
         pnlRightInfo.Location = New Point(1054, 152)
-        pnlRightInfo.Margin = New Padding(4, 4, 4, 4)
+        pnlRightInfo.Margin = New Padding(4)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(810, 802)
         pnlRightInfo.TabIndex = 7
@@ -99,7 +98,7 @@ Partial Class Form2
         ' 
         btnCalculateTicket.BackColor = Color.Silver
         btnCalculateTicket.Location = New Point(544, 698)
-        btnCalculateTicket.Margin = New Padding(4, 4, 4, 4)
+        btnCalculateTicket.Margin = New Padding(4)
         btnCalculateTicket.Name = "btnCalculateTicket"
         btnCalculateTicket.Size = New Size(201, 72)
         btnCalculateTicket.TabIndex = 11
@@ -120,7 +119,6 @@ Partial Class Form2
         ' pnlleftInfo
         ' 
         pnlleftInfo.BackColor = Color.Snow
-        pnlleftInfo.Controls.Add(BTNFILL)
         pnlleftInfo.Controls.Add(lblAddressTicket)
         pnlleftInfo.Controls.Add(lblSeatNumberTicket)
         pnlleftInfo.Controls.Add(lblArrivalTimeTicket)
@@ -141,7 +139,7 @@ Partial Class Form2
         pnlleftInfo.Controls.Add(lblSelectPassengerTicket)
         pnlleftInfo.Controls.Add(lblBookingDetailsForm2)
         pnlleftInfo.Location = New Point(75, 152)
-        pnlleftInfo.Margin = New Padding(4, 4, 4, 4)
+        pnlleftInfo.Margin = New Padding(4)
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(930, 802)
         pnlleftInfo.TabIndex = 6
@@ -204,7 +202,7 @@ Partial Class Form2
         ' 
         cbxClassTicket.FormattingEnabled = True
         cbxClassTicket.Location = New Point(226, 266)
-        cbxClassTicket.Margin = New Padding(4, 4, 4, 4)
+        cbxClassTicket.Margin = New Padding(4)
         cbxClassTicket.Name = "cbxClassTicket"
         cbxClassTicket.Size = New Size(288, 33)
         cbxClassTicket.TabIndex = 28
@@ -303,7 +301,7 @@ Partial Class Form2
         ' 
         cbxFlightTicket.FormattingEnabled = True
         cbxFlightTicket.Location = New Point(226, 191)
-        cbxFlightTicket.Margin = New Padding(4, 4, 4, 4)
+        cbxFlightTicket.Margin = New Padding(4)
         cbxFlightTicket.Name = "cbxFlightTicket"
         cbxFlightTicket.Size = New Size(288, 33)
         cbxFlightTicket.TabIndex = 5
@@ -323,7 +321,7 @@ Partial Class Form2
         ' 
         cbxPassengerTicket.FormattingEnabled = True
         cbxPassengerTicket.Location = New Point(226, 122)
-        cbxPassengerTicket.Margin = New Padding(4, 4, 4, 4)
+        cbxPassengerTicket.Margin = New Padding(4)
         cbxPassengerTicket.Name = "cbxPassengerTicket"
         cbxPassengerTicket.Size = New Size(288, 33)
         cbxPassengerTicket.TabIndex = 3
@@ -353,7 +351,7 @@ Partial Class Form2
         ' btnResetTicket
         ' 
         btnResetTicket.Location = New Point(1621, 994)
-        btnResetTicket.Margin = New Padding(4, 4, 4, 4)
+        btnResetTicket.Margin = New Padding(4)
         btnResetTicket.Name = "btnResetTicket"
         btnResetTicket.Size = New Size(242, 72)
         btnResetTicket.TabIndex = 9
@@ -363,21 +361,12 @@ Partial Class Form2
         ' btnProcessTicket
         ' 
         btnProcessTicket.Location = New Point(1354, 994)
-        btnProcessTicket.Margin = New Padding(4, 4, 4, 4)
+        btnProcessTicket.Margin = New Padding(4)
         btnProcessTicket.Name = "btnProcessTicket"
         btnProcessTicket.Size = New Size(242, 72)
         btnProcessTicket.TabIndex = 8
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
-        ' 
-        ' BTNFILL
-        ' 
-        BTNFILL.Location = New Point(746, 736)
-        BTNFILL.Name = "BTNFILL"
-        BTNFILL.Size = New Size(112, 34)
-        BTNFILL.TabIndex = 34
-        BTNFILL.Text = "FILL UP"
-        BTNFILL.UseVisualStyleBackColor = True
         ' 
         ' Form2
         ' 
@@ -391,7 +380,7 @@ Partial Class Form2
         Controls.Add(btnTicket)
         Controls.Add(btnBooking)
         Controls.Add(lblMainBooking)
-        Margin = New Padding(4, 4, 4, 4)
+        Margin = New Padding(4)
         Name = "Form2"
         Text = "Form2"
         pnlRightInfo.ResumeLayout(False)
@@ -430,5 +419,4 @@ Partial Class Form2
     Friend WithEvents lblSeatNumberTicket As Label
     Friend WithEvents lblAddressTicket As Label
     Friend WithEvents btnCalculateTicket As Button
-    Friend WithEvents BTNFILL As Button
 End Class

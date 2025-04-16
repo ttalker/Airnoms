@@ -35,6 +35,16 @@
     End Sub
 
     Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
+        tbxFullname.Text = "Kelvin Dave M. Rivera"
+        tbxAddress.Text = "Tarlac"
+        tbxCity.Text = "Tarlac City"
+        tbxContactNumber.Text = "0999999999"
+        tbxEmail.Text = "examplemail@gmail.com"
+        tbxPostalCode.Text = "2003"
+        tbxGender.Text = "Male"
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
 
     End Sub
 End Class
