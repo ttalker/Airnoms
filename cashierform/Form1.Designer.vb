@@ -56,7 +56,7 @@ Partial Class Form1
         lblArrivalDate = New Label()
         dtpDeparture = New DateTimePicker()
         lblDepartureDate = New Label()
-        ComboBox1 = New ComboBox()
+        cbxDestination = New ComboBox()
         lblDestination = New Label()
         cbxDeparture = New ComboBox()
         lblDeparture = New Label()
@@ -180,7 +180,7 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(lblArrivalDate)
         pnlleftInfo.Controls.Add(dtpDeparture)
         pnlleftInfo.Controls.Add(lblDepartureDate)
-        pnlleftInfo.Controls.Add(ComboBox1)
+        pnlleftInfo.Controls.Add(cbxDestination)
         pnlleftInfo.Controls.Add(lblDestination)
         pnlleftInfo.Controls.Add(cbxDeparture)
         pnlleftInfo.Controls.Add(lblDeparture)
@@ -476,14 +476,14 @@ Partial Class Form1
         lblDepartureDate.Text = "Depart Date:"
         lblDepartureDate.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' ComboBox1
+        ' cbxDestination
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(221, 259)
-        ComboBox1.Margin = New Padding(4)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(282, 33)
-        ComboBox1.TabIndex = 5
+        cbxDestination.FormattingEnabled = True
+        cbxDestination.Location = New Point(221, 259)
+        cbxDestination.Margin = New Padding(4)
+        cbxDestination.Name = "cbxDestination"
+        cbxDestination.Size = New Size(282, 33)
+        cbxDestination.TabIndex = 5
         ' 
         ' lblDestination
         ' 
@@ -945,7 +945,7 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents rbnRoundTrip As RadioButton
     Friend WithEvents rbnOneWayTrip As RadioButton
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cbxDestination As ComboBox
     Friend WithEvents lblDestination As Label
     Friend WithEvents cbxDeparture As ComboBox
     Friend WithEvents lblDeparture As Label
