@@ -45,6 +45,12 @@
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-
+        tbxFullname.Clear()
+        tbxAddress.Clear()
+        tbxCity.Clear()
+        tbxContactNumber.Clear()
+        tbxEmail.Clear()
+        tbxPostalCode.Clear()
+        tbxGender.Clear()
     End Sub
 End Class
