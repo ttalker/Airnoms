@@ -34,4 +34,7 @@
         cbxArrivalTime.Visible = False
     End Sub
 
+    Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
+
+    End Sub
 End Class
