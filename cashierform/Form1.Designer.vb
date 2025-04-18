@@ -96,9 +96,7 @@ Partial Class Form1
         ComboBox3 = New ComboBox()
         ComboBox2 = New ComboBox()
         gbxPassengers = New GroupBox()
-        Button1 = New Button()
         pnlleftInfo.SuspendLayout()
-        gbxCustomerData.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
         ' 
@@ -114,7 +112,7 @@ Partial Class Form1
         ' btnBooking
         ' 
         btnBooking.Location = New Point(38, 21)
-        btnBooking.Margin = New Padding(4, 4, 4, 4)
+        btnBooking.Margin = New Padding(4)
         btnBooking.Name = "btnBooking"
         btnBooking.Size = New Size(242, 72)
         btnBooking.TabIndex = 1
@@ -124,7 +122,7 @@ Partial Class Form1
         ' btnTicket
         ' 
         btnTicket.Location = New Point(305, 20)
-        btnTicket.Margin = New Padding(4, 4, 4, 4)
+        btnTicket.Margin = New Padding(4)
         btnTicket.Name = "btnTicket"
         btnTicket.Size = New Size(242, 72)
         btnTicket.TabIndex = 2
@@ -134,7 +132,7 @@ Partial Class Form1
         ' btnClear
         ' 
         btnClear.Location = New Point(1354, 990)
-        btnClear.Margin = New Padding(4, 4, 4, 4)
+        btnClear.Margin = New Padding(4)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(242, 72)
         btnClear.TabIndex = 5
@@ -144,7 +142,7 @@ Partial Class Form1
         ' btnBook
         ' 
         btnBook.Location = New Point(1621, 990)
-        btnBook.Margin = New Padding(4, 4, 4, 4)
+        btnBook.Margin = New Padding(4)
         btnBook.Name = "btnBook"
         btnBook.Size = New Size(242, 72)
         btnBook.TabIndex = 7
@@ -190,7 +188,7 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(gbxBookingDetails)
         pnlleftInfo.Controls.Add(gbxCustomerData)
         pnlleftInfo.Location = New Point(75, 152)
-        pnlleftInfo.Margin = New Padding(4, 4, 4, 4)
+        pnlleftInfo.Margin = New Padding(4)
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(930, 924)
         pnlleftInfo.TabIndex = 3
@@ -221,7 +219,7 @@ Partial Class Form1
         cbxSeatNumber.FormattingEnabled = True
         cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumber.Location = New Point(678, 208)
-        cbxSeatNumber.Margin = New Padding(4, 4, 4, 4)
+        cbxSeatNumber.Margin = New Padding(4)
         cbxSeatNumber.Name = "cbxSeatNumber"
         cbxSeatNumber.Size = New Size(153, 33)
         cbxSeatNumber.TabIndex = 31
@@ -230,7 +228,7 @@ Partial Class Form1
         ' 
         cbxArrivalTime.FormattingEnabled = True
         cbxArrivalTime.Location = New Point(575, 366)
-        cbxArrivalTime.Margin = New Padding(4, 4, 4, 4)
+        cbxArrivalTime.Margin = New Padding(4)
         cbxArrivalTime.Name = "cbxArrivalTime"
         cbxArrivalTime.Size = New Size(260, 33)
         cbxArrivalTime.TabIndex = 30
@@ -251,7 +249,7 @@ Partial Class Form1
         ' 
         cbxDepartureTime.FormattingEnabled = True
         cbxDepartureTime.Location = New Point(575, 306)
-        cbxDepartureTime.Margin = New Padding(4, 4, 4, 4)
+        cbxDepartureTime.Margin = New Padding(4)
         cbxDepartureTime.Name = "cbxDepartureTime"
         cbxDepartureTime.Size = New Size(260, 33)
         cbxDepartureTime.TabIndex = 28
@@ -271,7 +269,7 @@ Partial Class Form1
         ' tbxGender
         ' 
         tbxGender.Location = New Point(699, 648)
-        tbxGender.Margin = New Padding(4, 4, 4, 4)
+        tbxGender.Margin = New Padding(4)
         tbxGender.Name = "tbxGender"
         tbxGender.Size = New Size(156, 31)
         tbxGender.TabIndex = 26
@@ -291,7 +289,7 @@ Partial Class Form1
         ' tbxEmail
         ' 
         tbxEmail.Location = New Point(215, 840)
-        tbxEmail.Margin = New Padding(4, 4, 4, 4)
+        tbxEmail.Margin = New Padding(4)
         tbxEmail.Name = "tbxEmail"
         tbxEmail.Size = New Size(288, 31)
         tbxEmail.TabIndex = 24
@@ -311,7 +309,7 @@ Partial Class Form1
         ' tbxContactNumber
         ' 
         tbxContactNumber.Location = New Point(215, 779)
-        tbxContactNumber.Margin = New Padding(4, 4, 4, 4)
+        tbxContactNumber.Margin = New Padding(4)
         tbxContactNumber.Name = "tbxContactNumber"
         tbxContactNumber.Size = New Size(288, 31)
         tbxContactNumber.TabIndex = 22
@@ -331,7 +329,7 @@ Partial Class Form1
         ' tbxPostalCode
         ' 
         tbxPostalCode.Location = New Point(699, 712)
-        tbxPostalCode.Margin = New Padding(4, 4, 4, 4)
+        tbxPostalCode.Margin = New Padding(4)
         tbxPostalCode.Name = "tbxPostalCode"
         tbxPostalCode.Size = New Size(156, 31)
         tbxPostalCode.TabIndex = 20
@@ -351,7 +349,7 @@ Partial Class Form1
         ' tbxCity
         ' 
         tbxCity.Location = New Point(215, 712)
-        tbxCity.Margin = New Padding(4, 4, 4, 4)
+        tbxCity.Margin = New Padding(4)
         tbxCity.Name = "tbxCity"
         tbxCity.Size = New Size(288, 31)
         tbxCity.TabIndex = 18
@@ -371,7 +369,7 @@ Partial Class Form1
         ' tbxAddress
         ' 
         tbxAddress.Location = New Point(215, 644)
-        tbxAddress.Margin = New Padding(4, 4, 4, 4)
+        tbxAddress.Margin = New Padding(4)
         tbxAddress.Name = "tbxAddress"
         tbxAddress.Size = New Size(288, 31)
         tbxAddress.TabIndex = 16
@@ -391,7 +389,7 @@ Partial Class Form1
         ' tbxFullname
         ' 
         tbxFullname.Location = New Point(215, 579)
-        tbxFullname.Margin = New Padding(4, 4, 4, 4)
+        tbxFullname.Margin = New Padding(4)
         tbxFullname.Name = "tbxFullname"
         tbxFullname.Size = New Size(288, 31)
         tbxFullname.TabIndex = 14
@@ -411,7 +409,7 @@ Partial Class Form1
         ' dtpBookingDate
         ' 
         dtpBookingDate.Location = New Point(226, 519)
-        dtpBookingDate.Margin = New Padding(4, 4, 4, 4)
+        dtpBookingDate.Margin = New Padding(4)
         dtpBookingDate.Name = "dtpBookingDate"
         dtpBookingDate.Size = New Size(155, 31)
         dtpBookingDate.TabIndex = 12
@@ -431,7 +429,7 @@ Partial Class Form1
         ' dtpArrivalDate
         ' 
         dtpArrivalDate.Location = New Point(220, 370)
-        dtpArrivalDate.Margin = New Padding(4, 4, 4, 4)
+        dtpArrivalDate.Margin = New Padding(4)
         dtpArrivalDate.Name = "dtpArrivalDate"
         dtpArrivalDate.Size = New Size(155, 31)
         dtpArrivalDate.TabIndex = 9
@@ -451,7 +449,7 @@ Partial Class Form1
         ' dtpDeparture
         ' 
         dtpDeparture.Location = New Point(220, 309)
-        dtpDeparture.Margin = New Padding(4, 4, 4, 4)
+        dtpDeparture.Margin = New Padding(4)
         dtpDeparture.Name = "dtpDeparture"
         dtpDeparture.Size = New Size(155, 31)
         dtpDeparture.TabIndex = 7
@@ -472,7 +470,7 @@ Partial Class Form1
         ' 
         cbxDestination.FormattingEnabled = True
         cbxDestination.Location = New Point(221, 240)
-        cbxDestination.Margin = New Padding(4, 4, 4, 4)
+        cbxDestination.Margin = New Padding(4)
         cbxDestination.Name = "cbxDestination"
         cbxDestination.Size = New Size(282, 33)
         cbxDestination.TabIndex = 5
@@ -492,7 +490,7 @@ Partial Class Form1
         ' 
         cbxDeparture.FormattingEnabled = True
         cbxDeparture.Location = New Point(215, 168)
-        cbxDeparture.Margin = New Padding(4, 4, 4, 4)
+        cbxDeparture.Margin = New Padding(4)
         cbxDeparture.Name = "cbxDeparture"
         cbxDeparture.Size = New Size(288, 33)
         cbxDeparture.TabIndex = 3
@@ -513,7 +511,7 @@ Partial Class Form1
         rbnRoundTrip.AutoSize = True
         rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         rbnRoundTrip.Location = New Point(335, 92)
-        rbnRoundTrip.Margin = New Padding(4, 4, 4, 4)
+        rbnRoundTrip.Margin = New Padding(4)
         rbnRoundTrip.Name = "rbnRoundTrip"
         rbnRoundTrip.Size = New Size(146, 34)
         rbnRoundTrip.TabIndex = 1
@@ -526,7 +524,7 @@ Partial Class Form1
         rbnOneWayTrip.AutoSize = True
         rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         rbnOneWayTrip.Location = New Point(120, 92)
-        rbnOneWayTrip.Margin = New Padding(4, 4, 4, 4)
+        rbnOneWayTrip.Margin = New Padding(4)
         rbnOneWayTrip.Name = "rbnOneWayTrip"
         rbnOneWayTrip.Size = New Size(171, 34)
         rbnOneWayTrip.TabIndex = 0
@@ -538,9 +536,9 @@ Partial Class Form1
         ' 
         gbxBookingDetails.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxBookingDetails.Location = New Point(28, 16)
-        gbxBookingDetails.Margin = New Padding(4, 4, 4, 4)
+        gbxBookingDetails.Margin = New Padding(4)
         gbxBookingDetails.Name = "gbxBookingDetails"
-        gbxBookingDetails.Padding = New Padding(4, 4, 4, 4)
+        gbxBookingDetails.Padding = New Padding(4)
         gbxBookingDetails.Size = New Size(875, 430)
         gbxBookingDetails.TabIndex = 34
         gbxBookingDetails.TabStop = False
@@ -548,12 +546,11 @@ Partial Class Form1
         ' 
         ' gbxCustomerData
         ' 
-        gbxCustomerData.Controls.Add(Button1)
         gbxCustomerData.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxCustomerData.Location = New Point(28, 444)
-        gbxCustomerData.Margin = New Padding(4, 4, 4, 4)
+        gbxCustomerData.Margin = New Padding(4)
         gbxCustomerData.Name = "gbxCustomerData"
-        gbxCustomerData.Padding = New Padding(4, 4, 4, 4)
+        gbxCustomerData.Padding = New Padding(4)
         gbxCustomerData.Size = New Size(875, 454)
         gbxCustomerData.TabIndex = 35
         gbxCustomerData.TabStop = False
@@ -705,7 +702,7 @@ Partial Class Form1
         ' TextBox1
         ' 
         TextBox1.Location = New Point(122, 191)
-        TextBox1.Margin = New Padding(4, 4, 4, 4)
+        TextBox1.Margin = New Padding(4)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Size(299, 31)
         TextBox1.TabIndex = 15
@@ -713,7 +710,7 @@ Partial Class Form1
         ' TextBox2
         ' 
         TextBox2.Location = New Point(454, 191)
-        TextBox2.Margin = New Padding(4, 4, 4, 4)
+        TextBox2.Margin = New Padding(4)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(113, 31)
         TextBox2.TabIndex = 16
@@ -721,7 +718,7 @@ Partial Class Form1
         ' TextBox6
         ' 
         TextBox6.Location = New Point(122, 286)
-        TextBox6.Margin = New Padding(4, 4, 4, 4)
+        TextBox6.Margin = New Padding(4)
         TextBox6.Name = "TextBox6"
         TextBox6.Size = New Size(299, 31)
         TextBox6.TabIndex = 18
@@ -729,7 +726,7 @@ Partial Class Form1
         ' TextBox5
         ' 
         TextBox5.Location = New Point(454, 286)
-        TextBox5.Margin = New Padding(4, 4, 4, 4)
+        TextBox5.Margin = New Padding(4)
         TextBox5.Name = "TextBox5"
         TextBox5.Size = New Size(113, 31)
         TextBox5.TabIndex = 19
@@ -737,7 +734,7 @@ Partial Class Form1
         ' TextBox9
         ' 
         TextBox9.Location = New Point(122, 390)
-        TextBox9.Margin = New Padding(4, 4, 4, 4)
+        TextBox9.Margin = New Padding(4)
         TextBox9.Name = "TextBox9"
         TextBox9.Size = New Size(299, 31)
         TextBox9.TabIndex = 21
@@ -745,7 +742,7 @@ Partial Class Form1
         ' TextBox8
         ' 
         TextBox8.Location = New Point(454, 390)
-        TextBox8.Margin = New Padding(4, 4, 4, 4)
+        TextBox8.Margin = New Padding(4)
         TextBox8.Name = "TextBox8"
         TextBox8.Size = New Size(113, 31)
         TextBox8.TabIndex = 22
@@ -753,7 +750,7 @@ Partial Class Form1
         ' TextBox12
         ' 
         TextBox12.Location = New Point(122, 485)
-        TextBox12.Margin = New Padding(4, 4, 4, 4)
+        TextBox12.Margin = New Padding(4)
         TextBox12.Name = "TextBox12"
         TextBox12.Size = New Size(299, 31)
         TextBox12.TabIndex = 24
@@ -761,7 +758,7 @@ Partial Class Form1
         ' TextBox11
         ' 
         TextBox11.Location = New Point(454, 485)
-        TextBox11.Margin = New Padding(4, 4, 4, 4)
+        TextBox11.Margin = New Padding(4)
         TextBox11.Name = "TextBox11"
         TextBox11.Size = New Size(113, 31)
         TextBox11.TabIndex = 25
@@ -769,7 +766,7 @@ Partial Class Form1
         ' TextBox15
         ' 
         TextBox15.Location = New Point(122, 586)
-        TextBox15.Margin = New Padding(4, 4, 4, 4)
+        TextBox15.Margin = New Padding(4)
         TextBox15.Name = "TextBox15"
         TextBox15.Size = New Size(299, 31)
         TextBox15.TabIndex = 27
@@ -777,7 +774,7 @@ Partial Class Form1
         ' TextBox14
         ' 
         TextBox14.Location = New Point(454, 586)
-        TextBox14.Margin = New Padding(4, 4, 4, 4)
+        TextBox14.Margin = New Padding(4)
         TextBox14.Name = "TextBox14"
         TextBox14.Size = New Size(113, 31)
         TextBox14.TabIndex = 28
@@ -785,7 +782,7 @@ Partial Class Form1
         ' TextBox18
         ' 
         TextBox18.Location = New Point(122, 701)
-        TextBox18.Margin = New Padding(4, 4, 4, 4)
+        TextBox18.Margin = New Padding(4)
         TextBox18.Name = "TextBox18"
         TextBox18.Size = New Size(299, 31)
         TextBox18.TabIndex = 30
@@ -793,7 +790,7 @@ Partial Class Form1
         ' TextBox17
         ' 
         TextBox17.Location = New Point(454, 701)
-        TextBox17.Margin = New Padding(4, 4, 4, 4)
+        TextBox17.Margin = New Padding(4)
         TextBox17.Name = "TextBox17"
         TextBox17.Size = New Size(113, 31)
         TextBox17.TabIndex = 31
@@ -834,7 +831,7 @@ Partial Class Form1
         pnlRightInfo.Controls.Add(lblNumber)
         pnlRightInfo.Controls.Add(gbxPassengers)
         pnlRightInfo.Location = New Point(1054, 152)
-        pnlRightInfo.Margin = New Padding(4, 4, 4, 4)
+        pnlRightInfo.Margin = New Padding(4)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(810, 802)
         pnlRightInfo.TabIndex = 4
@@ -844,7 +841,7 @@ Partial Class Form1
         ComboBox7.FormattingEnabled = True
         ComboBox7.Items.AddRange(New Object() {"AC1"})
         ComboBox7.Location = New Point(601, 700)
-        ComboBox7.Margin = New Padding(4, 4, 4, 4)
+        ComboBox7.Margin = New Padding(4)
         ComboBox7.Name = "ComboBox7"
         ComboBox7.Size = New Size(153, 33)
         ComboBox7.TabIndex = 37
@@ -854,7 +851,7 @@ Partial Class Form1
         ComboBox6.FormattingEnabled = True
         ComboBox6.Items.AddRange(New Object() {"AC1"})
         ComboBox6.Location = New Point(601, 589)
-        ComboBox6.Margin = New Padding(4, 4, 4, 4)
+        ComboBox6.Margin = New Padding(4)
         ComboBox6.Name = "ComboBox6"
         ComboBox6.Size = New Size(153, 33)
         ComboBox6.TabIndex = 36
@@ -864,7 +861,7 @@ Partial Class Form1
         ComboBox5.FormattingEnabled = True
         ComboBox5.Items.AddRange(New Object() {"AC1"})
         ComboBox5.Location = New Point(601, 485)
-        ComboBox5.Margin = New Padding(4, 4, 4, 4)
+        ComboBox5.Margin = New Padding(4)
         ComboBox5.Name = "ComboBox5"
         ComboBox5.Size = New Size(153, 33)
         ComboBox5.TabIndex = 35
@@ -874,7 +871,7 @@ Partial Class Form1
         ComboBox4.FormattingEnabled = True
         ComboBox4.Items.AddRange(New Object() {"AC1"})
         ComboBox4.Location = New Point(601, 391)
-        ComboBox4.Margin = New Padding(4, 4, 4, 4)
+        ComboBox4.Margin = New Padding(4)
         ComboBox4.Name = "ComboBox4"
         ComboBox4.Size = New Size(153, 33)
         ComboBox4.TabIndex = 34
@@ -884,7 +881,7 @@ Partial Class Form1
         ComboBox3.FormattingEnabled = True
         ComboBox3.Items.AddRange(New Object() {"AC1"})
         ComboBox3.Location = New Point(601, 288)
-        ComboBox3.Margin = New Padding(4, 4, 4, 4)
+        ComboBox3.Margin = New Padding(4)
         ComboBox3.Name = "ComboBox3"
         ComboBox3.Size = New Size(153, 33)
         ComboBox3.TabIndex = 33
@@ -894,7 +891,7 @@ Partial Class Form1
         ComboBox2.FormattingEnabled = True
         ComboBox2.Items.AddRange(New Object() {"AC1"})
         ComboBox2.Location = New Point(601, 190)
-        ComboBox2.Margin = New Padding(4, 4, 4, 4)
+        ComboBox2.Margin = New Padding(4)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(153, 33)
         ComboBox2.TabIndex = 32
@@ -903,22 +900,13 @@ Partial Class Form1
         ' 
         gbxPassengers.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxPassengers.Location = New Point(28, 16)
-        gbxPassengers.Margin = New Padding(4, 4, 4, 4)
+        gbxPassengers.Margin = New Padding(4)
         gbxPassengers.Name = "gbxPassengers"
-        gbxPassengers.Padding = New Padding(4, 4, 4, 4)
+        gbxPassengers.Padding = New Padding(4)
         gbxPassengers.Size = New Size(758, 762)
         gbxPassengers.TabIndex = 8
         gbxPassengers.TabStop = False
         gbxPassengers.Text = "Passengers"
-        ' 
-        ' Button1
-        ' 
-        Button1.Location = New Point(525, 371)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(167, 83)
-        Button1.TabIndex = 0
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
         ' 
         ' Form1
         ' 
@@ -938,7 +926,6 @@ Partial Class Form1
         Text = " CASHIER"
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
-        gbxCustomerData.ResumeLayout(False)
         pnlRightInfo.ResumeLayout(False)
         pnlRightInfo.PerformLayout()
         ResumeLayout(False)
@@ -1028,5 +1015,4 @@ Partial Class Form1
     Friend WithEvents gbxBookingDetails As GroupBox
     Friend WithEvents gbxPassengers As GroupBox
     Friend WithEvents gbxCustomerData As GroupBox
-    Friend WithEvents Button1 As Button
 End Class
