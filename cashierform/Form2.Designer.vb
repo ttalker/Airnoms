@@ -49,7 +49,6 @@ Partial Class Form2
         lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
-        btnCalculateTicket = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -91,6 +90,13 @@ Partial Class Form2
         ' 
         ' btnCalculateTicket
         ' 
+        btnCalculateTicket.BackColor = Color.Silver
+        btnCalculateTicket.Location = New Point(435, 558)
+        btnCalculateTicket.Name = "btnCalculateTicket"
+        btnCalculateTicket.Size = New Size(161, 58)
+        btnCalculateTicket.TabIndex = 11
+        btnCalculateTicket.Text = "CALCULATE"
+        btnCalculateTicket.UseVisualStyleBackColor = False
         ' 
         ' pnlleftInfo
         ' 
@@ -322,21 +328,11 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
-        ' btnCalculateTicket
-        ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(435, 558)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(161, 58)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
-        ' 
         ' Form2
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1539, 844)
+        ClientSize = New Size(1545, 910)
         Controls.Add(btnResetTicket)
         Controls.Add(btnProcessTicket)
         Controls.Add(pnlRightInfo)
