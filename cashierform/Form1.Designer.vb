@@ -28,6 +28,8 @@ Partial Class Form1
         btnClear = New Button()
         btnBook = New Button()
         pnlleftInfo = New Panel()
+        BTNFILL = New Button()
+        lblSeatNumber = New Label()
         cbxSeatNumber = New ComboBox()
         cbxArrivalTime = New ComboBox()
         lblArrivalTime = New Label()
@@ -54,14 +56,13 @@ Partial Class Form1
         lblArrivalDate = New Label()
         dtpDeparture = New DateTimePicker()
         lblDepartureDate = New Label()
-        ComboBox1 = New ComboBox()
+        cbxDestination = New ComboBox()
         lblDestination = New Label()
         cbxDeparture = New ComboBox()
         lblDeparture = New Label()
         rbnRoundTrip = New RadioButton()
         rbnOneWayTrip = New RadioButton()
         Label1 = New Label()
-        lblSeatNumber = New Label()
         lblPassengers = New Label()
         lblNumber = New Label()
         lblFullnamePassenger = New Label()
@@ -89,12 +90,12 @@ Partial Class Form1
         TextBox18 = New TextBox()
         TextBox17 = New TextBox()
         pnlRightInfo = New Panel()
-        ComboBox2 = New ComboBox()
-        ComboBox3 = New ComboBox()
-        ComboBox4 = New ComboBox()
-        ComboBox5 = New ComboBox()
-        ComboBox6 = New ComboBox()
         ComboBox7 = New ComboBox()
+        ComboBox6 = New ComboBox()
+        ComboBox5 = New ComboBox()
+        ComboBox4 = New ComboBox()
+        ComboBox3 = New ComboBox()
+        ComboBox2 = New ComboBox()
         pnlleftInfo.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
@@ -146,6 +147,7 @@ Partial Class Form1
         ' pnlleftInfo
         ' 
         pnlleftInfo.BackColor = Color.Snow
+        pnlleftInfo.Controls.Add(BTNFILL)
         pnlleftInfo.Controls.Add(lblSeatNumber)
         pnlleftInfo.Controls.Add(cbxSeatNumber)
         pnlleftInfo.Controls.Add(cbxArrivalTime)
@@ -173,7 +175,7 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(lblArrivalDate)
         pnlleftInfo.Controls.Add(dtpDeparture)
         pnlleftInfo.Controls.Add(lblDepartureDate)
-        pnlleftInfo.Controls.Add(ComboBox1)
+        pnlleftInfo.Controls.Add(cbxDestination)
         pnlleftInfo.Controls.Add(lblDestination)
         pnlleftInfo.Controls.Add(cbxDeparture)
         pnlleftInfo.Controls.Add(lblDeparture)
@@ -184,6 +186,26 @@ Partial Class Form1
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(744, 739)
         pnlleftInfo.TabIndex = 3
+        ' 
+        ' BTNFILL
+        ' 
+        BTNFILL.Location = New Point(594, 673)
+        BTNFILL.Margin = New Padding(2, 2, 2, 2)
+        BTNFILL.Name = "BTNFILL"
+        BTNFILL.Size = New Size(90, 27)
+        BTNFILL.TabIndex = 33
+        BTNFILL.Text = "FILL UP"
+        BTNFILL.UseVisualStyleBackColor = True
+        ' 
+        ' lblSeatNumber
+        ' 
+        lblSeatNumber.AutoSize = True
+        lblSeatNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblSeatNumber.Location = New Point(463, 180)
+        lblSeatNumber.Name = "lblSeatNumber"
+        lblSeatNumber.Size = New Size(64, 25)
+        lblSeatNumber.TabIndex = 32
+        lblSeatNumber.Text = "Seat #"
         ' 
         ' cbxSeatNumber
         ' 
@@ -422,13 +444,13 @@ Partial Class Form1
         lblDepartureDate.Text = "Depart Date:"
         lblDepartureDate.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' ComboBox1
+        ' cbxDestination
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(177, 207)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(226, 28)
-        ComboBox1.TabIndex = 5
+        cbxDestination.FormattingEnabled = True
+        cbxDestination.Location = New Point(177, 207)
+        cbxDestination.Name = "cbxDestination"
+        cbxDestination.Size = New Size(226, 28)
+        cbxDestination.TabIndex = 5
         ' 
         ' lblDestination
         ' 
@@ -491,16 +513,6 @@ Partial Class Form1
         Label1.Size = New Size(225, 38)
         Label1.TabIndex = 0
         Label1.Text = "Booking Details"
-        ' 
-        ' lblSeatNumber
-        ' 
-        lblSeatNumber.AutoSize = True
-        lblSeatNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSeatNumber.Location = New Point(463, 180)
-        lblSeatNumber.Name = "lblSeatNumber"
-        lblSeatNumber.Size = New Size(64, 25)
-        lblSeatNumber.TabIndex = 32
-        lblSeatNumber.Text = "Seat #"
         ' 
         ' lblPassengers
         ' 
@@ -766,41 +778,14 @@ Partial Class Form1
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 4
         ' 
-        ' ComboBox2
+        ' ComboBox7
         ' 
-        ComboBox2.FormattingEnabled = True
-        ComboBox2.Items.AddRange(New Object() {"AC1"})
-        ComboBox2.Location = New Point(481, 152)
-        ComboBox2.Name = "ComboBox2"
-        ComboBox2.Size = New Size(123, 28)
-        ComboBox2.TabIndex = 32
-        ' 
-        ' ComboBox3
-        ' 
-        ComboBox3.FormattingEnabled = True
-        ComboBox3.Items.AddRange(New Object() {"AC1"})
-        ComboBox3.Location = New Point(481, 230)
-        ComboBox3.Name = "ComboBox3"
-        ComboBox3.Size = New Size(123, 28)
-        ComboBox3.TabIndex = 33
-        ' 
-        ' ComboBox4
-        ' 
-        ComboBox4.FormattingEnabled = True
-        ComboBox4.Items.AddRange(New Object() {"AC1"})
-        ComboBox4.Location = New Point(481, 313)
-        ComboBox4.Name = "ComboBox4"
-        ComboBox4.Size = New Size(123, 28)
-        ComboBox4.TabIndex = 34
-        ' 
-        ' ComboBox5
-        ' 
-        ComboBox5.FormattingEnabled = True
-        ComboBox5.Items.AddRange(New Object() {"AC1"})
-        ComboBox5.Location = New Point(481, 388)
-        ComboBox5.Name = "ComboBox5"
-        ComboBox5.Size = New Size(123, 28)
-        ComboBox5.TabIndex = 35
+        ComboBox7.FormattingEnabled = True
+        ComboBox7.Items.AddRange(New Object() {"AC1"})
+        ComboBox7.Location = New Point(481, 560)
+        ComboBox7.Name = "ComboBox7"
+        ComboBox7.Size = New Size(123, 28)
+        ComboBox7.TabIndex = 37
         ' 
         ' ComboBox6
         ' 
@@ -811,21 +796,48 @@ Partial Class Form1
         ComboBox6.Size = New Size(123, 28)
         ComboBox6.TabIndex = 36
         ' 
-        ' ComboBox7
+        ' ComboBox5
         ' 
-        ComboBox7.FormattingEnabled = True
-        ComboBox7.Items.AddRange(New Object() {"AC1"})
-        ComboBox7.Location = New Point(481, 560)
-        ComboBox7.Name = "ComboBox7"
-        ComboBox7.Size = New Size(123, 28)
-        ComboBox7.TabIndex = 37
+        ComboBox5.FormattingEnabled = True
+        ComboBox5.Items.AddRange(New Object() {"AC1"})
+        ComboBox5.Location = New Point(481, 388)
+        ComboBox5.Name = "ComboBox5"
+        ComboBox5.Size = New Size(123, 28)
+        ComboBox5.TabIndex = 35
+        ' 
+        ' ComboBox4
+        ' 
+        ComboBox4.FormattingEnabled = True
+        ComboBox4.Items.AddRange(New Object() {"AC1"})
+        ComboBox4.Location = New Point(481, 313)
+        ComboBox4.Name = "ComboBox4"
+        ComboBox4.Size = New Size(123, 28)
+        ComboBox4.TabIndex = 34
+        ' 
+        ' ComboBox3
+        ' 
+        ComboBox3.FormattingEnabled = True
+        ComboBox3.Items.AddRange(New Object() {"AC1"})
+        ComboBox3.Location = New Point(481, 230)
+        ComboBox3.Name = "ComboBox3"
+        ComboBox3.Size = New Size(123, 28)
+        ComboBox3.TabIndex = 33
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Items.AddRange(New Object() {"AC1"})
+        ComboBox2.Location = New Point(481, 152)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(123, 28)
+        ComboBox2.TabIndex = 32
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(1545, 910)
+        ClientSize = New Size(1539, 908)
         Controls.Add(btnBook)
         Controls.Add(btnClear)
         Controls.Add(pnlRightInfo)
@@ -861,7 +873,7 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents rbnRoundTrip As RadioButton
     Friend WithEvents rbnOneWayTrip As RadioButton
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cbxDestination As ComboBox
     Friend WithEvents lblDestination As Label
     Friend WithEvents cbxDeparture As ComboBox
     Friend WithEvents lblDeparture As Label
@@ -925,4 +937,5 @@ Partial Class Form1
     Friend WithEvents ComboBox4 As ComboBox
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents BTNFILL As Button
 End Class

@@ -34,4 +34,32 @@
         cbxArrivalTime.Visible = False
     End Sub
 
+    Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
+        tbxFullname.Text = "Kelvin Dave M. Rivera"
+        tbxAddress.Text = "Tarlac"
+        tbxCity.Text = "Tarlac City"
+        tbxContactNumber.Text = "0999999999"
+        tbxEmail.Text = "examplemail@gmail.com"
+        tbxPostalCode.Text = "2003"
+        tbxGender.Text = "Male"
+        cbxDeparture.Text = "Tarlac"
+        cbxDestination.Text = "Seoul, Korea"
+        cbxSeatNumber.Text = "1A"
+        cbxDepartureTime.Text = "May 1, 2025"
+        cbxArrivalTime.Text = "May 1, 2025"
+        dtpArrivalDate.Text = "May 1, 2025"
+        dtpDeparture.Text = "May 1, 2025"
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        tbxFullname.Clear()
+        tbxAddress.Clear()
+        tbxCity.Clear()
+        tbxContactNumber.Clear()
+        tbxEmail.Clear()
+        tbxPostalCode.Clear()
+        tbxGender.Clear()
+
+
+    End Sub
 End Class
