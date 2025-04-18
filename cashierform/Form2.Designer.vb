@@ -27,7 +27,6 @@ Partial Class Form2
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
         btnCalculateTicket = New Button()
-        lblSummary = New Label()
         pnlleftInfo = New Panel()
         lblAddressTicket = New Label()
         lblSeatNumberTicket = New Label()
@@ -84,7 +83,6 @@ Partial Class Form2
         ' 
         pnlRightInfo.BackColor = Color.Snow
         pnlRightInfo.Controls.Add(btnCalculateTicket)
-        pnlRightInfo.Controls.Add(lblSummary)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
@@ -99,16 +97,6 @@ Partial Class Form2
         btnCalculateTicket.TabIndex = 11
         btnCalculateTicket.Text = "CALCULATE"
         btnCalculateTicket.UseVisualStyleBackColor = False
-        ' 
-        ' lblSummary
-        ' 
-        lblSummary.AutoSize = True
-        lblSummary.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSummary.Location = New Point(42, 31)
-        lblSummary.Name = "lblSummary"
-        lblSummary.Size = New Size(144, 38)
-        lblSummary.TabIndex = 1
-        lblSummary.Text = "Summary"
         ' 
         ' pnlleftInfo
         ' 
@@ -355,7 +343,6 @@ Partial Class Form2
         Name = "Form2"
         Text = "Form2"
         pnlRightInfo.ResumeLayout(False)
-        pnlRightInfo.PerformLayout()
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
         ResumeLayout(False)
@@ -365,7 +352,6 @@ Partial Class Form2
     Friend WithEvents btnBooking As Button
     Friend WithEvents lblMainBooking As Label
     Friend WithEvents pnlRightInfo As Panel
-    Friend WithEvents lblSummary As Label
     Friend WithEvents pnlleftInfo As Panel
     Friend WithEvents lblGenderTicket As Label
     Friend WithEvents lblPassengersTicket As Label
