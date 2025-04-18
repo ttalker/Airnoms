@@ -49,6 +49,7 @@ Partial Class Form2
         lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        btnCalculateTicket = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -83,22 +84,21 @@ Partial Class Form2
         ' 
         pnlRightInfo.BackColor = Color.Snow
         pnlRightInfo.Controls.Add(btnCalculateTicket)
-        pnlRightInfo.Location = New Point(834, 122)
-        pnlRightInfo.Margin = New Padding(2)
+        pnlRightInfo.Controls.Add(lblPassengers)
+        pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 7
         ' 
         ' btnCalculateTicket
         ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(494, 576)
-        btnCalculateTicket.Margin = New Padding(2)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(129, 46)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
+        lblPassengers.AutoSize = True
+        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblPassengers.Location = New Point(42, 31)
+        lblPassengers.Name = "lblPassengers"
+        lblPassengers.Size = New Size(144, 38)
+        lblPassengers.TabIndex = 1
+        lblPassengers.Text = "Summary"
         ' 
         ' pnlleftInfo
         ' 
@@ -330,9 +330,19 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
+        ' btnCalculateTicket
+        ' 
+        btnCalculateTicket.BackColor = Color.Silver
+        btnCalculateTicket.Location = New Point(435, 558)
+        btnCalculateTicket.Name = "btnCalculateTicket"
+        btnCalculateTicket.Size = New Size(161, 58)
+        btnCalculateTicket.TabIndex = 11
+        btnCalculateTicket.Text = "CALCULATE"
+        btnCalculateTicket.UseVisualStyleBackColor = False
+        ' 
         ' Form2
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1539, 844)
         Controls.Add(btnResetTicket)
