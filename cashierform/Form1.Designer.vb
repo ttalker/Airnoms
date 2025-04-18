@@ -190,7 +190,7 @@ Partial Class Form1
         ' BTNFILL
         ' 
         BTNFILL.Location = New Point(594, 673)
-        BTNFILL.Margin = New Padding(2, 2, 2, 2)
+        BTNFILL.Margin = New Padding(2)
         BTNFILL.Name = "BTNFILL"
         BTNFILL.Size = New Size(90, 27)
         BTNFILL.TabIndex = 33
