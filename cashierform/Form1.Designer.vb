@@ -51,7 +51,6 @@ Partial Class Form1
         lblFullname = New Label()
         dtpBookingDate = New DateTimePicker()
         lblBookingDate = New Label()
-        lblCustomerData = New Label()
         dtpArrivalDate = New DateTimePicker()
         lblArrivalDate = New Label()
         dtpDeparture = New DateTimePicker()
@@ -62,8 +61,6 @@ Partial Class Form1
         lblDeparture = New Label()
         rbnRoundTrip = New RadioButton()
         rbnOneWayTrip = New RadioButton()
-        Label1 = New Label()
-        lblPassengers = New Label()
         lblNumber = New Label()
         lblFullnamePassenger = New Label()
         lblSeatNumberPassengers = New Label()
@@ -96,6 +93,9 @@ Partial Class Form1
         ComboBox4 = New ComboBox()
         ComboBox3 = New ComboBox()
         ComboBox2 = New ComboBox()
+        gbxPassengers = New GroupBox()
+        gbxBookingDetails = New GroupBox()
+        gbxCustomerData = New GroupBox()
         pnlleftInfo.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
@@ -170,7 +170,6 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(lblFullname)
         pnlleftInfo.Controls.Add(dtpBookingDate)
         pnlleftInfo.Controls.Add(lblBookingDate)
-        pnlleftInfo.Controls.Add(lblCustomerData)
         pnlleftInfo.Controls.Add(dtpArrivalDate)
         pnlleftInfo.Controls.Add(lblArrivalDate)
         pnlleftInfo.Controls.Add(dtpDeparture)
@@ -181,7 +180,8 @@ Partial Class Form1
         pnlleftInfo.Controls.Add(lblDeparture)
         pnlleftInfo.Controls.Add(rbnRoundTrip)
         pnlleftInfo.Controls.Add(rbnOneWayTrip)
-        pnlleftInfo.Controls.Add(Label1)
+        pnlleftInfo.Controls.Add(gbxBookingDetails)
+        pnlleftInfo.Controls.Add(gbxCustomerData)
         pnlleftInfo.Location = New Point(60, 122)
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(744, 739)
@@ -201,7 +201,7 @@ Partial Class Form1
         ' 
         lblSeatNumber.AutoSize = True
         lblSeatNumber.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSeatNumber.Location = New Point(463, 180)
+        lblSeatNumber.Location = New Point(463, 165)
         lblSeatNumber.Name = "lblSeatNumber"
         lblSeatNumber.Size = New Size(64, 25)
         lblSeatNumber.TabIndex = 32
@@ -211,7 +211,7 @@ Partial Class Form1
         ' 
         cbxSeatNumber.FormattingEnabled = True
         cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumber.Location = New Point(542, 181)
+        cbxSeatNumber.Location = New Point(542, 166)
         cbxSeatNumber.Name = "cbxSeatNumber"
         cbxSeatNumber.Size = New Size(123, 28)
         cbxSeatNumber.TabIndex = 31
@@ -219,7 +219,7 @@ Partial Class Form1
         ' cbxArrivalTime
         ' 
         cbxArrivalTime.FormattingEnabled = True
-        cbxArrivalTime.Location = New Point(460, 313)
+        cbxArrivalTime.Location = New Point(460, 293)
         cbxArrivalTime.Name = "cbxArrivalTime"
         cbxArrivalTime.Size = New Size(209, 28)
         cbxArrivalTime.TabIndex = 30
@@ -228,7 +228,7 @@ Partial Class Form1
         ' 
         lblArrivalTime.AutoSize = True
         lblArrivalTime.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblArrivalTime.Location = New Point(334, 312)
+        lblArrivalTime.Location = New Point(334, 294)
         lblArrivalTime.Name = "lblArrivalTime"
         lblArrivalTime.Size = New Size(116, 25)
         lblArrivalTime.TabIndex = 29
@@ -238,7 +238,7 @@ Partial Class Form1
         ' cbxDepartureTime
         ' 
         cbxDepartureTime.FormattingEnabled = True
-        cbxDepartureTime.Location = New Point(460, 264)
+        cbxDepartureTime.Location = New Point(460, 245)
         cbxDepartureTime.Name = "cbxDepartureTime"
         cbxDepartureTime.Size = New Size(209, 28)
         cbxDepartureTime.TabIndex = 28
@@ -247,7 +247,7 @@ Partial Class Form1
         ' 
         lblDepartureTime.AutoSize = True
         lblDepartureTime.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDepartureTime.Location = New Point(334, 263)
+        lblDepartureTime.Location = New Point(334, 245)
         lblDepartureTime.Name = "lblDepartureTime"
         lblDepartureTime.Size = New Size(120, 25)
         lblDepartureTime.TabIndex = 27
@@ -398,19 +398,9 @@ Partial Class Form1
         lblBookingDate.Text = "Booking Date:"
         lblBookingDate.TextAlign = ContentAlignment.MiddleCenter
         ' 
-        ' lblCustomerData
-        ' 
-        lblCustomerData.AutoSize = True
-        lblCustomerData.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblCustomerData.Location = New Point(38, 355)
-        lblCustomerData.Name = "lblCustomerData"
-        lblCustomerData.Size = New Size(213, 38)
-        lblCustomerData.TabIndex = 10
-        lblCustomerData.Text = "Customer Data"
-        ' 
         ' dtpArrivalDate
         ' 
-        dtpArrivalDate.Location = New Point(176, 311)
+        dtpArrivalDate.Location = New Point(176, 296)
         dtpArrivalDate.Name = "dtpArrivalDate"
         dtpArrivalDate.Size = New Size(125, 27)
         dtpArrivalDate.TabIndex = 9
@@ -419,7 +409,7 @@ Partial Class Form1
         ' 
         lblArrivalDate.AutoSize = True
         lblArrivalDate.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblArrivalDate.Location = New Point(51, 309)
+        lblArrivalDate.Location = New Point(51, 294)
         lblArrivalDate.Name = "lblArrivalDate"
         lblArrivalDate.Size = New Size(114, 25)
         lblArrivalDate.TabIndex = 8
@@ -428,7 +418,7 @@ Partial Class Form1
         ' 
         ' dtpDeparture
         ' 
-        dtpDeparture.Location = New Point(176, 262)
+        dtpDeparture.Location = New Point(176, 247)
         dtpDeparture.Name = "dtpDeparture"
         dtpDeparture.Size = New Size(125, 27)
         dtpDeparture.TabIndex = 7
@@ -437,7 +427,7 @@ Partial Class Form1
         ' 
         lblDepartureDate.AutoSize = True
         lblDepartureDate.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDepartureDate.Location = New Point(50, 260)
+        lblDepartureDate.Location = New Point(50, 245)
         lblDepartureDate.Name = "lblDepartureDate"
         lblDepartureDate.Size = New Size(118, 25)
         lblDepartureDate.TabIndex = 6
@@ -447,7 +437,7 @@ Partial Class Form1
         ' cbxDestination
         ' 
         cbxDestination.FormattingEnabled = True
-        cbxDestination.Location = New Point(177, 207)
+        cbxDestination.Location = New Point(177, 192)
         cbxDestination.Name = "cbxDestination"
         cbxDestination.Size = New Size(226, 28)
         cbxDestination.TabIndex = 5
@@ -456,7 +446,7 @@ Partial Class Form1
         ' 
         lblDestination.AutoSize = True
         lblDestination.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDestination.Location = New Point(50, 205)
+        lblDestination.Location = New Point(50, 190)
         lblDestination.Name = "lblDestination"
         lblDestination.Size = New Size(113, 25)
         lblDestination.TabIndex = 4
@@ -465,7 +455,7 @@ Partial Class Form1
         ' cbxDeparture
         ' 
         cbxDeparture.FormattingEnabled = True
-        cbxDeparture.Location = New Point(172, 149)
+        cbxDeparture.Location = New Point(172, 134)
         cbxDeparture.Name = "cbxDeparture"
         cbxDeparture.Size = New Size(231, 28)
         cbxDeparture.TabIndex = 3
@@ -474,7 +464,7 @@ Partial Class Form1
         ' 
         lblDeparture.AutoSize = True
         lblDeparture.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDeparture.Location = New Point(51, 147)
+        lblDeparture.Location = New Point(51, 132)
         lblDeparture.Name = "lblDeparture"
         lblDeparture.Size = New Size(102, 25)
         lblDeparture.TabIndex = 2
@@ -484,7 +474,7 @@ Partial Class Form1
         ' 
         rbnRoundTrip.AutoSize = True
         rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        rbnRoundTrip.Location = New Point(268, 89)
+        rbnRoundTrip.Location = New Point(268, 74)
         rbnRoundTrip.Name = "rbnRoundTrip"
         rbnRoundTrip.Size = New Size(125, 29)
         rbnRoundTrip.TabIndex = 1
@@ -496,33 +486,13 @@ Partial Class Form1
         ' 
         rbnOneWayTrip.AutoSize = True
         rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        rbnOneWayTrip.Location = New Point(96, 89)
+        rbnOneWayTrip.Location = New Point(96, 74)
         rbnOneWayTrip.Name = "rbnOneWayTrip"
         rbnOneWayTrip.Size = New Size(144, 29)
         rbnOneWayTrip.TabIndex = 0
         rbnOneWayTrip.TabStop = True
         rbnOneWayTrip.Text = "One-way Trip"
         rbnOneWayTrip.UseVisualStyleBackColor = True
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(38, 31)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(225, 38)
-        Label1.TabIndex = 0
-        Label1.Text = "Booking Details"
-        ' 
-        ' lblPassengers
-        ' 
-        lblPassengers.AutoSize = True
-        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPassengers.Location = New Point(33, 31)
-        lblPassengers.Name = "lblPassengers"
-        lblPassengers.Size = New Size(159, 38)
-        lblPassengers.TabIndex = 1
-        lblPassengers.Text = "Passengers"
         ' 
         ' lblNumber
         ' 
@@ -772,7 +742,7 @@ Partial Class Form1
         pnlRightInfo.Controls.Add(lblSeatNumberPassengers)
         pnlRightInfo.Controls.Add(lblFullnamePassenger)
         pnlRightInfo.Controls.Add(lblNumber)
-        pnlRightInfo.Controls.Add(lblPassengers)
+        pnlRightInfo.Controls.Add(gbxPassengers)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
@@ -832,6 +802,36 @@ Partial Class Form1
         ComboBox2.Size = New Size(123, 28)
         ComboBox2.TabIndex = 32
         ' 
+        ' gbxPassengers
+        ' 
+        gbxPassengers.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxPassengers.Location = New Point(22, 13)
+        gbxPassengers.Name = "gbxPassengers"
+        gbxPassengers.Size = New Size(606, 610)
+        gbxPassengers.TabIndex = 8
+        gbxPassengers.TabStop = False
+        gbxPassengers.Text = "Passengers"
+        ' 
+        ' gbxBookingDetails
+        ' 
+        gbxBookingDetails.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxBookingDetails.Location = New Point(22, 13)
+        gbxBookingDetails.Name = "gbxBookingDetails"
+        gbxBookingDetails.Size = New Size(700, 344)
+        gbxBookingDetails.TabIndex = 34
+        gbxBookingDetails.TabStop = False
+        gbxBookingDetails.Text = "Booking Details"
+        ' 
+        ' gbxCustomerData
+        ' 
+        gbxCustomerData.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxCustomerData.Location = New Point(22, 355)
+        gbxCustomerData.Name = "gbxCustomerData"
+        gbxCustomerData.Size = New Size(700, 363)
+        gbxCustomerData.TabIndex = 35
+        gbxCustomerData.TabStop = False
+        gbxCustomerData.Text = "Customer Data"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -870,7 +870,6 @@ Partial Class Form1
     Friend WithEvents btnClear As Button
     Friend WithEvents btnBook As Button
     Friend WithEvents pnlleftInfo As Panel
-    Friend WithEvents Label1 As Label
     Friend WithEvents rbnRoundTrip As RadioButton
     Friend WithEvents rbnOneWayTrip As RadioButton
     Friend WithEvents cbxDestination As ComboBox
@@ -904,7 +903,6 @@ Partial Class Form1
     Friend WithEvents lblArrivalTime As Label
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents lblSeatNumber As Label
-    Friend WithEvents lblPassengers As Label
     Friend WithEvents lblNumber As Label
     Friend WithEvents lblFullnamePassenger As Label
     Friend WithEvents lblSeatNumberPassengers As Label
@@ -938,4 +936,7 @@ Partial Class Form1
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents BTNFILL As Button
+    Friend WithEvents gbxBookingDetails As GroupBox
+    Friend WithEvents gbxPassengers As GroupBox
+    Friend WithEvents gbxCustomerData As GroupBox
 End Class
