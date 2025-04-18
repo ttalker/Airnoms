@@ -26,7 +26,8 @@ Partial Class Form2
         btnBooking = New Button()
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
-        lblPassengers = New Label()
+        btnCalculateTicket = New Button()
+        lblSummary = New Label()
         pnlleftInfo = New Panel()
         lblAddressTicket = New Label()
         lblSeatNumberTicket = New Label()
@@ -49,7 +50,6 @@ Partial Class Form2
         lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
-        btnCalculateTicket = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -84,21 +84,31 @@ Partial Class Form2
         ' 
         pnlRightInfo.BackColor = Color.Snow
         pnlRightInfo.Controls.Add(btnCalculateTicket)
-        pnlRightInfo.Controls.Add(lblPassengers)
+        pnlRightInfo.Controls.Add(lblSummary)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 7
         ' 
-        ' lblPassengers
+        ' btnCalculateTicket
         ' 
-        lblPassengers.AutoSize = True
-        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPassengers.Location = New Point(42, 31)
-        lblPassengers.Name = "lblPassengers"
-        lblPassengers.Size = New Size(144, 38)
-        lblPassengers.TabIndex = 1
-        lblPassengers.Text = "Summary"
+        btnCalculateTicket.BackColor = Color.Silver
+        btnCalculateTicket.Location = New Point(435, 558)
+        btnCalculateTicket.Name = "btnCalculateTicket"
+        btnCalculateTicket.Size = New Size(161, 58)
+        btnCalculateTicket.TabIndex = 11
+        btnCalculateTicket.Text = "CALCULATE"
+        btnCalculateTicket.UseVisualStyleBackColor = False
+        ' 
+        ' lblSummary
+        ' 
+        lblSummary.AutoSize = True
+        lblSummary.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblSummary.Location = New Point(42, 31)
+        lblSummary.Name = "lblSummary"
+        lblSummary.Size = New Size(144, 38)
+        lblSummary.TabIndex = 1
+        lblSummary.Text = "Summary"
         ' 
         ' pnlleftInfo
         ' 
@@ -330,16 +340,6 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
-        ' btnCalculateTicket
-        ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(435, 558)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(161, 58)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
-        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -365,7 +365,7 @@ Partial Class Form2
     Friend WithEvents btnBooking As Button
     Friend WithEvents lblMainBooking As Label
     Friend WithEvents pnlRightInfo As Panel
-    Friend WithEvents lblPassengers As Label
+    Friend WithEvents lblSummary As Label
     Friend WithEvents pnlleftInfo As Panel
     Friend WithEvents lblGenderTicket As Label
     Friend WithEvents lblPassengersTicket As Label
