@@ -14,5 +14,4 @@
         lblArrivalTimeTicket.Visible = False
     End Sub
 
-
 End Class
