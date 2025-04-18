@@ -40,15 +40,16 @@ Partial Class Form2
         lblDestinationTicket = New Label()
         lblFullnameTicket = New Label()
         lblBookingDateTicket = New Label()
-        lblCustomerData = New Label()
         lblDepartureDateTicket = New Label()
         cbxFlightTicket = New ComboBox()
         lblFlightTicket = New Label()
         cbxPassengerTicket = New ComboBox()
         lblSelectPassengerTicket = New Label()
-        lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        gbxBookingDetailsTicket = New GroupBox()
+        gxbCustomerDataTickets = New GroupBox()
+        GroupBox1 = New GroupBox()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -82,6 +83,7 @@ Partial Class Form2
         ' pnlRightInfo
         ' 
         pnlRightInfo.BackColor = Color.Snow
+        pnlRightInfo.Controls.Add(GroupBox1)
         pnlRightInfo.Controls.Add(btnCalculateTicket)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
@@ -113,13 +115,13 @@ Partial Class Form2
         pnlleftInfo.Controls.Add(lblDestinationTicket)
         pnlleftInfo.Controls.Add(lblFullnameTicket)
         pnlleftInfo.Controls.Add(lblBookingDateTicket)
-        pnlleftInfo.Controls.Add(lblCustomerData)
         pnlleftInfo.Controls.Add(lblDepartureDateTicket)
         pnlleftInfo.Controls.Add(cbxFlightTicket)
         pnlleftInfo.Controls.Add(lblFlightTicket)
         pnlleftInfo.Controls.Add(cbxPassengerTicket)
         pnlleftInfo.Controls.Add(lblSelectPassengerTicket)
-        pnlleftInfo.Controls.Add(lblBookingDetailsForm2)
+        pnlleftInfo.Controls.Add(gbxBookingDetailsTicket)
+        pnlleftInfo.Controls.Add(gxbCustomerDataTickets)
         pnlleftInfo.Location = New Point(60, 122)
         pnlleftInfo.Name = "pnlleftInfo"
         pnlleftInfo.Size = New Size(744, 642)
@@ -236,22 +238,12 @@ Partial Class Form2
         ' 
         lblBookingDateTicket.BackColor = Color.Gainsboro
         lblBookingDateTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblBookingDateTicket.Location = New Point(50, 412)
+        lblBookingDateTicket.Location = New Point(51, 412)
         lblBookingDateTicket.Name = "lblBookingDateTicket"
         lblBookingDateTicket.Size = New Size(394, 25)
         lblBookingDateTicket.TabIndex = 11
         lblBookingDateTicket.Text = "Booking Date:"
         lblBookingDateTicket.TextAlign = ContentAlignment.MiddleLeft
-        ' 
-        ' lblCustomerData
-        ' 
-        lblCustomerData.AutoSize = True
-        lblCustomerData.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblCustomerData.Location = New Point(38, 355)
-        lblCustomerData.Name = "lblCustomerData"
-        lblCustomerData.Size = New Size(213, 38)
-        lblCustomerData.TabIndex = 10
-        lblCustomerData.Text = "Customer Data"
         ' 
         ' lblDepartureDateTicket
         ' 
@@ -300,16 +292,6 @@ Partial Class Form2
         lblSelectPassengerTicket.TabIndex = 2
         lblSelectPassengerTicket.Text = "Passenger:"
         ' 
-        ' lblBookingDetailsForm2
-        ' 
-        lblBookingDetailsForm2.AutoSize = True
-        lblBookingDetailsForm2.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblBookingDetailsForm2.Location = New Point(38, 31)
-        lblBookingDetailsForm2.Name = "lblBookingDetailsForm2"
-        lblBookingDetailsForm2.Size = New Size(225, 38)
-        lblBookingDetailsForm2.TabIndex = 0
-        lblBookingDetailsForm2.Text = "Booking Details"
-        ' 
         ' btnResetTicket
         ' 
         btnResetTicket.Location = New Point(1297, 795)
@@ -327,6 +309,36 @@ Partial Class Form2
         btnProcessTicket.TabIndex = 8
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
+        ' 
+        ' gbxBookingDetailsTicket
+        ' 
+        gbxBookingDetailsTicket.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxBookingDetailsTicket.Location = New Point(23, 12)
+        gbxBookingDetailsTicket.Name = "gbxBookingDetailsTicket"
+        gbxBookingDetailsTicket.Size = New Size(700, 344)
+        gbxBookingDetailsTicket.TabIndex = 36
+        gbxBookingDetailsTicket.TabStop = False
+        gbxBookingDetailsTicket.Text = "Booking Details"
+        ' 
+        ' gxbCustomerDataTickets
+        ' 
+        gxbCustomerDataTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gxbCustomerDataTickets.Location = New Point(23, 362)
+        gxbCustomerDataTickets.Name = "gxbCustomerDataTickets"
+        gxbCustomerDataTickets.Size = New Size(700, 262)
+        gxbCustomerDataTickets.TabIndex = 37
+        gxbCustomerDataTickets.TabStop = False
+        gxbCustomerDataTickets.Text = "Customer Data"
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        GroupBox1.Location = New Point(25, 12)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(599, 344)
+        GroupBox1.TabIndex = 37
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Summary"
         ' 
         ' Form2
         ' 
@@ -358,14 +370,12 @@ Partial Class Form2
     Friend WithEvents lblDestinationTicket As Label
     Friend WithEvents lblFullnameTicket As Label
     Friend WithEvents lblBookingDateTicket As Label
-    Friend WithEvents lblCustomerData As Label
     Friend WithEvents lblArrivalDate As Label
     Friend WithEvents lblDepartureDateTicket As Label
     Friend WithEvents cbxFlightTicket As ComboBox
     Friend WithEvents lblFlightTicket As Label
     Friend WithEvents cbxPassengerTicket As ComboBox
     Friend WithEvents lblSelectPassengerTicket As Label
-    Friend WithEvents lblBookingDetailsForm2 As Label
     Friend WithEvents btnResetTicket As Button
     Friend WithEvents btnProcessTicket As Button
     Friend WithEvents cbxClassTicket As ComboBox
@@ -376,5 +386,7 @@ Partial Class Form2
     Friend WithEvents lblSeatNumberTicket As Label
     Friend WithEvents lblAddressTicket As Label
     Friend WithEvents btnCalculateTicket As Button
+    Friend WithEvents gxbCustomerDataTickets As GroupBox
+    Friend WithEvents gbxBookingDetailsTicket As GroupBox
     Friend WithEvents GroupBox1 As GroupBox
 End Class
