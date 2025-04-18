@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form2
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,12 @@ Partial Class Form2
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         btnTicket = New Button()
         btnBooking = New Button()
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
-        btnCalculateTicket = New Button()
         lblPassengers = New Label()
         pnlleftInfo = New Panel()
         lblAddressTicket = New Label()
@@ -50,6 +49,7 @@ Partial Class Form2
         lblBookingDetailsForm2 = New Label()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        btnCalculateTicket = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -88,31 +88,18 @@ Partial Class Form2
         pnlRightInfo.BackColor = Color.Snow
         pnlRightInfo.Controls.Add(btnCalculateTicket)
         pnlRightInfo.Controls.Add(lblPassengers)
-        pnlRightInfo.Location = New Point(1054, 152)
-        pnlRightInfo.Margin = New Padding(4)
+        pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(810, 802)
         pnlRightInfo.TabIndex = 7
-        ' 
-        ' btnCalculateTicket
-        ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(544, 698)
-        btnCalculateTicket.Margin = New Padding(4)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(201, 72)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
         ' 
         ' lblPassengers
         ' 
         lblPassengers.AutoSize = True
         lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPassengers.Location = New Point(52, 39)
-        lblPassengers.Margin = New Padding(4, 0, 4, 0)
+        lblPassengers.Location = New Point(42, 31)
         lblPassengers.Name = "lblPassengers"
-        lblPassengers.Size = New Size(169, 45)
+        lblPassengers.Size = New Size(144, 38)
         lblPassengers.TabIndex = 1
         lblPassengers.Text = "Summary"
         ' 
@@ -368,9 +355,19 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
+        ' btnCalculateTicket
+        ' 
+        btnCalculateTicket.BackColor = Color.Silver
+        btnCalculateTicket.Location = New Point(435, 558)
+        btnCalculateTicket.Name = "btnCalculateTicket"
+        btnCalculateTicket.Size = New Size(161, 58)
+        btnCalculateTicket.TabIndex = 11
+        btnCalculateTicket.Text = "CALCULATE"
+        btnCalculateTicket.UseVisualStyleBackColor = False
+        ' 
         ' Form2
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1931, 1138)
         Controls.Add(btnResetTicket)
@@ -384,7 +381,6 @@ Partial Class Form2
         Name = "Form2"
         Text = "Form2"
         pnlRightInfo.ResumeLayout(False)
-        pnlRightInfo.PerformLayout()
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
         ResumeLayout(False)
@@ -394,7 +390,6 @@ Partial Class Form2
     Friend WithEvents btnBooking As Button
     Friend WithEvents lblMainBooking As Label
     Friend WithEvents pnlRightInfo As Panel
-    Friend WithEvents lblPassengers As Label
     Friend WithEvents pnlleftInfo As Panel
     Friend WithEvents lblGenderTicket As Label
     Friend WithEvents lblPassengersTicket As Label
@@ -419,4 +414,5 @@ Partial Class Form2
     Friend WithEvents lblSeatNumberTicket As Label
     Friend WithEvents lblAddressTicket As Label
     Friend WithEvents btnCalculateTicket As Button
+    Friend WithEvents GroupBox1 As GroupBox
 End Class
