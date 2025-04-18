@@ -84,7 +84,6 @@ Partial Class Form2
         ' 
         pnlRightInfo.BackColor = Color.Snow
         pnlRightInfo.Controls.Add(btnCalculateTicket)
-        pnlRightInfo.Controls.Add(lblPassengers)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
@@ -92,13 +91,6 @@ Partial Class Form2
         ' 
         ' btnCalculateTicket
         ' 
-        lblPassengers.AutoSize = True
-        lblPassengers.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPassengers.Location = New Point(42, 31)
-        lblPassengers.Name = "lblPassengers"
-        lblPassengers.Size = New Size(144, 38)
-        lblPassengers.TabIndex = 1
-        lblPassengers.Text = "Summary"
         ' 
         ' pnlleftInfo
         ' 
