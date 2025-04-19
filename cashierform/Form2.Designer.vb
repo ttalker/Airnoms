@@ -27,6 +27,7 @@ Partial Class Form2
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
         gbxSummaryTickets = New GroupBox()
+        GroupBox1 = New GroupBox()
         btnCalculateTicket = New Button()
         pnlleftInfo = New Panel()
         lblAddressTicket = New Label()
@@ -52,7 +53,9 @@ Partial Class Form2
         btnProcessTicket = New Button()
         btnPay = New Button()
         GroupBox1 = New GroupBox()
+        Button1 = New Button()
         pnlRightInfo.SuspendLayout()
+        GroupBox1.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
         ' 
@@ -94,6 +97,7 @@ Partial Class Form2
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 7
         ' 
+
         ' gbxSummaryTickets
         ' 
         gbxSummaryTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
@@ -103,6 +107,18 @@ Partial Class Form2
         gbxSummaryTickets.TabIndex = 37
         gbxSummaryTickets.TabStop = False
         gbxSummaryTickets.Text = "Summary"
+
+        ' GroupBox1
+        ' 
+        GroupBox1.Controls.Add(Button1)
+        GroupBox1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        GroupBox1.Location = New Point(25, 12)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(599, 344)
+        GroupBox1.TabIndex = 37
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Summary"
+
         ' 
         ' btnCalculateTicket
         ' 
@@ -327,6 +343,7 @@ Partial Class Form2
         gxbCustomerDataTickets.Text = "Customer Data"
         ' 
         ' btnResetTicket
+
         ' 
         btnResetTicket.Location = New Point(1297, 795)
         btnResetTicket.Name = "btnResetTicket"
@@ -363,6 +380,33 @@ Partial Class Form2
         GroupBox1.TabIndex = 38
         GroupBox1.TabStop = False
         GroupBox1.Text = "Summary"
+
+        ' 
+        btnResetTicket.Location = New Point(1297, 795)
+        btnResetTicket.Name = "btnResetTicket"
+        btnResetTicket.Size = New Size(194, 58)
+        btnResetTicket.TabIndex = 9
+        btnResetTicket.Text = "RESET"
+        btnResetTicket.UseVisualStyleBackColor = True
+        ' 
+        ' btnProcessTicket
+        ' 
+        btnProcessTicket.Location = New Point(1083, 795)
+        btnProcessTicket.Name = "btnProcessTicket"
+        btnProcessTicket.Size = New Size(194, 58)
+        btnProcessTicket.TabIndex = 8
+        btnProcessTicket.Text = "PROCESS TICKET"
+        btnProcessTicket.UseVisualStyleBackColor = True
+        ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(159, 189)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(300, 238)
+        Button1.TabIndex = 0
+        Button1.Text = "Button1"
+        Button1.UseVisualStyleBackColor = True
+
         ' 
         ' Form2
         ' 
@@ -379,6 +423,7 @@ Partial Class Form2
         Name = "Form2"
         Text = "Form2"
         pnlRightInfo.ResumeLayout(False)
+        GroupBox1.ResumeLayout(False)
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
         ResumeLayout(False)
@@ -415,4 +460,5 @@ Partial Class Form2
     Friend WithEvents gbxSummaryTickets As GroupBox
     Friend WithEvents btnPay As Button
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Button1 As Button
 End Class
