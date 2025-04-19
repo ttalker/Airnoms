@@ -27,7 +27,6 @@ Partial Class Form2
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
         btnPay = New Button()
-        btnCalculateTicket = New Button()
         GroupBox1 = New GroupBox()
         gbxSummaryTickets = New GroupBox()
         pnlleftInfo = New Panel()
@@ -52,6 +51,7 @@ Partial Class Form2
         gxbCustomerDataTickets = New GroupBox()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        btnCalculateTicket = New Button()
         pnlRightInfo.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
@@ -104,22 +104,12 @@ Partial Class Form2
         btnPay.Text = "PAY"
         btnPay.UseVisualStyleBackColor = False
         ' 
-        ' btnCalculateTicket
-        ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(442, 259)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(161, 58)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
-        ' 
         ' GroupBox1
         ' 
         GroupBox1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         GroupBox1.Location = New Point(44, 306)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(559, 264)
+        GroupBox1.Size = New Size(559, 158)
         GroupBox1.TabIndex = 38
         GroupBox1.TabStop = False
         GroupBox1.Text = "Summary"
@@ -364,6 +354,16 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
+        ' btnCalculateTicket
+        ' 
+        btnCalculateTicket.BackColor = Color.Silver
+        btnCalculateTicket.Location = New Point(442, 259)
+        btnCalculateTicket.Name = "btnCalculateTicket"
+        btnCalculateTicket.Size = New Size(161, 58)
+        btnCalculateTicket.TabIndex = 11
+        btnCalculateTicket.Text = "CALCULATE"
+        btnCalculateTicket.UseVisualStyleBackColor = False
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -409,10 +409,10 @@ Partial Class Form2
     Friend WithEvents lblArrivalDateTicket As Label
     Friend WithEvents lblSeatNumberTicket As Label
     Friend WithEvents lblAddressTicket As Label
-    Friend WithEvents btnCalculateTicket As Button
     Friend WithEvents gxbCustomerDataTickets As GroupBox
     Friend WithEvents gbxBookingDetailsTicket As GroupBox
     Friend WithEvents gbxSummaryTickets As GroupBox
     Friend WithEvents btnPay As Button
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents btnCalculateTicket As Button
 End Class
