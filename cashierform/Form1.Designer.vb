@@ -500,7 +500,7 @@ Partial Class Form1
         gbxBookingDetails.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxBookingDetails.Location = New Point(18, 10)
         gbxBookingDetails.Name = "gbxBookingDetails"
-        gbxBookingDetails.Size = New Size(560, 275)
+        gbxBookingDetails.Size = New Size(704, 339)
         gbxBookingDetails.TabIndex = 34
         gbxBookingDetails.TabStop = False
         gbxBookingDetails.Text = "Booking Details"
@@ -508,9 +508,9 @@ Partial Class Form1
         ' gbxCustomerData
         ' 
         gbxCustomerData.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gbxCustomerData.Location = New Point(18, 284)
+        gbxCustomerData.Location = New Point(22, 355)
         gbxCustomerData.Name = "gbxCustomerData"
-        gbxCustomerData.Size = New Size(560, 290)
+        gbxCustomerData.Size = New Size(700, 363)
         gbxCustomerData.TabIndex = 35
         gbxCustomerData.TabStop = False
         gbxCustomerData.Text = "Customer Data"
@@ -836,7 +836,7 @@ Partial Class Form1
         ' Button1
         ' 
         Button1.Location = New Point(458, 17)
-        Button1.Margin = New Padding(2, 2, 2, 2)
+        Button1.Margin = New Padding(2)
         Button1.Name = "Button1"
         Button1.Size = New Size(180, 57)
         Button1.TabIndex = 11
