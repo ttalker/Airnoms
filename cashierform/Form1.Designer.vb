@@ -96,6 +96,7 @@ Partial Class Form1
         ComboBox3 = New ComboBox()
         ComboBox2 = New ComboBox()
         gbxPassengers = New GroupBox()
+        Button1 = New Button()
         pnlleftInfo.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
@@ -540,6 +541,11 @@ Partial Class Form1
         gbxBookingDetails.Name = "gbxBookingDetails"
         gbxBookingDetails.Padding = New Padding(4)
         gbxBookingDetails.Size = New Size(875, 430)
+
+        gbxBookingDetails.Location = New Point(22, 13)
+        gbxBookingDetails.Name = "gbxBookingDetails"
+        gbxBookingDetails.Size = New Size(700, 344)
+
         gbxBookingDetails.TabIndex = 34
         gbxBookingDetails.TabStop = False
         gbxBookingDetails.Text = "Booking Details"
@@ -552,6 +558,9 @@ Partial Class Form1
         gbxCustomerData.Name = "gbxCustomerData"
         gbxCustomerData.Padding = New Padding(4)
         gbxCustomerData.Size = New Size(875, 454)
+        gbxCustomerData.Location = New Point(22, 355)
+        gbxCustomerData.Name = "gbxCustomerData"
+        gbxCustomerData.Size = New Size(700, 363)
         gbxCustomerData.TabIndex = 35
         gbxCustomerData.TabStop = False
         gbxCustomerData.Text = "Customer Data"
@@ -908,12 +917,23 @@ Partial Class Form1
         gbxPassengers.TabStop = False
         gbxPassengers.Text = "Passengers"
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(454, 16)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(194, 58)
+        Button1.TabIndex = 11
+        Button1.Text = "TICKET"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(10.0F, 25.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1924, 1135)
+        ClientSize = New Size(1539, 908)
+        Controls.Add(Button1)
         Controls.Add(btnBook)
         Controls.Add(btnClear)
         Controls.Add(pnlRightInfo)
@@ -1015,4 +1035,5 @@ Partial Class Form1
     Friend WithEvents gbxBookingDetails As GroupBox
     Friend WithEvents gbxPassengers As GroupBox
     Friend WithEvents gbxCustomerData As GroupBox
+    Friend WithEvents Button1 As Button
 End Class
