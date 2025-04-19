@@ -5,8 +5,8 @@
     End Sub
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-        Me.Show()
-        Form1.Hide()
+        Show
+        Form1.Hide
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
