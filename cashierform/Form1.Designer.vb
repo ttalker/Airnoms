@@ -96,6 +96,7 @@ Partial Class Form1
         ComboBox3 = New ComboBox()
         ComboBox2 = New ComboBox()
         gbxPassengers = New GroupBox()
+        Button1 = New Button()
         pnlleftInfo.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
@@ -832,12 +833,22 @@ Partial Class Form1
         gbxPassengers.TabStop = False
         gbxPassengers.Text = "Passengers"
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(454, 16)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(194, 58)
+        Button1.TabIndex = 11
+        Button1.Text = "TICKET"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1539, 908)
+        Controls.Add(Button1)
         Controls.Add(btnBook)
         Controls.Add(btnClear)
         Controls.Add(pnlRightInfo)
@@ -939,4 +950,5 @@ Partial Class Form1
     Friend WithEvents gbxBookingDetails As GroupBox
     Friend WithEvents gbxPassengers As GroupBox
     Friend WithEvents gbxCustomerData As GroupBox
+    Friend WithEvents Button1 As Button
 End Class
