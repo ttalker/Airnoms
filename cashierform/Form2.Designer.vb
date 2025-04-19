@@ -26,6 +26,7 @@ Partial Class Form2
         btnBooking = New Button()
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
+        gbxSummaryTickets = New GroupBox()
         GroupBox1 = New GroupBox()
         btnCalculateTicket = New Button()
         pnlleftInfo = New Panel()
@@ -50,6 +51,8 @@ Partial Class Form2
         gxbCustomerDataTickets = New GroupBox()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        btnPay = New Button()
+        GroupBox1 = New GroupBox()
         Button1 = New Button()
         pnlRightInfo.SuspendLayout()
         GroupBox1.SuspendLayout()
@@ -85,13 +88,26 @@ Partial Class Form2
         ' pnlRightInfo
         ' 
         pnlRightInfo.BackColor = Color.Snow
-        pnlRightInfo.Controls.Add(GroupBox1)
+        pnlRightInfo.Controls.Add(btnPay)
         pnlRightInfo.Controls.Add(btnCalculateTicket)
+        pnlRightInfo.Controls.Add(GroupBox1)
+        pnlRightInfo.Controls.Add(gbxSummaryTickets)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 7
         ' 
+
+        ' gbxSummaryTickets
+        ' 
+        gbxSummaryTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxSummaryTickets.Location = New Point(44, 12)
+        gbxSummaryTickets.Name = "gbxSummaryTickets"
+        gbxSummaryTickets.Size = New Size(559, 241)
+        gbxSummaryTickets.TabIndex = 37
+        gbxSummaryTickets.TabStop = False
+        gbxSummaryTickets.Text = "Summary"
+
         ' GroupBox1
         ' 
         GroupBox1.Controls.Add(Button1)
@@ -102,11 +118,12 @@ Partial Class Form2
         GroupBox1.TabIndex = 37
         GroupBox1.TabStop = False
         GroupBox1.Text = "Summary"
+
         ' 
         ' btnCalculateTicket
         ' 
         btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(435, 558)
+        btnCalculateTicket.Location = New Point(442, 259)
         btnCalculateTicket.Name = "btnCalculateTicket"
         btnCalculateTicket.Size = New Size(161, 58)
         btnCalculateTicket.TabIndex = 11
@@ -326,6 +343,44 @@ Partial Class Form2
         gxbCustomerDataTickets.Text = "Customer Data"
         ' 
         ' btnResetTicket
+
+        ' 
+        btnResetTicket.Location = New Point(1297, 795)
+        btnResetTicket.Name = "btnResetTicket"
+        btnResetTicket.Size = New Size(194, 58)
+        btnResetTicket.TabIndex = 9
+        btnResetTicket.Text = "RESET"
+        btnResetTicket.UseVisualStyleBackColor = True
+        ' 
+        ' btnProcessTicket
+        ' 
+        btnProcessTicket.Location = New Point(1083, 795)
+        btnProcessTicket.Name = "btnProcessTicket"
+        btnProcessTicket.Size = New Size(194, 58)
+        btnProcessTicket.TabIndex = 8
+        btnProcessTicket.Text = "PROCESS TICKET"
+        btnProcessTicket.UseVisualStyleBackColor = True
+        ' 
+        ' btnPay
+        ' 
+        btnPay.BackColor = Color.Silver
+        btnPay.Location = New Point(442, 576)
+        btnPay.Name = "btnPay"
+        btnPay.Size = New Size(161, 58)
+        btnPay.TabIndex = 38
+        btnPay.Text = "PAY"
+        btnPay.UseVisualStyleBackColor = False
+        ' 
+        ' GroupBox1
+        ' 
+        GroupBox1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        GroupBox1.Location = New Point(44, 306)
+        GroupBox1.Name = "GroupBox1"
+        GroupBox1.Size = New Size(559, 264)
+        GroupBox1.TabIndex = 38
+        GroupBox1.TabStop = False
+        GroupBox1.Text = "Summary"
+
         ' 
         btnResetTicket.Location = New Point(1297, 795)
         btnResetTicket.Name = "btnResetTicket"
@@ -351,6 +406,7 @@ Partial Class Form2
         Button1.TabIndex = 0
         Button1.Text = "Button1"
         Button1.UseVisualStyleBackColor = True
+
         ' 
         ' Form2
         ' 
@@ -401,6 +457,8 @@ Partial Class Form2
     Friend WithEvents btnCalculateTicket As Button
     Friend WithEvents gxbCustomerDataTickets As GroupBox
     Friend WithEvents gbxBookingDetailsTicket As GroupBox
+    Friend WithEvents gbxSummaryTickets As GroupBox
+    Friend WithEvents btnPay As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Button1 As Button
 End Class
