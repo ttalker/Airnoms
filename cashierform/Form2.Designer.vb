@@ -59,6 +59,7 @@ Partial Class Form2
         gxbCustomerDataTickets = New GroupBox()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
+        Button1 = New Button()
         pnlRightInfo.SuspendLayout()
         gbxPaymentTicket.SuspendLayout()
         gbxSummaryTickets.SuspendLayout()
@@ -442,11 +443,21 @@ Partial Class Form2
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(450, 21)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(194, 58)
+        Button1.TabIndex = 10
+        Button1.Text = "TICKET"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1545, 910)
+        Controls.Add(Button1)
         Controls.Add(btnResetTicket)
         Controls.Add(btnProcessTicket)
         Controls.Add(pnlRightInfo)
@@ -503,4 +514,5 @@ Partial Class Form2
     Friend WithEvents Label2 As Label
     Friend WithEvents lblPaymentAmountTicket As Label
     Friend WithEvents tbxTicketPayment As TextBox
+    Friend WithEvents Button1 As Button
 End Class
