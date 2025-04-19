@@ -26,10 +26,17 @@ Partial Class Form2
         btnBooking = New Button()
         lblMainBooking = New Label()
         pnlRightInfo = New Panel()
-        btnPay = New Button()
-        btnCalculateTicket = New Button()
-        GroupBox1 = New GroupBox()
+        gbxPaymentTicket = New GroupBox()
+        tbxTicketPayment = New TextBox()
+        Label1 = New Label()
+        Label2 = New Label()
+        lblPaymentAmountTicket = New Label()
+        btnCalculate = New Button()
         gbxSummaryTickets = New GroupBox()
+        lblTotalTicket = New Label()
+        lblBrokenLineTicket = New Label()
+        lblTaxTicket = New Label()
+        lblTicketAmountTicket = New Label()
         pnlleftInfo = New Panel()
         lblAddressTicket = New Label()
         lblSeatNumberTicket = New Label()
@@ -53,6 +60,8 @@ Partial Class Form2
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
         pnlRightInfo.SuspendLayout()
+        gbxPaymentTicket.SuspendLayout()
+        gbxSummaryTickets.SuspendLayout()
         pnlleftInfo.SuspendLayout()
         SuspendLayout()
         ' 
@@ -85,54 +94,123 @@ Partial Class Form2
         ' pnlRightInfo
         ' 
         pnlRightInfo.BackColor = Color.Snow
-        pnlRightInfo.Controls.Add(btnPay)
-        pnlRightInfo.Controls.Add(btnCalculateTicket)
-        pnlRightInfo.Controls.Add(GroupBox1)
+        pnlRightInfo.Controls.Add(gbxPaymentTicket)
+        pnlRightInfo.Controls.Add(btnCalculate)
         pnlRightInfo.Controls.Add(gbxSummaryTickets)
         pnlRightInfo.Location = New Point(843, 122)
         pnlRightInfo.Name = "pnlRightInfo"
         pnlRightInfo.Size = New Size(648, 642)
         pnlRightInfo.TabIndex = 7
         ' 
-        ' btnPay
+        ' gbxPaymentTicket
         ' 
-        btnPay.BackColor = Color.Silver
-        btnPay.Location = New Point(442, 576)
-        btnPay.Name = "btnPay"
-        btnPay.Size = New Size(161, 58)
-        btnPay.TabIndex = 38
-        btnPay.Text = "PAY"
-        btnPay.UseVisualStyleBackColor = False
+        gbxPaymentTicket.Controls.Add(tbxTicketPayment)
+        gbxPaymentTicket.Controls.Add(Label1)
+        gbxPaymentTicket.Controls.Add(Label2)
+        gbxPaymentTicket.Controls.Add(lblPaymentAmountTicket)
+        gbxPaymentTicket.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxPaymentTicket.Location = New Point(45, 267)
+        gbxPaymentTicket.Name = "gbxPaymentTicket"
+        gbxPaymentTicket.Size = New Size(559, 297)
+        gbxPaymentTicket.TabIndex = 38
+        gbxPaymentTicket.TabStop = False
+        gbxPaymentTicket.Text = "Payment"
         ' 
-        ' btnCalculateTicket
+        ' tbxTicketPayment
         ' 
-        btnCalculateTicket.BackColor = Color.Silver
-        btnCalculateTicket.Location = New Point(442, 259)
-        btnCalculateTicket.Name = "btnCalculateTicket"
-        btnCalculateTicket.Size = New Size(161, 58)
-        btnCalculateTicket.TabIndex = 11
-        btnCalculateTicket.Text = "CALCULATE"
-        btnCalculateTicket.UseVisualStyleBackColor = False
+        tbxTicketPayment.Anchor = AnchorStyles.None
+        tbxTicketPayment.Location = New Point(233, 98)
+        tbxTicketPayment.MaximumSize = New Size(247, 30)
+        tbxTicketPayment.Name = "tbxTicketPayment"
+        tbxTicketPayment.Size = New Size(247, 30)
+        tbxTicketPayment.TabIndex = 16
         ' 
-        ' GroupBox1
+        ' Label1
         ' 
-        GroupBox1.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        GroupBox1.Location = New Point(44, 306)
-        GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(559, 264)
-        GroupBox1.TabIndex = 38
-        GroupBox1.TabStop = False
-        GroupBox1.Text = "Summary"
+        Label1.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(104, 184)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(385, 40)
+        Label1.TabIndex = 6
+        Label1.Text = "Change:"
+        ' 
+        ' Label2
+        ' 
+        Label2.BackColor = SystemColors.ControlDarkDark
+        Label2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label2.Location = New Point(97, 157)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(400, 3)
+        Label2.TabIndex = 5
+        ' 
+        ' lblPaymentAmountTicket
+        ' 
+        lblPaymentAmountTicket.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblPaymentAmountTicket.Location = New Point(48, 96)
+        lblPaymentAmountTicket.Name = "lblPaymentAmountTicket"
+        lblPaymentAmountTicket.Size = New Size(185, 33)
+        lblPaymentAmountTicket.TabIndex = 3
+        lblPaymentAmountTicket.Text = "Ticket Payment:"
+        ' 
+        ' btnCalculate
+        ' 
+        btnCalculate.BackColor = Color.Silver
+        btnCalculate.Location = New Point(444, 574)
+        btnCalculate.Name = "btnCalculate"
+        btnCalculate.Size = New Size(161, 58)
+        btnCalculate.TabIndex = 38
+        btnCalculate.Text = "CALCULATE"
+        btnCalculate.UseVisualStyleBackColor = False
         ' 
         ' gbxSummaryTickets
         ' 
+        gbxSummaryTickets.Controls.Add(lblTotalTicket)
+        gbxSummaryTickets.Controls.Add(lblBrokenLineTicket)
+        gbxSummaryTickets.Controls.Add(lblTaxTicket)
+        gbxSummaryTickets.Controls.Add(lblTicketAmountTicket)
         gbxSummaryTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gbxSummaryTickets.Location = New Point(44, 12)
+        gbxSummaryTickets.Location = New Point(45, 11)
         gbxSummaryTickets.Name = "gbxSummaryTickets"
-        gbxSummaryTickets.Size = New Size(559, 241)
+        gbxSummaryTickets.Size = New Size(559, 250)
         gbxSummaryTickets.TabIndex = 37
         gbxSummaryTickets.TabStop = False
         gbxSummaryTickets.Text = "Summary"
+        ' 
+        ' lblTotalTicket
+        ' 
+        lblTotalTicket.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTotalTicket.Location = New Point(91, 197)
+        lblTotalTicket.Name = "lblTotalTicket"
+        lblTotalTicket.Size = New Size(385, 25)
+        lblTotalTicket.TabIndex = 6
+        lblTotalTicket.Text = "Total:"
+        ' 
+        ' lblBrokenLineTicket
+        ' 
+        lblBrokenLineTicket.BackColor = SystemColors.ControlDarkDark
+        lblBrokenLineTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblBrokenLineTicket.Location = New Point(94, 176)
+        lblBrokenLineTicket.Name = "lblBrokenLineTicket"
+        lblBrokenLineTicket.Size = New Size(400, 3)
+        lblBrokenLineTicket.TabIndex = 5
+        ' 
+        ' lblTaxTicket
+        ' 
+        lblTaxTicket.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTaxTicket.Location = New Point(91, 126)
+        lblTaxTicket.Name = "lblTaxTicket"
+        lblTaxTicket.Size = New Size(385, 25)
+        lblTaxTicket.TabIndex = 4
+        lblTaxTicket.Text = "Tax:"
+        ' 
+        ' lblTicketAmountTicket
+        ' 
+        lblTicketAmountTicket.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTicketAmountTicket.Location = New Point(91, 76)
+        lblTicketAmountTicket.Name = "lblTicketAmountTicket"
+        lblTicketAmountTicket.Size = New Size(385, 25)
+        lblTicketAmountTicket.TabIndex = 3
+        lblTicketAmountTicket.Text = "Ticket Amount:"
         ' 
         ' pnlleftInfo
         ' 
@@ -379,6 +457,9 @@ Partial Class Form2
         Name = "Form2"
         Text = "Form2"
         pnlRightInfo.ResumeLayout(False)
+        gbxPaymentTicket.ResumeLayout(False)
+        gbxPaymentTicket.PerformLayout()
+        gbxSummaryTickets.ResumeLayout(False)
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
         ResumeLayout(False)
@@ -412,7 +493,14 @@ Partial Class Form2
     Friend WithEvents gxbCustomerDataTickets As GroupBox
     Friend WithEvents gbxBookingDetailsTicket As GroupBox
     Friend WithEvents gbxSummaryTickets As GroupBox
-    Friend WithEvents btnPay As Button
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents btnCalculateTicket As Button
+    Friend WithEvents btnCalculate As Button
+    Friend WithEvents lblTaxTicket As Label
+    Friend WithEvents lblTicketAmountTicket As Label
+    Friend WithEvents lblTotalTicket As Label
+    Friend WithEvents lblBrokenLineTicket As Label
+    Friend WithEvents gbxPaymentTicket As GroupBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblPaymentAmountTicket As Label
+    Friend WithEvents tbxTicketPayment As TextBox
 End Class

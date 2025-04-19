@@ -61,6 +61,8 @@ Partial Class Form1
         lblDeparture = New Label()
         rbnRoundTrip = New RadioButton()
         rbnOneWayTrip = New RadioButton()
+        gbxBookingDetails = New GroupBox()
+        gbxCustomerData = New GroupBox()
         lblNumber = New Label()
         lblFullnamePassenger = New Label()
         lblSeatNumberPassengers = New Label()
@@ -94,8 +96,6 @@ Partial Class Form1
         ComboBox3 = New ComboBox()
         ComboBox2 = New ComboBox()
         gbxPassengers = New GroupBox()
-        gbxBookingDetails = New GroupBox()
-        gbxCustomerData = New GroupBox()
         pnlleftInfo.SuspendLayout()
         pnlRightInfo.SuspendLayout()
         SuspendLayout()
@@ -494,6 +494,26 @@ Partial Class Form1
         rbnOneWayTrip.Text = "One-way Trip"
         rbnOneWayTrip.UseVisualStyleBackColor = True
         ' 
+        ' gbxBookingDetails
+        ' 
+        gbxBookingDetails.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxBookingDetails.Location = New Point(22, 13)
+        gbxBookingDetails.Name = "gbxBookingDetails"
+        gbxBookingDetails.Size = New Size(700, 344)
+        gbxBookingDetails.TabIndex = 34
+        gbxBookingDetails.TabStop = False
+        gbxBookingDetails.Text = "Booking Details"
+        ' 
+        ' gbxCustomerData
+        ' 
+        gbxCustomerData.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        gbxCustomerData.Location = New Point(22, 355)
+        gbxCustomerData.Name = "gbxCustomerData"
+        gbxCustomerData.Size = New Size(700, 363)
+        gbxCustomerData.TabIndex = 35
+        gbxCustomerData.TabStop = False
+        gbxCustomerData.Text = "Customer Data"
+        ' 
         ' lblNumber
         ' 
         lblNumber.AutoSize = True
@@ -811,26 +831,6 @@ Partial Class Form1
         gbxPassengers.TabIndex = 8
         gbxPassengers.TabStop = False
         gbxPassengers.Text = "Passengers"
-        ' 
-        ' gbxBookingDetails
-        ' 
-        gbxBookingDetails.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gbxBookingDetails.Location = New Point(22, 13)
-        gbxBookingDetails.Name = "gbxBookingDetails"
-        gbxBookingDetails.Size = New Size(700, 344)
-        gbxBookingDetails.TabIndex = 34
-        gbxBookingDetails.TabStop = False
-        gbxBookingDetails.Text = "Booking Details"
-        ' 
-        ' gbxCustomerData
-        ' 
-        gbxCustomerData.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gbxCustomerData.Location = New Point(22, 355)
-        gbxCustomerData.Name = "gbxCustomerData"
-        gbxCustomerData.Size = New Size(700, 363)
-        gbxCustomerData.TabIndex = 35
-        gbxCustomerData.TabStop = False
-        gbxCustomerData.Text = "Customer Data"
         ' 
         ' Form1
         ' 
