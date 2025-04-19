@@ -70,16 +70,16 @@ Partial Class Form2
         ' 
         btnTicket.Location = New Point(241, 21)
         btnTicket.Name = "btnTicket"
-        btnTicket.Size = New Size(194, 58)
+        btnTicket.Size = New Size(194, 59)
         btnTicket.TabIndex = 5
         btnTicket.Text = "TICKET"
         btnTicket.UseVisualStyleBackColor = True
         ' 
         ' btnBooking
         ' 
-        btnBooking.Location = New Point(27, 22)
+        btnBooking.Location = New Point(27, 21)
         btnBooking.Name = "btnBooking"
-        btnBooking.Size = New Size(194, 58)
+        btnBooking.Size = New Size(194, 59)
         btnBooking.TabIndex = 4
         btnBooking.Text = "BOOKING"
         btnBooking.UseVisualStyleBackColor = True
@@ -98,9 +98,9 @@ Partial Class Form2
         pnlRightInfo.Controls.Add(gbxPaymentTicket)
         pnlRightInfo.Controls.Add(btnCalculate)
         pnlRightInfo.Controls.Add(gbxSummaryTickets)
-        pnlRightInfo.Location = New Point(843, 122)
+        pnlRightInfo.Location = New Point(843, 123)
         pnlRightInfo.Name = "pnlRightInfo"
-        pnlRightInfo.Size = New Size(648, 642)
+        pnlRightInfo.Size = New Size(648, 643)
         pnlRightInfo.TabIndex = 7
         ' 
         ' gbxPaymentTicket
@@ -120,10 +120,10 @@ Partial Class Form2
         ' tbxTicketPayment
         ' 
         tbxTicketPayment.Anchor = AnchorStyles.None
-        tbxTicketPayment.Location = New Point(233, 98)
+        tbxTicketPayment.Location = New Point(233, 99)
         tbxTicketPayment.MaximumSize = New Size(247, 30)
         tbxTicketPayment.Name = "tbxTicketPayment"
-        tbxTicketPayment.Size = New Size(247, 30)
+        tbxTicketPayment.Size = New Size(247, 51)
         tbxTicketPayment.TabIndex = 16
         ' 
         ' Label1
@@ -156,9 +156,9 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(444, 574)
+        btnCalculate.Location = New Point(443, 573)
         btnCalculate.Name = "btnCalculate"
-        btnCalculate.Size = New Size(161, 58)
+        btnCalculate.Size = New Size(161, 59)
         btnCalculate.TabIndex = 38
         btnCalculate.Text = "CALCULATE"
         btnCalculate.UseVisualStyleBackColor = False
@@ -172,7 +172,7 @@ Partial Class Form2
         gbxSummaryTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxSummaryTickets.Location = New Point(45, 11)
         gbxSummaryTickets.Name = "gbxSummaryTickets"
-        gbxSummaryTickets.Size = New Size(559, 250)
+        gbxSummaryTickets.Size = New Size(559, 251)
         gbxSummaryTickets.TabIndex = 37
         gbxSummaryTickets.TabStop = False
         gbxSummaryTickets.Text = "Summary"
@@ -198,7 +198,7 @@ Partial Class Form2
         ' lblTaxTicket
         ' 
         lblTaxTicket.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTaxTicket.Location = New Point(91, 126)
+        lblTaxTicket.Location = New Point(91, 125)
         lblTaxTicket.Name = "lblTaxTicket"
         lblTaxTicket.Size = New Size(385, 25)
         lblTaxTicket.TabIndex = 4
@@ -235,9 +235,9 @@ Partial Class Form2
         pnlleftInfo.Controls.Add(lblSelectPassengerTicket)
         pnlleftInfo.Controls.Add(gbxBookingDetailsTicket)
         pnlleftInfo.Controls.Add(gxbCustomerDataTickets)
-        pnlleftInfo.Location = New Point(60, 122)
+        pnlleftInfo.Location = New Point(59, 123)
         pnlleftInfo.Name = "pnlleftInfo"
-        pnlleftInfo.Size = New Size(744, 642)
+        pnlleftInfo.Size = New Size(744, 643)
         pnlleftInfo.TabIndex = 6
         ' 
         ' lblAddressTicket
@@ -262,7 +262,7 @@ Partial Class Form2
         ' lblArrivalTimeTicket
         ' 
         lblArrivalTimeTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblArrivalTimeTicket.Location = New Point(439, 314)
+        lblArrivalTimeTicket.Location = New Point(439, 315)
         lblArrivalTimeTicket.Name = "lblArrivalTimeTicket"
         lblArrivalTimeTicket.Size = New Size(259, 25)
         lblArrivalTimeTicket.TabIndex = 31
@@ -272,7 +272,7 @@ Partial Class Form2
         ' lblArrivalDateTicket
         ' 
         lblArrivalDateTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblArrivalDateTicket.Location = New Point(439, 266)
+        lblArrivalDateTicket.Location = New Point(439, 267)
         lblArrivalDateTicket.Name = "lblArrivalDateTicket"
         lblArrivalDateTicket.Size = New Size(259, 25)
         lblArrivalDateTicket.TabIndex = 30
@@ -282,7 +282,7 @@ Partial Class Form2
         ' lblDepartureTimeTicket
         ' 
         lblDepartureTimeTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDepartureTimeTicket.Location = New Point(51, 314)
+        lblDepartureTimeTicket.Location = New Point(51, 315)
         lblDepartureTimeTicket.Name = "lblDepartureTimeTicket"
         lblDepartureTimeTicket.Size = New Size(361, 25)
         lblDepartureTimeTicket.TabIndex = 29
@@ -340,7 +340,7 @@ Partial Class Form2
         ' lblFullnameTicket
         ' 
         lblFullnameTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblFullnameTicket.Location = New Point(50, 466)
+        lblFullnameTicket.Location = New Point(50, 467)
         lblFullnameTicket.Name = "lblFullnameTicket"
         lblFullnameTicket.Size = New Size(394, 25)
         lblFullnameTicket.TabIndex = 13
@@ -362,7 +362,7 @@ Partial Class Form2
         ' 
         lblDepartureDateTicket.BackColor = Color.Snow
         lblDepartureDateTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDepartureDateTicket.Location = New Point(51, 266)
+        lblDepartureDateTicket.Location = New Point(51, 267)
         lblDepartureDateTicket.Name = "lblDepartureDateTicket"
         lblDepartureDateTicket.Size = New Size(361, 25)
         lblDepartureDateTicket.TabIndex = 6
@@ -390,7 +390,7 @@ Partial Class Form2
         ' cbxPassengerTicket
         ' 
         cbxPassengerTicket.FormattingEnabled = True
-        cbxPassengerTicket.Location = New Point(181, 98)
+        cbxPassengerTicket.Location = New Point(181, 99)
         cbxPassengerTicket.Name = "cbxPassengerTicket"
         cbxPassengerTicket.Size = New Size(231, 28)
         cbxPassengerTicket.TabIndex = 3
@@ -399,7 +399,7 @@ Partial Class Form2
         ' 
         lblSelectPassengerTicket.AutoSize = True
         lblSelectPassengerTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSelectPassengerTicket.Location = New Point(51, 98)
+        lblSelectPassengerTicket.Location = New Point(51, 99)
         lblSelectPassengerTicket.Name = "lblSelectPassengerTicket"
         lblSelectPassengerTicket.Size = New Size(101, 25)
         lblSelectPassengerTicket.TabIndex = 2
@@ -410,7 +410,7 @@ Partial Class Form2
         gbxBookingDetailsTicket.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxBookingDetailsTicket.Location = New Point(23, 12)
         gbxBookingDetailsTicket.Name = "gbxBookingDetailsTicket"
-        gbxBookingDetailsTicket.Size = New Size(700, 344)
+        gbxBookingDetailsTicket.Size = New Size(699, 344)
         gbxBookingDetailsTicket.TabIndex = 36
         gbxBookingDetailsTicket.TabStop = False
         gbxBookingDetailsTicket.Text = "Booking Details"
@@ -418,9 +418,9 @@ Partial Class Form2
         ' gxbCustomerDataTickets
         ' 
         gxbCustomerDataTickets.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        gxbCustomerDataTickets.Location = New Point(23, 362)
+        gxbCustomerDataTickets.Location = New Point(23, 363)
         gxbCustomerDataTickets.Name = "gxbCustomerDataTickets"
-        gxbCustomerDataTickets.Size = New Size(700, 262)
+        gxbCustomerDataTickets.Size = New Size(699, 261)
         gxbCustomerDataTickets.TabIndex = 37
         gxbCustomerDataTickets.TabStop = False
         gxbCustomerDataTickets.Text = "Customer Data"
@@ -429,7 +429,7 @@ Partial Class Form2
         ' 
         btnResetTicket.Location = New Point(1297, 795)
         btnResetTicket.Name = "btnResetTicket"
-        btnResetTicket.Size = New Size(194, 58)
+        btnResetTicket.Size = New Size(194, 59)
         btnResetTicket.TabIndex = 9
         btnResetTicket.Text = "RESET"
         btnResetTicket.UseVisualStyleBackColor = True
@@ -438,7 +438,7 @@ Partial Class Form2
         ' 
         btnProcessTicket.Location = New Point(1083, 795)
         btnProcessTicket.Name = "btnProcessTicket"
-        btnProcessTicket.Size = New Size(194, 58)
+        btnProcessTicket.Size = New Size(194, 59)
         btnProcessTicket.TabIndex = 8
         btnProcessTicket.Text = "PROCESS TICKET"
         btnProcessTicket.UseVisualStyleBackColor = True
@@ -447,7 +447,7 @@ Partial Class Form2
         ' 
         Button1.Location = New Point(450, 21)
         Button1.Name = "Button1"
-        Button1.Size = New Size(194, 58)
+        Button1.Size = New Size(194, 59)
         Button1.TabIndex = 10
         Button1.Text = "TICKET"
         Button1.UseVisualStyleBackColor = True
@@ -456,7 +456,7 @@ Partial Class Form2
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1545, 910)
+        ClientSize = New Size(1545, 909)
         Controls.Add(Button1)
         Controls.Add(btnResetTicket)
         Controls.Add(btnProcessTicket)
