@@ -12,12 +12,13 @@ Public Class Form3
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPlanes.SelectedIndexChanged
         Dim planes As String = cmbPlanes.Text()
-        Dim filepath As String = Path.Combine(Application.StartupPath, "Seatmaps/", planes & ".jpg")
+        Dim filepath As String = Path.Combine(Application.StartupPath, "Seatmaps/", planes & ".png")
 
         ptbImages.Image = Image.FromFile(filepath)
-    End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
 
     End Sub
+
+
+
 End Class

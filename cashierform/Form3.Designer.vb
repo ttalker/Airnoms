@@ -32,7 +32,7 @@ Partial Class Form3
         ' cmbPlanes
         ' 
         cmbPlanes.FormattingEnabled = True
-        cmbPlanes.Items.AddRange(New Object() {"Airbus A320"})
+        cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
         cmbPlanes.Location = New Point(294, 33)
         cmbPlanes.Name = "cmbPlanes"
         cmbPlanes.Size = New Size(182, 33)
@@ -40,10 +40,10 @@ Partial Class Form3
         ' 
         ' ptbImages
         ' 
-        ptbImages.Location = New Point(53, 110)
+        ptbImages.Location = New Point(194, 180)
         ptbImages.Name = "ptbImages"
-        ptbImages.Size = New Size(679, 2028)
-        ptbImages.SizeMode = PictureBoxSizeMode.CenterImage
+        ptbImages.Size = New Size(705, 2028)
+        ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
         ptbImages.TabIndex = 1
         ptbImages.TabStop = False
         ' 
@@ -68,6 +68,7 @@ Partial Class Form3
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
         ResumeLayout(False)
     End Sub
 
