@@ -22,40 +22,41 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        ComboBox1 = New ComboBox()
-        PictureBox1 = New PictureBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        cmbPlanes = New ComboBox()
+        ptbImages = New PictureBox()
+        CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' ComboBox1
+        ' cmbPlanes
         ' 
-        ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(48, 58)
-        ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(182, 33)
-        ComboBox1.TabIndex = 0
+        cmbPlanes.FormattingEnabled = True
+        cmbPlanes.Items.AddRange(New Object() {"Airbus A320"})
+        cmbPlanes.Location = New Point(48, 58)
+        cmbPlanes.Name = "cmbPlanes"
+        cmbPlanes.Size = New Size(182, 33)
+        cmbPlanes.TabIndex = 0
         ' 
-        ' PictureBox1
+        ' ptbImages
         ' 
-        PictureBox1.Location = New Point(524, 46)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(425, 605)
-        PictureBox1.TabIndex = 1
-        PictureBox1.TabStop = False
+        ptbImages.Location = New Point(524, 46)
+        ptbImages.Name = "ptbImages"
+        ptbImages.Size = New Size(425, 605)
+        ptbImages.TabIndex = 1
+        ptbImages.TabStop = False
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1059, 873)
-        Controls.Add(PictureBox1)
-        Controls.Add(ComboBox1)
+        Controls.Add(ptbImages)
+        Controls.Add(cmbPlanes)
         Name = "Form3"
         Text = "Form3"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents cmbPlanes As ComboBox
+    Friend WithEvents ptbImages As PictureBox
 End Class
