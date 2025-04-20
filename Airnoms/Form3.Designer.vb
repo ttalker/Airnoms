@@ -25,7 +25,6 @@ Partial Class Form3
         Button1 = New Button()
         btnTicket = New Button()
         btnBooking = New Button()
-        lblMainBooking = New Label()
         gbxBookingDetails = New GroupBox()
         gbxPassengers = New GroupBox()
         gbxCustomerData = New GroupBox()
@@ -128,14 +127,6 @@ Partial Class Form3
         btnBooking.TabIndex = 13
         btnBooking.Text = "BOOKING"
         btnBooking.UseVisualStyleBackColor = True
-        ' 
-        ' lblMainBooking
-        ' 
-        lblMainBooking.BackColor = SystemColors.ActiveCaption
-        lblMainBooking.Location = New Point(27, 97)
-        lblMainBooking.Name = "lblMainBooking"
-        lblMainBooking.Size = New Size(1490, 792)
-        lblMainBooking.TabIndex = 12
         ' 
         ' gbxBookingDetails
         ' 
@@ -851,7 +842,6 @@ Partial Class Form3
         Controls.Add(Button1)
         Controls.Add(btnTicket)
         Controls.Add(btnBooking)
-        Controls.Add(lblMainBooking)
         Controls.Add(btnBook)
         Controls.Add(btnClear)
         Controls.Add(pnlRightInfo)
@@ -868,7 +858,6 @@ Partial Class Form3
     Friend WithEvents Button1 As Button
     Friend WithEvents btnTicket As Button
     Friend WithEvents btnBooking As Button
-    Friend WithEvents lblMainBooking As Label
     Friend WithEvents gbxBookingDetails As GroupBox
     Friend WithEvents gbxPassengers As GroupBox
     Friend WithEvents gbxCustomerData As GroupBox
