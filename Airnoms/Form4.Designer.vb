@@ -22,9 +22,17 @@ Partial Class Form4
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Text = "Form4"
+        SuspendLayout()
+        ' 
+        ' Form4
+        ' 
+        AutoScaleDimensions = New SizeF(120F, 120F)
+        AutoScaleMode = AutoScaleMode.Dpi
+        ClientSize = New Size(1545, 910)
+        MaximumSize = New Size(1563, 957)
+        Name = "Form4"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "Form4"
+        ResumeLayout(False)
     End Sub
 End Class
