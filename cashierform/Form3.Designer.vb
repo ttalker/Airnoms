@@ -22,28 +22,40 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Button1 = New Button()
+        ComboBox1 = New ComboBox()
+        PictureBox1 = New PictureBox()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Button1
+        ' ComboBox1
         ' 
-        Button1.Location = New Point(483, 252)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(112, 34)
-        Button1.TabIndex = 0
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Location = New Point(48, 58)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(182, 33)
+        ComboBox1.TabIndex = 0
+        ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.Location = New Point(524, 46)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(425, 605)
+        PictureBox1.TabIndex = 1
+        PictureBox1.TabStop = False
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
-        Controls.Add(Button1)
+        ClientSize = New Size(1059, 873)
+        Controls.Add(PictureBox1)
+        Controls.Add(ComboBox1)
         Name = "Form3"
         Text = "Form3"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents Button1 As Button
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
