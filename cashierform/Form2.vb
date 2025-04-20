@@ -13,6 +13,7 @@
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblArrivalDateTicket.Visible = False
         lblArrivalTimeTicket.Visible = False
+        Me.Size = New Size(1563, 957)
     End Sub
 
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click

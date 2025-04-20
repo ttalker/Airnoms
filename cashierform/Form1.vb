@@ -10,7 +10,14 @@
         Form2.Hide()
         Me.Show()
     End Sub
-
+    'base load'
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        lblArrivalDate.Visible = False
+        dtpArrivalDate.Visible = False
+        lblArrivalTime.Visible = False
+        cbxArrivalTime.Visible = False
+        Me.Size = New Size(1563, 957)
+    End Sub
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
         ticketIdentifier = "One Way Trip" 'identifies for one way trip'
         lblArrivalDate.Visible = False
@@ -28,12 +35,7 @@
 
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblArrivalDate.Visible = False
-        dtpArrivalDate.Visible = False
-        lblArrivalTime.Visible = False
-        cbxArrivalTime.Visible = False
-    End Sub
+
 
     Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
         tbxFullname.Text = "Kelvin Dave M. Rivera"
