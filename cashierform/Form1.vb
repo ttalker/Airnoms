@@ -1,5 +1,6 @@
 ﻿Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
+    Public Shared Property support_form As New Form3()
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
         Me.Hide()
@@ -64,6 +65,8 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
+
+        support_form.Show()
 
     End Sub
 End Class
