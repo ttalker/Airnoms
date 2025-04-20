@@ -24,39 +24,53 @@ Partial Class Form3
     Private Sub InitializeComponent()
         cmbPlanes = New ComboBox()
         ptbImages = New PictureBox()
+        Panel1 = New Panel()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
+        Panel1.SuspendLayout()
         SuspendLayout()
         ' 
         ' cmbPlanes
         ' 
         cmbPlanes.FormattingEnabled = True
         cmbPlanes.Items.AddRange(New Object() {"Airbus A320"})
-        cmbPlanes.Location = New Point(48, 58)
+        cmbPlanes.Location = New Point(366, 48)
         cmbPlanes.Name = "cmbPlanes"
         cmbPlanes.Size = New Size(182, 33)
         cmbPlanes.TabIndex = 0
         ' 
         ' ptbImages
         ' 
-        ptbImages.Location = New Point(524, 46)
+        ptbImages.Location = New Point(105, 113)
         ptbImages.Name = "ptbImages"
-        ptbImages.Size = New Size(425, 605)
+        ptbImages.Size = New Size(679, 2028)
         ptbImages.TabIndex = 1
         ptbImages.TabStop = False
+        ' 
+        ' Panel1
+        ' 
+        Panel1.AutoScroll = True
+        Panel1.Controls.Add(cmbPlanes)
+        Panel1.Controls.Add(ptbImages)
+        Panel1.Dock = DockStyle.Fill
+        Panel1.Location = New Point(0, 0)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(902, 906)
+        Panel1.TabIndex = 2
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1059, 873)
-        Controls.Add(ptbImages)
-        Controls.Add(cmbPlanes)
+        ClientSize = New Size(902, 906)
+        Controls.Add(Panel1)
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
+        Panel1.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents cmbPlanes As ComboBox
     Friend WithEvents ptbImages As PictureBox
+    Friend WithEvents Panel1 As Panel
 End Class
