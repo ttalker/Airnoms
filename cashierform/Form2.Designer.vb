@@ -51,11 +51,11 @@ Partial Class Form2
         lblFullnameTicket = New Label()
         lblBookingDateTicket = New Label()
         lblDepartureDateTicket = New Label()
-        cbxFlightTicket = New ComboBox()
-        lblFlightTicket = New Label()
         cbxPassengerTicket = New ComboBox()
         lblSelectPassengerTicket = New Label()
         gbxBookingDetailsTicket = New GroupBox()
+        tbxFlightTicket = New TextBox()
+        lblFlightTicket = New Label()
         gxbCustomerDataTickets = New GroupBox()
         btnResetTicket = New Button()
         btnProcessTicket = New Button()
@@ -64,6 +64,7 @@ Partial Class Form2
         gbxPaymentTicket.SuspendLayout()
         gbxSummaryTickets.SuspendLayout()
         pnlleftInfo.SuspendLayout()
+        gbxBookingDetailsTicket.SuspendLayout()
         SuspendLayout()
         ' 
         ' btnTicket
@@ -129,7 +130,7 @@ Partial Class Form2
         tbxTicketPayment.Margin = New Padding(3, 2, 3, 2)
         tbxTicketPayment.MaximumSize = New Size(247, 30)
         tbxTicketPayment.Name = "tbxTicketPayment"
-        tbxTicketPayment.Size = New Size(247, 51)
+        tbxTicketPayment.Size = New Size(247, 30)
         tbxTicketPayment.TabIndex = 16
         ' 
         ' Label1
@@ -238,8 +239,6 @@ Partial Class Form2
         pnlleftInfo.Controls.Add(lblFullnameTicket)
         pnlleftInfo.Controls.Add(lblBookingDateTicket)
         pnlleftInfo.Controls.Add(lblDepartureDateTicket)
-        pnlleftInfo.Controls.Add(cbxFlightTicket)
-        pnlleftInfo.Controls.Add(lblFlightTicket)
         pnlleftInfo.Controls.Add(cbxPassengerTicket)
         pnlleftInfo.Controls.Add(lblSelectPassengerTicket)
         pnlleftInfo.Controls.Add(gbxBookingDetailsTicket)
@@ -380,25 +379,6 @@ Partial Class Form2
         lblDepartureDateTicket.Text = "Depart Date:"
         lblDepartureDateTicket.TextAlign = ContentAlignment.MiddleLeft
         ' 
-        ' cbxFlightTicket
-        ' 
-        cbxFlightTicket.FormattingEnabled = True
-        cbxFlightTicket.Location = New Point(181, 154)
-        cbxFlightTicket.Margin = New Padding(3, 2, 3, 2)
-        cbxFlightTicket.Name = "cbxFlightTicket"
-        cbxFlightTicket.Size = New Size(231, 28)
-        cbxFlightTicket.TabIndex = 5
-        ' 
-        ' lblFlightTicket
-        ' 
-        lblFlightTicket.AutoSize = True
-        lblFlightTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblFlightTicket.Location = New Point(51, 152)
-        lblFlightTicket.Name = "lblFlightTicket"
-        lblFlightTicket.Size = New Size(63, 25)
-        lblFlightTicket.TabIndex = 4
-        lblFlightTicket.Text = "Flight:"
-        ' 
         ' cbxPassengerTicket
         ' 
         cbxPassengerTicket.FormattingEnabled = True
@@ -420,6 +400,8 @@ Partial Class Form2
         ' 
         ' gbxBookingDetailsTicket
         ' 
+        gbxBookingDetailsTicket.Controls.Add(tbxFlightTicket)
+        gbxBookingDetailsTicket.Controls.Add(lblFlightTicket)
         gbxBookingDetailsTicket.Font = New Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         gbxBookingDetailsTicket.Location = New Point(23, 12)
         gbxBookingDetailsTicket.Margin = New Padding(3, 2, 3, 2)
@@ -429,6 +411,25 @@ Partial Class Form2
         gbxBookingDetailsTicket.TabIndex = 36
         gbxBookingDetailsTicket.TabStop = False
         gbxBookingDetailsTicket.Text = "Booking Details"
+        ' 
+        ' tbxFlightTicket
+        ' 
+        tbxFlightTicket.Anchor = AnchorStyles.None
+        tbxFlightTicket.Location = New Point(158, 141)
+        tbxFlightTicket.Margin = New Padding(3, 2, 3, 2)
+        tbxFlightTicket.MaximumSize = New Size(247, 30)
+        tbxFlightTicket.Name = "tbxFlightTicket"
+        tbxFlightTicket.Size = New Size(231, 30)
+        tbxFlightTicket.TabIndex = 17
+        ' 
+        ' lblFlightTicket
+        ' 
+        lblFlightTicket.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblFlightTicket.Location = New Point(28, 141)
+        lblFlightTicket.Name = "lblFlightTicket"
+        lblFlightTicket.Size = New Size(76, 25)
+        lblFlightTicket.TabIndex = 4
+        lblFlightTicket.Text = "Flight:"
         ' 
         ' gxbCustomerDataTickets
         ' 
@@ -494,6 +495,8 @@ Partial Class Form2
         gbxSummaryTickets.ResumeLayout(False)
         pnlleftInfo.ResumeLayout(False)
         pnlleftInfo.PerformLayout()
+        gbxBookingDetailsTicket.ResumeLayout(False)
+        gbxBookingDetailsTicket.PerformLayout()
         ResumeLayout(False)
     End Sub
 
@@ -509,7 +512,6 @@ Partial Class Form2
     Friend WithEvents lblBookingDateTicket As Label
     Friend WithEvents lblArrivalDate As Label
     Friend WithEvents lblDepartureDateTicket As Label
-    Friend WithEvents cbxFlightTicket As ComboBox
     Friend WithEvents lblFlightTicket As Label
     Friend WithEvents cbxPassengerTicket As ComboBox
     Friend WithEvents lblSelectPassengerTicket As Label
@@ -536,4 +538,5 @@ Partial Class Form2
     Friend WithEvents lblPaymentAmountTicket As Label
     Friend WithEvents tbxTicketPayment As TextBox
     Friend WithEvents btnSupport As Button
+    Friend WithEvents tbxFlightTicket As TextBox
 End Class

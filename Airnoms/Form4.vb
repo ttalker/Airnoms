@@ -4,12 +4,14 @@
     End Sub
 
     Private Sub btnHomeUser_Click(sender As Object, e As EventArgs) Handles btnHomeUser.Click
-        Me.Hide()
+        Hide()
         Form3.Show()
     End Sub
 
     Private Sub btnBookingUser_Click(sender As Object, e As EventArgs) Handles btnBookingUser.Click
-        Me.Show()
+        Show()
         Form3.Hide()
     End Sub
+
+
 End Class
