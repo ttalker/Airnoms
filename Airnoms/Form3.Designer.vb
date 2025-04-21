@@ -24,6 +24,7 @@ Partial Class Form3
     Private Sub InitializeComponent()
         btnBookingUser = New Button()
         btnHomeUser = New Button()
+        lblMainUser = New Label()
         SuspendLayout()
         ' 
         ' btnBookingUser
@@ -44,11 +45,21 @@ Partial Class Form3
         btnHomeUser.Text = "HOME"
         btnHomeUser.UseVisualStyleBackColor = True
         ' 
+        ' lblMainUser
+        ' 
+        lblMainUser.Image = My.Resources.Resources.Main
+        lblMainUser.Location = New Point(29, 101)
+        lblMainUser.Name = "lblMainUser"
+        lblMainUser.Size = New Size(1488, 781)
+        lblMainUser.TabIndex = 6
+        lblMainUser.Text = " "
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(120F, 120F)
         AutoScaleMode = AutoScaleMode.Dpi
         ClientSize = New Size(1545, 910)
+        Controls.Add(lblMainUser)
         Controls.Add(btnBookingUser)
         Controls.Add(btnHomeUser)
         MaximumSize = New Size(1563, 957)
@@ -60,4 +71,5 @@ Partial Class Form3
 
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
+    Friend WithEvents lblMainUser As Label
 End Class
