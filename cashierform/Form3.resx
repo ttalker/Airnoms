@@ -847,7 +847,7 @@
         VhlXdJcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Panel3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pnlButtons.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAZcAAAOVCAYAAAClMa0vAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAApMJJREFUeF7tvQ2wZseZ3+UZS7KuXq135bljaazFmrA2S7TKaJxLhVxLCcpSiWwg

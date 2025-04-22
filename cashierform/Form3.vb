@@ -6,5 +6,7 @@ Public Class Form3
         Me.Hide()
     End Sub
 
-
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MakeTransparent(btnAirbus320, pnlButtons)
+    End Sub
 End Class

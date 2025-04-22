@@ -23,5 +23,15 @@ Module Module1
 
     End Sub
 
-
+    Public Sub MakeTransparent(button As Button, pnlButtons As Panel)
+        button.Parent = pnlButtons
+        button.BackColor = Color.Transparent
+        button.FlatStyle = FlatStyle.Flat
+        button.FlatAppearance.BorderSize = 0
+        button.FlatStyle = FlatStyle.Flat
+        button.FlatAppearance.BorderSize = 0
+        button.FlatAppearance.MouseOverBackColor = Color.Transparent
+        button.FlatAppearance.MouseDownBackColor = Color.Transparent
+        button.BackColor = Color.Transparent
+    End Sub
 End Module

@@ -26,10 +26,12 @@ Partial Class Form3
         ptbImages = New PictureBox()
         pnlPlane = New Panel()
         Panel2 = New Panel()
-        Panel3 = New Panel()
+        pnlButtons = New Panel()
+        btnAirbus320 = New Button()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         pnlPlane.SuspendLayout()
         Panel2.SuspendLayout()
+        pnlButtons.SuspendLayout()
         SuspendLayout()
         ' 
         ' ptbImages
@@ -60,21 +62,31 @@ Partial Class Form3
         Panel2.BackColor = Color.Transparent
         Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
         Panel2.Controls.Add(pnlPlane)
-        Panel2.Controls.Add(Panel3)
+        Panel2.Controls.Add(pnlButtons)
         Panel2.Dock = DockStyle.Fill
         Panel2.Location = New Point(0, 0)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1142, 952)
         Panel2.TabIndex = 3
         ' 
-        ' Panel3
+        ' pnlButtons
         ' 
-        Panel3.BackColor = Color.Transparent
-        Panel3.BackgroundImage = CType(resources.GetObject("Panel3.BackgroundImage"), Image)
-        Panel3.Location = New Point(12, 23)
-        Panel3.Name = "Panel3"
-        Panel3.Size = New Size(411, 917)
-        Panel3.TabIndex = 0
+        pnlButtons.BackColor = Color.Transparent
+        pnlButtons.BackgroundImage = CType(resources.GetObject("pnlButtons.BackgroundImage"), Image)
+        pnlButtons.Controls.Add(btnAirbus320)
+        pnlButtons.Location = New Point(12, 23)
+        pnlButtons.Name = "pnlButtons"
+        pnlButtons.Size = New Size(411, 917)
+        pnlButtons.TabIndex = 0
+        ' 
+        ' btnAirbus320
+        ' 
+        btnAirbus320.BackColor = Color.Transparent
+        btnAirbus320.Location = New Point(13, 38)
+        btnAirbus320.Name = "btnAirbus320"
+        btnAirbus320.Size = New Size(323, 70)
+        btnAirbus320.TabIndex = 2
+        btnAirbus320.UseVisualStyleBackColor = False
         ' 
         ' Form3
         ' 
@@ -88,10 +100,12 @@ Partial Class Form3
         pnlPlane.ResumeLayout(False)
         pnlPlane.PerformLayout()
         Panel2.ResumeLayout(False)
+        pnlButtons.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
     Friend WithEvents ptbImages As PictureBox
     Friend WithEvents pnlPlane As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Panel3 As Panel
+    Friend WithEvents pnlButtons As Panel
+    Friend WithEvents btnAirbus320 As Button
 End Class
