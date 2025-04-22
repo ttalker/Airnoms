@@ -23,26 +23,14 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        cmbPlanes = New ComboBox()
         ptbImages = New PictureBox()
-        Panel1 = New Panel()
+        pnlPlane = New Panel()
         Panel2 = New Panel()
         Panel3 = New Panel()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
-        Panel1.SuspendLayout()
+        pnlPlane.SuspendLayout()
         Panel2.SuspendLayout()
-        Panel3.SuspendLayout()
         SuspendLayout()
-        ' 
-        ' cmbPlanes
-        ' 
-        cmbPlanes.BackColor = Color.White
-        cmbPlanes.FormattingEnabled = True
-        cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
-        cmbPlanes.Location = New Point(190, 518)
-        cmbPlanes.Name = "cmbPlanes"
-        cmbPlanes.Size = New Size(182, 33)
-        cmbPlanes.TabIndex = 0
         ' 
         ' ptbImages
         ' 
@@ -55,23 +43,23 @@ Partial Class Form3
         ptbImages.TabIndex = 1
         ptbImages.TabStop = False
         ' 
-        ' Panel1
+        ' pnlPlane
         ' 
-        Panel1.AutoScroll = True
-        Panel1.BackColor = Color.Transparent
-        Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
-        Panel1.BackgroundImageLayout = ImageLayout.Stretch
-        Panel1.Controls.Add(ptbImages)
-        Panel1.Location = New Point(446, 23)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(692, 917)
-        Panel1.TabIndex = 2
+        pnlPlane.AutoScroll = True
+        pnlPlane.BackColor = Color.Transparent
+        pnlPlane.BackgroundImage = CType(resources.GetObject("pnlPlane.BackgroundImage"), Image)
+        pnlPlane.BackgroundImageLayout = ImageLayout.Stretch
+        pnlPlane.Controls.Add(ptbImages)
+        pnlPlane.Location = New Point(446, 23)
+        pnlPlane.Name = "pnlPlane"
+        pnlPlane.Size = New Size(692, 917)
+        pnlPlane.TabIndex = 2
         ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.Transparent
         Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
-        Panel2.Controls.Add(Panel1)
+        Panel2.Controls.Add(pnlPlane)
         Panel2.Controls.Add(Panel3)
         Panel2.Dock = DockStyle.Fill
         Panel2.Location = New Point(0, 0)
@@ -83,7 +71,6 @@ Partial Class Form3
         ' 
         Panel3.BackColor = Color.Transparent
         Panel3.BackgroundImage = CType(resources.GetObject("Panel3.BackgroundImage"), Image)
-        Panel3.Controls.Add(cmbPlanes)
         Panel3.Location = New Point(12, 23)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(411, 917)
@@ -98,16 +85,13 @@ Partial Class Form3
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
+        pnlPlane.ResumeLayout(False)
+        pnlPlane.PerformLayout()
         Panel2.ResumeLayout(False)
-        Panel3.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
-
-    Friend WithEvents cmbPlanes As ComboBox
     Friend WithEvents ptbImages As PictureBox
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents pnlPlane As Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
 End Class
