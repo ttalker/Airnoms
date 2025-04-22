@@ -82,9 +82,9 @@ Partial Class Form3
         ' btnAirbus320
         ' 
         btnAirbus320.BackColor = Color.Transparent
-        btnAirbus320.Location = New Point(13, 38)
+        btnAirbus320.Location = New Point(13, 36)
         btnAirbus320.Name = "btnAirbus320"
-        btnAirbus320.Size = New Size(323, 70)
+        btnAirbus320.Size = New Size(381, 76)
         btnAirbus320.TabIndex = 2
         btnAirbus320.UseVisualStyleBackColor = False
         ' 

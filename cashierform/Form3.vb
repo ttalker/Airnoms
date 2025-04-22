@@ -9,4 +9,9 @@ Public Class Form3
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnAirbus320, pnlButtons)
     End Sub
+
+    Private Sub btnAirbus320_Click(sender As Object, e As EventArgs) Handles btnAirbus320.Click
+        planes = "Airbus 320"
+        ShowImage(planes, ptbImages, pnlPlane)
+    End Sub
 End Class

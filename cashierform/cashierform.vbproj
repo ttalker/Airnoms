@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Seatmaps\Airbus A320.png" />
+    <None Remove="Seatmaps\Airbus 320.png" />
     <None Remove="Seatmaps\Airbus A321.png" />
     <None Remove="Seatmaps\Airbus A330-300.png" />
     <None Remove="Seatmaps\Airbus A350-900.png" />
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Seatmaps\Airbus A320.png">
+    <Content Include="Seatmaps\Airbus 320.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Seatmaps\Airbus A321.png">
