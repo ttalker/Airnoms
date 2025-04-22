@@ -22,13 +22,12 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         cmbPlanes = New ComboBox()
         ptbImages = New PictureBox()
         Panel1 = New Panel()
-        ptbBackground = New PictureBox()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
-        CType(ptbBackground, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' cmbPlanes
@@ -36,7 +35,7 @@ Partial Class Form3
         cmbPlanes.BackColor = Color.White
         cmbPlanes.FormattingEnabled = True
         cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
-        cmbPlanes.Location = New Point(245, 82)
+        cmbPlanes.Location = New Point(12, 122)
         cmbPlanes.Name = "cmbPlanes"
         cmbPlanes.Size = New Size(182, 33)
         cmbPlanes.TabIndex = 0
@@ -44,9 +43,9 @@ Partial Class Form3
         ' ptbImages
         ' 
         ptbImages.BackColor = Color.Transparent
-        ptbImages.Location = New Point(162, 163)
+        ptbImages.Location = New Point(142, 25)
         ptbImages.Name = "ptbImages"
-        ptbImages.Size = New Size(350, 700)
+        ptbImages.Size = New Size(400, 600)
         ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
         ptbImages.TabIndex = 1
         ptbImages.TabStop = False
@@ -54,42 +53,31 @@ Partial Class Form3
         ' Panel1
         ' 
         Panel1.AutoScroll = True
-        Panel1.Controls.Add(cmbPlanes)
+        Panel1.BackColor = Color.Transparent
+        Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
+        Panel1.BackgroundImageLayout = ImageLayout.Stretch
         Panel1.Controls.Add(ptbImages)
-        Panel1.Controls.Add(ptbBackground)
-        Panel1.Dock = DockStyle.Fill
-        Panel1.Location = New Point(0, 0)
+        Panel1.Location = New Point(478, 12)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(677, 923)
+        Panel1.Size = New Size(576, 801)
         Panel1.TabIndex = 2
-        ' 
-        ' ptbBackground
-        ' 
-        ptbBackground.Dock = DockStyle.Fill
-        ptbBackground.Location = New Point(0, 0)
-        ptbBackground.Name = "ptbBackground"
-        ptbBackground.Size = New Size(677, 923)
-        ptbBackground.SizeMode = PictureBoxSizeMode.StretchImage
-        ptbBackground.TabIndex = 2
-        ptbBackground.TabStop = False
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(677, 923)
+        ClientSize = New Size(1075, 828)
         Controls.Add(Panel1)
+        Controls.Add(cmbPlanes)
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
-        CType(ptbBackground, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents cmbPlanes As ComboBox
     Friend WithEvents ptbImages As PictureBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents ptbBackground As PictureBox
 End Class

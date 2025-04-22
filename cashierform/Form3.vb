@@ -5,8 +5,8 @@ Public Class Form3
         e.Cancel = True
         Me.Hide()
 
-        Me.Size() = New Size(657, 891)
-        ptbBackground.SendToBack()
+
+
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles ptbImages.Click
@@ -22,6 +22,7 @@ Public Class Form3
 
     End Sub
 
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+    End Sub
 End Class
