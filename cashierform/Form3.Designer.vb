@@ -31,6 +31,7 @@ Partial Class Form3
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
+        Panel3.SuspendLayout()
         SuspendLayout()
         ' 
         ' cmbPlanes
@@ -38,7 +39,7 @@ Partial Class Form3
         cmbPlanes.BackColor = Color.White
         cmbPlanes.FormattingEnabled = True
         cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
-        cmbPlanes.Location = New Point(156, 655)
+        cmbPlanes.Location = New Point(190, 518)
         cmbPlanes.Name = "cmbPlanes"
         cmbPlanes.Size = New Size(182, 33)
         cmbPlanes.TabIndex = 0
@@ -61,7 +62,6 @@ Partial Class Form3
         Panel1.BackgroundImage = CType(resources.GetObject("Panel1.BackgroundImage"), Image)
         Panel1.BackgroundImageLayout = ImageLayout.Stretch
         Panel1.Controls.Add(ptbImages)
-        Panel1.Controls.Add(cmbPlanes)
         Panel1.Location = New Point(446, 23)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(692, 917)
@@ -83,6 +83,7 @@ Partial Class Form3
         ' 
         Panel3.BackColor = Color.Transparent
         Panel3.BackgroundImage = CType(resources.GetObject("Panel3.BackgroundImage"), Image)
+        Panel3.Controls.Add(cmbPlanes)
         Panel3.Location = New Point(12, 23)
         Panel3.Name = "Panel3"
         Panel3.Size = New Size(411, 917)
@@ -100,6 +101,7 @@ Partial Class Form3
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         Panel2.ResumeLayout(False)
+        Panel3.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
