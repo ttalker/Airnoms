@@ -25,6 +25,7 @@ Partial Class Form3
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         ptbImages = New PictureBox()
         pnlPlane = New Panel()
+        lblAirbus320 = New Label()
         Panel2 = New Panel()
         pnlButtons = New Panel()
         btnAirbus320 = New Button()
@@ -57,6 +58,15 @@ Partial Class Form3
         pnlPlane.Size = New Size(692, 917)
         pnlPlane.TabIndex = 2
         ' 
+        ' lblAirbus320
+        ' 
+        lblAirbus320.Image = CType(resources.GetObject("lblAirbus320.Image"), Image)
+        lblAirbus320.Location = New Point(-9, -71)
+        lblAirbus320.Name = "lblAirbus320"
+        lblAirbus320.Size = New Size(428, 196)
+        lblAirbus320.TabIndex = 2
+        lblAirbus320.Visible = False
+        ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.Transparent
@@ -73,6 +83,7 @@ Partial Class Form3
         ' 
         pnlButtons.BackColor = Color.Transparent
         pnlButtons.BackgroundImage = CType(resources.GetObject("pnlButtons.BackgroundImage"), Image)
+        pnlButtons.Controls.Add(lblAirbus320)
         pnlButtons.Controls.Add(btnAirbus320)
         pnlButtons.Location = New Point(12, 23)
         pnlButtons.Name = "pnlButtons"
@@ -82,7 +93,7 @@ Partial Class Form3
         ' btnAirbus320
         ' 
         btnAirbus320.BackColor = Color.Transparent
-        btnAirbus320.Location = New Point(13, 36)
+        btnAirbus320.Location = New Point(3, 36)
         btnAirbus320.Name = "btnAirbus320"
         btnAirbus320.Size = New Size(381, 76)
         btnAirbus320.TabIndex = 2
@@ -108,4 +119,5 @@ Partial Class Form3
     Friend WithEvents Panel2 As Panel
     Friend WithEvents pnlButtons As Panel
     Friend WithEvents btnAirbus320 As Button
+    Friend WithEvents lblAirbus320 As Label
 End Class

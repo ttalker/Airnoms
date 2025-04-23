@@ -24,7 +24,6 @@ Module Module1
     End Sub
 
     Public Sub MakeTransparent(button As Button)
-
         button.BackColor = Color.Transparent
         button.FlatStyle = FlatStyle.Flat
         button.FlatAppearance.BorderSize = 0
@@ -34,4 +33,13 @@ Module Module1
         button.FlatAppearance.MouseDownBackColor = Color.Transparent
         button.BackColor = Color.Transparent
     End Sub
+
+    Public Sub DisappearLabel(label As Label)
+        label.Visible = False
+    End Sub
+
+    Public Sub AppearLabel(label As Label)
+        label.Visible = True
+    End Sub
+
 End Module
