@@ -12,7 +12,7 @@
     End Sub
     'base load'
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lblArrivalDate.Visible = False
+        'lblArrivalDate.Visible = False
         dtpArrivalDate.Visible = False
         lblArrivalTime.Visible = False
         cbxArrivalTime.Visible = False
