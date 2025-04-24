@@ -47,6 +47,7 @@ Partial Class Form1
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
         PictureBox1 = New PictureBox()
+        btnExit = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -281,12 +282,23 @@ Partial Class Form1
         PictureBox1.TabIndex = 34
         PictureBox1.TabStop = False
         ' 
+        ' btnExit
+        ' 
+        btnExit.Location = New Point(710, 27)
+        btnExit.Margin = New Padding(2)
+        btnExit.Name = "btnExit"
+        btnExit.Size = New Size(143, 61)
+        btnExit.TabIndex = 35
+        btnExit.Text = " "
+        btnExit.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1547, 911)
+        Controls.Add(btnExit)
         Controls.Add(cbxSeatNumber)
         Controls.Add(btnSupport)
         Controls.Add(btnTicket)
@@ -355,4 +367,5 @@ Partial Class Form1
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnExit As Button
 End Class

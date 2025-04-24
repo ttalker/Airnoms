@@ -28,6 +28,8 @@ Partial Class Form2
         tbxEmailSignUp = New TextBox()
         Button1 = New Button()
         Button2 = New Button()
+        PictureBox1 = New PictureBox()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' tbxUsernameSignUp
@@ -60,7 +62,7 @@ Partial Class Form2
         ' 
         ' tbxEmailSignUp
         ' 
-        tbxEmailSignUp.Location = New Point(535, 467)
+        tbxEmailSignUp.Location = New Point(535, 463)
         tbxEmailSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxEmailSignUp.MaximumSize = New Size(304, 33)
         tbxEmailSignUp.Name = "tbxEmailSignUp"
@@ -72,7 +74,7 @@ Partial Class Form2
         Button1.BackColor = SystemColors.Control
         Button1.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ActiveCaptionText
-        Button1.Location = New Point(515, 522)
+        Button1.Location = New Point(509, 522)
         Button1.Margin = New Padding(3, 2, 3, 2)
         Button1.Name = "Button1"
         Button1.Size = New Size(172, 41)
@@ -85,7 +87,7 @@ Partial Class Form2
         Button2.BackColor = Color.DodgerBlue
         Button2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(690, 520)
+        Button2.Location = New Point(685, 521)
         Button2.Margin = New Padding(3, 2, 3, 2)
         Button2.Name = "Button2"
         Button2.Size = New Size(169, 47)
@@ -93,11 +95,19 @@ Partial Class Form2
         Button2.Text = "Sign up"
         Button2.UseVisualStyleBackColor = False
         ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackgroundImage = My.Resources.Resources.Sign_up
+        PictureBox1.Location = New Point(-3, -2)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(920, 615)
+        PictureBox1.TabIndex = 25
+        PictureBox1.TabStop = False
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.Sign_up
         ClientSize = New Size(915, 611)
         Controls.Add(Button2)
         Controls.Add(Button1)
@@ -105,10 +115,12 @@ Partial Class Form2
         Controls.Add(TextBox1)
         Controls.Add(tbxUsernameSignUp)
         Controls.Add(tbxFullnameSignUp)
+        Controls.Add(PictureBox1)
         Margin = New Padding(3, 2, 3, 2)
         MaximumSize = New Size(931, 650)
         Name = "Form2"
         Text = "Create an Account"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -118,4 +130,5 @@ Partial Class Form2
     Friend WithEvents tbxEmailSignUp As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

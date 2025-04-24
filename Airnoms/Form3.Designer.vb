@@ -24,52 +24,57 @@ Partial Class Form3
     Private Sub InitializeComponent()
         btnBookingUser = New Button()
         btnHomeUser = New Button()
-        lblMainUser = New Label()
+        PictureBox1 = New PictureBox()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBookingUser
         ' 
-        btnBookingUser.Location = New Point(241, 21)
+        btnBookingUser.Location = New Point(283, 42)
+        btnBookingUser.Margin = New Padding(2)
         btnBookingUser.Name = "btnBookingUser"
-        btnBookingUser.Size = New Size(194, 58)
+        btnBookingUser.Size = New Size(155, 46)
         btnBookingUser.TabIndex = 5
         btnBookingUser.Text = "BOOKING"
         btnBookingUser.UseVisualStyleBackColor = True
         ' 
         ' btnHomeUser
         ' 
-        btnHomeUser.Location = New Point(27, 22)
+        btnHomeUser.Location = New Point(75, 42)
+        btnHomeUser.Margin = New Padding(2)
         btnHomeUser.Name = "btnHomeUser"
-        btnHomeUser.Size = New Size(194, 58)
+        btnHomeUser.Size = New Size(155, 46)
         btnHomeUser.TabIndex = 4
         btnHomeUser.Text = "HOME"
         btnHomeUser.UseVisualStyleBackColor = True
         ' 
-        ' lblMainUser
+        ' PictureBox1
         ' 
-        lblMainUser.Image = My.Resources.Resources.Main
-        lblMainUser.Location = New Point(29, 101)
-        lblMainUser.Name = "lblMainUser"
-        lblMainUser.Size = New Size(1488, 781)
-        lblMainUser.TabIndex = 6
-        lblMainUser.Text = " "
+        PictureBox1.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__1_
+        PictureBox1.Location = New Point(-1, -2)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(1554, 937)
+        PictureBox1.TabIndex = 6
+        PictureBox1.TabStop = False
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(120F, 120F)
+        AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1545, 910)
-        Controls.Add(lblMainUser)
+        ClientSize = New Size(1547, 930)
         Controls.Add(btnBookingUser)
         Controls.Add(btnHomeUser)
-        MaximumSize = New Size(1563, 957)
+        Controls.Add(PictureBox1)
+        Margin = New Padding(2)
+        MaximumSize = New Size(1563, 969)
         Name = "Form3"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form3"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
-    Friend WithEvents lblMainUser As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

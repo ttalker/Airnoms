@@ -26,6 +26,8 @@ Partial Class Form1
         btnCreateAccount = New Button()
         tbxUsername = New TextBox()
         tbxPassword = New TextBox()
+        PictureBox1 = New PictureBox()
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnSignIn
@@ -33,7 +35,7 @@ Partial Class Form1
         btnSignIn.BackColor = Color.DodgerBlue
         btnSignIn.Font = New Font("Segoe UI Semibold", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnSignIn.ForeColor = SystemColors.ButtonHighlight
-        btnSignIn.Location = New Point(514, 364)
+        btnSignIn.Location = New Point(514, 363)
         btnSignIn.Margin = New Padding(3, 2, 3, 2)
         btnSignIn.Name = "btnSignIn"
         btnSignIn.Size = New Size(338, 62)
@@ -55,7 +57,7 @@ Partial Class Form1
         ' tbxUsername
         ' 
         tbxUsername.ForeColor = SystemColors.InactiveCaption
-        tbxUsername.Location = New Point(529, 211)
+        tbxUsername.Location = New Point(529, 205)
         tbxUsername.Margin = New Padding(3, 2, 3, 2)
         tbxUsername.MaximumSize = New Size(304, 33)
         tbxUsername.Name = "tbxUsername"
@@ -71,21 +73,31 @@ Partial Class Form1
         tbxPassword.Size = New Size(304, 23)
         tbxPassword.TabIndex = 8
         ' 
+        ' PictureBox1
+        ' 
+        PictureBox1.BackgroundImage = My.Resources.Resources.login_form__1_
+        PictureBox1.Location = New Point(-2, -2)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(917, 615)
+        PictureBox1.TabIndex = 9
+        PictureBox1.TabStop = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = My.Resources.Resources.login_form__1_
         ClientSize = New Size(915, 611)
         Controls.Add(tbxPassword)
         Controls.Add(tbxUsername)
         Controls.Add(btnCreateAccount)
         Controls.Add(btnSignIn)
+        Controls.Add(PictureBox1)
         DoubleBuffered = True
         Margin = New Padding(2)
         MaximumSize = New Size(931, 650)
         Name = "Form1"
         Text = "International Nom Airlines"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -95,6 +107,7 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents tbxPassword As TextBox
+    Friend WithEvents PictureBox1 As PictureBox
     'Friend WithEvents pbxNomAirSignIn As PictureBox
 
 End Class

@@ -12,6 +12,7 @@
     End Sub
     'base load'
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MakeTransparent(btnTicket)
         Me.DoubleBuffered = True
         dtpArrivalDate.Visible = False
         cbxArrivalTime.Visible = False
@@ -67,4 +68,7 @@
 
     End Sub
 
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        Me.DoubleBuffered = True
+    End Sub
 End Class
