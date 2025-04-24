@@ -53,11 +53,27 @@ Partial Class Form3
         pnlButtons.SuspendLayout()
         SuspendLayout()
         ' 
+
         ' ptbImages
         ' 
         ptbImages.BackColor = Color.Transparent
         ptbImages.BackgroundImageLayout = ImageLayout.None
         ptbImages.Location = New Point(112, 110)
+
+        ' cmbPlanes
+        ' 
+        cmbPlanes.FormattingEnabled = True
+        cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
+        cmbPlanes.Location = New Point(235, 26)
+        cmbPlanes.Margin = New Padding(2, 2, 2, 2)
+        cmbPlanes.Name = "cmbPlanes"
+        cmbPlanes.Size = New Size(146, 28)
+        cmbPlanes.TabIndex = 0
+        ' 
+        ' ptbImages
+        ' 
+        ptbImages.Location = New Point(155, 144)
+        ptbImages.Margin = New Padding(2, 2, 2, 2)
         ptbImages.Name = "ptbImages"
         ptbImages.Size = New Size(400, 100)
         ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
@@ -191,6 +207,7 @@ Partial Class Form3
         ' 
         ' btnBoeing737800
         ' 
+
         btnBoeing737800.BackColor = Color.Transparent
         btnBoeing737800.Location = New Point(16, 463)
         btnBoeing737800.Name = "btnBoeing737800"
@@ -296,13 +313,30 @@ Partial Class Form3
         lblAirbus350900.Size = New Size(328, 92)
         lblAirbus350900.TabIndex = 9
         lblAirbus350900.Visible = False
+
+        Panel1.AutoScroll = True
+        Panel1.Controls.Add(cmbPlanes)
+        Panel1.Controls.Add(ptbImages)
+        Panel1.Dock = DockStyle.Fill
+        Panel1.Location = New Point(0, 0)
+        Panel1.Margin = New Padding(2, 2, 2, 2)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(639, 844)
+        Panel1.TabIndex = 2
+
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+
         ClientSize = New Size(1156, 953)
         Controls.Add(pnlBg)
+
+        ClientSize = New Size(639, 844)
+        Controls.Add(Panel1)
+        Margin = New Padding(2, 2, 2, 2)
+
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()

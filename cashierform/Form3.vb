@@ -51,6 +51,7 @@ Public Class Form3
         AppearLabel(lblAirbus321)
     End Sub
 
+
     Private Sub btnAirbus330300_Click(sender As Object, e As EventArgs) Handles btnAirbus330300.Click
         planes = "Airbus A330-300"
         DisappearAllLabel()
@@ -106,4 +107,6 @@ Public Class Form3
         ShowImage(planes, ptbImages, pnlPlane)
         AppearLabel(lblBoeing7478)
     End Sub
+
+
 End Class
