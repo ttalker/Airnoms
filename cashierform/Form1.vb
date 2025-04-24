@@ -12,6 +12,7 @@
     End Sub
     'base load'
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.DoubleBuffered = True
         dtpArrivalDate.Visible = False
         cbxArrivalTime.Visible = False
         Me.Size = New Size(1563, 957)

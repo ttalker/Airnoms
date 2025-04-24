@@ -63,15 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-
         Friend ReadOnly Property Airbus320pic() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Airbus320pic", resourceCulture)
-
-        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip", resourceCulture)
-
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -79,15 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-
         Friend ReadOnly Property Airbus321pics() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Airbus321pics", resourceCulture)
-
-        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip__1_() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip (1)", resourceCulture)
-
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -95,15 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-
         Friend ReadOnly Property Airbus330_300pics() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Airbus330-300pics", resourceCulture)
-
-        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip__2_() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip (2)", resourceCulture)
-
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -111,7 +93,6 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-
         Friend ReadOnly Property Airbus330_800pics() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Airbus330-800pics", resourceCulture)
@@ -202,13 +183,49 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property picturebg() As System.Drawing.Bitmap
+        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("picturebg", resourceCulture)
-
+                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip__1_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip (1)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip__2_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip (2)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property MAIN_REFERENCE__REAL____Round_Trip__2___1_() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - Round Trip (2) (1)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property picturebg() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("picturebg", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
