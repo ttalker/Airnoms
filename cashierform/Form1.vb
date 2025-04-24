@@ -15,8 +15,7 @@
         dtpArrivalDate.Visible = False
         cbxArrivalTime.Visible = False
         Me.Size = New Size(1563, 957)
-        'cbxFlight.Size = New Size(110, 30)
-        'cbxSeatNumber.Size = New Size(110, 30)
+        'vincent pls gumana sana
     End Sub
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
         ticketIdentifier = "One Way Trip" 'identifies for one way trip'
