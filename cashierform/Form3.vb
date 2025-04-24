@@ -8,6 +8,11 @@ Public Class Form3
         lblAirbus330300.Visible = False
         lblAirbus350900.Visible = False
         lblAirbus330800.Visible = False
+        lblBoeing737800.Visible = False
+        lblBoeing737MAX.Visible = False
+        lblBoeing777300er.Visible = False
+        lblBoeing7879.Visible = False
+        lblBoeing7478.Visible = False
     End Sub
 
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -23,7 +28,11 @@ Public Class Form3
         MakeTransparent(btnAirbus330300)
         MakeTransparent(btnAirbus350900)
         MakeTransparent(btnAirbus330800)
-
+        MakeTransparent(btnBoeing737800)
+        MakeTransparent(btnBoeing737MAX)
+        MakeTransparent(btnBoeing77300er)
+        MakeTransparent(btnBoeing7879)
+        MakeTransparent(btnBoeing7478)
     End Sub
 
     Private Sub btnAirbus320_Click(sender As Object, e As EventArgs) Handles btnAirbus320.Click
@@ -61,5 +70,40 @@ Public Class Form3
         DisappearAllLabel()
         ShowImage(planes, ptbImages, pnlPlane)
         AppearLabel(lblAirbus330800)
+    End Sub
+
+    Private Sub btnBoeing737800_Click(sender As Object, e As EventArgs) Handles btnBoeing737800.Click
+        planes = "Boeing 737-800"
+        DisappearAllLabel()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearLabel(lblBoeing737800)
+    End Sub
+
+    Private Sub btnBoeing737MAX_Click(sender As Object, e As EventArgs) Handles btnBoeing737MAX.Click
+        planes = "Boeing 737 MAX 8"
+        DisappearAllLabel()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearLabel(lblBoeing737MAX)
+    End Sub
+
+    Private Sub btnBoeing77300er_Click(sender As Object, e As EventArgs) Handles btnBoeing77300er.Click
+        planes = "Boeing 777-300ER"
+        DisappearAllLabel()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearLabel(lblBoeing777300er)
+    End Sub
+
+    Private Sub btnBoeing7879_Click(sender As Object, e As EventArgs) Handles btnBoeing7879.Click
+        planes = "Boeing 787-9"
+        DisappearAllLabel()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearLabel(lblBoeing7879)
+    End Sub
+
+    Private Sub btnBoeing7478_Click(sender As Object, e As EventArgs) Handles btnBoeing7478.Click
+        planes = "Boeing 747-8"
+        DisappearAllLabel()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearLabel(lblBoeing7478)
     End Sub
 End Class
