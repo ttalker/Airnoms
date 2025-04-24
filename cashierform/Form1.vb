@@ -12,14 +12,6 @@
     End Sub
     'base load'
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-<<<<<<< HEAD
-<<<<<<< HEAD
-        'lblArrivalDate.Visible = False
-=======
->>>>>>> 7ba4d9e0cf15db48332c536ae5a60e9511323aa5
-=======
-        'lblArrivalDate.Visible = False
->>>>>>> 49da96fcdc7d0ddbf070ef2450c2306a548bd3b1
         dtpArrivalDate.Visible = False
         cbxArrivalTime.Visible = False
         Me.Size = New Size(1563, 957)
