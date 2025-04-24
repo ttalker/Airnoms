@@ -22,63 +22,54 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        btnTicket = New Button()
-        btnBooking = New Button()
-        btnBook = New Button()
-        btnClear = New Button()
+        btnBookingUser = New Button()
+        btnHomeUser = New Button()
+        lblMainUser = New Label()
         SuspendLayout()
         ' 
-        ' btnTicket
+        ' btnBookingUser
         ' 
-        btnTicket.Location = New Point(241, 21)
-        btnTicket.Name = "btnTicket"
-        btnTicket.Size = New Size(194, 58)
-        btnTicket.TabIndex = 14
-        btnTicket.Text = "TICKET"
-        btnTicket.UseVisualStyleBackColor = True
+        btnBookingUser.Location = New Point(241, 21)
+        btnBookingUser.Name = "btnBookingUser"
+        btnBookingUser.Size = New Size(194, 58)
+        btnBookingUser.TabIndex = 5
+        btnBookingUser.Text = "BOOKING"
+        btnBookingUser.UseVisualStyleBackColor = True
         ' 
-        ' btnBooking
+        ' btnHomeUser
         ' 
-        btnBooking.Location = New Point(27, 22)
-        btnBooking.Name = "btnBooking"
-        btnBooking.Size = New Size(194, 58)
-        btnBooking.TabIndex = 13
-        btnBooking.Text = "BOOKING"
-        btnBooking.UseVisualStyleBackColor = True
+        btnHomeUser.Location = New Point(27, 22)
+        btnHomeUser.Name = "btnHomeUser"
+        btnHomeUser.Size = New Size(194, 58)
+        btnHomeUser.TabIndex = 4
+        btnHomeUser.Text = "HOME"
+        btnHomeUser.UseVisualStyleBackColor = True
         ' 
-        ' btnBook
+        ' lblMainUser
         ' 
-        btnBook.Location = New Point(1294, 797)
-        btnBook.Name = "btnBook"
-        btnBook.Size = New Size(194, 58)
-        btnBook.TabIndex = 18
-        btnBook.Text = "BOOK"
-        btnBook.UseVisualStyleBackColor = True
-        ' 
-        ' btnClear
-        ' 
-        btnClear.Location = New Point(1080, 797)
-        btnClear.Name = "btnClear"
-        btnClear.Size = New Size(194, 58)
-        btnClear.TabIndex = 17
-        btnClear.Text = "CLEAR"
-        btnClear.UseVisualStyleBackColor = True
+        lblMainUser.Image = My.Resources.Resources.Main
+        lblMainUser.Location = New Point(29, 101)
+        lblMainUser.Name = "lblMainUser"
+        lblMainUser.Size = New Size(1488, 781)
+        lblMainUser.TabIndex = 6
+        lblMainUser.Text = " "
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
-        AutoScaleMode = AutoScaleMode.Font
+        AutoScaleDimensions = New SizeF(120F, 120F)
+        AutoScaleMode = AutoScaleMode.Dpi
         ClientSize = New Size(1545, 910)
-        Controls.Add(btnTicket)
-        Controls.Add(btnBooking)
-        Controls.Add(btnBook)
-        Controls.Add(btnClear)
+        Controls.Add(lblMainUser)
+        Controls.Add(btnBookingUser)
+        Controls.Add(btnHomeUser)
+        MaximumSize = New Size(1563, 957)
         Name = "Form3"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Form3"
         ResumeLayout(False)
     End Sub
-    Friend WithEvents btnTicket As Button
-    Friend WithEvents btnBooking As Button
-    Friend WithEvents btnBook As Button
-    Friend WithEvents btnClear As Button
+
+    Friend WithEvents btnBookingUser As Button
+    Friend WithEvents btnHomeUser As Button
+    Friend WithEvents lblMainUser As Label
 End Class

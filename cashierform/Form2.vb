@@ -19,4 +19,6 @@
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
         Form1.support_form.Show()
     End Sub
+
+
 End Class

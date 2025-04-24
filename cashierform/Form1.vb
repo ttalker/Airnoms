@@ -12,25 +12,25 @@
     End Sub
     'base load'
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+<<<<<<< HEAD
         'lblArrivalDate.Visible = False
+=======
+>>>>>>> 7ba4d9e0cf15db48332c536ae5a60e9511323aa5
         dtpArrivalDate.Visible = False
-        lblArrivalTime.Visible = False
         cbxArrivalTime.Visible = False
         Me.Size = New Size(1563, 957)
+        'cbxFlight.Size = New Size(110, 30)
+        'cbxSeatNumber.Size = New Size(110, 30)
     End Sub
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
         ticketIdentifier = "One Way Trip" 'identifies for one way trip'
-        lblArrivalDate.Visible = False
         dtpArrivalDate.Visible = False
-        lblArrivalTime.Visible = False
         cbxArrivalTime.Visible = False
     End Sub
 
     Private Sub rbnRoundTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnRoundTrip.CheckedChanged
         ticketIdentifier = "Round Trip" 'identifies for round trip'
-        lblArrivalDate.Visible = True
         dtpArrivalDate.Visible = True
-        lblArrivalTime.Visible = True
         cbxArrivalTime.Visible = True
 
     End Sub
@@ -70,4 +70,5 @@
         support_form.Show()
 
     End Sub
+
 End Class

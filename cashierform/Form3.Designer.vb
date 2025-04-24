@@ -33,14 +33,16 @@ Partial Class Form3
         ' 
         cmbPlanes.FormattingEnabled = True
         cmbPlanes.Items.AddRange(New Object() {"Airbus A320", "Airbus A321", "Airbus A330-300", "Airbus A350-900", "Airbus A380-800", "Boeing 737-800", "Boeing 737 MAX 8", "Boeing 777-300ER", "Boeing 787-9", "Boeing 747-8"})
-        cmbPlanes.Location = New Point(294, 33)
+        cmbPlanes.Location = New Point(235, 26)
+        cmbPlanes.Margin = New Padding(2, 2, 2, 2)
         cmbPlanes.Name = "cmbPlanes"
-        cmbPlanes.Size = New Size(182, 33)
+        cmbPlanes.Size = New Size(146, 28)
         cmbPlanes.TabIndex = 0
         ' 
         ' ptbImages
         ' 
-        ptbImages.Location = New Point(194, 180)
+        ptbImages.Location = New Point(155, 144)
+        ptbImages.Margin = New Padding(2, 2, 2, 2)
         ptbImages.Name = "ptbImages"
         ptbImages.Size = New Size(705, 2028)
         ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
@@ -54,16 +56,18 @@ Partial Class Form3
         Panel1.Controls.Add(ptbImages)
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(0, 0)
+        Panel1.Margin = New Padding(2, 2, 2, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(799, 1108)
+        Panel1.Size = New Size(639, 844)
         Panel1.TabIndex = 2
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(799, 1108)
+        ClientSize = New Size(639, 844)
         Controls.Add(Panel1)
+        Margin = New Padding(2, 2, 2, 2)
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
