@@ -12,7 +12,11 @@ Public Class Form3
 
     Private Sub btnAirbus320_Click(sender As Object, e As EventArgs) Handles btnAirbus320.Click
         planes = "Airbus 320"
-        ShowImage(planes, ptbImages, pnlPlane)
+        ShowImage(planes)
         AppearLabel(lblAirbus320)
+    End Sub
+
+    Private Sub btnAirbus321_Click(sender As Object, e As EventArgs) Handles btnAirbus321.Click
+
     End Sub
 End Class

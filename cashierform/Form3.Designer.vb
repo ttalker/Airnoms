@@ -29,6 +29,8 @@ Partial Class Form3
         pnlButtons = New Panel()
         lblAirbus320 = New Label()
         btnAirbus320 = New Button()
+        Label1 = New Label()
+        btnAirbus321 = New Button()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         pnlPlane.SuspendLayout()
         Panel2.SuspendLayout()
@@ -74,6 +76,8 @@ Partial Class Form3
         ' 
         pnlButtons.BackColor = Color.Transparent
         pnlButtons.BackgroundImage = My.Resources.Resources.buttonpics
+        pnlButtons.Controls.Add(btnAirbus321)
+        pnlButtons.Controls.Add(Label1)
         pnlButtons.Controls.Add(lblAirbus320)
         pnlButtons.Controls.Add(btnAirbus320)
         pnlButtons.Location = New Point(12, 23)
@@ -84,7 +88,7 @@ Partial Class Form3
         ' lblAirbus320
         ' 
         lblAirbus320.Image = My.Resources.Resources.Airbus320pic
-        lblAirbus320.Location = New Point(37, 34)
+        lblAirbus320.Location = New Point(37, 28)
         lblAirbus320.Name = "lblAirbus320"
         lblAirbus320.Size = New Size(328, 92)
         lblAirbus320.TabIndex = 2
@@ -95,9 +99,27 @@ Partial Class Form3
         btnAirbus320.BackColor = Color.Transparent
         btnAirbus320.Location = New Point(12, 28)
         btnAirbus320.Name = "btnAirbus320"
-        btnAirbus320.Size = New Size(381, 98)
+        btnAirbus320.Size = New Size(381, 79)
         btnAirbus320.TabIndex = 2
         btnAirbus320.UseVisualStyleBackColor = False
+        ' 
+        ' Label1
+        ' 
+        Label1.Image = My.Resources.Resources.Airbus321pics
+        Label1.Location = New Point(37, 110)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(328, 92)
+        Label1.TabIndex = 3
+        Label1.Visible = False
+        ' 
+        ' btnAirbus321
+        ' 
+        btnAirbus321.BackColor = Color.Transparent
+        btnAirbus321.Location = New Point(12, 123)
+        btnAirbus321.Name = "btnAirbus321"
+        btnAirbus321.Size = New Size(381, 89)
+        btnAirbus321.TabIndex = 4
+        btnAirbus321.UseVisualStyleBackColor = False
         ' 
         ' Form3
         ' 
@@ -120,4 +142,6 @@ Partial Class Form3
     Friend WithEvents pnlButtons As Panel
     Friend WithEvents btnAirbus320 As Button
     Friend WithEvents lblAirbus320 As Label
+    Friend WithEvents btnAirbus321 As Button
+    Friend WithEvents Label1 As Label
 End Class
