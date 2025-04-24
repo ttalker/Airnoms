@@ -1,25 +1,25 @@
 ﻿Imports System.IO
 
 Module Module1
-    Public Sub ShowImage(planes As String)
+    Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
         Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
-        Form3.ptbImages.Size = New Size(1, 1)
-        Form3.ptbImages.Location = New Point(0, 0)
-        If Form3.ptbImages.Image IsNot Nothing Then
-            Form3.ptbImages.Image.Dispose()
+        ptbImages.Size = New Size(1, 1)
+        ptbImages.Location = New Point(0, 0)
+        If ptbImages.Image IsNot Nothing Then
+            ptbImages.Image.Dispose()
         End If
 
         Dim img = Image.FromFile(filepath)
-        Form3.ptbImages.Image = img
+        ptbImages.Image = img
 
-        Form3.ptbImages.SizeMode = PictureBoxSizeMode.Zoom
+        ptbImages.SizeMode = PictureBoxSizeMode.Zoom
 
-        Dim panelWidth = Form3.pnlPlane.ClientSize.Width
+        Dim panelWidth = pnlPlane.ClientSize.Width
         Dim aspectRatio = img.Height / img.Width
         Dim newWidth = panelWidth
         Dim newHeight = CInt(newWidth * aspectRatio)
 
-        Form3.ptbImages.Size = New Size(newWidth, newHeight)
+        ptbImages.Size = New Size(newWidth, newHeight)
 
     End Sub
 
@@ -34,13 +34,9 @@ Module Module1
         button.BackColor = Color.Transparent
     End Sub
 
-    Public Sub DisappearAllLabel()
-        Form3.lblAirbus320.Visible = False
-
-    End Sub
-
     Public Sub AppearLabel(label As Label)
         label.Visible = True
+        label.BringToFront()
     End Sub
 
 End Module
