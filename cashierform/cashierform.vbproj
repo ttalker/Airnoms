@@ -13,7 +13,6 @@
     <None Remove="Seatmaps\Airbus A321.png" />
     <None Remove="Seatmaps\Airbus A330-300.png" />
     <None Remove="Seatmaps\Airbus A350-900.png" />
-    <None Remove="Seatmaps\Airbus A380-800.png" />
     <None Remove="Seatmaps\Boeing 737 MAX 8.png" />
     <None Remove="Seatmaps\Boeing 737-800.png" />
     <None Remove="Seatmaps\Boeing 747-8.png" />
@@ -34,7 +33,7 @@
     <Content Include="Seatmaps\Airbus A350-900.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Seatmaps\Airbus A380-800.png">
+    <Content Include="Seatmaps\Airbus A330-800.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Seatmaps\Boeing 737 MAX 8.png">

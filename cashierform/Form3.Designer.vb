@@ -25,19 +25,23 @@ Partial Class Form3
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         ptbImages = New PictureBox()
         pnlPlane = New Panel()
+        Button3 = New Button()
         Label1 = New Label()
-        Panel2 = New Panel()
+        pnlBg = New Panel()
         pnlButtons = New Panel()
+        btnAirbus330800 = New Button()
+        lblAirbus330800 = New Label()
+        btnAirbus330300 = New Button()
         lblAirbus330300 = New Label()
         btnAirbus321 = New Button()
         btnAirbus320 = New Button()
         lblAirbus321 = New Label()
         lblAirbus320 = New Label()
-        Button1 = New Button()
-        btnAirbus330300 = New Button()
+        btnAirbus350900 = New Button()
+        lblAirbus350900 = New Label()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         pnlPlane.SuspendLayout()
-        Panel2.SuspendLayout()
+        pnlBg.SuspendLayout()
         pnlButtons.SuspendLayout()
         SuspendLayout()
         ' 
@@ -45,7 +49,7 @@ Partial Class Form3
         ' 
         ptbImages.BackColor = Color.Transparent
         ptbImages.BackgroundImageLayout = ImageLayout.None
-        ptbImages.Location = New Point(220, 157)
+        ptbImages.Location = New Point(112, 110)
         ptbImages.Name = "ptbImages"
         ptbImages.Size = New Size(400, 100)
         ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
@@ -58,7 +62,7 @@ Partial Class Form3
         pnlPlane.BackColor = Color.Transparent
         pnlPlane.BackgroundImage = CType(resources.GetObject("pnlPlane.BackgroundImage"), Image)
         pnlPlane.BackgroundImageLayout = ImageLayout.Stretch
-        pnlPlane.Controls.Add(Button1)
+        pnlPlane.Controls.Add(Button3)
         pnlPlane.Controls.Add(ptbImages)
         pnlPlane.Controls.Add(Label1)
         pnlPlane.Location = New Point(446, 23)
@@ -66,41 +70,81 @@ Partial Class Form3
         pnlPlane.Size = New Size(692, 917)
         pnlPlane.TabIndex = 2
         ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.Transparent
+        Button3.Location = New Point(63, 620)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(381, 79)
+        Button3.TabIndex = 10
+        Button3.UseVisualStyleBackColor = False
+        ' 
         ' Label1
         ' 
         Label1.Image = My.Resources.Resources.Airbus321pics
-        Label1.Location = New Point(54, 356)
+        Label1.Location = New Point(112, 368)
         Label1.Name = "Label1"
         Label1.Size = New Size(328, 92)
         Label1.TabIndex = 5
         Label1.Visible = False
         ' 
-        ' Panel2
+        ' pnlBg
         ' 
-        Panel2.BackColor = Color.Transparent
-        Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
-        Panel2.Controls.Add(pnlPlane)
-        Panel2.Controls.Add(pnlButtons)
-        Panel2.Dock = DockStyle.Fill
-        Panel2.Location = New Point(0, 0)
-        Panel2.Name = "Panel2"
-        Panel2.Size = New Size(1142, 952)
-        Panel2.TabIndex = 3
+        pnlBg.BackColor = Color.Transparent
+        pnlBg.BackgroundImage = CType(resources.GetObject("pnlBg.BackgroundImage"), Image)
+        pnlBg.Controls.Add(pnlPlane)
+        pnlBg.Controls.Add(pnlButtons)
+        pnlBg.Dock = DockStyle.Fill
+        pnlBg.Location = New Point(0, 0)
+        pnlBg.Name = "pnlBg"
+        pnlBg.Size = New Size(1156, 953)
+        pnlBg.TabIndex = 3
         ' 
         ' pnlButtons
         ' 
         pnlButtons.BackColor = Color.Transparent
         pnlButtons.BackgroundImage = My.Resources.Resources.buttonpics
+        pnlButtons.Controls.Add(btnAirbus330800)
+        pnlButtons.Controls.Add(lblAirbus330800)
         pnlButtons.Controls.Add(btnAirbus330300)
         pnlButtons.Controls.Add(lblAirbus330300)
         pnlButtons.Controls.Add(btnAirbus321)
         pnlButtons.Controls.Add(btnAirbus320)
         pnlButtons.Controls.Add(lblAirbus321)
         pnlButtons.Controls.Add(lblAirbus320)
+        pnlButtons.Controls.Add(btnAirbus350900)
+        pnlButtons.Controls.Add(lblAirbus350900)
         pnlButtons.Location = New Point(12, 23)
         pnlButtons.Name = "pnlButtons"
         pnlButtons.Size = New Size(411, 917)
         pnlButtons.TabIndex = 0
+        ' 
+        ' btnAirbus330800
+        ' 
+        btnAirbus330800.BackColor = Color.Transparent
+        btnAirbus330800.Location = New Point(12, 381)
+        btnAirbus330800.Name = "btnAirbus330800"
+        btnAirbus330800.Size = New Size(381, 79)
+        btnAirbus330800.TabIndex = 11
+        btnAirbus330800.UseVisualStyleBackColor = False
+        ' 
+        ' lblAirbus330800
+        ' 
+        lblAirbus330800.Image = My.Resources.Resources.Airbus330_800pics
+        lblAirbus330800.Location = New Point(37, 368)
+        lblAirbus330800.Name = "lblAirbus330800"
+        lblAirbus330800.Size = New Size(328, 92)
+        lblAirbus330800.TabIndex = 11
+        lblAirbus330800.Visible = False
+        ' 
+        ' btnAirbus330300
+        ' 
+        btnAirbus330300.BackColor = Color.Transparent
+        btnAirbus330300.Location = New Point(12, 205)
+        btnAirbus330300.Name = "btnAirbus330300"
+        btnAirbus330300.Size = New Size(381, 86)
+        btnAirbus330300.TabIndex = 8
+        btnAirbus330300.UseVisualStyleBackColor = False
         ' 
         ' lblAirbus330300
         ' 
@@ -114,7 +158,7 @@ Partial Class Form3
         ' btnAirbus321
         ' 
         btnAirbus321.BackColor = Color.Transparent
-        btnAirbus321.Location = New Point(12, 111)
+        btnAirbus321.Location = New Point(12, 110)
         btnAirbus321.Name = "btnAirbus321"
         btnAirbus321.Size = New Size(381, 89)
         btnAirbus321.TabIndex = 4
@@ -147,42 +191,42 @@ Partial Class Form3
         lblAirbus320.TabIndex = 2
         lblAirbus320.Visible = False
         ' 
-        ' Button1
+        ' btnAirbus350900
         ' 
-        Button1.BackColor = Color.Transparent
-        Button1.Location = New Point(114, 465)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(381, 89)
-        Button1.TabIndex = 7
-        Button1.UseVisualStyleBackColor = False
+        btnAirbus350900.BackColor = Color.Transparent
+        btnAirbus350900.Location = New Point(12, 297)
+        btnAirbus350900.Name = "btnAirbus350900"
+        btnAirbus350900.Size = New Size(381, 79)
+        btnAirbus350900.TabIndex = 8
+        btnAirbus350900.UseVisualStyleBackColor = False
         ' 
-        ' btnAirbus330300
+        ' lblAirbus350900
         ' 
-        btnAirbus330300.BackColor = Color.Transparent
-        btnAirbus330300.Location = New Point(12, 205)
-        btnAirbus330300.Name = "btnAirbus330300"
-        btnAirbus330300.Size = New Size(381, 89)
-        btnAirbus330300.TabIndex = 8
-        btnAirbus330300.UseVisualStyleBackColor = False
+        lblAirbus350900.Image = My.Resources.Resources.airbus350_900pics
+        lblAirbus350900.Location = New Point(37, 286)
+        lblAirbus350900.Name = "lblAirbus350900"
+        lblAirbus350900.Size = New Size(328, 92)
+        lblAirbus350900.TabIndex = 9
+        lblAirbus350900.Visible = False
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1142, 952)
-        Controls.Add(Panel2)
+        ClientSize = New Size(1156, 953)
+        Controls.Add(pnlBg)
         Name = "Form3"
         Text = "Form3"
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
         pnlPlane.ResumeLayout(False)
         pnlPlane.PerformLayout()
-        Panel2.ResumeLayout(False)
+        pnlBg.ResumeLayout(False)
         pnlButtons.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
     Friend WithEvents ptbImages As PictureBox
     Friend WithEvents pnlPlane As Panel
-    Friend WithEvents Panel2 As Panel
+    Friend WithEvents pnlBg As Panel
     Friend WithEvents pnlButtons As Panel
     Friend WithEvents btnAirbus320 As Button
     Friend WithEvents lblAirbus320 As Label
@@ -192,4 +236,9 @@ Partial Class Form3
     Friend WithEvents lblAirbus330300 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents btnAirbus330300 As Button
+    Friend WithEvents btnAirbus350900 As Button
+    Friend WithEvents lblAirbus350900 As Label
+    Friend WithEvents Button3 As Button
+    Friend WithEvents btnAirbus330800 As Button
+    Friend WithEvents lblAirbus330800 As Label
 End Class
