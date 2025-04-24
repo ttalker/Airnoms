@@ -27,6 +27,7 @@ Partial Class Form3
         pnlPlane = New Panel()
         Panel2 = New Panel()
         pnlButtons = New Panel()
+        lblAirbus320 = New Label()
         btnAirbus320 = New Button()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
         pnlPlane.SuspendLayout()
@@ -73,18 +74,28 @@ Partial Class Form3
         ' 
         pnlButtons.BackColor = Color.Transparent
         pnlButtons.BackgroundImage = My.Resources.Resources.buttonpics
+        pnlButtons.Controls.Add(lblAirbus320)
         pnlButtons.Controls.Add(btnAirbus320)
         pnlButtons.Location = New Point(12, 23)
         pnlButtons.Name = "pnlButtons"
         pnlButtons.Size = New Size(411, 917)
         pnlButtons.TabIndex = 0
         ' 
+        ' lblAirbus320
+        ' 
+        lblAirbus320.Image = My.Resources.Resources.Airbus320pic
+        lblAirbus320.Location = New Point(37, 34)
+        lblAirbus320.Name = "lblAirbus320"
+        lblAirbus320.Size = New Size(328, 92)
+        lblAirbus320.TabIndex = 2
+        lblAirbus320.Visible = False
+        ' 
         ' btnAirbus320
         ' 
         btnAirbus320.BackColor = Color.Transparent
-        btnAirbus320.Location = New Point(13, 20)
+        btnAirbus320.Location = New Point(12, 28)
         btnAirbus320.Name = "btnAirbus320"
-        btnAirbus320.Size = New Size(381, 76)
+        btnAirbus320.Size = New Size(381, 98)
         btnAirbus320.TabIndex = 2
         btnAirbus320.UseVisualStyleBackColor = False
         ' 
@@ -108,4 +119,5 @@ Partial Class Form3
     Friend WithEvents Panel2 As Panel
     Friend WithEvents pnlButtons As Panel
     Friend WithEvents btnAirbus320 As Button
+    Friend WithEvents lblAirbus320 As Label
 End Class
