@@ -26,7 +26,6 @@ Partial Class Form1
         btnTicket = New Button()
         btnClear = New Button()
         btnBook = New Button()
-        btnSupport = New Button()
         rbnOneWayTrip = New RadioButton()
         rbnRoundTrip = New RadioButton()
         cbxDeparture = New ComboBox()
@@ -46,6 +45,7 @@ Partial Class Form1
         BTNFILL = New Button()
         cbxFlight = New ComboBox()
         cbxSeatNumber = New ComboBox()
+        btnSupport = New Button()
         SuspendLayout()
         ' 
         ' btnBooking
@@ -87,16 +87,6 @@ Partial Class Form1
         btnBook.TabIndex = 7
         btnBook.Text = " "
         btnBook.UseVisualStyleBackColor = True
-        ' 
-        ' btnSupport
-        ' 
-        btnSupport.Location = New Point(487, 26)
-        btnSupport.Margin = New Padding(2)
-        btnSupport.Name = "btnSupport"
-        btnSupport.Size = New Size(180, 63)
-        btnSupport.TabIndex = 11
-        btnSupport.Text = " "
-        btnSupport.UseVisualStyleBackColor = True
         ' 
         ' rbnOneWayTrip
         ' 
@@ -270,12 +260,21 @@ Partial Class Form1
         cbxSeatNumber.Size = New Size(108, 23)
         cbxSeatNumber.TabIndex = 31
         ' 
+        ' btnSupport
+        ' 
+        btnSupport.Location = New Point(487, 26)
+        btnSupport.Margin = New Padding(2)
+        btnSupport.Name = "btnSupport"
+        btnSupport.Size = New Size(180, 63)
+        btnSupport.TabIndex = 11
+        btnSupport.Text = " "
+        btnSupport.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____Round_Trip__2_
         ClientSize = New Size(1547, 911)
         Controls.Add(cbxSeatNumber)
         Controls.Add(btnSupport)
@@ -322,7 +321,6 @@ Partial Class Form1
     Friend WithEvents btnClear As Button
     Friend WithEvents btnBook As Button
     Friend WithEvents lblCustomerData As Label
-    Friend WithEvents btnSupport As Button
     Friend WithEvents rbnOneWayTrip As RadioButton
     Friend WithEvents rbnRoundTrip As RadioButton
     Friend WithEvents cbxDeparture As ComboBox
@@ -342,4 +340,5 @@ Partial Class Form1
     Friend WithEvents BTNFILL As Button
     Friend WithEvents cbxFlight As ComboBox
     Friend WithEvents cbxSeatNumber As ComboBox
+    Friend WithEvents btnSupport As Button
 End Class
