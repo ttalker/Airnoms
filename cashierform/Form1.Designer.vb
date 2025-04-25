@@ -53,17 +53,17 @@ Partial Class Form1
         ' 
         ' btnBooking
         ' 
-        btnBooking.Location = New Point(86, 28)
+        btnBooking.Location = New Point(82, 27)
         btnBooking.Margin = New Padding(3, 2, 3, 2)
         btnBooking.Name = "btnBooking"
-        btnBooking.Size = New Size(177, 67)
+        btnBooking.Size = New Size(182, 67)
         btnBooking.TabIndex = 1
         btnBooking.Text = " "
         btnBooking.UseVisualStyleBackColor = True
         ' 
         ' btnTicket
         ' 
-        btnTicket.Location = New Point(291, 27)
+        btnTicket.Location = New Point(291, 29)
         btnTicket.Margin = New Padding(3, 2, 3, 2)
         btnTicket.Name = "btnTicket"
         btnTicket.Size = New Size(178, 64)
@@ -73,20 +73,20 @@ Partial Class Form1
         ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(1088, 795)
+        btnClear.Location = New Point(1088, 799)
         btnClear.Margin = New Padding(3, 2, 3, 2)
         btnClear.Name = "btnClear"
-        btnClear.Size = New Size(181, 78)
+        btnClear.Size = New Size(181, 65)
         btnClear.TabIndex = 5
         btnClear.Text = " "
         btnClear.UseVisualStyleBackColor = True
         ' 
         ' btnBook
         ' 
-        btnBook.Location = New Point(1285, 795)
+        btnBook.Location = New Point(1281, 799)
         btnBook.Margin = New Padding(3, 2, 3, 2)
         btnBook.Name = "btnBook"
-        btnBook.Size = New Size(178, 78)
+        btnBook.Size = New Size(188, 68)
         btnBook.TabIndex = 7
         btnBook.Text = " "
         btnBook.UseVisualStyleBackColor = True
@@ -265,7 +265,7 @@ Partial Class Form1
         ' 
         ' btnSupport
         ' 
-        btnSupport.Location = New Point(487, 26)
+        btnSupport.Location = New Point(494, 30)
         btnSupport.Margin = New Padding(2)
         btnSupport.Name = "btnSupport"
         btnSupport.Size = New Size(180, 63)
@@ -284,7 +284,7 @@ Partial Class Form1
         ' 
         ' btnExit
         ' 
-        btnExit.Location = New Point(710, 27)
+        btnExit.Location = New Point(703, 31)
         btnExit.Margin = New Padding(2)
         btnExit.Name = "btnExit"
         btnExit.Size = New Size(143, 61)

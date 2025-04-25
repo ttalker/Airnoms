@@ -1,9 +1,4 @@
 ﻿Public Class Form2
-    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.DoubleBuffered = True
-        Me.Size = New Size(1563, 957)
-    End Sub
-
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Me.Hide()
         Form1.Show()
@@ -19,5 +14,49 @@
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
         Form1.support_form.Show()
     End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+    End Sub
+
+
+
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MakeTransparent(btnBooking)
+        MakeTransparent(btnTicket)
+        MakeTransparent(btnSupport)
+        MakeTransparent(btnExit)
+        MakeTransparent(btnCalculate)
+        MakeTransparent(btnResetTicket)
+        MakeTransparent(btnNextTicket)
+        MakeTransparent(btnProcessTicket)
+
+        btnBooking.Parent = pbxCashierTicket
+        btnTicket.Parent = pbxCashierTicket
+        btnSupport.Parent = pbxCashierTicket
+        btnExit.Parent = pbxCashierTicket
+        btnCalculate.Parent = pbxCashierTicket
+        btnResetTicket.Parent = pbxCashierTicket
+        btnNextTicket.Parent = pbxCashierTicket
+        btnProcessTicket.Parent = pbxCashierTicket ' transparency of the buttons
+
+        hoverButton(btnBooking)
+        hoverButton(btnTicket)
+        hoverButton(btnSupport)
+        hoverButton(btnExit)
+        hoverButton(btnCalculate)
+        hoverButton(btnResetTicket)
+        hoverButton(btnProcessTicket) ' hover effect of the buttons
+
+        btnNextTicket.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnNextTicket.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+        btnCalculate.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnCalculate.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' hover effect of the button next ticket and calculate
+
+        ' Set the background color of the form to transparent   
+
+        Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
+    End Sub
+
 
 End Class

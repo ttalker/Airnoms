@@ -2,6 +2,25 @@
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
 
+    Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
+        Me.Hide()
+        Form2.Show()
+    End Sub
+
+    Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
+        Form2.Hide()
+        Me.Show()
+    End Sub
+
+    Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
+        support_form.Show()
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Me.Close()
+
+    End Sub
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnBooking)
         MakeTransparent(btnTicket)
@@ -29,23 +48,6 @@
 
     End Sub
 
-    Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-        Me.Hide()
-        Form2.Show()
-    End Sub
-
-    Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
-        Form2.Hide()
-        Me.Show()
-    End Sub
-
-    Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
-        support_form.Show()
-    End Sub
-
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-
-    End Sub
 
 
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
@@ -79,7 +81,6 @@
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-
         tbxFullname.Clear()
         tbxAddress.Clear()
         tbxCity.Clear()
