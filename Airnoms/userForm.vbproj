@@ -46,4 +46,8 @@
     <Folder Include="imageFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\cashierform\cashierform.vbproj" />
+  </ItemGroup>
+
 </Project>
