@@ -63,9 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Airbus320pic() As System.Drawing.Bitmap
+        Friend ReadOnly Property AB320pup() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Airbus320pic", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AB320pup", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -73,9 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Airbus321pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property AB321() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Airbus321pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AB321", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -83,9 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Airbus330_300pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property AB330300() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Airbus330-300pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AB330300", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -93,9 +93,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Airbus330_800pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property AB330800() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Airbus330-800pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("AB330800", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -103,9 +103,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property airbus350_900pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property Ab350() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("airbus350-900pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Ab350", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -113,9 +113,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Boeing737_800pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property Bo300er() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Boeing737-800pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Bo300er", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -123,9 +123,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Boeing737Maxpics() As System.Drawing.Bitmap
+        Friend ReadOnly Property bo7478() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Boeing737Maxpics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("bo7478", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -133,9 +133,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Boeing747_8pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property bo7879() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Boeing747-8pics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("bo7879", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -143,9 +143,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Boeing777_300ERpics() As System.Drawing.Bitmap
+        Friend ReadOnly Property Boe737800() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Boeing777-300ERpics", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Boe737800", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -153,29 +153,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Boeing787_9pics() As System.Drawing.Bitmap
+        Friend ReadOnly Property BOE737max() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Boeing787-9pics", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property buttonpics() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("buttonpics", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property LOGO() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("LOGO", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("BOE737max", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -226,16 +206,6 @@ Namespace My.Resources
         Friend ReadOnly Property MAIN_REFERENCE__REAL____TICKET__1_() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("MAIN REFERENCE (REAL) - TICKET (1)", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property picturebg() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("picturebg", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

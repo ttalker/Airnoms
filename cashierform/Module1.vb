@@ -23,8 +23,6 @@ Module Module1
 
     End Sub
 
-
-
     Public Sub MakeTransparent(button As Button)
         button.BackColor = Color.Transparent
         button.FlatStyle = FlatStyle.Flat
@@ -50,5 +48,7 @@ Module Module1
         btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(90, 79, 176, 231)
         btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 79, 176, 231)
     End Sub
+
+
 
 End Module

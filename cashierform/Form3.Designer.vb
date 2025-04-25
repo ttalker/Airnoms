@@ -23,41 +23,80 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        ptbImages = New PictureBox()
         pnlPlane = New Panel()
+        pbx7478 = New PictureBox()
         btnBoeing7478 = New Button()
-        lblBoeing7478 = New Label()
-        btnBoeing737MAX = New Button()
-        pnlBg = New Panel()
-        pnlButtons = New Panel()
+        ptbImages = New PictureBox()
         btnBoeing7879 = New Button()
-        lblBoeing7879 = New Label()
         btnBoeing77300er = New Button()
-        lblBoeing777300er = New Label()
-        lblBoeing737MAX = New Label()
-        btnBoeing737800 = New Button()
-        lblBoeing737800 = New Label()
+        btnBoeing737MAX = New Button()
         btnAirbus330800 = New Button()
-        lblAirbus330800 = New Label()
+        btnBoeing737800 = New Button()
         btnAirbus330300 = New Button()
-        lblAirbus330300 = New Label()
+        btnAirbus350900 = New Button()
         btnAirbus321 = New Button()
         btnAirbus320 = New Button()
-        lblAirbus321 = New Label()
-        lblAirbus320 = New Label()
-        btnAirbus350900 = New Button()
-        lblAirbus350900 = New Label()
-        CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
+        pbxAB320 = New PictureBox()
+        pbxAB321 = New PictureBox()
+        pbxA330300 = New PictureBox()
+        pbx350 = New PictureBox()
+        pbxAB330800 = New PictureBox()
+        pbxBoeing737800 = New PictureBox()
+        pbx737MAX = New PictureBox()
+        pbx300er = New PictureBox()
+        pbx7879 = New PictureBox()
         pnlPlane.SuspendLayout()
-        pnlBg.SuspendLayout()
-        pnlButtons.SuspendLayout()
+        CType(pbx7478, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxAB320, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxAB321, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxA330300, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbx350, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxAB330800, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxBoeing737800, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbx737MAX, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbx300er, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbx7879, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
+        ' 
+        ' pnlPlane
+        ' 
+        pnlPlane.AutoScroll = True
+        pnlPlane.BackColor = Color.Transparent
+        pnlPlane.BackgroundImageLayout = ImageLayout.Stretch
+        pnlPlane.Controls.Add(ptbImages)
+        pnlPlane.Location = New Point(354, 22)
+        pnlPlane.Margin = New Padding(3, 2, 3, 2)
+        pnlPlane.Name = "pnlPlane"
+        pnlPlane.Size = New Size(568, 658)
+        pnlPlane.TabIndex = 2
+        ' 
+        ' pbx7478
+        ' 
+        pbx7478.BackColor = Color.Transparent
+        pbx7478.BackgroundImage = My.Resources.Resources.bo7478
+        pbx7478.Location = New Point(32, 605)
+        pbx7478.Name = "pbx7478"
+        pbx7478.Size = New Size(280, 62)
+        pbx7478.TabIndex = 4
+        pbx7478.TabStop = False
+        pbx7478.Visible = False
+        ' 
+        ' btnBoeing7478
+        ' 
+        btnBoeing7478.BackColor = Color.Transparent
+        btnBoeing7478.Location = New Point(34, 607)
+        btnBoeing7478.Margin = New Padding(3, 2, 3, 2)
+        btnBoeing7478.Name = "btnBoeing7478"
+        btnBoeing7478.Size = New Size(278, 56)
+        btnBoeing7478.TabIndex = 12
+        btnBoeing7478.UseVisualStyleBackColor = False
         ' 
         ' ptbImages
         ' 
         ptbImages.BackColor = Color.Transparent
         ptbImages.BackgroundImageLayout = ImageLayout.None
-        ptbImages.Location = New Point(136, 108)
+        ptbImages.Location = New Point(62, 23)
         ptbImages.Margin = New Padding(2)
         ptbImages.Name = "ptbImages"
         ptbImages.Size = New Size(400, 100)
@@ -65,290 +104,261 @@ Partial Class Form3
         ptbImages.TabIndex = 1
         ptbImages.TabStop = False
         ' 
-        ' pnlPlane
-        ' 
-        pnlPlane.AutoScroll = True
-        pnlPlane.BackColor = Color.Transparent
-        pnlPlane.BackgroundImage = CType(resources.GetObject("pnlPlane.BackgroundImage"), Image)
-        pnlPlane.BackgroundImageLayout = ImageLayout.Stretch
-        pnlPlane.Controls.Add(ptbImages)
-        pnlPlane.Location = New Point(390, 17)
-        pnlPlane.Margin = New Padding(3, 2, 3, 2)
-        pnlPlane.Name = "pnlPlane"
-        pnlPlane.Size = New Size(606, 688)
-        pnlPlane.TabIndex = 2
-        ' 
-        ' btnBoeing7478
-        ' 
-        btnBoeing7478.BackColor = Color.Transparent
-        btnBoeing7478.Location = New Point(14, 606)
-        btnBoeing7478.Margin = New Padding(3, 2, 3, 2)
-        btnBoeing7478.Name = "btnBoeing7478"
-        btnBoeing7478.Size = New Size(333, 59)
-        btnBoeing7478.TabIndex = 12
-        btnBoeing7478.UseVisualStyleBackColor = False
-        ' 
-        ' lblBoeing7478
-        ' 
-        lblBoeing7478.Image = My.Resources.Resources.Boeing747_8pics
-        lblBoeing7478.Location = New Point(32, 604)
-        lblBoeing7478.Name = "lblBoeing7478"
-        lblBoeing7478.Size = New Size(287, 69)
-        lblBoeing7478.TabIndex = 11
-        lblBoeing7478.Visible = False
-        ' 
-        ' btnBoeing737MAX
-        ' 
-        btnBoeing737MAX.BackColor = Color.Transparent
-        btnBoeing737MAX.Location = New Point(14, 407)
-        btnBoeing737MAX.Margin = New Padding(3, 2, 3, 2)
-        btnBoeing737MAX.Name = "btnBoeing737MAX"
-        btnBoeing737MAX.Size = New Size(333, 59)
-        btnBoeing737MAX.TabIndex = 10
-        btnBoeing737MAX.UseVisualStyleBackColor = False
-        ' 
-        ' pnlBg
-        ' 
-        pnlBg.BackColor = Color.Transparent
-        pnlBg.BackgroundImage = CType(resources.GetObject("pnlBg.BackgroundImage"), Image)
-        pnlBg.Controls.Add(pnlPlane)
-        pnlBg.Controls.Add(pnlButtons)
-        pnlBg.Dock = DockStyle.Fill
-        pnlBg.Location = New Point(0, 0)
-        pnlBg.Margin = New Padding(3, 2, 3, 2)
-        pnlBg.Name = "pnlBg"
-        pnlBg.Size = New Size(1050, 783)
-        pnlBg.TabIndex = 3
-        ' 
-        ' pnlButtons
-        ' 
-        pnlButtons.BackColor = Color.Transparent
-        pnlButtons.BackgroundImage = My.Resources.Resources.buttonpics
-        pnlButtons.Controls.Add(btnBoeing7478)
-        pnlButtons.Controls.Add(btnBoeing7879)
-        pnlButtons.Controls.Add(lblBoeing7478)
-        pnlButtons.Controls.Add(lblBoeing7879)
-        pnlButtons.Controls.Add(btnBoeing77300er)
-        pnlButtons.Controls.Add(lblBoeing777300er)
-        pnlButtons.Controls.Add(btnBoeing737MAX)
-        pnlButtons.Controls.Add(lblBoeing737MAX)
-        pnlButtons.Controls.Add(btnBoeing737800)
-        pnlButtons.Controls.Add(lblBoeing737800)
-        pnlButtons.Controls.Add(btnAirbus330800)
-        pnlButtons.Controls.Add(lblAirbus330800)
-        pnlButtons.Controls.Add(btnAirbus330300)
-        pnlButtons.Controls.Add(lblAirbus330300)
-        pnlButtons.Controls.Add(btnAirbus321)
-        pnlButtons.Controls.Add(btnAirbus320)
-        pnlButtons.Controls.Add(lblAirbus321)
-        pnlButtons.Controls.Add(lblAirbus320)
-        pnlButtons.Controls.Add(btnAirbus350900)
-        pnlButtons.Controls.Add(lblAirbus350900)
-        pnlButtons.Location = New Point(10, 17)
-        pnlButtons.Margin = New Padding(3, 2, 3, 2)
-        pnlButtons.Name = "pnlButtons"
-        pnlButtons.Size = New Size(374, 688)
-        pnlButtons.TabIndex = 0
-        ' 
         ' btnBoeing7879
         ' 
         btnBoeing7879.BackColor = Color.Transparent
-        btnBoeing7879.Location = New Point(14, 537)
+        btnBoeing7879.Location = New Point(34, 548)
         btnBoeing7879.Margin = New Padding(3, 2, 3, 2)
         btnBoeing7879.Name = "btnBoeing7879"
-        btnBoeing7879.Size = New Size(333, 59)
+        btnBoeing7879.Size = New Size(278, 62)
         btnBoeing7879.TabIndex = 13
         btnBoeing7879.UseVisualStyleBackColor = False
-        ' 
-        ' lblBoeing7879
-        ' 
-        lblBoeing7879.Image = My.Resources.Resources.Boeing787_9pics
-        lblBoeing7879.Location = New Point(32, 535)
-        lblBoeing7879.Name = "lblBoeing7879"
-        lblBoeing7879.Size = New Size(287, 69)
-        lblBoeing7879.TabIndex = 13
-        lblBoeing7879.Visible = False
         ' 
         ' btnBoeing77300er
         ' 
         btnBoeing77300er.BackColor = Color.Transparent
-        btnBoeing77300er.Location = New Point(10, 473)
+        btnBoeing77300er.Location = New Point(32, 489)
         btnBoeing77300er.Margin = New Padding(3, 2, 3, 2)
         btnBoeing77300er.Name = "btnBoeing77300er"
-        btnBoeing77300er.Size = New Size(333, 59)
+        btnBoeing77300er.Size = New Size(280, 61)
         btnBoeing77300er.TabIndex = 13
         btnBoeing77300er.UseVisualStyleBackColor = False
         ' 
-        ' lblBoeing777300er
+        ' btnBoeing737MAX
         ' 
-        lblBoeing777300er.Image = My.Resources.Resources.Boeing777_300ERpics
-        lblBoeing777300er.Location = New Point(32, 473)
-        lblBoeing777300er.Name = "lblBoeing777300er"
-        lblBoeing777300er.Size = New Size(287, 69)
-        lblBoeing777300er.TabIndex = 13
-        lblBoeing777300er.Visible = False
-        ' 
-        ' lblBoeing737MAX
-        ' 
-        lblBoeing737MAX.Image = My.Resources.Resources.Boeing737Maxpics
-        lblBoeing737MAX.Location = New Point(32, 404)
-        lblBoeing737MAX.Name = "lblBoeing737MAX"
-        lblBoeing737MAX.Size = New Size(287, 69)
-        lblBoeing737MAX.TabIndex = 12
-        lblBoeing737MAX.Visible = False
-        ' 
-        ' btnBoeing737800
-        ' 
-        btnBoeing737800.BackColor = Color.Transparent
-        btnBoeing737800.Location = New Point(14, 347)
-        btnBoeing737800.Margin = New Padding(3, 2, 3, 2)
-        btnBoeing737800.Name = "btnBoeing737800"
-        btnBoeing737800.Size = New Size(333, 59)
-        btnBoeing737800.TabIndex = 11
-        btnBoeing737800.UseVisualStyleBackColor = False
-        ' 
-        ' lblBoeing737800
-        ' 
-        lblBoeing737800.Image = My.Resources.Resources.Boeing737_800pics
-        lblBoeing737800.Location = New Point(32, 345)
-        lblBoeing737800.Name = "lblBoeing737800"
-        lblBoeing737800.Size = New Size(287, 69)
-        lblBoeing737800.TabIndex = 11
-        lblBoeing737800.Visible = False
+        btnBoeing737MAX.BackColor = Color.Transparent
+        btnBoeing737MAX.Location = New Point(34, 425)
+        btnBoeing737MAX.Margin = New Padding(3, 2, 3, 2)
+        btnBoeing737MAX.Name = "btnBoeing737MAX"
+        btnBoeing737MAX.Size = New Size(278, 59)
+        btnBoeing737MAX.TabIndex = 10
+        btnBoeing737MAX.UseVisualStyleBackColor = False
         ' 
         ' btnAirbus330800
         ' 
         btnAirbus330800.BackColor = Color.Transparent
-        btnAirbus330800.Location = New Point(10, 280)
+        btnAirbus330800.Location = New Point(32, 303)
         btnAirbus330800.Margin = New Padding(3, 2, 3, 2)
         btnAirbus330800.Name = "btnAirbus330800"
-        btnAirbus330800.Size = New Size(333, 59)
+        btnAirbus330800.Size = New Size(281, 59)
         btnAirbus330800.TabIndex = 11
         btnAirbus330800.UseVisualStyleBackColor = False
         ' 
-        ' lblAirbus330800
+        ' btnBoeing737800
         ' 
-        lblAirbus330800.Image = My.Resources.Resources.Airbus330_800pics
-        lblAirbus330800.Location = New Point(32, 276)
-        lblAirbus330800.Name = "lblAirbus330800"
-        lblAirbus330800.Size = New Size(287, 69)
-        lblAirbus330800.TabIndex = 11
-        lblAirbus330800.Visible = False
+        btnBoeing737800.BackColor = Color.Transparent
+        btnBoeing737800.Location = New Point(32, 358)
+        btnBoeing737800.Margin = New Padding(3, 2, 3, 2)
+        btnBoeing737800.Name = "btnBoeing737800"
+        btnBoeing737800.Size = New Size(280, 62)
+        btnBoeing737800.TabIndex = 11
+        btnBoeing737800.UseVisualStyleBackColor = False
         ' 
         ' btnAirbus330300
         ' 
         btnAirbus330300.BackColor = Color.Transparent
-        btnAirbus330300.Location = New Point(10, 154)
+        btnAirbus330300.Location = New Point(33, 179)
         btnAirbus330300.Margin = New Padding(3, 2, 3, 2)
         btnAirbus330300.Name = "btnAirbus330300"
-        btnAirbus330300.Size = New Size(333, 64)
+        btnAirbus330300.Size = New Size(280, 57)
         btnAirbus330300.TabIndex = 8
         btnAirbus330300.UseVisualStyleBackColor = False
         ' 
-        ' lblAirbus330300
+        ' btnAirbus350900
         ' 
-        lblAirbus330300.Image = My.Resources.Resources.Airbus330_300pics
-        lblAirbus330300.Location = New Point(32, 152)
-        lblAirbus330300.Name = "lblAirbus330300"
-        lblAirbus330300.Size = New Size(287, 69)
-        lblAirbus330300.TabIndex = 6
-        lblAirbus330300.Visible = False
+        btnAirbus350900.BackColor = Color.Transparent
+        btnAirbus350900.Location = New Point(32, 236)
+        btnAirbus350900.Margin = New Padding(3, 2, 3, 2)
+        btnAirbus350900.Name = "btnAirbus350900"
+        btnAirbus350900.Size = New Size(280, 61)
+        btnAirbus350900.TabIndex = 8
+        btnAirbus350900.UseVisualStyleBackColor = False
         ' 
         ' btnAirbus321
         ' 
         btnAirbus321.BackColor = Color.Transparent
-        btnAirbus321.Location = New Point(10, 82)
+        btnAirbus321.Location = New Point(33, 110)
         btnAirbus321.Margin = New Padding(3, 2, 3, 2)
         btnAirbus321.Name = "btnAirbus321"
-        btnAirbus321.Size = New Size(333, 67)
+        btnAirbus321.Size = New Size(280, 62)
         btnAirbus321.TabIndex = 4
         btnAirbus321.UseVisualStyleBackColor = False
         ' 
         ' btnAirbus320
         ' 
         btnAirbus320.BackColor = Color.Transparent
-        btnAirbus320.Location = New Point(10, 21)
+        btnAirbus320.Location = New Point(33, 51)
         btnAirbus320.Margin = New Padding(3, 2, 3, 2)
         btnAirbus320.Name = "btnAirbus320"
-        btnAirbus320.Size = New Size(333, 59)
+        btnAirbus320.Size = New Size(280, 59)
         btnAirbus320.TabIndex = 2
         btnAirbus320.UseVisualStyleBackColor = False
         ' 
-        ' lblAirbus321
+        ' pbxAB320
         ' 
-        lblAirbus321.Image = My.Resources.Resources.Airbus321pics
-        lblAirbus321.Location = New Point(32, 82)
-        lblAirbus321.Name = "lblAirbus321"
-        lblAirbus321.Size = New Size(287, 69)
-        lblAirbus321.TabIndex = 3
-        lblAirbus321.Visible = False
+        pbxAB320.BackColor = Color.Transparent
+        pbxAB320.BackgroundImage = My.Resources.Resources.AB320pup
+        pbxAB320.Location = New Point(33, 54)
+        pbxAB320.Name = "pbxAB320"
+        pbxAB320.Size = New Size(280, 62)
+        pbxAB320.TabIndex = 3
+        pbxAB320.TabStop = False
+        pbxAB320.Visible = False
         ' 
-        ' lblAirbus320
+        ' pbxAB321
         ' 
-        lblAirbus320.Image = My.Resources.Resources.Airbus320pic
-        lblAirbus320.Location = New Point(32, 21)
-        lblAirbus320.Name = "lblAirbus320"
-        lblAirbus320.Size = New Size(287, 69)
-        lblAirbus320.TabIndex = 2
-        lblAirbus320.Visible = False
+        pbxAB321.BackColor = Color.Transparent
+        pbxAB321.BackgroundImage = My.Resources.Resources.AB321
+        pbxAB321.Location = New Point(33, 110)
+        pbxAB321.Name = "pbxAB321"
+        pbxAB321.Size = New Size(280, 62)
+        pbxAB321.TabIndex = 14
+        pbxAB321.TabStop = False
+        pbxAB321.Visible = False
         ' 
-        ' btnAirbus350900
+        ' pbxA330300
         ' 
-        btnAirbus350900.BackColor = Color.Transparent
-        btnAirbus350900.Location = New Point(10, 223)
-        btnAirbus350900.Margin = New Padding(3, 2, 3, 2)
-        btnAirbus350900.Name = "btnAirbus350900"
-        btnAirbus350900.Size = New Size(333, 59)
-        btnAirbus350900.TabIndex = 8
-        btnAirbus350900.UseVisualStyleBackColor = False
+        pbxA330300.BackColor = Color.Transparent
+        pbxA330300.BackgroundImage = My.Resources.Resources.AB330300
+        pbxA330300.Location = New Point(33, 178)
+        pbxA330300.Name = "pbxA330300"
+        pbxA330300.Size = New Size(280, 62)
+        pbxA330300.TabIndex = 14
+        pbxA330300.TabStop = False
+        pbxA330300.Visible = False
         ' 
-        ' lblAirbus350900
+        ' pbx350
         ' 
-        lblAirbus350900.Image = My.Resources.Resources.airbus350_900pics
-        lblAirbus350900.Location = New Point(32, 214)
-        lblAirbus350900.Name = "lblAirbus350900"
-        lblAirbus350900.Size = New Size(287, 69)
-        lblAirbus350900.TabIndex = 9
-        lblAirbus350900.Visible = False
+        pbx350.BackColor = Color.Transparent
+        pbx350.BackgroundImage = My.Resources.Resources.Ab350
+        pbx350.Location = New Point(32, 236)
+        pbx350.Name = "pbx350"
+        pbx350.Size = New Size(280, 62)
+        pbx350.TabIndex = 14
+        pbx350.TabStop = False
+        pbx350.Visible = False
+        ' 
+        ' pbxAB330800
+        ' 
+        pbxAB330800.BackColor = Color.Transparent
+        pbxAB330800.BackgroundImage = My.Resources.Resources.AB330800
+        pbxAB330800.Location = New Point(33, 302)
+        pbxAB330800.Name = "pbxAB330800"
+        pbxAB330800.Size = New Size(280, 62)
+        pbxAB330800.TabIndex = 14
+        pbxAB330800.TabStop = False
+        pbxAB330800.Visible = False
+        ' 
+        ' pbxBoeing737800
+        ' 
+        pbxBoeing737800.BackColor = Color.Transparent
+        pbxBoeing737800.BackgroundImage = My.Resources.Resources.Boe737800
+        pbxBoeing737800.Location = New Point(33, 358)
+        pbxBoeing737800.Name = "pbxBoeing737800"
+        pbxBoeing737800.Size = New Size(280, 62)
+        pbxBoeing737800.TabIndex = 14
+        pbxBoeing737800.TabStop = False
+        pbxBoeing737800.Visible = False
+        ' 
+        ' pbx737MAX
+        ' 
+        pbx737MAX.BackColor = Color.Transparent
+        pbx737MAX.BackgroundImage = My.Resources.Resources.BOE737max
+        pbx737MAX.Location = New Point(33, 423)
+        pbx737MAX.Name = "pbx737MAX"
+        pbx737MAX.Size = New Size(280, 62)
+        pbx737MAX.TabIndex = 14
+        pbx737MAX.TabStop = False
+        pbx737MAX.Visible = False
+        ' 
+        ' pbx300er
+        ' 
+        pbx300er.BackColor = Color.Transparent
+        pbx300er.BackgroundImage = My.Resources.Resources.Bo300er
+        pbx300er.Location = New Point(34, 489)
+        pbx300er.Name = "pbx300er"
+        pbx300er.Size = New Size(280, 62)
+        pbx300er.TabIndex = 14
+        pbx300er.TabStop = False
+        pbx300er.Visible = False
+        ' 
+        ' pbx7879
+        ' 
+        pbx7879.BackColor = Color.Transparent
+        pbx7879.BackgroundImage = My.Resources.Resources.bo7879
+        pbx7879.Location = New Point(32, 547)
+        pbx7879.Name = "pbx7879"
+        pbx7879.Size = New Size(280, 62)
+        pbx7879.TabIndex = 14
+        pbx7879.TabStop = False
+        pbx7879.Visible = False
         ' 
         ' Form3
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1050, 783)
-        Controls.Add(pnlBg)
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        ClientSize = New Size(972, 726)
+        Controls.Add(btnBoeing7478)
+        Controls.Add(pbx7478)
+        Controls.Add(btnAirbus330800)
+        Controls.Add(pbxAB330800)
+        Controls.Add(btnBoeing7879)
+        Controls.Add(pnlPlane)
+        Controls.Add(btnBoeing77300er)
+        Controls.Add(btnAirbus330300)
+        Controls.Add(btnAirbus321)
+        Controls.Add(btnBoeing737800)
+        Controls.Add(pbxAB321)
+        Controls.Add(pbxA330300)
+        Controls.Add(btnAirbus350900)
+        Controls.Add(btnAirbus320)
+        Controls.Add(pbxAB320)
+        Controls.Add(pbx350)
+        Controls.Add(pbxBoeing737800)
+        Controls.Add(btnBoeing737MAX)
+        Controls.Add(pbx737MAX)
+        Controls.Add(pbx300er)
+        Controls.Add(pbx7879)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form3"
         Text = "Form3"
-        CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
         pnlPlane.ResumeLayout(False)
         pnlPlane.PerformLayout()
-        pnlBg.ResumeLayout(False)
-        pnlButtons.ResumeLayout(False)
+        CType(pbx7478, ComponentModel.ISupportInitialize).EndInit()
+        CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxAB320, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxAB321, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxA330300, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbx350, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxAB330800, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxBoeing737800, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbx737MAX, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbx300er, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbx7879, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
-    Friend WithEvents ptbImages As PictureBox
+
     Friend WithEvents pnlPlane As Panel
-    Friend WithEvents pnlBg As Panel
-    Friend WithEvents pnlButtons As Panel
-    Friend WithEvents btnAirbus320 As Button
-    Friend WithEvents lblAirbus320 As Label
-    Friend WithEvents btnAirbus321 As Button
-    Friend WithEvents lblAirbus321 As Label
-    Friend WithEvents lblAirbus330300 As Label
     Friend WithEvents btnBoeing7478 As Button
-    Friend WithEvents btnAirbus330300 As Button
-    Friend WithEvents btnAirbus350900 As Button
-    Friend WithEvents lblAirbus350900 As Label
-    Friend WithEvents btnBoeing737MAX As Button
-    Friend WithEvents btnAirbus330800 As Button
-    Friend WithEvents lblAirbus330800 As Label
-    Friend WithEvents btnBoeing737800 As Button
-    Friend WithEvents lblBoeing737800 As Label
-    Friend WithEvents lblBoeing7478 As Label
-    Friend WithEvents lblBoeing737MAX As Label
-    Friend WithEvents btnBoeing77300er As Button
-    Friend WithEvents lblBoeing777300er As Label
+    Friend WithEvents ptbImages As PictureBox
     Friend WithEvents btnBoeing7879 As Button
-    Friend WithEvents lblBoeing7879 As Label
+    Friend WithEvents btnAirbus320 As Button
+    Friend WithEvents btnAirbus350900 As Button
+    Friend WithEvents btnAirbus321 As Button
+    Friend WithEvents btnBoeing77300er As Button
+    Friend WithEvents btnAirbus330300 As Button
+    Friend WithEvents btnAirbus330800 As Button
+    Friend WithEvents btnBoeing737MAX As Button
+    Friend WithEvents btnBoeing737800 As Button
+    Friend WithEvents pbxAB320 As PictureBox
+    Friend WithEvents pbx7478 As PictureBox
+    Friend WithEvents pbxAB321 As PictureBox
+    Friend WithEvents pbxA330300 As PictureBox
+    Friend WithEvents pbx350 As PictureBox
+    Friend WithEvents pbxAB330800 As PictureBox
+    Friend WithEvents pbxBoeing737800 As PictureBox
+    Friend WithEvents pbx737MAX As PictureBox
+    Friend WithEvents pbx300er As PictureBox
+    Friend WithEvents pbx7879 As PictureBox
 End Class
