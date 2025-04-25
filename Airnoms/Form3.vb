@@ -13,6 +13,8 @@
         Form4.Show()
     End Sub
 
+
+
     'im trying border radius on label'
 
     'Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click

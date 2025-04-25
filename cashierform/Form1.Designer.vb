@@ -46,6 +46,9 @@ Partial Class Form1
         cbxFlight = New ComboBox()
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
+        pbxCashierBooking = New PictureBox()
+        btnExit = New Button()
+        CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBooking
@@ -270,12 +273,32 @@ Partial Class Form1
         btnSupport.Text = " "
         btnSupport.UseVisualStyleBackColor = True
         ' 
+        ' pbxCashierBooking
+        ' 
+        pbxCashierBooking.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____Round_Trip__2___1_
+        pbxCashierBooking.Location = New Point(-1, -2)
+        pbxCashierBooking.Name = "pbxCashierBooking"
+        pbxCashierBooking.Size = New Size(1549, 915)
+        pbxCashierBooking.TabIndex = 34
+        pbxCashierBooking.TabStop = False
+        ' 
+        ' btnExit
+        ' 
+        btnExit.Location = New Point(710, 27)
+        btnExit.Margin = New Padding(2)
+        btnExit.Name = "btnExit"
+        btnExit.Size = New Size(143, 61)
+        btnExit.TabIndex = 35
+        btnExit.Text = " "
+        btnExit.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1547, 911)
+        Controls.Add(btnExit)
         Controls.Add(cbxSeatNumber)
         Controls.Add(btnSupport)
         Controls.Add(btnTicket)
@@ -300,10 +323,12 @@ Partial Class Form1
         Controls.Add(tbxAddress)
         Controls.Add(tbxPostalCode)
         Controls.Add(tbxCity)
+        Controls.Add(pbxCashierBooking)
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 969)
         Name = "Form1"
         Text = " CASHIER"
+        CType(pbxCashierBooking, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -341,4 +366,6 @@ Partial Class Form1
     Friend WithEvents cbxFlight As ComboBox
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
+    Friend WithEvents pbxCashierBooking As PictureBox
+    Friend WithEvents btnExit As Button
 End Class

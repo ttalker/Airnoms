@@ -9,4 +9,8 @@
         Form3.Show()
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.DoubleBuffered = True
+    End Sub
+
 End Class

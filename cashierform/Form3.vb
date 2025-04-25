@@ -2,6 +2,7 @@
 Public Class Form3
 
     Dim planes As String
+
     Public Sub DisappearAllLabel()
         lblAirbus320.Visible = False
         lblAirbus321.Visible = False
@@ -16,13 +17,13 @@ Public Class Form3
     End Sub
 
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Me.DoubleBuffered = True
         e.Cancel = True
         Me.Hide()
     End Sub
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        Me.DoubleBuffered = True
         MakeTransparent(btnAirbus320)
         MakeTransparent(btnAirbus321)
         MakeTransparent(btnAirbus330300)
@@ -107,6 +108,5 @@ Public Class Form3
         ShowImage(planes, ptbImages, pnlPlane)
         AppearLabel(lblBoeing7478)
     End Sub
-
 
 End Class
