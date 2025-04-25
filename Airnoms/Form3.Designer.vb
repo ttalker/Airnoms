@@ -78,6 +78,7 @@ Partial Class Form3
         btnExitUser.TabIndex = 8
         btnExitUser.Text = " "
         btnExitUser.UseVisualStyleBackColor = True
+
         ' 
         ' Form3
         ' 
@@ -102,6 +103,8 @@ Partial Class Form3
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
     Friend WithEvents PictureBox1 As PictureBox
+
     Friend WithEvents btnSupportUser As Button
     Friend WithEvents btnExitUser As Button
+
 End Class
