@@ -41,4 +41,14 @@ Module Module1
         label.BringToFront()
     End Sub
 
+    Public Sub AppearPicture(pbx As PictureBox)
+        pbx.Visible = True
+        pbx.BringToFront()
+    End Sub
+
+    Public Sub hoverButton(btn As Button)
+        btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(90, 79, 176, 231)
+        btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 79, 176, 231)
+    End Sub
+
 End Module

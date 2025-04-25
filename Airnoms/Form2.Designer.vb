@@ -34,39 +34,35 @@ Partial Class Form2
         ' 
         ' tbxUsernameSignUp
         ' 
-        tbxUsernameSignUp.Location = New Point(535, 279)
-        tbxUsernameSignUp.Margin = New Padding(3, 2, 3, 2)
-        tbxUsernameSignUp.MaximumSize = New Size(304, 33)
+        tbxUsernameSignUp.Location = New Point(611, 372)
+        tbxUsernameSignUp.MaximumSize = New Size(347, 33)
         tbxUsernameSignUp.Name = "tbxUsernameSignUp"
-        tbxUsernameSignUp.Size = New Size(304, 23)
+        tbxUsernameSignUp.Size = New Size(347, 27)
         tbxUsernameSignUp.TabIndex = 17
         ' 
         ' tbxFullnameSignUp
         ' 
         tbxFullnameSignUp.ForeColor = SystemColors.InactiveCaption
-        tbxFullnameSignUp.Location = New Point(535, 196)
-        tbxFullnameSignUp.Margin = New Padding(3, 2, 3, 2)
-        tbxFullnameSignUp.MaximumSize = New Size(304, 33)
+        tbxFullnameSignUp.Location = New Point(611, 261)
+        tbxFullnameSignUp.MaximumSize = New Size(347, 33)
         tbxFullnameSignUp.Name = "tbxFullnameSignUp"
-        tbxFullnameSignUp.Size = New Size(304, 23)
+        tbxFullnameSignUp.Size = New Size(347, 27)
         tbxFullnameSignUp.TabIndex = 16
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(535, 368)
-        TextBox1.Margin = New Padding(3, 2, 3, 2)
-        TextBox1.MaximumSize = New Size(304, 33)
+        TextBox1.Location = New Point(611, 491)
+        TextBox1.MaximumSize = New Size(347, 33)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(304, 23)
+        TextBox1.Size = New Size(347, 27)
         TextBox1.TabIndex = 20
         ' 
         ' tbxEmailSignUp
         ' 
-        tbxEmailSignUp.Location = New Point(535, 463)
-        tbxEmailSignUp.Margin = New Padding(3, 2, 3, 2)
-        tbxEmailSignUp.MaximumSize = New Size(304, 33)
+        tbxEmailSignUp.Location = New Point(611, 617)
+        tbxEmailSignUp.MaximumSize = New Size(347, 33)
         tbxEmailSignUp.Name = "tbxEmailSignUp"
-        tbxEmailSignUp.Size = New Size(304, 23)
+        tbxEmailSignUp.Size = New Size(347, 27)
         tbxEmailSignUp.TabIndex = 22
         ' 
         ' Button1
@@ -74,10 +70,9 @@ Partial Class Form2
         Button1.BackColor = SystemColors.Control
         Button1.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = SystemColors.ActiveCaptionText
-        Button1.Location = New Point(509, 522)
-        Button1.Margin = New Padding(3, 2, 3, 2)
+        Button1.Location = New Point(582, 696)
         Button1.Name = "Button1"
-        Button1.Size = New Size(172, 41)
+        Button1.Size = New Size(197, 55)
         Button1.TabIndex = 23
         Button1.Text = "Sign in"
         Button1.UseVisualStyleBackColor = False
@@ -87,10 +82,9 @@ Partial Class Form2
         Button2.BackColor = Color.DodgerBlue
         Button2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(685, 521)
-        Button2.Margin = New Padding(3, 2, 3, 2)
+        Button2.Location = New Point(783, 695)
         Button2.Name = "Button2"
-        Button2.Size = New Size(169, 47)
+        Button2.Size = New Size(193, 63)
         Button2.TabIndex = 24
         Button2.Text = "Sign up"
         Button2.UseVisualStyleBackColor = False
@@ -98,17 +92,18 @@ Partial Class Form2
         ' PictureBox1
         ' 
         PictureBox1.BackgroundImage = My.Resources.Resources.Sign_up
-        PictureBox1.Location = New Point(-3, -2)
+        PictureBox1.Location = New Point(-3, -3)
+        PictureBox1.Margin = New Padding(3, 4, 3, 4)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(920, 615)
+        PictureBox1.Size = New Size(1051, 820)
         PictureBox1.TabIndex = 25
         PictureBox1.TabStop = False
         ' 
         ' Form2
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(915, 611)
+        ClientSize = New Size(1043, 804)
         Controls.Add(Button2)
         Controls.Add(Button1)
         Controls.Add(tbxEmailSignUp)
@@ -116,8 +111,7 @@ Partial Class Form2
         Controls.Add(tbxUsernameSignUp)
         Controls.Add(tbxFullnameSignUp)
         Controls.Add(PictureBox1)
-        Margin = New Padding(3, 2, 3, 2)
-        MaximumSize = New Size(931, 650)
+        MaximumSize = New Size(1061, 851)
         Name = "Form2"
         Text = "Create an Account"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
