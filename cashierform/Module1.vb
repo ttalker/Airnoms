@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 
-Module Module1
+Public Module Module1
     Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
         Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
         ptbImages.Size = New Size(1, 1)
