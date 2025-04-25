@@ -10,6 +10,11 @@ Public Class Form3
         pbx350.Visible = False
         pbxAB330800.Visible = False
         pbxBoeing737800.Visible = False
+        pbx737MAX.Visible = False
+
+        pbx300er.Visible = False
+        pbx7879.Visible = False
+        pbx7478.Visible = False
     End Sub
 
     Private Sub Form3_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -76,33 +81,33 @@ Public Class Form3
         AppearPicture(pbxBoeing737800)
     End Sub
 
-    'Private Sub btnBoeing737MAX_Click(sender As Object, e As EventArgs) Handles btnBoeing737MAX.Click
-    '    planes = "Boeing 737 MAX 8"
-    '    DisappearAllPicture()
-    '    ShowImage(planes, ptbImages, pnlPlane)
-    '    AppearPicture(lblBoeing737MAX)
-    'End Sub
+    Private Sub btnBoeing737MAX_Click(sender As Object, e As EventArgs) Handles btnBoeing737MAX.Click
+        planes = "Boeing 737 MAX 8"
+        DisappearAllPicture()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearPicture(pbx737MAX)
+    End Sub
 
-    'Private Sub btnBoeing77300er_Click(sender As Object, e As EventArgs) Handles btnBoeing77300er.Click
-    '    planes = "Boeing 777-300ER"
-    '    DisappearAllPicture()
-    '    ShowImage(planes, ptbImages, pnlPlane)
-    '    AppearPicture(lblBoeing777300er)
-    'End Sub
+    Private Sub btnBoeing77300er_Click(sender As Object, e As EventArgs) Handles btnBoeing77300er.Click
+        planes = "Boeing 777-300ER"
+        DisappearAllPicture()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearPicture(pbx300er)
+    End Sub
 
-    'Private Sub btnBoeing7879_Click(sender As Object, e As EventArgs) Handles btnBoeing7879.Click
-    '    planes = "Boeing 787-9"
-    '    DisappearAllPicture()
-    '    ShowImage(planes, ptbImages, pnlPlane)
-    '    AppearPicture(lblBoeing7879)
-    'End Sub
+    Private Sub btnBoeing7879_Click(sender As Object, e As EventArgs) Handles btnBoeing7879.Click
+        planes = "Boeing 787-9"
+        DisappearAllPicture()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearPicture(pbx7879)
+    End Sub
 
-    'Private Sub btnBoeing7478_Click(sender As Object, e As EventArgs) Handles btnBoeing7478.Click
-    '    planes = "Boeing 747-8"
-    '    DisappearAllPicture()
-    '    ShowImage(planes, ptbImages, pnlPlane)
-    '    AppearPicture(lblBoeing7478)
-    'End Sub
+    Private Sub btnBoeing7478_Click(sender As Object, e As EventArgs) Handles btnBoeing7478.Click
+        planes = "Boeing 747-8"
+        DisappearAllPicture()
+        ShowImage(planes, ptbImages, pnlPlane)
+        AppearPicture(pbx7478)
+    End Sub
 
 
 End Class
