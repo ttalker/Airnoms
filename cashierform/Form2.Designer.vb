@@ -29,30 +29,31 @@ Partial Class Form2
         cbxClassTicket = New ComboBox()
         cbxPassengerTicket = New ComboBox()
         tbxFlightTicket = New TextBox()
-        btnResetTicket = New Button()
         btnProcessTicket = New Button()
         btnSupport = New Button()
-        PictureBox1 = New PictureBox()
+        pbxCashierTicket = New PictureBox()
         btnExit = New Button()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        btnNextTicket = New Button()
+        btnResetTicket = New Button()
+        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnTicket
         ' 
-        btnTicket.Location = New Point(293, 26)
+        btnTicket.Location = New Point(295, 29)
         btnTicket.Margin = New Padding(3, 2, 3, 2)
         btnTicket.Name = "btnTicket"
-        btnTicket.Size = New Size(170, 69)
+        btnTicket.Size = New Size(178, 64)
         btnTicket.TabIndex = 5
         btnTicket.Text = " "
         btnTicket.UseVisualStyleBackColor = True
         ' 
         ' btnBooking
         ' 
-        btnBooking.Location = New Point(79, 29)
+        btnBooking.Location = New Point(86, 27)
         btnBooking.Margin = New Padding(3, 2, 3, 2)
         btnBooking.Name = "btnBooking"
-        btnBooking.Size = New Size(170, 66)
+        btnBooking.Size = New Size(177, 67)
         btnBooking.TabIndex = 4
         btnBooking.Text = " "
         btnBooking.UseVisualStyleBackColor = True
@@ -70,12 +71,12 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(1249, 707)
+        btnCalculate.Location = New Point(1248, 707)
         btnCalculate.Margin = New Padding(3, 2, 3, 2)
         btnCalculate.Name = "btnCalculate"
-        btnCalculate.Size = New Size(173, 54)
+        btnCalculate.Size = New Size(185, 54)
         btnCalculate.TabIndex = 38
-        btnCalculate.Text = "CALCULATE"
+        btnCalculate.Text = " "
         btnCalculate.UseVisualStyleBackColor = False
         ' 
         ' cbxClassTicket
@@ -106,19 +107,9 @@ Partial Class Form2
         tbxFlightTicket.Size = New Size(203, 23)
         tbxFlightTicket.TabIndex = 17
         ' 
-        ' btnResetTicket
-        ' 
-        btnResetTicket.Location = New Point(870, 796)
-        btnResetTicket.Margin = New Padding(3, 2, 3, 2)
-        btnResetTicket.Name = "btnResetTicket"
-        btnResetTicket.Size = New Size(182, 76)
-        btnResetTicket.TabIndex = 9
-        btnResetTicket.Text = " "
-        btnResetTicket.UseVisualStyleBackColor = True
-        ' 
         ' btnProcessTicket
         ' 
-        btnProcessTicket.Location = New Point(1271, 800)
+        btnProcessTicket.Location = New Point(1275, 799)
         btnProcessTicket.Margin = New Padding(3, 2, 3, 2)
         btnProcessTicket.Name = "btnProcessTicket"
         btnProcessTicket.Size = New Size(182, 68)
@@ -128,38 +119,60 @@ Partial Class Form2
         ' 
         ' btnSupport
         ' 
-        btnSupport.Location = New Point(497, 29)
+        btnSupport.Location = New Point(492, 29)
         btnSupport.Margin = New Padding(3, 2, 3, 2)
         btnSupport.Name = "btnSupport"
-        btnSupport.Size = New Size(170, 66)
+        btnSupport.Size = New Size(180, 63)
         btnSupport.TabIndex = 10
         btnSupport.Text = " "
         btnSupport.UseVisualStyleBackColor = True
         ' 
-        ' PictureBox1
+        ' pbxCashierTicket
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____TICKET__1_
-        PictureBox1.Location = New Point(-3, -1)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(1551, 910)
-        PictureBox1.TabIndex = 39
-        PictureBox1.TabStop = False
+        pbxCashierTicket.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____TICKET__1_
+        pbxCashierTicket.Location = New Point(2, -1)
+        pbxCashierTicket.Name = "pbxCashierTicket"
+        pbxCashierTicket.Size = New Size(1551, 910)
+        pbxCashierTicket.TabIndex = 39
+        pbxCashierTicket.TabStop = False
         ' 
         ' btnExit
         ' 
-        btnExit.Location = New Point(696, 26)
+        btnExit.Location = New Point(707, 30)
         btnExit.Margin = New Padding(3, 2, 3, 2)
         btnExit.Name = "btnExit"
-        btnExit.Size = New Size(170, 66)
+        btnExit.Size = New Size(143, 61)
         btnExit.TabIndex = 40
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
+        ' 
+        ' btnNextTicket
+        ' 
+        btnNextTicket.Location = New Point(1077, 800)
+        btnNextTicket.Margin = New Padding(3, 2, 3, 2)
+        btnNextTicket.Name = "btnNextTicket"
+        btnNextTicket.Size = New Size(182, 68)
+        btnNextTicket.TabIndex = 41
+        btnNextTicket.Text = " "
+        btnNextTicket.UseVisualStyleBackColor = True
+        ' 
+        ' btnResetTicket
+        ' 
+        btnResetTicket.Location = New Point(873, 800)
+        btnResetTicket.Margin = New Padding(3, 2, 3, 2)
+        btnResetTicket.Name = "btnResetTicket"
+        btnResetTicket.Size = New Size(182, 68)
+        btnResetTicket.TabIndex = 42
+        btnResetTicket.Text = " "
+        btnResetTicket.UseVisualStyleBackColor = True
         ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 911)
+        Controls.Add(btnResetTicket)
+        Controls.Add(btnNextTicket)
         Controls.Add(btnExit)
         Controls.Add(tbxFlightTicket)
         Controls.Add(btnCalculate)
@@ -167,15 +180,14 @@ Partial Class Form2
         Controls.Add(cbxPassengerTicket)
         Controls.Add(btnSupport)
         Controls.Add(cbxClassTicket)
-        Controls.Add(btnResetTicket)
         Controls.Add(btnProcessTicket)
         Controls.Add(btnTicket)
         Controls.Add(btnBooking)
-        Controls.Add(PictureBox1)
+        Controls.Add(pbxCashierTicket)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form2"
         Text = "Form2"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -184,13 +196,14 @@ Partial Class Form2
     Friend WithEvents btnBooking As Button
     Friend WithEvents lblArrivalDate As Label
     Friend WithEvents cbxPassengerTicket As ComboBox
-    Friend WithEvents btnResetTicket As Button
     Friend WithEvents btnProcessTicket As Button
     Friend WithEvents cbxClassTicket As ComboBox
     Friend WithEvents btnCalculate As Button
     Friend WithEvents tbxTicketPayment As TextBox
     Friend WithEvents btnSupport As Button
     Friend WithEvents tbxFlightTicket As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents pbxCashierTicket As PictureBox
     Friend WithEvents btnExit As Button
+    Friend WithEvents btnNextTicket As Button
+    Friend WithEvents btnResetTicket As Button
 End Class

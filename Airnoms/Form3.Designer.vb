@@ -25,55 +25,69 @@ Partial Class Form3
         btnBookingUser = New Button()
         btnHomeUser = New Button()
         PictureBox1 = New PictureBox()
-        btnSupport = New Button()
+        btnSupportUser = New Button()
+        btnExitUser = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBookingUser
         ' 
-        btnBookingUser.Location = New Point(283, 42)
+        btnBookingUser.Location = New Point(264, 27)
         btnBookingUser.Margin = New Padding(2)
         btnBookingUser.Name = "btnBookingUser"
-        btnBookingUser.Size = New Size(155, 46)
+        btnBookingUser.Size = New Size(182, 68)
         btnBookingUser.TabIndex = 5
-        btnBookingUser.Text = "BOOKING"
+        btnBookingUser.Text = " "
         btnBookingUser.UseVisualStyleBackColor = True
         ' 
         ' btnHomeUser
         ' 
-        btnHomeUser.Location = New Point(75, 42)
+        btnHomeUser.Location = New Point(56, 27)
         btnHomeUser.Margin = New Padding(2)
         btnHomeUser.Name = "btnHomeUser"
-        btnHomeUser.Size = New Size(155, 46)
+        btnHomeUser.Size = New Size(182, 68)
         btnHomeUser.TabIndex = 4
-        btnHomeUser.Text = "HOME"
+        btnHomeUser.Text = " "
         btnHomeUser.UseVisualStyleBackColor = True
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__1_
+        PictureBox1.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__2_
         PictureBox1.Location = New Point(-1, -2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(1554, 937)
+        PictureBox1.Size = New Size(1554, 920)
         PictureBox1.TabIndex = 6
         PictureBox1.TabStop = False
         ' 
-        ' btnSupport
+        ' btnSupportUser
         ' 
-        btnSupport.Location = New Point(512, 42)
-        btnSupport.Margin = New Padding(2)
-        btnSupport.Name = "btnSupport"
-        btnSupport.Size = New Size(155, 46)
-        btnSupport.TabIndex = 7
-        btnSupport.Text = "Support"
-        btnSupport.UseVisualStyleBackColor = True
+        btnSupportUser.Location = New Point(477, 27)
+        btnSupportUser.Margin = New Padding(2)
+        btnSupportUser.Name = "btnSupportUser"
+        btnSupportUser.Size = New Size(182, 68)
+        btnSupportUser.TabIndex = 7
+        btnSupportUser.Text = " "
+        btnSupportUser.UseVisualStyleBackColor = True
+        ' 
+        ' btnExitUser
+        ' 
+        btnExitUser.Location = New Point(674, 27)
+        btnExitUser.Margin = New Padding(2)
+        btnExitUser.Name = "btnExitUser"
+        btnExitUser.Size = New Size(182, 68)
+        btnExitUser.TabIndex = 8
+        btnExitUser.Text = " "
+        btnExitUser.UseVisualStyleBackColor = True
+
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
+        BackColor = Color.FromArgb(CByte(252), CByte(252), CByte(253))
         ClientSize = New Size(1547, 930)
-        Controls.Add(btnSupport)
+        Controls.Add(btnExitUser)
+        Controls.Add(btnSupportUser)
         Controls.Add(btnBookingUser)
         Controls.Add(btnHomeUser)
         Controls.Add(PictureBox1)
@@ -89,5 +103,8 @@ Partial Class Form3
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents btnSupport As Button
+
+    Friend WithEvents btnSupportUser As Button
+    Friend WithEvents btnExitUser As Button
+
 End Class

@@ -26,8 +26,8 @@ Partial Class Form1
         btnCreateAccount = New Button()
         tbxUsername = New TextBox()
         tbxPassword = New TextBox()
-        PictureBox1 = New PictureBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        pbxSignIn = New PictureBox()
+        CType(pbxSignIn, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnSignIn
@@ -40,7 +40,7 @@ Partial Class Form1
         btnSignIn.Name = "btnSignIn"
         btnSignIn.Size = New Size(338, 62)
         btnSignIn.TabIndex = 5
-        btnSignIn.Text = "Sign In"
+        btnSignIn.Text = " "
         btnSignIn.UseVisualStyleBackColor = False
         ' 
         ' btnCreateAccount
@@ -51,7 +51,7 @@ Partial Class Form1
         btnCreateAccount.Name = "btnCreateAccount"
         btnCreateAccount.Size = New Size(338, 57)
         btnCreateAccount.TabIndex = 6
-        btnCreateAccount.Text = "Create an Account"
+        btnCreateAccount.Text = " "
         btnCreateAccount.UseVisualStyleBackColor = True
         ' 
         ' tbxUsername
@@ -73,14 +73,14 @@ Partial Class Form1
         tbxPassword.Size = New Size(304, 23)
         tbxPassword.TabIndex = 8
         ' 
-        ' PictureBox1
+        ' pbxSignIn
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.login_form__1_
-        PictureBox1.Location = New Point(-2, -2)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(917, 615)
-        PictureBox1.TabIndex = 9
-        PictureBox1.TabStop = False
+        pbxSignIn.BackgroundImage = My.Resources.Resources.login_form__1_
+        pbxSignIn.Location = New Point(-2, -2)
+        pbxSignIn.Name = "pbxSignIn"
+        pbxSignIn.Size = New Size(917, 615)
+        pbxSignIn.TabIndex = 9
+        pbxSignIn.TabStop = False
         ' 
         ' Form1
         ' 
@@ -91,13 +91,13 @@ Partial Class Form1
         Controls.Add(tbxUsername)
         Controls.Add(btnCreateAccount)
         Controls.Add(btnSignIn)
-        Controls.Add(PictureBox1)
+        Controls.Add(pbxSignIn)
         DoubleBuffered = True
         Margin = New Padding(2)
         MaximumSize = New Size(931, 650)
         Name = "Form1"
         Text = "International Nom Airlines"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxSignIn, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -107,7 +107,7 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents tbxPassword As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents pbxSignIn As PictureBox
     'Friend WithEvents pbxNomAirSignIn As PictureBox
 
 End Class
