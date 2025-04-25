@@ -1,10 +1,10 @@
-﻿Imports cashierform.Module1
+﻿'Imports cashierform.Module1
 Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MakeTransparent(btnSignIn)
-        MakeTransparent(btnCreateAccount)
+        'MakeTransparent(btnSignIn)
+        'MakeTransparent(btnCreateAccount)
         Me.DoubleBuffered = True
     End Sub
 
