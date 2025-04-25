@@ -66,7 +66,7 @@ Partial Class Form3
         ' btnBoeing737800
         ' 
         btnBoeing737800.BackColor = Color.Transparent
-        btnBoeing737800.Location = New Point(79, 343)
+        btnBoeing737800.Location = New Point(28, 324)
         btnBoeing737800.Margin = New Padding(3, 2, 3, 2)
         btnBoeing737800.Name = "btnBoeing737800"
         btnBoeing737800.Size = New Size(333, 59)
@@ -76,7 +76,7 @@ Partial Class Form3
         ' btnBoeing737MAX
         ' 
         btnBoeing737MAX.BackColor = Color.Transparent
-        btnBoeing737MAX.Location = New Point(138, 407)
+        btnBoeing737MAX.Location = New Point(102, 410)
         btnBoeing737MAX.Margin = New Padding(3, 2, 3, 2)
         btnBoeing737MAX.Name = "btnBoeing737MAX"
         btnBoeing737MAX.Size = New Size(333, 59)
@@ -86,7 +86,7 @@ Partial Class Form3
         ' btnAirbus330800
         ' 
         btnAirbus330800.BackColor = Color.Transparent
-        btnAirbus330800.Location = New Point(134, 280)
+        btnAirbus330800.Location = New Point(92, 280)
         btnAirbus330800.Margin = New Padding(3, 2, 3, 2)
         btnAirbus330800.Name = "btnAirbus330800"
         btnAirbus330800.Size = New Size(333, 59)
@@ -96,7 +96,7 @@ Partial Class Form3
         ' btnAirbus330300
         ' 
         btnAirbus330300.BackColor = Color.Transparent
-        btnAirbus330300.Location = New Point(134, 154)
+        btnAirbus330300.Location = New Point(62, 155)
         btnAirbus330300.Margin = New Padding(3, 2, 3, 2)
         btnAirbus330300.Name = "btnAirbus330300"
         btnAirbus330300.Size = New Size(333, 64)
@@ -106,7 +106,7 @@ Partial Class Form3
         ' btnBoeing77300er
         ' 
         btnBoeing77300er.BackColor = Color.Transparent
-        btnBoeing77300er.Location = New Point(134, 473)
+        btnBoeing77300er.Location = New Point(92, 473)
         btnBoeing77300er.Margin = New Padding(3, 2, 3, 2)
         btnBoeing77300er.Name = "btnBoeing77300er"
         btnBoeing77300er.Size = New Size(333, 59)
@@ -116,7 +116,7 @@ Partial Class Form3
         ' btnAirbus321
         ' 
         btnAirbus321.BackColor = Color.Transparent
-        btnAirbus321.Location = New Point(134, 82)
+        btnAirbus321.Location = New Point(62, 83)
         btnAirbus321.Margin = New Padding(3, 2, 3, 2)
         btnAirbus321.Name = "btnAirbus321"
         btnAirbus321.Size = New Size(333, 67)
@@ -126,7 +126,7 @@ Partial Class Form3
         ' btnAirbus350900
         ' 
         btnAirbus350900.BackColor = Color.Transparent
-        btnAirbus350900.Location = New Point(134, 223)
+        btnAirbus350900.Location = New Point(40, 208)
         btnAirbus350900.Margin = New Padding(3, 2, 3, 2)
         btnAirbus350900.Name = "btnAirbus350900"
         btnAirbus350900.Size = New Size(333, 59)
@@ -136,17 +136,18 @@ Partial Class Form3
         ' btnAirbus320
         ' 
         btnAirbus320.BackColor = Color.Transparent
-        btnAirbus320.Location = New Point(110, 19)
+        btnAirbus320.Location = New Point(62, 19)
         btnAirbus320.Margin = New Padding(3, 2, 3, 2)
         btnAirbus320.Name = "btnAirbus320"
         btnAirbus320.Size = New Size(333, 59)
         btnAirbus320.TabIndex = 2
         btnAirbus320.UseVisualStyleBackColor = False
+        btnAirbus320.Visible = False
         ' 
         ' btnBoeing7879
         ' 
         btnBoeing7879.BackColor = Color.Transparent
-        btnBoeing7879.Location = New Point(138, 537)
+        btnBoeing7879.Location = New Point(80, 517)
         btnBoeing7879.Margin = New Padding(3, 2, 3, 2)
         btnBoeing7879.Name = "btnBoeing7879"
         btnBoeing7879.Size = New Size(333, 59)
@@ -157,7 +158,7 @@ Partial Class Form3
         ' 
         ptbImages.BackColor = Color.Transparent
         ptbImages.BackgroundImageLayout = ImageLayout.None
-        ptbImages.Location = New Point(177, 210)
+        ptbImages.Location = New Point(308, 137)
         ptbImages.Margin = New Padding(2)
         ptbImages.Name = "ptbImages"
         ptbImages.Size = New Size(400, 100)
@@ -168,7 +169,7 @@ Partial Class Form3
         ' btnBoeing7478
         ' 
         btnBoeing7478.BackColor = Color.Transparent
-        btnBoeing7478.Location = New Point(138, 606)
+        btnBoeing7478.Location = New Point(80, 580)
         btnBoeing7478.Margin = New Padding(3, 2, 3, 2)
         btnBoeing7478.Name = "btnBoeing7478"
         btnBoeing7478.Size = New Size(333, 59)
@@ -178,9 +179,10 @@ Partial Class Form3
         ' pbxAB321
         ' 
         pbxAB321.BackColor = Color.Transparent
-        pbxAB321.Location = New Point(29, 59)
+        pbxAB321.BackgroundImage = CType(resources.GetObject("pbxAB321.BackgroundImage"), Image)
+        pbxAB321.Location = New Point(33, 54)
         pbxAB321.Name = "pbxAB321"
-        pbxAB321.Size = New Size(287, 50)
+        pbxAB321.Size = New Size(280, 62)
         pbxAB321.TabIndex = 3
         pbxAB321.TabStop = False
         ' 
