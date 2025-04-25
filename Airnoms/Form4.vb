@@ -10,8 +10,8 @@
     End Sub
 
     Private Sub btnBookingUser_Click(sender As Object, e As EventArgs) Handles btnBookingUser.Click
-        Show()
-        Form3.Hide()
+        Show
+        Form3.Hide
     End Sub
 
 End Class
