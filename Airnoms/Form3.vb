@@ -1,4 +1,6 @@
-﻿Public Class Form3
+﻿Imports cashierform
+Public Class Form3
+
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.ClientSize = New Size(1563, 957)
     End Sub
@@ -11,6 +13,11 @@
     Private Sub btnBookingUser_Click(sender As Object, e As EventArgs) Handles btnBookingUser.Click
         Me.Hide()
         Form4.Show()
+    End Sub
+
+    Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
+        Dim supportForm As New cashierform.Form3
+        supportForm.Show()
     End Sub
 
 

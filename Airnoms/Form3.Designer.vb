@@ -25,6 +25,7 @@ Partial Class Form3
         btnBookingUser = New Button()
         btnHomeUser = New Button()
         PictureBox1 = New PictureBox()
+        btnSupport = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -57,11 +58,22 @@ Partial Class Form3
         PictureBox1.TabIndex = 6
         PictureBox1.TabStop = False
         ' 
+        ' btnSupport
+        ' 
+        btnSupport.Location = New Point(512, 42)
+        btnSupport.Margin = New Padding(2)
+        btnSupport.Name = "btnSupport"
+        btnSupport.Size = New Size(155, 46)
+        btnSupport.TabIndex = 7
+        btnSupport.Text = "Support"
+        btnSupport.UseVisualStyleBackColor = True
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         ClientSize = New Size(1547, 930)
+        Controls.Add(btnSupport)
         Controls.Add(btnBookingUser)
         Controls.Add(btnHomeUser)
         Controls.Add(PictureBox1)
@@ -77,4 +89,5 @@ Partial Class Form3
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnSupport As Button
 End Class
