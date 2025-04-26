@@ -15,7 +15,7 @@ Public Class Form3
         Form4.Show()
     End Sub
 
-    Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
+    Private Sub btnSupportUser_Click(sender As Object, e As EventArgs) Handles btnSupportUser.Click
         Dim supportForm As New cashierform.Form3
         supportForm.Show()
     End Sub
