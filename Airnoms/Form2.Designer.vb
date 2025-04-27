@@ -26,10 +26,10 @@ Partial Class Form2
         tbxFullnameSignUp = New TextBox()
         TextBox1 = New TextBox()
         tbxEmailSignUp = New TextBox()
-        Button1 = New Button()
-        Button2 = New Button()
-        PictureBox1 = New PictureBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        btnSignIn = New Button()
+        btnSignUp = New Button()
+        pbxSignUp = New PictureBox()
+        CType(pbxSignUp, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' tbxUsernameSignUp
@@ -69,58 +69,58 @@ Partial Class Form2
         tbxEmailSignUp.Size = New Size(304, 23)
         tbxEmailSignUp.TabIndex = 22
         ' 
-        ' Button1
+        ' btnSignIn
         ' 
-        Button1.BackColor = SystemColors.Control
-        Button1.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = SystemColors.ActiveCaptionText
-        Button1.Location = New Point(509, 522)
-        Button1.Margin = New Padding(3, 2, 3, 2)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(172, 41)
-        Button1.TabIndex = 23
-        Button1.Text = " "
-        Button1.UseVisualStyleBackColor = False
+        btnSignIn.BackColor = SystemColors.Control
+        btnSignIn.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSignIn.ForeColor = SystemColors.ActiveCaptionText
+        btnSignIn.Location = New Point(516, 521)
+        btnSignIn.Margin = New Padding(3, 2, 3, 2)
+        btnSignIn.Name = "btnSignIn"
+        btnSignIn.Size = New Size(167, 41)
+        btnSignIn.TabIndex = 23
+        btnSignIn.Text = " "
+        btnSignIn.UseVisualStyleBackColor = False
         ' 
-        ' Button2
+        ' btnSignUp
         ' 
-        Button2.BackColor = Color.DodgerBlue
-        Button2.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Button2.ForeColor = SystemColors.ButtonHighlight
-        Button2.Location = New Point(685, 521)
-        Button2.Margin = New Padding(3, 2, 3, 2)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(169, 47)
-        Button2.TabIndex = 24
-        Button2.Text = " "
-        Button2.UseVisualStyleBackColor = False
+        btnSignUp.BackColor = Color.DodgerBlue
+        btnSignUp.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnSignUp.ForeColor = SystemColors.ButtonHighlight
+        btnSignUp.Location = New Point(689, 519)
+        btnSignUp.Margin = New Padding(3, 2, 3, 2)
+        btnSignUp.Name = "btnSignUp"
+        btnSignUp.Size = New Size(164, 47)
+        btnSignUp.TabIndex = 24
+        btnSignUp.Text = " "
+        btnSignUp.UseVisualStyleBackColor = False
         ' 
-        ' PictureBox1
+        ' pbxSignUp
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.Sign_up
-        PictureBox1.Location = New Point(-3, -2)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(920, 615)
-        PictureBox1.TabIndex = 25
-        PictureBox1.TabStop = False
+        pbxSignUp.BackgroundImage = My.Resources.Resources.Sign_up
+        pbxSignUp.Location = New Point(-3, -2)
+        pbxSignUp.Name = "pbxSignUp"
+        pbxSignUp.Size = New Size(920, 615)
+        pbxSignUp.TabIndex = 25
+        pbxSignUp.TabStop = False
         ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(913, 603)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        Controls.Add(btnSignUp)
+        Controls.Add(btnSignIn)
         Controls.Add(tbxEmailSignUp)
         Controls.Add(TextBox1)
         Controls.Add(tbxUsernameSignUp)
         Controls.Add(tbxFullnameSignUp)
-        Controls.Add(PictureBox1)
+        Controls.Add(pbxSignUp)
         Margin = New Padding(3, 2, 3, 2)
         MaximumSize = New Size(930, 648)
         Name = "Form2"
         Text = "Create an Account"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxSignUp, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -128,7 +128,7 @@ Partial Class Form2
     Friend WithEvents tbxFullnameSignUp As TextBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents tbxEmailSignUp As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnSignIn As Button
+    Friend WithEvents btnSignUp As Button
+    Friend WithEvents pbxSignUp As PictureBox
 End Class
