@@ -24,9 +24,9 @@ Partial Class Form3
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         pnlPlane = New Panel()
+        ptbImages = New PictureBox()
         pbx7478 = New PictureBox()
         btnBoeing7478 = New Button()
-        ptbImages = New PictureBox()
         btnBoeing7879 = New Button()
         btnBoeing77300er = New Button()
         btnBoeing737MAX = New Button()
@@ -46,8 +46,8 @@ Partial Class Form3
         pbx300er = New PictureBox()
         pbx7879 = New PictureBox()
         pnlPlane.SuspendLayout()
-        CType(pbx7478, ComponentModel.ISupportInitialize).BeginInit()
         CType(ptbImages, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbx7478, ComponentModel.ISupportInitialize).BeginInit()
         CType(pbxAB320, ComponentModel.ISupportInitialize).BeginInit()
         CType(pbxAB321, ComponentModel.ISupportInitialize).BeginInit()
         CType(pbxA330300, ComponentModel.ISupportInitialize).BeginInit()
@@ -71,6 +71,18 @@ Partial Class Form3
         pnlPlane.Size = New Size(568, 658)
         pnlPlane.TabIndex = 2
         ' 
+        ' ptbImages
+        ' 
+        ptbImages.BackColor = Color.Transparent
+        ptbImages.BackgroundImageLayout = ImageLayout.None
+        ptbImages.Location = New Point(62, 23)
+        ptbImages.Margin = New Padding(2)
+        ptbImages.Name = "ptbImages"
+        ptbImages.Size = New Size(400, 100)
+        ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
+        ptbImages.TabIndex = 1
+        ptbImages.TabStop = False
+        ' 
         ' pbx7478
         ' 
         pbx7478.BackColor = Color.Transparent
@@ -91,18 +103,6 @@ Partial Class Form3
         btnBoeing7478.Size = New Size(278, 56)
         btnBoeing7478.TabIndex = 12
         btnBoeing7478.UseVisualStyleBackColor = False
-        ' 
-        ' ptbImages
-        ' 
-        ptbImages.BackColor = Color.Transparent
-        ptbImages.BackgroundImageLayout = ImageLayout.None
-        ptbImages.Location = New Point(62, 23)
-        ptbImages.Margin = New Padding(2)
-        ptbImages.Name = "ptbImages"
-        ptbImages.Size = New Size(400, 100)
-        ptbImages.SizeMode = PictureBoxSizeMode.AutoSize
-        ptbImages.TabIndex = 1
-        ptbImages.TabStop = False
         ' 
         ' btnBoeing7879
         ' 
@@ -322,11 +322,11 @@ Partial Class Form3
         Controls.Add(pbx7879)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form3"
-        Text = "Form3"
+        Text = "FLIGHTS"
         pnlPlane.ResumeLayout(False)
         pnlPlane.PerformLayout()
-        CType(pbx7478, ComponentModel.ISupportInitialize).EndInit()
         CType(ptbImages, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbx7478, ComponentModel.ISupportInitialize).EndInit()
         CType(pbxAB320, ComponentModel.ISupportInitialize).EndInit()
         CType(pbxAB321, ComponentModel.ISupportInitialize).EndInit()
         CType(pbxA330300, ComponentModel.ISupportInitialize).EndInit()

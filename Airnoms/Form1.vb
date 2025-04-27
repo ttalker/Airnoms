@@ -11,8 +11,6 @@ Public Class Form1
         Module1.hoverButton(btnCreateAccount)
         btnSignIn.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnSignIn.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' effects for button
-
-
         Me.DoubleBuffered = True
     End Sub
 
