@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports userForm.Module1
+Imports admin.Module1
+Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
 
@@ -17,8 +19,7 @@
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        Me.Close()
-
+        'ExitApplication(Me)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
