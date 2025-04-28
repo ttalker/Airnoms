@@ -22,6 +22,7 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         tbxUsernameSignUp = New TextBox()
         tbxFullnameSignUp = New TextBox()
         tbxPasswordSignUp = New TextBox()
@@ -29,7 +30,9 @@ Partial Class Form2
         btnSignIn = New Button()
         btnSignUp = New Button()
         pbxSignUp = New PictureBox()
+        ErrorProvider = New ErrorProvider(components)
         CType(pbxSignUp, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' tbxUsernameSignUp
@@ -43,7 +46,7 @@ Partial Class Form2
         ' 
         ' tbxFullnameSignUp
         ' 
-        tbxFullnameSignUp.ForeColor = SystemColors.InactiveCaption
+        tbxFullnameSignUp.ForeColor = SystemColors.ControlText
         tbxFullnameSignUp.Location = New Point(535, 196)
         tbxFullnameSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxFullnameSignUp.MaximumSize = New Size(304, 33)
@@ -104,6 +107,10 @@ Partial Class Form2
         pbxSignUp.TabIndex = 25
         pbxSignUp.TabStop = False
         ' 
+        ' ErrorProvider
+        ' 
+        ErrorProvider.ContainerControl = Me
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -121,6 +128,7 @@ Partial Class Form2
         Name = "Form2"
         Text = "Create an Account"
         CType(pbxSignUp, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -131,4 +139,5 @@ Partial Class Form2
     Friend WithEvents btnSignIn As Button
     Friend WithEvents btnSignUp As Button
     Friend WithEvents pbxSignUp As PictureBox
+    Friend WithEvents ErrorProvider As ErrorProvider
 End Class
