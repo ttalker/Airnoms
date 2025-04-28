@@ -48,7 +48,6 @@ Public Class Form2
         email = tbxEmailSignUp.Text
     End Sub
 
-    'Dim hasError As Boolean = False
     Private Sub btnSignUp_Click(sender As Object, e As EventArgs) Handles btnSignUp.Click
 
         Dim hasError As Boolean = False
