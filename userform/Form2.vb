@@ -24,45 +24,19 @@ Public Class Form2
         Me.DoubleBuffered = True
 
 
-        Try
-            openCon()
-            MessageBox.Show("Connection Successful!")
-        Catch ex As Exception
-            MessageBox.Show("Connection Failed: " & ex.Message)
-        Finally
-            con.Close()
-        End Try
+        'Try
+        '    openCon()
+        '    MessageBox.Show("Connection Successful!")
+        'Catch ex As Exception
+        '    MessageBox.Show("Connection Failed: " & ex.Message)
+        'Finally
+        '    con.Close()
+        'End Try
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSignIn.Click
         Me.Hide()
         Form1.Show()
-    End Sub
-
-    Private Sub pbxSignUp_Click(sender As Object, e As EventArgs) Handles pbxSignUp.Click
-        Try
-            openCon()
-            MessageBox.Show("Connection Successful!")
-            cmd.CommandText = "ALTER TABLE `acc_table` MODIFY `user_id` INT AUTO_INCREMENT;"
-            cmd.ExecuteNonQuery()
-
-            cmd.CommandText = "INSERT INTO `acc_table`(`user_id`,`Username`, `Password`, `Fullname`, `Email`) VALUES (NULL, '" &
-                          tbxUsernameSignUp.Text & "', '" &
-                          tbxPasswordSignUp.Text & "', '" &
-                          tbxFullnameSignUp.Text & "', '" &
-                          tbxEmailSignUp.Text & "')"
-            cmd.ExecuteNonQuery()
-
-            MessageBox.Show("User registered successfully!")
-            tbxUsernameSignUp.Clear()
-            tbxPasswordSignUp.Clear()
-            tbxFullnameSignUp.Clear()
-            tbxEmailSignUp.Clear()
-        Catch ex As Exception
-            MessageBox.Show("Connection Failed: " & ex.Message)
-        Finally
-            con.Close()
-        End Try
     End Sub
 
     Private Sub tbxFullnameSignUp_TextChanged(sender As Object, e As EventArgs) Handles tbxFullnameSignUp.TextChanged
@@ -79,5 +53,34 @@ Public Class Form2
 
     Private Sub tbxEmailSignUp_TextChanged(sender As Object, e As EventArgs) Handles tbxEmailSignUp.TextChanged
         email = tbxEmailSignUp.Text
+    End Sub
+
+    Private Sub btnSignUp_Click(sender As Object, e As EventArgs) Handles btnSignUp.Click
+        Try
+            openCon()
+            'MessageBox.Show("Connection Successful!")
+            cmd.Connection = con
+            cmd.CommandText = "ALTER TABLE acc_table MODIFY `user_id` INT AUTO_INCREMENT;"
+            cmd.ExecuteNonQuery()
+
+            cmd.CommandText = "INSERT INTO acc_table (`Username`, `Password`, `Fullname`, `Email`) VALUES ('" &
+                          tbxUsernameSignUp.Text & "', '" &
+                          tbxPasswordSignUp.Text & "', '" &
+                          tbxFullnameSignUp.Text & "', '" &
+                          tbxEmailSignUp.Text & "')"
+            cmd.ExecuteNonQuery()
+
+            MessageBox.Show("User registered successfully!")
+            tbxUsernameSignUp.Clear()
+            tbxPasswordSignUp.Clear()
+            tbxFullnameSignUp.Clear()
+            tbxEmailSignUp.Clear()
+        Catch ex As Exception
+            MessageBox.Show("Connection Failed: " & ex.Message)
+        Finally
+            con.Close()
+            Me.Hide()
+            Form1.Show()
+        End Try
     End Sub
 End Class
