@@ -6,7 +6,7 @@ Module Module1
 
     'Recommend to change method name based on user access
     Sub openCon()
-        con.ConnectionString = "server=100.113.245.127; username=kelv; password=kel; database=kyky"
+        con.ConnectionString = "server=100.89.19.71; username=root; password=; database=testing_db"
         con.Open()
     End Sub
 
