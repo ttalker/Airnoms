@@ -1,10 +1,12 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
+'Imports System.Data.SqlClient
 'Imports cashierform
 'Imports userform
 Public Module Module1
     Public con As New MySqlConnection
     Public cmd As New MySqlCommand
+    Public rd As MySqlDataReader = cmd.ExecuteReader()
 
     'admin sql
     Public Sub openCon()

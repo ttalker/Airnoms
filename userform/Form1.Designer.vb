@@ -22,12 +22,15 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         btnSignIn = New Button()
         btnCreateAccount = New Button()
         tbxUsername = New TextBox()
         tbxPassword = New TextBox()
         pbxSignIn = New PictureBox()
+        ErrorProvider = New ErrorProvider(components)
         CType(pbxSignIn, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnSignIn
@@ -82,6 +85,10 @@ Partial Class Form1
         pbxSignIn.TabIndex = 9
         pbxSignIn.TabStop = False
         ' 
+        ' ErrorProvider
+        ' 
+        ErrorProvider.ContainerControl = Me
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -98,6 +105,7 @@ Partial Class Form1
         Name = "Form1"
         Text = "International Nom Airlines"
         CType(pbxSignIn, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -108,6 +116,7 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents tbxPassword As TextBox
     Friend WithEvents pbxSignIn As PictureBox
+    Friend WithEvents ErrorProvider As ErrorProvider
     'Friend WithEvents pbxNomAirSignIn As PictureBox
 
 End Class
