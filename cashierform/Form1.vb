@@ -1,5 +1,6 @@
 ﻿'Imports userForm.Module1
 'Imports admin.Module1
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
@@ -97,5 +98,19 @@ Public Class Form1
         Me.DoubleBuffered = True
     End Sub
 
+    Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+        Provide_tbxError(tbxFullname, ErrorProvider1)
+        Provide_tbxError(tbxAddress, ErrorProvider1)
+        Provide_tbxError(tbxContactNumber, ErrorProvider1)
+        Provide_tbxError(tbxCity, ErrorProvider1)
+        Provide_tbxError(tbxEmail, ErrorProvider1)
+        Provide_tbxError(tbxGender, ErrorProvider1)
+        Provide_tbxError(tbxPostalCode, ErrorProvider1)
 
+
+    End Sub
+
+    Private Sub tbxFullname_TextChanged(sender As Object, e As EventArgs) Handles tbxFullname.TextChanged
+
+    End Sub
 End Class

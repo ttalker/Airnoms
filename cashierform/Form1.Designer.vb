@@ -22,6 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         btnBooking = New Button()
         btnTicket = New Button()
         btnClear = New Button()
@@ -48,7 +49,9 @@ Partial Class Form1
         btnSupport = New Button()
         pbxCashierBooking = New PictureBox()
         btnExit = New Button()
+        ErrorProvider1 = New ErrorProvider(components)
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBooking
@@ -292,6 +295,10 @@ Partial Class Form1
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
         ' 
+        ' ErrorProvider1
+        ' 
+        ErrorProvider1.ContainerControl = Me
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -329,6 +336,7 @@ Partial Class Form1
         Name = "Form1"
         Text = " CASHIER"
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -368,4 +376,5 @@ Partial Class Form1
     Friend WithEvents btnSupport As Button
     Friend WithEvents pbxCashierBooking As PictureBox
     Friend WithEvents btnExit As Button
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

@@ -69,4 +69,15 @@ Public Module Module1
     '    loginForm.Show()
     'End Sub
 
+    Public Sub Provide_tbxError(tbx As TextBox, errors As ErrorProvider)
+        If String.IsNullOrEmpty(tbx.Text) Then
+            ' Display an error in the ErrorProvider
+            errors.SetError(tbx, "This field is required.")
+        Else
+            ' Clear the error if the TextBox has text
+            errors.SetError(tbx, "")
+        End If
+    End Sub
+
+
 End Module

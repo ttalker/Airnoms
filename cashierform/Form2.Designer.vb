@@ -22,6 +22,7 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         btnTicket = New Button()
         btnBooking = New Button()
         tbxTicketPayment = New TextBox()
@@ -35,7 +36,9 @@ Partial Class Form2
         btnExit = New Button()
         btnNextTicket = New Button()
         btnResetTicket = New Button()
+        ErrorProvider1 = New ErrorProvider(components)
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnTicket
@@ -166,6 +169,10 @@ Partial Class Form2
         btnResetTicket.Text = " "
         btnResetTicket.UseVisualStyleBackColor = True
         ' 
+        ' ErrorProvider1
+        ' 
+        ErrorProvider1.ContainerControl = Me
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -188,6 +195,7 @@ Partial Class Form2
         Name = "Form2"
         Text = "TICKET PROCESSING"
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -206,4 +214,5 @@ Partial Class Form2
     Friend WithEvents btnExit As Button
     Friend WithEvents btnNextTicket As Button
     Friend WithEvents btnResetTicket As Button
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class
