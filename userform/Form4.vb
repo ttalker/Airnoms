@@ -1,25 +1,25 @@
 ﻿Imports cashierform
-
+Imports SharedModule
 Public Class Form4
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Module1.MakeTransparent(btnHomeUser)
-        Module1.MakeTransparent(btnBookingUser)
-        Module1.MakeTransparent(btnSupportUser)
-        Module1.MakeTransparent(btnExit)
-        Module1.MakeTransparent(btnResetUser)
-        Module1.MakeTransparent(btnBookUser)
+        MakeTransparent(btnHomeUser)
+        MakeTransparent(btnBookingUser)
+        MakeTransparent(btnSupportUser)
+        MakeTransparent(btnExit)
+        MakeTransparent(btnResetUser)
+        MakeTransparent(btnBookUser)
         btnHomeUser.Parent = pbxUserBooking
         btnBookingUser.Parent = pbxUserBooking
         btnSupportUser.Parent = pbxUserBooking
         btnExit.Parent = pbxUserBooking
         btnResetUser.Parent = pbxUserBooking
         btnBookUser.Parent = pbxUserBooking
-        Module1.hoverButton(btnHomeUser)
-        Module1.hoverButton(btnBookingUser)
-        Module1.hoverButton(btnSupportUser)
-        Module1.hoverButton(btnExit)
-        Module1.hoverButton(btnResetUser)
-        Module1.hoverButton(btnBookUser)
+        hoverButton(btnHomeUser)
+        hoverButton(btnBookingUser)
+        hoverButton(btnSupportUser)
+        hoverButton(btnExit)
+        hoverButton(btnResetUser)
+        hoverButton(btnBookUser)
         btnResetUser.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnResetUser.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
         Me.DoubleBuffered = True

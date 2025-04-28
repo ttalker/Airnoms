@@ -1,4 +1,5 @@
-﻿Public Class Form2
+﻿Imports SharedModule
+Public Class Form2
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Me.Hide()
         Form1.Show()

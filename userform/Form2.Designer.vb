@@ -24,7 +24,7 @@ Partial Class Form2
     Private Sub InitializeComponent()
         tbxUsernameSignUp = New TextBox()
         tbxFullnameSignUp = New TextBox()
-        TextBox1 = New TextBox()
+        tbxPasswordSignUp = New TextBox()
         tbxEmailSignUp = New TextBox()
         btnSignIn = New Button()
         btnSignUp = New Button()
@@ -51,14 +51,14 @@ Partial Class Form2
         tbxFullnameSignUp.Size = New Size(304, 23)
         tbxFullnameSignUp.TabIndex = 16
         ' 
-        ' TextBox1
+        ' tbxPasswordSignUp
         ' 
-        TextBox1.Location = New Point(535, 368)
-        TextBox1.Margin = New Padding(3, 2, 3, 2)
-        TextBox1.MaximumSize = New Size(304, 33)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(304, 23)
-        TextBox1.TabIndex = 20
+        tbxPasswordSignUp.Location = New Point(535, 368)
+        tbxPasswordSignUp.Margin = New Padding(3, 2, 3, 2)
+        tbxPasswordSignUp.MaximumSize = New Size(304, 33)
+        tbxPasswordSignUp.Name = "tbxPasswordSignUp"
+        tbxPasswordSignUp.Size = New Size(304, 23)
+        tbxPasswordSignUp.TabIndex = 20
         ' 
         ' tbxEmailSignUp
         ' 
@@ -112,7 +112,7 @@ Partial Class Form2
         Controls.Add(btnSignUp)
         Controls.Add(btnSignIn)
         Controls.Add(tbxEmailSignUp)
-        Controls.Add(TextBox1)
+        Controls.Add(tbxPasswordSignUp)
         Controls.Add(tbxUsernameSignUp)
         Controls.Add(tbxFullnameSignUp)
         Controls.Add(pbxSignUp)
@@ -126,7 +126,7 @@ Partial Class Form2
     End Sub
     Friend WithEvents tbxUsernameSignUp As TextBox
     Friend WithEvents tbxFullnameSignUp As TextBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbxPasswordSignUp As TextBox
     Friend WithEvents tbxEmailSignUp As TextBox
     Friend WithEvents btnSignIn As Button
     Friend WithEvents btnSignUp As Button

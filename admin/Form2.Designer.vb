@@ -22,78 +22,79 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnFlights = New System.Windows.Forms.Button()
-        Me.btnTransaction = New System.Windows.Forms.Button()
-        Me.btnBookings = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.btnExit = New System.Windows.Forms.Button()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
-        '
-        'btnFlights
-        '
-        Me.btnFlights.Location = New System.Drawing.Point(43, 29)
-        Me.btnFlights.Name = "btnFlights"
-        Me.btnFlights.Size = New System.Drawing.Size(186, 69)
-        Me.btnFlights.TabIndex = 2
-        Me.btnFlights.Text = " "
-        Me.btnFlights.UseVisualStyleBackColor = True
-        '
-        'btnTransaction
-        '
-        Me.btnTransaction.Location = New System.Drawing.Point(290, 34)
-        Me.btnTransaction.Name = "btnTransaction"
-        Me.btnTransaction.Size = New System.Drawing.Size(244, 69)
-        Me.btnTransaction.TabIndex = 3
-        Me.btnTransaction.Text = " "
-        Me.btnTransaction.UseVisualStyleBackColor = True
-        '
-        'btnBookings
-        '
-        Me.btnBookings.Location = New System.Drawing.Point(579, 34)
-        Me.btnBookings.Name = "btnBookings"
-        Me.btnBookings.Size = New System.Drawing.Size(184, 69)
-        Me.btnBookings.TabIndex = 5
-        Me.btnBookings.Text = " "
-        Me.btnBookings.UseVisualStyleBackColor = True
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackgroundImage = Global.admin.My.Resources.Resources.Admin__transaction_history_1
-        Me.PictureBox1.Location = New System.Drawing.Point(1, -1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1548, 912)
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'btnExit
-        '
-        Me.btnExit.Location = New System.Drawing.Point(780, 34)
-        Me.btnExit.Name = "btnExit"
-        Me.btnExit.Size = New System.Drawing.Size(166, 69)
-        Me.btnExit.TabIndex = 8
-        Me.btnExit.UseVisualStyleBackColor = True
-        '
-        'Form2
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1547, 911)
-        Me.Controls.Add(Me.btnExit)
-        Me.Controls.Add(Me.btnBookings)
-        Me.Controls.Add(Me.btnTransaction)
-        Me.Controls.Add(Me.btnFlights)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Name = "Form2"
-        Me.Text = "TRANSACTION HISTORY"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
+        btnExit = New Button()
+        btnTransactions = New Button()
+        btnFlights = New Button()
+        pbxAdmin = New PictureBox()
+        btnBookings = New Button()
+        CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
+        SuspendLayout()
+        ' 
+        ' btnExit
+        ' 
+        btnExit.Location = New Point(778, 32)
+        btnExit.Name = "btnExit"
+        btnExit.Size = New Size(146, 70)
+        btnExit.TabIndex = 9
+        btnExit.Text = " "
+        btnExit.UseVisualStyleBackColor = True
+        ' 
+        ' btnTransactions
+        ' 
+        btnTransactions.Location = New Point(283, 34)
+        btnTransactions.Name = "btnTransactions"
+        btnTransactions.Size = New Size(250, 70)
+        btnTransactions.TabIndex = 7
+        btnTransactions.Text = " "
+        btnTransactions.UseVisualStyleBackColor = True
+        ' 
+        ' btnFlights
+        ' 
+        btnFlights.Location = New Point(53, 33)
+        btnFlights.Name = "btnFlights"
+        btnFlights.Size = New Size(185, 70)
+        btnFlights.TabIndex = 6
+        btnFlights.Text = " "
+        btnFlights.UseVisualStyleBackColor = True
+        ' 
+        ' pbxAdmin
+        ' 
+        pbxAdmin.BackgroundImage = CType(resources.GetObject("pbxAdmin.BackgroundImage"), Image)
+        pbxAdmin.Location = New Point(-3, -2)
+        pbxAdmin.Name = "pbxAdmin"
+        pbxAdmin.Size = New Size(1552, 884)
+        pbxAdmin.TabIndex = 5
+        pbxAdmin.TabStop = False
+        ' 
+        ' btnBookings
+        ' 
+        btnBookings.Location = New Point(579, 34)
+        btnBookings.Name = "btnBookings"
+        btnBookings.Size = New Size(183, 70)
+        btnBookings.TabIndex = 10
+        btnBookings.Text = " "
+        btnBookings.UseVisualStyleBackColor = True
+        ' 
+        ' Form2
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        ClientSize = New Size(1547, 881)
+        Controls.Add(btnBookings)
+        Controls.Add(btnExit)
+        Controls.Add(btnTransactions)
+        Controls.Add(btnFlights)
+        Controls.Add(pbxAdmin)
+        Name = "Form2"
+        Text = "TRANSACTIONS"
+        CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
+        ResumeLayout(False)
     End Sub
 
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents btnFlights As Button
-    Friend WithEvents btnTransaction As Button
-    Friend WithEvents btnBookings As Button
     Friend WithEvents btnExit As Button
+    Friend WithEvents btnTransactions As Button
+    Friend WithEvents btnFlights As Button
+    Friend WithEvents pbxAdmin As PictureBox
+    Friend WithEvents btnBookings As Button
 End Class
