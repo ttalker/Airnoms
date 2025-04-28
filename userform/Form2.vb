@@ -1,7 +1,7 @@
-﻿Imports cashierform
-Imports admin.Module1
-Imports Windows.Win32.System
-
+﻿'Imports cashierform
+'Imports admin.Module1
+'Imports Windows.Win32.System
+Imports SharedModule
 Public Class Form2
     Public Property username As String
     Public Property password As String
@@ -13,12 +13,12 @@ Public Class Form2
 
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Module1.MakeTransparent(btnSignIn)
-        Module1.MakeTransparent(btnSignUp)
+        MakeTransparent(btnSignIn)
+        MakeTransparent(btnSignUp)
         btnSignIn.Parent = pbxSignUp
         btnSignUp.Parent = pbxSignUp
-        Module1.hoverButton(btnSignIn)
-        Module1.hoverButton(btnSignUp)
+        hoverButton(btnSignIn)
+        hoverButton(btnSignUp)
         btnSignUp.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnSignUp.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' effects for button
         Me.DoubleBuffered = True

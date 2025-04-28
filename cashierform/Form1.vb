@@ -1,5 +1,6 @@
-﻿Imports userForm.Module1
-Imports admin.Module1
+﻿'Imports userForm.Module1
+'Imports admin.Module1
+Imports SharedModule
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()

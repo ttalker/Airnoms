@@ -1,5 +1,6 @@
-﻿Imports cashierform
-Imports userForm.Module1
+﻿'Imports cashierform
+'Imports userForm.Module1
+Imports SharedModule
 Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -54,7 +55,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        ExitApplication(Me)
+        'ExitApplication(Me)
     End Sub
 End Class
 
