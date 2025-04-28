@@ -24,10 +24,10 @@ Partial Class Form3
     Private Sub InitializeComponent()
         btnBookingUser = New Button()
         btnHomeUser = New Button()
-        PictureBox1 = New PictureBox()
+        pbxHome = New PictureBox()
         btnSupportUser = New Button()
         btnExitUser = New Button()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxHome, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBookingUser
@@ -42,26 +42,26 @@ Partial Class Form3
         ' 
         ' btnHomeUser
         ' 
-        btnHomeUser.Location = New Point(56, 27)
+        btnHomeUser.Location = New Point(58, 27)
         btnHomeUser.Margin = New Padding(2)
         btnHomeUser.Name = "btnHomeUser"
-        btnHomeUser.Size = New Size(182, 68)
+        btnHomeUser.Size = New Size(180, 68)
         btnHomeUser.TabIndex = 4
         btnHomeUser.Text = " "
         btnHomeUser.UseVisualStyleBackColor = True
         ' 
-        ' PictureBox1
+        ' pbxHome
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__2_
-        PictureBox1.Location = New Point(-1, -2)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(1554, 920)
-        PictureBox1.TabIndex = 6
-        PictureBox1.TabStop = False
+        pbxHome.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__2_1
+        pbxHome.Location = New Point(-1, -2)
+        pbxHome.Name = "pbxHome"
+        pbxHome.Size = New Size(1554, 920)
+        pbxHome.TabIndex = 6
+        pbxHome.TabStop = False
         ' 
         ' btnSupportUser
         ' 
-        btnSupportUser.Location = New Point(477, 27)
+        btnSupportUser.Location = New Point(480, 27)
         btnSupportUser.Margin = New Padding(2)
         btnSupportUser.Name = "btnSupportUser"
         btnSupportUser.Size = New Size(182, 68)
@@ -71,14 +71,13 @@ Partial Class Form3
         ' 
         ' btnExitUser
         ' 
-        btnExitUser.Location = New Point(674, 27)
+        btnExitUser.Location = New Point(676, 27)
         btnExitUser.Margin = New Padding(2)
         btnExitUser.Name = "btnExitUser"
-        btnExitUser.Size = New Size(182, 68)
+        btnExitUser.Size = New Size(143, 68)
         btnExitUser.TabIndex = 8
         btnExitUser.Text = " "
         btnExitUser.UseVisualStyleBackColor = True
-
         ' 
         ' Form3
         ' 
@@ -90,19 +89,19 @@ Partial Class Form3
         Controls.Add(btnSupportUser)
         Controls.Add(btnBookingUser)
         Controls.Add(btnHomeUser)
-        Controls.Add(PictureBox1)
+        Controls.Add(pbxHome)
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 969)
         Name = "Form3"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Form3"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        Text = "HOME"
+        CType(pbxHome, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents pbxHome As PictureBox
 
     Friend WithEvents btnSupportUser As Button
     Friend WithEvents btnExitUser As Button

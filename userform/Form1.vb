@@ -1,18 +1,16 @@
-﻿Imports cashierform
+﻿Imports SharedModule
 Public Class Form1
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Module1.MakeTransparent(btnSignIn)
-        Module1.MakeTransparent(btnCreateAccount)
+        MakeTransparent(btnSignIn)
+        MakeTransparent(btnCreateAccount)
         btnSignIn.Parent = pbxSignIn
         btnCreateAccount.Parent = pbxSignIn
-        Module1.hoverButton(btnSignIn)
-        Module1.hoverButton(btnCreateAccount)
+        hoverButton(btnSignIn)
+        hoverButton(btnCreateAccount)
         btnSignIn.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnSignIn.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' effects for button
-
-
         Me.DoubleBuffered = True
     End Sub
 

@@ -129,7 +129,7 @@ Partial Class Form2
         ' 
         ' pbxCashierTicket
         ' 
-        pbxCashierTicket.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____TICKET__1_
+        pbxCashierTicket.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____TICKET
         pbxCashierTicket.Location = New Point(2, -1)
         pbxCashierTicket.Name = "pbxCashierTicket"
         pbxCashierTicket.Size = New Size(1551, 910)
@@ -186,7 +186,7 @@ Partial Class Form2
         Controls.Add(pbxCashierTicket)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form2"
-        Text = "Form2"
+        Text = "TICKET PROCESSING"
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

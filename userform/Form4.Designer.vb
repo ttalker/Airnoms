@@ -461,10 +461,10 @@ Partial Class Form4
         ' 
         ' btnExit
         ' 
-        btnExit.Location = New Point(677, 26)
+        btnExit.Location = New Point(682, 26)
         btnExit.Margin = New Padding(2)
         btnExit.Name = "btnExit"
-        btnExit.Size = New Size(182, 68)
+        btnExit.Size = New Size(153, 68)
         btnExit.TabIndex = 87
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
@@ -523,7 +523,7 @@ Partial Class Form4
         MaximumSize = New Size(1563, 950)
         Name = "Form4"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Form4"
+        Text = "BOOKING"
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

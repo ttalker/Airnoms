@@ -1,8 +1,22 @@
-﻿Imports cashierform
+﻿'Imports System.Reflection
+Imports cashierform
+Imports SharedModule
 Public Class Form3
 
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.ClientSize = New Size(1563, 957)
+        MakeTransparent(btnHomeUser)
+        MakeTransparent(btnBookingUser)
+        MakeTransparent(btnSupportUser)
+        MakeTransparent(btnExitUser)
+        btnHomeUser.Parent = pbxHome
+        btnBookingUser.Parent = pbxHome
+        btnSupportUser.Parent = pbxHome
+        btnExitUser.Parent = pbxHome
+        hoverButton(btnHomeUser)
+        hoverButton(btnBookingUser)
+        hoverButton(btnSupportUser)
+        hoverButton(btnExitUser)
+
     End Sub
 
     Private Sub btnHomeUser_Click(sender As Object, e As EventArgs) Handles btnHomeUser.Click
@@ -22,10 +36,5 @@ Public Class Form3
 
 
 
-    'im trying border radius on label'
-
-    'Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
-    '    Label1.Size = borderRadius.Size
-    'End Sub
 
 End Class

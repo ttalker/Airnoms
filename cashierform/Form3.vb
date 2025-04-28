@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports SharedModule
 Public Class Form3
 
     Dim planes As String
