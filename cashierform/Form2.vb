@@ -3,20 +3,24 @@ Public Class Form2
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Me.Hide()
         Form1.Show()
+
+
     End Sub
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
+
+
         Show()
         Form1.Hide()
     End Sub
 
-
-
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
+
         Form1.support_form.Show()
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+
         Me.Close()
     End Sub
 
@@ -59,5 +63,7 @@ Public Class Form2
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
     End Sub
 
+    Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
 
+    End Sub
 End Class

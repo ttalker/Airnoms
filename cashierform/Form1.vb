@@ -1,5 +1,6 @@
 ﻿'Imports userForm.Module1
 'Imports admin.Module1
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
@@ -68,11 +69,7 @@ Public Class Form1
     Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
         tbxFullname.Text = "Kelvin Dave M. Rivera"
         tbxAddress.Text = "Tarlac"
-        tbxCity.Text = "Tarlac City"
-        tbxContactNumber.Text = "0999999999"
-        tbxEmail.Text = "examplemail@gmail.com"
-        tbxPostalCode.Text = "2003"
-        tbxGender.Text = "Male"
+        cbxGender.Text = "Male"
         cbxDeparture.Text = "Tarlac"
         cbxDestination.Text = "Seoul, Korea"
         cbxSeatNumber.Text = "1A"
@@ -85,11 +82,7 @@ Public Class Form1
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         tbxFullname.Clear()
         tbxAddress.Clear()
-        tbxCity.Clear()
-        tbxContactNumber.Clear()
-        tbxEmail.Clear()
-        tbxPostalCode.Clear()
-        tbxGender.Clear()
+        'cbxGender.Clear()
     End Sub
 
 
@@ -97,5 +90,32 @@ Public Class Form1
         Me.DoubleBuffered = True
     End Sub
 
+    Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+        Provide_tbxError(tbxFullname, ErrorProvider1)
+        Provide_tbxError(tbxAddress, ErrorProvider1)
+        'Provide_tbxError(cbxGender, ErrorProvider1)
 
+
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+
+    End Sub
+
+    Private Sub tbxFullname_TextChanged(sender As Object, e As EventArgs) Handles tbxFullname.TextChanged
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
 End Class
