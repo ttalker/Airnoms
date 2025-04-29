@@ -29,15 +29,10 @@ Partial Class Form4
         cbxSeatNumberThreeUser = New ComboBox()
         cbxSeatNumberTwoUser = New ComboBox()
         cbxSeatNumberOneUser = New ComboBox()
-        tbxGenderFourUser = New TextBox()
-        tbxGenderFiveUser = New TextBox()
         tbxFullnamePassengerFourUser = New TextBox()
         tbxFullnamePassengerFiveUser = New TextBox()
-        tbxGenderThreeUser = New TextBox()
         tbxFullnamePassengerThreeUser = New TextBox()
-        tbxGenderTwoUser = New TextBox()
         tbxFullnamePassengerTwoUser = New TextBox()
-        tbxGenderOneUser = New TextBox()
         tbxFullnamePassengerOneUser = New TextBox()
         cbxArrivalTimeUser = New ComboBox()
         cbxDepartTimeUser = New ComboBox()
@@ -63,16 +58,40 @@ Partial Class Form4
         cbxDestinationUser = New ComboBox()
         pbxUserBooking = New PictureBox()
         cbxSeatNumberSixUser = New ComboBox()
-        tbxGenderSixUser = New TextBox()
         tbxFullnamePassengeSixUser = New TextBox()
         btnSupportUser = New Button()
         btnExit = New Button()
+        ComboBox1 = New ComboBox()
+        ComboBox2 = New ComboBox()
+        ComboBox3 = New ComboBox()
+        ComboBox4 = New ComboBox()
+        ComboBox5 = New ComboBox()
+        ComboBox6 = New ComboBox()
+        ComboBox7 = New ComboBox()
+        ComboBox8 = New ComboBox()
+        ComboBox9 = New ComboBox()
+        ComboBox10 = New ComboBox()
+        ComboBox11 = New ComboBox()
+        ComboBox12 = New ComboBox()
+        TextBox1 = New TextBox()
+        TextBox2 = New TextBox()
+        TextBox3 = New TextBox()
+        TextBox4 = New TextBox()
+        TextBox5 = New TextBox()
+        TextBox6 = New TextBox()
+        DateTimePicker1 = New DateTimePicker()
+        DateTimePicker2 = New DateTimePicker()
+        DateTimePicker3 = New DateTimePicker()
+        DateTimePicker4 = New DateTimePicker()
+        DateTimePicker5 = New DateTimePicker()
+        DateTimePicker6 = New DateTimePicker()
+        CheckBox1 = New CheckBox()
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBookingUser
         ' 
-        btnBookingUser.Location = New Point(270, 26)
+        btnBookingUser.Location = New Point(279, 26)
         btnBookingUser.Margin = New Padding(2)
         btnBookingUser.Name = "btnBookingUser"
         btnBookingUser.Size = New Size(182, 68)
@@ -82,7 +101,7 @@ Partial Class Form4
         ' 
         ' btnHomeUser
         ' 
-        btnHomeUser.Location = New Point(57, 27)
+        btnHomeUser.Location = New Point(64, 27)
         btnHomeUser.Margin = New Padding(2)
         btnHomeUser.Name = "btnHomeUser"
         btnHomeUser.Size = New Size(182, 68)
@@ -94,130 +113,90 @@ Partial Class Form4
         ' 
         cbxSeatNumberFourUser.FormattingEnabled = True
         cbxSeatNumberFourUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberFourUser.Location = New Point(623, 737)
+        cbxSeatNumberFourUser.Location = New Point(482, 738)
         cbxSeatNumberFourUser.Margin = New Padding(2)
         cbxSeatNumberFourUser.Name = "cbxSeatNumberFourUser"
-        cbxSeatNumberFourUser.Size = New Size(99, 23)
+        cbxSeatNumberFourUser.Size = New Size(69, 23)
         cbxSeatNumberFourUser.TabIndex = 55
         ' 
         ' cbxSeatNumberFiveUser
         ' 
         cbxSeatNumberFiveUser.FormattingEnabled = True
         cbxSeatNumberFiveUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberFiveUser.Location = New Point(623, 773)
+        cbxSeatNumberFiveUser.Location = New Point(482, 776)
         cbxSeatNumberFiveUser.Margin = New Padding(2)
         cbxSeatNumberFiveUser.Name = "cbxSeatNumberFiveUser"
-        cbxSeatNumberFiveUser.Size = New Size(99, 23)
+        cbxSeatNumberFiveUser.Size = New Size(69, 23)
         cbxSeatNumberFiveUser.TabIndex = 55
         ' 
         ' cbxSeatNumberThreeUser
         ' 
         cbxSeatNumberThreeUser.FormattingEnabled = True
         cbxSeatNumberThreeUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberThreeUser.Location = New Point(623, 698)
+        cbxSeatNumberThreeUser.Location = New Point(482, 701)
         cbxSeatNumberThreeUser.Margin = New Padding(2)
         cbxSeatNumberThreeUser.Name = "cbxSeatNumberThreeUser"
-        cbxSeatNumberThreeUser.Size = New Size(99, 23)
+        cbxSeatNumberThreeUser.Size = New Size(69, 23)
         cbxSeatNumberThreeUser.TabIndex = 54
         ' 
         ' cbxSeatNumberTwoUser
         ' 
         cbxSeatNumberTwoUser.FormattingEnabled = True
         cbxSeatNumberTwoUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberTwoUser.Location = New Point(623, 664)
+        cbxSeatNumberTwoUser.Location = New Point(482, 665)
         cbxSeatNumberTwoUser.Margin = New Padding(2)
         cbxSeatNumberTwoUser.Name = "cbxSeatNumberTwoUser"
-        cbxSeatNumberTwoUser.Size = New Size(99, 23)
+        cbxSeatNumberTwoUser.Size = New Size(69, 23)
         cbxSeatNumberTwoUser.TabIndex = 53
         ' 
         ' cbxSeatNumberOneUser
         ' 
         cbxSeatNumberOneUser.FormattingEnabled = True
         cbxSeatNumberOneUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberOneUser.Location = New Point(623, 627)
+        cbxSeatNumberOneUser.Location = New Point(482, 627)
         cbxSeatNumberOneUser.Margin = New Padding(2)
         cbxSeatNumberOneUser.Name = "cbxSeatNumberOneUser"
-        cbxSeatNumberOneUser.Size = New Size(99, 23)
+        cbxSeatNumberOneUser.Size = New Size(69, 23)
         cbxSeatNumberOneUser.TabIndex = 52
-        ' 
-        ' tbxGenderFourUser
-        ' 
-        tbxGenderFourUser.Location = New Point(466, 737)
-        tbxGenderFourUser.Margin = New Padding(2)
-        tbxGenderFourUser.Name = "tbxGenderFourUser"
-        tbxGenderFourUser.Size = New Size(124, 23)
-        tbxGenderFourUser.TabIndex = 51
-        ' 
-        ' tbxGenderFiveUser
-        ' 
-        tbxGenderFiveUser.Location = New Point(466, 775)
-        tbxGenderFiveUser.Margin = New Padding(2)
-        tbxGenderFiveUser.Name = "tbxGenderFiveUser"
-        tbxGenderFiveUser.Size = New Size(124, 23)
-        tbxGenderFiveUser.TabIndex = 51
         ' 
         ' tbxFullnamePassengerFourUser
         ' 
-        tbxFullnamePassengerFourUser.Location = New Point(190, 738)
+        tbxFullnamePassengerFourUser.Location = New Point(104, 738)
         tbxFullnamePassengerFourUser.Margin = New Padding(2)
         tbxFullnamePassengerFourUser.Name = "tbxFullnamePassengerFourUser"
-        tbxFullnamePassengerFourUser.Size = New Size(252, 23)
+        tbxFullnamePassengerFourUser.Size = New Size(127, 23)
         tbxFullnamePassengerFourUser.TabIndex = 50
         ' 
         ' tbxFullnamePassengerFiveUser
         ' 
-        tbxFullnamePassengerFiveUser.Location = New Point(190, 776)
+        tbxFullnamePassengerFiveUser.Location = New Point(103, 776)
         tbxFullnamePassengerFiveUser.Margin = New Padding(2)
         tbxFullnamePassengerFiveUser.Name = "tbxFullnamePassengerFiveUser"
-        tbxFullnamePassengerFiveUser.Size = New Size(252, 23)
+        tbxFullnamePassengerFiveUser.Size = New Size(128, 23)
         tbxFullnamePassengerFiveUser.TabIndex = 50
-        ' 
-        ' tbxGenderThreeUser
-        ' 
-        tbxGenderThreeUser.Location = New Point(466, 700)
-        tbxGenderThreeUser.Margin = New Padding(2)
-        tbxGenderThreeUser.Name = "tbxGenderThreeUser"
-        tbxGenderThreeUser.Size = New Size(124, 23)
-        tbxGenderThreeUser.TabIndex = 49
         ' 
         ' tbxFullnamePassengerThreeUser
         ' 
-        tbxFullnamePassengerThreeUser.Location = New Point(190, 701)
+        tbxFullnamePassengerThreeUser.Location = New Point(104, 701)
         tbxFullnamePassengerThreeUser.Margin = New Padding(2)
         tbxFullnamePassengerThreeUser.Name = "tbxFullnamePassengerThreeUser"
-        tbxFullnamePassengerThreeUser.Size = New Size(252, 23)
+        tbxFullnamePassengerThreeUser.Size = New Size(128, 23)
         tbxFullnamePassengerThreeUser.TabIndex = 48
-        ' 
-        ' tbxGenderTwoUser
-        ' 
-        tbxGenderTwoUser.Location = New Point(466, 664)
-        tbxGenderTwoUser.Margin = New Padding(2)
-        tbxGenderTwoUser.Name = "tbxGenderTwoUser"
-        tbxGenderTwoUser.Size = New Size(124, 23)
-        tbxGenderTwoUser.TabIndex = 47
         ' 
         ' tbxFullnamePassengerTwoUser
         ' 
-        tbxFullnamePassengerTwoUser.Location = New Point(190, 665)
+        tbxFullnamePassengerTwoUser.Location = New Point(104, 665)
         tbxFullnamePassengerTwoUser.Margin = New Padding(2)
         tbxFullnamePassengerTwoUser.Name = "tbxFullnamePassengerTwoUser"
-        tbxFullnamePassengerTwoUser.Size = New Size(252, 23)
+        tbxFullnamePassengerTwoUser.Size = New Size(127, 23)
         tbxFullnamePassengerTwoUser.TabIndex = 46
-        ' 
-        ' tbxGenderOneUser
-        ' 
-        tbxGenderOneUser.Location = New Point(466, 627)
-        tbxGenderOneUser.Margin = New Padding(2)
-        tbxGenderOneUser.Name = "tbxGenderOneUser"
-        tbxGenderOneUser.Size = New Size(124, 23)
-        tbxGenderOneUser.TabIndex = 45
         ' 
         ' tbxFullnamePassengerOneUser
         ' 
-        tbxFullnamePassengerOneUser.Location = New Point(190, 628)
+        tbxFullnamePassengerOneUser.Location = New Point(104, 627)
         tbxFullnamePassengerOneUser.Margin = New Padding(2)
         tbxFullnamePassengerOneUser.Name = "tbxFullnamePassengerOneUser"
-        tbxFullnamePassengerOneUser.Size = New Size(252, 23)
+        tbxFullnamePassengerOneUser.Size = New Size(128, 23)
         tbxFullnamePassengerOneUser.TabIndex = 44
         ' 
         ' cbxArrivalTimeUser
@@ -258,7 +237,7 @@ Partial Class Form4
         ' 
         ' btnBookUser
         ' 
-        btnBookUser.Location = New Point(1265, 801)
+        btnBookUser.Location = New Point(1271, 801)
         btnBookUser.Margin = New Padding(2)
         btnBookUser.Name = "btnBookUser"
         btnBookUser.Size = New Size(184, 71)
@@ -276,7 +255,7 @@ Partial Class Form4
         ' 
         ' btnResetUser
         ' 
-        btnResetUser.Location = New Point(1064, 801)
+        btnResetUser.Location = New Point(1071, 801)
         btnResetUser.Margin = New Padding(2)
         btnResetUser.Name = "btnResetUser"
         btnResetUser.Size = New Size(187, 71)
@@ -427,31 +406,23 @@ Partial Class Form4
         ' 
         cbxSeatNumberSixUser.FormattingEnabled = True
         cbxSeatNumberSixUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberSixUser.Location = New Point(623, 810)
+        cbxSeatNumberSixUser.Location = New Point(482, 813)
         cbxSeatNumberSixUser.Margin = New Padding(2)
         cbxSeatNumberSixUser.Name = "cbxSeatNumberSixUser"
-        cbxSeatNumberSixUser.Size = New Size(99, 23)
+        cbxSeatNumberSixUser.Size = New Size(69, 23)
         cbxSeatNumberSixUser.TabIndex = 85
-        ' 
-        ' tbxGenderSixUser
-        ' 
-        tbxGenderSixUser.Location = New Point(466, 812)
-        tbxGenderSixUser.Margin = New Padding(2)
-        tbxGenderSixUser.Name = "tbxGenderSixUser"
-        tbxGenderSixUser.Size = New Size(124, 23)
-        tbxGenderSixUser.TabIndex = 84
         ' 
         ' tbxFullnamePassengeSixUser
         ' 
-        tbxFullnamePassengeSixUser.Location = New Point(190, 813)
+        tbxFullnamePassengeSixUser.Location = New Point(103, 813)
         tbxFullnamePassengeSixUser.Margin = New Padding(2)
         tbxFullnamePassengeSixUser.Name = "tbxFullnamePassengeSixUser"
-        tbxFullnamePassengeSixUser.Size = New Size(252, 23)
+        tbxFullnamePassengeSixUser.Size = New Size(128, 23)
         tbxFullnamePassengeSixUser.TabIndex = 83
         ' 
         ' btnSupportUser
         ' 
-        btnSupportUser.Location = New Point(476, 27)
+        btnSupportUser.Location = New Point(482, 27)
         btnSupportUser.Margin = New Padding(2)
         btnSupportUser.Name = "btnSupportUser"
         btnSupportUser.Size = New Size(182, 68)
@@ -469,15 +440,258 @@ Partial Class Form4
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
         ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Items.AddRange(New Object() {"AC1"})
+        ComboBox1.Location = New Point(397, 813)
+        ComboBox1.Margin = New Padding(2)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(69, 23)
+        ComboBox1.TabIndex = 93
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Items.AddRange(New Object() {"AC1"})
+        ComboBox2.Location = New Point(397, 738)
+        ComboBox2.Margin = New Padding(2)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(69, 23)
+        ComboBox2.TabIndex = 91
+        ' 
+        ' ComboBox3
+        ' 
+        ComboBox3.FormattingEnabled = True
+        ComboBox3.Items.AddRange(New Object() {"AC1"})
+        ComboBox3.Location = New Point(397, 776)
+        ComboBox3.Margin = New Padding(2)
+        ComboBox3.Name = "ComboBox3"
+        ComboBox3.Size = New Size(69, 23)
+        ComboBox3.TabIndex = 92
+        ' 
+        ' ComboBox4
+        ' 
+        ComboBox4.FormattingEnabled = True
+        ComboBox4.Items.AddRange(New Object() {"AC1"})
+        ComboBox4.Location = New Point(397, 701)
+        ComboBox4.Margin = New Padding(2)
+        ComboBox4.Name = "ComboBox4"
+        ComboBox4.Size = New Size(69, 23)
+        ComboBox4.TabIndex = 90
+        ' 
+        ' ComboBox5
+        ' 
+        ComboBox5.FormattingEnabled = True
+        ComboBox5.Items.AddRange(New Object() {"AC1"})
+        ComboBox5.Location = New Point(397, 665)
+        ComboBox5.Margin = New Padding(2)
+        ComboBox5.Name = "ComboBox5"
+        ComboBox5.Size = New Size(69, 23)
+        ComboBox5.TabIndex = 89
+        ' 
+        ' ComboBox6
+        ' 
+        ComboBox6.FormattingEnabled = True
+        ComboBox6.Items.AddRange(New Object() {"AC1"})
+        ComboBox6.Location = New Point(397, 627)
+        ComboBox6.Margin = New Padding(2)
+        ComboBox6.Name = "ComboBox6"
+        ComboBox6.Size = New Size(69, 23)
+        ComboBox6.TabIndex = 88
+        ' 
+        ' ComboBox7
+        ' 
+        ComboBox7.FormattingEnabled = True
+        ComboBox7.Items.AddRange(New Object() {"AC1"})
+        ComboBox7.Location = New Point(578, 813)
+        ComboBox7.Margin = New Padding(2)
+        ComboBox7.Name = "ComboBox7"
+        ComboBox7.Size = New Size(86, 23)
+        ComboBox7.TabIndex = 99
+        ' 
+        ' ComboBox8
+        ' 
+        ComboBox8.FormattingEnabled = True
+        ComboBox8.Items.AddRange(New Object() {"AC1"})
+        ComboBox8.Location = New Point(578, 738)
+        ComboBox8.Margin = New Padding(2)
+        ComboBox8.Name = "ComboBox8"
+        ComboBox8.Size = New Size(86, 23)
+        ComboBox8.TabIndex = 97
+        ' 
+        ' ComboBox9
+        ' 
+        ComboBox9.FormattingEnabled = True
+        ComboBox9.Items.AddRange(New Object() {"AC1"})
+        ComboBox9.Location = New Point(578, 776)
+        ComboBox9.Margin = New Padding(2)
+        ComboBox9.Name = "ComboBox9"
+        ComboBox9.Size = New Size(86, 23)
+        ComboBox9.TabIndex = 98
+        ' 
+        ' ComboBox10
+        ' 
+        ComboBox10.FormattingEnabled = True
+        ComboBox10.Items.AddRange(New Object() {"AC1"})
+        ComboBox10.Location = New Point(578, 701)
+        ComboBox10.Margin = New Padding(2)
+        ComboBox10.Name = "ComboBox10"
+        ComboBox10.Size = New Size(86, 23)
+        ComboBox10.TabIndex = 96
+        ' 
+        ' ComboBox11
+        ' 
+        ComboBox11.FormattingEnabled = True
+        ComboBox11.Items.AddRange(New Object() {"AC1"})
+        ComboBox11.Location = New Point(578, 665)
+        ComboBox11.Margin = New Padding(2)
+        ComboBox11.Name = "ComboBox11"
+        ComboBox11.Size = New Size(86, 23)
+        ComboBox11.TabIndex = 95
+        ' 
+        ' ComboBox12
+        ' 
+        ComboBox12.FormattingEnabled = True
+        ComboBox12.Items.AddRange(New Object() {"AC1"})
+        ComboBox12.Location = New Point(578, 627)
+        ComboBox12.Margin = New Padding(2)
+        ComboBox12.Name = "ComboBox12"
+        ComboBox12.Size = New Size(86, 23)
+        ComboBox12.TabIndex = 94
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(235, 813)
+        TextBox1.Margin = New Padding(2)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(31, 23)
+        TextBox1.TabIndex = 105
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(236, 738)
+        TextBox2.Margin = New Padding(2)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(30, 23)
+        TextBox2.TabIndex = 103
+        ' 
+        ' TextBox3
+        ' 
+        TextBox3.Location = New Point(235, 776)
+        TextBox3.Margin = New Padding(2)
+        TextBox3.Name = "TextBox3"
+        TextBox3.Size = New Size(31, 23)
+        TextBox3.TabIndex = 104
+        ' 
+        ' TextBox4
+        ' 
+        TextBox4.Location = New Point(236, 701)
+        TextBox4.Margin = New Padding(2)
+        TextBox4.Name = "TextBox4"
+        TextBox4.Size = New Size(31, 23)
+        TextBox4.TabIndex = 102
+        ' 
+        ' TextBox5
+        ' 
+        TextBox5.Location = New Point(236, 627)
+        TextBox5.Margin = New Padding(2)
+        TextBox5.Name = "TextBox5"
+        TextBox5.Size = New Size(31, 23)
+        TextBox5.TabIndex = 100
+        ' 
+        ' TextBox6
+        ' 
+        TextBox6.Location = New Point(236, 665)
+        TextBox6.Margin = New Padding(2)
+        TextBox6.Name = "TextBox6"
+        TextBox6.Size = New Size(30, 23)
+        TextBox6.TabIndex = 101
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.Location = New Point(275, 627)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(115, 23)
+        DateTimePicker1.TabIndex = 106
+        ' 
+        ' DateTimePicker2
+        ' 
+        DateTimePicker2.Location = New Point(275, 665)
+        DateTimePicker2.Name = "DateTimePicker2"
+        DateTimePicker2.Size = New Size(115, 23)
+        DateTimePicker2.TabIndex = 107
+        ' 
+        ' DateTimePicker3
+        ' 
+        DateTimePicker3.Location = New Point(275, 701)
+        DateTimePicker3.Name = "DateTimePicker3"
+        DateTimePicker3.Size = New Size(115, 23)
+        DateTimePicker3.TabIndex = 108
+        ' 
+        ' DateTimePicker4
+        ' 
+        DateTimePicker4.Location = New Point(277, 812)
+        DateTimePicker4.Name = "DateTimePicker4"
+        DateTimePicker4.Size = New Size(115, 23)
+        DateTimePicker4.TabIndex = 111
+        ' 
+        ' DateTimePicker5
+        ' 
+        DateTimePicker5.Location = New Point(277, 776)
+        DateTimePicker5.Name = "DateTimePicker5"
+        DateTimePicker5.Size = New Size(115, 23)
+        DateTimePicker5.TabIndex = 110
+        ' 
+        ' DateTimePicker6
+        ' 
+        DateTimePicker6.Location = New Point(277, 738)
+        DateTimePicker6.Name = "DateTimePicker6"
+        DateTimePicker6.Size = New Size(115, 23)
+        DateTimePicker6.TabIndex = 109
+        ' 
+        ' CheckBox1
+        ' 
+        CheckBox1.AutoSize = True
+        CheckBox1.Location = New Point(710, 627)
+        CheckBox1.Name = "CheckBox1"
+        CheckBox1.Size = New Size(15, 14)
+        CheckBox1.TabIndex = 112
+        CheckBox1.UseVisualStyleBackColor = True
+        ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         ClientSize = New Size(1547, 911)
+        Controls.Add(CheckBox1)
+        Controls.Add(DateTimePicker4)
+        Controls.Add(DateTimePicker5)
+        Controls.Add(DateTimePicker6)
+        Controls.Add(DateTimePicker3)
+        Controls.Add(DateTimePicker2)
+        Controls.Add(DateTimePicker1)
+        Controls.Add(TextBox1)
+        Controls.Add(TextBox2)
+        Controls.Add(TextBox3)
+        Controls.Add(TextBox4)
+        Controls.Add(TextBox5)
+        Controls.Add(TextBox6)
+        Controls.Add(ComboBox7)
+        Controls.Add(ComboBox8)
+        Controls.Add(ComboBox9)
+        Controls.Add(ComboBox10)
+        Controls.Add(ComboBox11)
+        Controls.Add(ComboBox12)
+        Controls.Add(ComboBox1)
+        Controls.Add(ComboBox2)
+        Controls.Add(ComboBox3)
+        Controls.Add(ComboBox4)
+        Controls.Add(ComboBox5)
+        Controls.Add(ComboBox6)
         Controls.Add(btnExit)
         Controls.Add(btnSupportUser)
         Controls.Add(cbxSeatNumberSixUser)
-        Controls.Add(tbxGenderSixUser)
         Controls.Add(tbxFullnamePassengeSixUser)
         Controls.Add(cbxArrivalTimeUser)
         Controls.Add(cbxSeatNumberUser)
@@ -498,10 +712,8 @@ Partial Class Form4
         Controls.Add(cbxSeatNumberOneUser)
         Controls.Add(tbxPostalCodeUser)
         Controls.Add(btnHomeUser)
-        Controls.Add(tbxGenderFourUser)
         Controls.Add(tbxCityUser)
         Controls.Add(dtpArrivalDateUser)
-        Controls.Add(tbxGenderFiveUser)
         Controls.Add(tbxGenderUser)
         Controls.Add(rbnOneWayTrip)
         Controls.Add(tbxFullnamePassengerFourUser)
@@ -510,12 +722,9 @@ Partial Class Form4
         Controls.Add(tbxFullnamePassengerFiveUser)
         Controls.Add(rbnRoundTrip)
         Controls.Add(dtpBdayUser)
-        Controls.Add(tbxGenderThreeUser)
         Controls.Add(tbxFullnameUser)
-        Controls.Add(tbxGenderOneUser)
         Controls.Add(tbxFullnamePassengerThreeUser)
         Controls.Add(tbxFullnamePassengerOneUser)
-        Controls.Add(tbxGenderTwoUser)
         Controls.Add(tbxFullnamePassengerTwoUser)
         Controls.Add(dtpBookingDateUser)
         Controls.Add(pbxUserBooking)
@@ -536,15 +745,10 @@ Partial Class Form4
     Friend WithEvents cbxSeatNumberThreeUser As ComboBox
     Friend WithEvents cbxSeatNumberTwoUser As ComboBox
     Friend WithEvents cbxSeatNumberOneUser As ComboBox
-    Friend WithEvents tbxGenderFourUser As TextBox
-    Friend WithEvents tbxGenderFiveUser As TextBox
     Friend WithEvents tbxFullnamePassengerFourUser As TextBox
     Friend WithEvents tbxFullnamePassengerFiveUser As TextBox
-    Friend WithEvents tbxGenderThreeUser As TextBox
     Friend WithEvents tbxFullnamePassengerThreeUser As TextBox
-    Friend WithEvents tbxGenderTwoUser As TextBox
     Friend WithEvents tbxFullnamePassengerTwoUser As TextBox
-    Friend WithEvents tbxGenderOneUser As TextBox
     Friend WithEvents tbxFullnamePassengerOneUser As TextBox
     Friend WithEvents dtpBookingDateUser As DateTimePicker
     Friend WithEvents tbxPostalCodeUser As TextBox
@@ -570,8 +774,32 @@ Partial Class Form4
     Friend WithEvents cbxDestinationUser As ComboBox
     Friend WithEvents pbxUserBooking As PictureBox
     Friend WithEvents cbxSeatNumberSixUser As ComboBox
-    Friend WithEvents tbxGenderSixUser As TextBox
     Friend WithEvents tbxFullnamePassengeSixUser As TextBox
     Friend WithEvents btnSupportUser As Button
     Friend WithEvents btnExit As Button
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents ComboBox6 As ComboBox
+    Friend WithEvents ComboBox7 As ComboBox
+    Friend WithEvents ComboBox8 As ComboBox
+    Friend WithEvents ComboBox9 As ComboBox
+    Friend WithEvents ComboBox10 As ComboBox
+    Friend WithEvents ComboBox11 As ComboBox
+    Friend WithEvents ComboBox12 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents DateTimePicker3 As DateTimePicker
+    Friend WithEvents DateTimePicker4 As DateTimePicker
+    Friend WithEvents DateTimePicker5 As DateTimePicker
+    Friend WithEvents DateTimePicker6 As DateTimePicker
+    Friend WithEvents CheckBox1 As CheckBox
 End Class
