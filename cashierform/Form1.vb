@@ -69,10 +69,6 @@ Public Class Form1
     Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
         tbxFullname.Text = "Kelvin Dave M. Rivera"
         tbxAddress.Text = "Tarlac"
-        tbxCity.Text = "Tarlac City"
-        tbxContactNumber.Text = "0999999999"
-        tbxEmail.Text = "examplemail@gmail.com"
-        tbxPostalCode.Text = "2003"
         tbxGender.Text = "Male"
         cbxDeparture.Text = "Tarlac"
         cbxDestination.Text = "Seoul, Korea"
@@ -86,10 +82,6 @@ Public Class Form1
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         tbxFullname.Clear()
         tbxAddress.Clear()
-        tbxCity.Clear()
-        tbxContactNumber.Clear()
-        tbxEmail.Clear()
-        tbxPostalCode.Clear()
         tbxGender.Clear()
     End Sub
 
@@ -101,11 +93,8 @@ Public Class Form1
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
         Provide_tbxError(tbxFullname, ErrorProvider1)
         Provide_tbxError(tbxAddress, ErrorProvider1)
-        Provide_tbxError(tbxContactNumber, ErrorProvider1)
-        Provide_tbxError(tbxCity, ErrorProvider1)
-        Provide_tbxError(tbxEmail, ErrorProvider1)
         Provide_tbxError(tbxGender, ErrorProvider1)
-        Provide_tbxError(tbxPostalCode, ErrorProvider1)
+
 
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)

@@ -36,10 +36,6 @@ Partial Class Form1
         dtpBookingDate = New DateTimePicker()
         tbxFullname = New TextBox()
         tbxAddress = New TextBox()
-        tbxCity = New TextBox()
-        tbxPostalCode = New TextBox()
-        tbxContactNumber = New TextBox()
-        tbxEmail = New TextBox()
         tbxGender = New TextBox()
         cbxDepartureTime = New ComboBox()
         cbxArrivalTime = New ComboBox()
@@ -156,7 +152,7 @@ Partial Class Form1
         ' 
         ' dtpBookingDate
         ' 
-        dtpBookingDate.Location = New Point(275, 606)
+        dtpBookingDate.Location = New Point(626, 647)
         dtpBookingDate.Margin = New Padding(3, 2, 3, 2)
         dtpBookingDate.Name = "dtpBookingDate"
         dtpBookingDate.Size = New Size(110, 23)
@@ -164,7 +160,7 @@ Partial Class Form1
         ' 
         ' tbxFullname
         ' 
-        tbxFullname.Location = New Point(275, 650)
+        tbxFullname.Location = New Point(275, 610)
         tbxFullname.Margin = New Padding(3, 2, 3, 2)
         tbxFullname.Name = "tbxFullname"
         tbxFullname.Size = New Size(203, 23)
@@ -172,47 +168,15 @@ Partial Class Form1
         ' 
         ' tbxAddress
         ' 
-        tbxAddress.Location = New Point(275, 687)
+        tbxAddress.Location = New Point(275, 763)
         tbxAddress.Margin = New Padding(3, 2, 3, 2)
         tbxAddress.Name = "tbxAddress"
         tbxAddress.Size = New Size(203, 23)
         tbxAddress.TabIndex = 16
         ' 
-        ' tbxCity
-        ' 
-        tbxCity.Location = New Point(275, 729)
-        tbxCity.Margin = New Padding(3, 2, 3, 2)
-        tbxCity.Name = "tbxCity"
-        tbxCity.Size = New Size(194, 23)
-        tbxCity.TabIndex = 18
-        ' 
-        ' tbxPostalCode
-        ' 
-        tbxPostalCode.Location = New Point(602, 731)
-        tbxPostalCode.Margin = New Padding(3, 2, 3, 2)
-        tbxPostalCode.Name = "tbxPostalCode"
-        tbxPostalCode.Size = New Size(111, 23)
-        tbxPostalCode.TabIndex = 20
-        ' 
-        ' tbxContactNumber
-        ' 
-        tbxContactNumber.Location = New Point(275, 768)
-        tbxContactNumber.Margin = New Padding(3, 2, 3, 2)
-        tbxContactNumber.Name = "tbxContactNumber"
-        tbxContactNumber.Size = New Size(203, 23)
-        tbxContactNumber.TabIndex = 22
-        ' 
-        ' tbxEmail
-        ' 
-        tbxEmail.Location = New Point(275, 805)
-        tbxEmail.Margin = New Padding(3, 2, 3, 2)
-        tbxEmail.Name = "tbxEmail"
-        tbxEmail.Size = New Size(203, 23)
-        tbxEmail.TabIndex = 24
-        ' 
         ' tbxGender
         ' 
-        tbxGender.Location = New Point(602, 691)
+        tbxGender.Location = New Point(275, 809)
         tbxGender.Margin = New Padding(3, 2, 3, 2)
         tbxGender.Name = "tbxGender"
         tbxGender.Size = New Size(111, 23)
@@ -322,14 +286,10 @@ Partial Class Form1
         Controls.Add(tbxGender)
         Controls.Add(cbxDestination)
         Controls.Add(dtpDeparture)
-        Controls.Add(tbxEmail)
         Controls.Add(dtpArrivalDate)
         Controls.Add(dtpBookingDate)
-        Controls.Add(tbxContactNumber)
         Controls.Add(tbxFullname)
         Controls.Add(tbxAddress)
-        Controls.Add(tbxPostalCode)
-        Controls.Add(tbxCity)
         Controls.Add(pbxCashierBooking)
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 969)
@@ -363,10 +323,6 @@ Partial Class Form1
     Friend WithEvents dtpBookingDate As DateTimePicker
     Friend WithEvents tbxFullname As TextBox
     Friend WithEvents tbxAddress As TextBox
-    Friend WithEvents tbxCity As TextBox
-    Friend WithEvents tbxPostalCode As TextBox
-    Friend WithEvents tbxContactNumber As TextBox
-    Friend WithEvents tbxEmail As TextBox
     Friend WithEvents tbxGender As TextBox
     Friend WithEvents cbxDepartureTime As ComboBox
     Friend WithEvents cbxArrivalTime As ComboBox
