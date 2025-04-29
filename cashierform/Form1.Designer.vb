@@ -55,6 +55,8 @@ Partial Class Form1
         ComboBox2 = New ComboBox()
         TextBox1 = New TextBox()
         TextBox2 = New TextBox()
+        DateTimePicker1 = New DateTimePicker()
+        ComboBox3 = New ComboBox()
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -313,7 +315,7 @@ Partial Class Form1
         ' 
         ComboBox1.FormattingEnabled = True
         ComboBox1.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
-        ComboBox1.Location = New Point(1308, 297)
+        ComboBox1.Location = New Point(1338, 293)
         ComboBox1.Margin = New Padding(3, 2, 3, 2)
         ComboBox1.Name = "ComboBox1"
         ComboBox1.Size = New Size(83, 23)
@@ -322,7 +324,7 @@ Partial Class Form1
         ' CheckBox2
         ' 
         CheckBox2.AutoSize = True
-        CheckBox2.Location = New Point(1429, 297)
+        CheckBox2.Location = New Point(1443, 297)
         CheckBox2.Name = "CheckBox2"
         CheckBox2.Size = New Size(15, 14)
         CheckBox2.TabIndex = 43
@@ -332,7 +334,7 @@ Partial Class Form1
         ' 
         ComboBox2.FormattingEnabled = True
         ComboBox2.Items.AddRange(New Object() {"AC1"})
-        ComboBox2.Location = New Point(1205, 297)
+        ComboBox2.Location = New Point(1257, 293)
         ComboBox2.Margin = New Padding(3, 2, 3, 2)
         ComboBox2.Name = "ComboBox2"
         ComboBox2.Size = New Size(64, 23)
@@ -340,19 +342,37 @@ Partial Class Form1
         ' 
         ' TextBox1
         ' 
-        TextBox1.Location = New Point(839, 293)
+        TextBox1.Location = New Point(842, 293)
         TextBox1.Margin = New Padding(3, 2, 3, 2)
         TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(95, 23)
+        TextBox1.Size = New Size(164, 23)
         TextBox1.TabIndex = 45
         ' 
         ' TextBox2
         ' 
-        TextBox2.Location = New Point(940, 293)
+        TextBox2.Location = New Point(1012, 293)
         TextBox2.Margin = New Padding(3, 2, 3, 2)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(53, 23)
         TextBox2.TabIndex = 46
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.Location = New Point(1071, 293)
+        DateTimePicker1.Margin = New Padding(3, 2, 3, 2)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(87, 23)
+        DateTimePicker1.TabIndex = 47
+        ' 
+        ' ComboBox3
+        ' 
+        ComboBox3.FormattingEnabled = True
+        ComboBox3.Items.AddRange(New Object() {"Male", "Female", "Others"})
+        ComboBox3.Location = New Point(1164, 293)
+        ComboBox3.Margin = New Padding(3, 2, 3, 2)
+        ComboBox3.Name = "ComboBox3"
+        ComboBox3.Size = New Size(82, 23)
+        ComboBox3.TabIndex = 48
         ' 
         ' Form1
         ' 
@@ -360,6 +380,8 @@ Partial Class Form1
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1547, 911)
+        Controls.Add(ComboBox3)
+        Controls.Add(DateTimePicker1)
         Controls.Add(TextBox2)
         Controls.Add(TextBox1)
         Controls.Add(ComboBox2)
@@ -442,4 +464,6 @@ Partial Class Form1
     Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class
