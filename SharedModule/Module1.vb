@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Imports MySql.Data.MySqlClient
 'Imports cashierform
 'Imports userform
@@ -79,5 +80,12 @@ Public Module Module1
         End If
     End Sub
 
+    Public Sub Provide_cbxError(cbx As ComboBox, errors As ErrorProvider)
+        If cbx.SelectedIndex = -1 Then
+            errors.SetError(cbx, "This field is required.")
+        Else
+            errors.SetError(cbx, "")
+        End If
+    End Sub
 
 End Module

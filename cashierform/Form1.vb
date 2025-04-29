@@ -107,6 +107,14 @@ Public Class Form1
         Provide_tbxError(tbxGender, ErrorProvider1)
         Provide_tbxError(tbxPostalCode, ErrorProvider1)
 
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
 
     End Sub
 
