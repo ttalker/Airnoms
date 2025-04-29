@@ -30,6 +30,8 @@ Public Class Form1
     End Sub
 
     Private Sub btnSignIn_Click(sender As Object, e As EventArgs) Handles btnSignIn.Click
+        Me.Hide()
+        Form3.Show()
         'ErrorProvider.Clear()
         'Try
         '    openCon()
