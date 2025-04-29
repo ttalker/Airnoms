@@ -36,7 +36,6 @@ Partial Class Form1
         dtpBookingDate = New DateTimePicker()
         tbxFullname = New TextBox()
         tbxAddress = New TextBox()
-        tbxGender = New TextBox()
         cbxDepartureTime = New ComboBox()
         cbxArrivalTime = New ComboBox()
         BTNFILL = New Button()
@@ -46,6 +45,16 @@ Partial Class Form1
         pbxCashierBooking = New PictureBox()
         btnExit = New Button()
         ErrorProvider1 = New ErrorProvider(components)
+        tbxAge = New TextBox()
+        dtpBirthdate = New DateTimePicker()
+        cbxGender = New ComboBox()
+        chkPWD = New CheckBox()
+        cbxBaggage = New ComboBox()
+        ComboBox1 = New ComboBox()
+        CheckBox2 = New CheckBox()
+        ComboBox2 = New ComboBox()
+        TextBox1 = New TextBox()
+        TextBox2 = New TextBox()
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -174,14 +183,6 @@ Partial Class Form1
         tbxAddress.Size = New Size(203, 23)
         tbxAddress.TabIndex = 16
         ' 
-        ' tbxGender
-        ' 
-        tbxGender.Location = New Point(275, 809)
-        tbxGender.Margin = New Padding(3, 2, 3, 2)
-        tbxGender.Name = "tbxGender"
-        tbxGender.Size = New Size(111, 23)
-        tbxGender.TabIndex = 26
-        ' 
         ' cbxDepartureTime
         ' 
         cbxDepartureTime.FormattingEnabled = True
@@ -263,12 +264,112 @@ Partial Class Form1
         ' 
         ErrorProvider1.ContainerControl = Me
         ' 
+        ' tbxAge
+        ' 
+        tbxAge.Location = New Point(275, 660)
+        tbxAge.Margin = New Padding(3, 2, 3, 2)
+        tbxAge.Name = "tbxAge"
+        tbxAge.Size = New Size(203, 23)
+        tbxAge.TabIndex = 37
+        ' 
+        ' dtpBirthdate
+        ' 
+        dtpBirthdate.Location = New Point(275, 712)
+        dtpBirthdate.Margin = New Padding(3, 2, 3, 2)
+        dtpBirthdate.Name = "dtpBirthdate"
+        dtpBirthdate.Size = New Size(203, 23)
+        dtpBirthdate.TabIndex = 38
+        ' 
+        ' cbxGender
+        ' 
+        cbxGender.FormattingEnabled = True
+        cbxGender.Items.AddRange(New Object() {"Male", "Female", "Others"})
+        cbxGender.Location = New Point(275, 809)
+        cbxGender.Margin = New Padding(3, 2, 3, 2)
+        cbxGender.Name = "cbxGender"
+        cbxGender.Size = New Size(108, 23)
+        cbxGender.TabIndex = 39
+        ' 
+        ' chkPWD
+        ' 
+        chkPWD.AutoSize = True
+        chkPWD.Location = New Point(568, 782)
+        chkPWD.Name = "chkPWD"
+        chkPWD.Size = New Size(15, 14)
+        chkPWD.TabIndex = 40
+        chkPWD.UseVisualStyleBackColor = True
+        ' 
+        ' cbxBaggage
+        ' 
+        cbxBaggage.FormattingEnabled = True
+        cbxBaggage.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxBaggage.Location = New Point(677, 712)
+        cbxBaggage.Margin = New Padding(3, 2, 3, 2)
+        cbxBaggage.Name = "cbxBaggage"
+        cbxBaggage.Size = New Size(59, 23)
+        cbxBaggage.TabIndex = 41
+        ' 
+        ' ComboBox1
+        ' 
+        ComboBox1.FormattingEnabled = True
+        ComboBox1.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        ComboBox1.Location = New Point(1308, 297)
+        ComboBox1.Margin = New Padding(3, 2, 3, 2)
+        ComboBox1.Name = "ComboBox1"
+        ComboBox1.Size = New Size(83, 23)
+        ComboBox1.TabIndex = 42
+        ' 
+        ' CheckBox2
+        ' 
+        CheckBox2.AutoSize = True
+        CheckBox2.Location = New Point(1429, 297)
+        CheckBox2.Name = "CheckBox2"
+        CheckBox2.Size = New Size(15, 14)
+        CheckBox2.TabIndex = 43
+        CheckBox2.UseVisualStyleBackColor = True
+        ' 
+        ' ComboBox2
+        ' 
+        ComboBox2.FormattingEnabled = True
+        ComboBox2.Items.AddRange(New Object() {"AC1"})
+        ComboBox2.Location = New Point(1205, 297)
+        ComboBox2.Margin = New Padding(3, 2, 3, 2)
+        ComboBox2.Name = "ComboBox2"
+        ComboBox2.Size = New Size(64, 23)
+        ComboBox2.TabIndex = 44
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(839, 293)
+        TextBox1.Margin = New Padding(3, 2, 3, 2)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(95, 23)
+        TextBox1.TabIndex = 45
+        ' 
+        ' TextBox2
+        ' 
+        TextBox2.Location = New Point(940, 293)
+        TextBox2.Margin = New Padding(3, 2, 3, 2)
+        TextBox2.Name = "TextBox2"
+        TextBox2.Size = New Size(53, 23)
+        TextBox2.TabIndex = 46
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1547, 911)
+        Controls.Add(TextBox2)
+        Controls.Add(TextBox1)
+        Controls.Add(ComboBox2)
+        Controls.Add(CheckBox2)
+        Controls.Add(ComboBox1)
+        Controls.Add(cbxBaggage)
+        Controls.Add(chkPWD)
+        Controls.Add(cbxGender)
+        Controls.Add(dtpBirthdate)
+        Controls.Add(tbxAge)
         Controls.Add(btnExit)
         Controls.Add(cbxSeatNumber)
         Controls.Add(btnSupport)
@@ -283,7 +384,6 @@ Partial Class Form1
         Controls.Add(cbxDepartureTime)
         Controls.Add(rbnRoundTrip)
         Controls.Add(cbxDeparture)
-        Controls.Add(tbxGender)
         Controls.Add(cbxDestination)
         Controls.Add(dtpDeparture)
         Controls.Add(dtpArrivalDate)
@@ -323,7 +423,6 @@ Partial Class Form1
     Friend WithEvents dtpBookingDate As DateTimePicker
     Friend WithEvents tbxFullname As TextBox
     Friend WithEvents tbxAddress As TextBox
-    Friend WithEvents tbxGender As TextBox
     Friend WithEvents cbxDepartureTime As ComboBox
     Friend WithEvents cbxArrivalTime As ComboBox
     Friend WithEvents BTNFILL As Button
@@ -333,4 +432,14 @@ Partial Class Form1
     Friend WithEvents pbxCashierBooking As PictureBox
     Friend WithEvents btnExit As Button
     Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents cbxGender As ComboBox
+    Friend WithEvents dtpBirthdate As DateTimePicker
+    Friend WithEvents tbxAge As TextBox
+    Friend WithEvents cbxBaggage As ComboBox
+    Friend WithEvents chkPWD As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
 End Class

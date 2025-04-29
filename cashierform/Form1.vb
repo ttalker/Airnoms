@@ -69,7 +69,7 @@ Public Class Form1
     Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
         tbxFullname.Text = "Kelvin Dave M. Rivera"
         tbxAddress.Text = "Tarlac"
-        tbxGender.Text = "Male"
+        cbxGender.Text = "Male"
         cbxDeparture.Text = "Tarlac"
         cbxDestination.Text = "Seoul, Korea"
         cbxSeatNumber.Text = "1A"
@@ -82,7 +82,7 @@ Public Class Form1
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         tbxFullname.Clear()
         tbxAddress.Clear()
-        tbxGender.Clear()
+        'cbxGender.Clear()
     End Sub
 
 
@@ -93,7 +93,7 @@ Public Class Form1
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
         Provide_tbxError(tbxFullname, ErrorProvider1)
         Provide_tbxError(tbxAddress, ErrorProvider1)
-        Provide_tbxError(tbxGender, ErrorProvider1)
+        'Provide_tbxError(cbxGender, ErrorProvider1)
 
 
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
@@ -108,6 +108,14 @@ Public Class Form1
     End Sub
 
     Private Sub tbxFullname_TextChanged(sender As Object, e As EventArgs) Handles tbxFullname.TextChanged
+
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
 
     End Sub
 End Class
