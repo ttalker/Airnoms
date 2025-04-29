@@ -23,7 +23,6 @@ Public Class Form2
         btnSignUp.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' effects for button
         Me.DoubleBuffered = True
 
-
         ErrorProvider.Clear() ' clear previous error
     End Sub
 
@@ -62,6 +61,11 @@ Public Class Form2
             hasError = True
         End If
 
+        If tbxPasswordSignUp.Text.Length < 8 Then 'error on password error provider
+            ErrorProvider.SetError(tbxPasswordSignUp, "Password must be at least 8 characters long")
+            hasError = True
+        End If
+
         If String.IsNullOrWhiteSpace(tbxPasswordSignUp.Text) Then
             ErrorProvider.SetError(tbxPasswordSignUp, "Invalid password")
             hasError = True
@@ -72,18 +76,13 @@ Public Class Form2
             hasError = True
         End If
 
-        If tbxPasswordSignUp.Text.Length < 8 Then
-            ErrorProvider.SetError(tbxPasswordSignUp, "Password must be at least 8 characters long")
-            hasError = True
-        End If
-
         If hasError = True Then
             Exit Sub
         End If
 
         Try
             openCon()
-            'MessageBox.Show("Connection Successful!")
+            MessageBox.Show("Connection Successful!")
             cmd.Connection = con
             cmd.CommandText = "ALTER TABLE acc_table MODIFY user_id INT AUTO_INCREMENT;"
             cmd.ExecuteNonQuery()

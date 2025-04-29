@@ -416,7 +416,7 @@ Partial Class Form4
         ' 
         ' pbxUserBooking
         ' 
-        pbxUserBooking.BackgroundImage = My.Resources.Resources.BOOKING__3___1_
+        pbxUserBooking.BackgroundImage = My.Resources.Resources.BOOKING_PAGE3
         pbxUserBooking.Location = New Point(2, -1)
         pbxUserBooking.Name = "pbxUserBooking"
         pbxUserBooking.Size = New Size(1546, 914)
