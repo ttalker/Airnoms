@@ -52,7 +52,7 @@ Partial Class Form3
         ' 
         ' pbxHome
         ' 
-        pbxHome.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__2_1
+        pbxHome.BackgroundImage = My.Resources.Resources.HOME_PAGE
         pbxHome.Location = New Point(-1, -2)
         pbxHome.Name = "pbxHome"
         pbxHome.Size = New Size(1554, 920)
