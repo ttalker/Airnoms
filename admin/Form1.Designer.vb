@@ -34,7 +34,7 @@ Partial Class Form1
         ' 
         ' pbxAdmin
         ' 
-        pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_TEST_
+        pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_TEST_2
         pbxAdmin.Location = New Point(-4, -1)
         pbxAdmin.Name = "pbxAdmin"
         pbxAdmin.Size = New Size(1552, 884)

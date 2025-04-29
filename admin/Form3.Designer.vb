@@ -22,7 +22,6 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
         btnExit = New Button()
         btnBookings = New Button()
         btnFlights = New Button()
@@ -60,7 +59,7 @@ Partial Class Form3
         ' 
         ' pbxAdmin
         ' 
-        pbxAdmin.BackgroundImage = CType(resources.GetObject("pbxAdmin.BackgroundImage"), Image)
+        pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_bookings_
         pbxAdmin.Location = New Point(-3, -2)
         pbxAdmin.Name = "pbxAdmin"
         pbxAdmin.Size = New Size(1552, 884)

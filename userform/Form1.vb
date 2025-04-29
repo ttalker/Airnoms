@@ -30,32 +30,32 @@ Public Class Form1
     End Sub
 
     Private Sub btnSignIn_Click(sender As Object, e As EventArgs) Handles btnSignIn.Click
-        ErrorProvider.Clear()
-        Try
-            openCon()
+        'ErrorProvider.Clear()
+        'Try
+        '    openCon()
 
-            cmd.Connection = con
-            cmd.CommandText = "SELECT * FROM acc_table WHERE Username = username And Password = password"
-            cmd.ExecuteNonQuery()
-            rd = cmd.ExecuteReader()
-            If rd.Read Then
-                username = rd("Username").ToString()
-                password = rd("Password").ToString()
-                MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                ErrorProvider.SetError(tbxUsername, "Invalid username or password")
-                Return
-            End If
-            tbxUsername.Clear()
-            tbxPassword.Clear()
+        '    cmd.Connection = con
+        '    cmd.CommandText = "SELECT * FROM acc_table WHERE Username ='" + username And "Password ='" + password
+        '    cmd.ExecuteNonQuery()
+        '    rd = cmd.ExecuteReader()
+        '    If rd.Read Then
+        '        username = rd("Username").ToString()
+        '        password = rd("Password").ToString()
+        '        MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    Else
+        '        ErrorProvider.SetError(tbxUsername, "Invalid username or password")
+        '        Return
+        '    End If
+        '    tbxUsername.Clear()
+        '    tbxPassword.Clear()
 
-        Catch ex As Exception
-            MessageBox.Show("Login Failed", ex.ToString, MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            con.Close()
-            Me.Hide()
-            Form3.Show()
-        End Try
+        'Catch ex As Exception
+        '    MessageBox.Show("Login Failed", ex.ToString, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'Finally
+        '    con.Close()
+        '    Me.Hide()
+        '    Form3.Show()
+        'End Try
 
     End Sub
 

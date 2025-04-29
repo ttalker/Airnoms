@@ -275,7 +275,7 @@ Partial Class Form1
         ' 
         ' pbxCashierBooking
         ' 
-        pbxCashierBooking.BackgroundImage = My.Resources.Resources.MAIN_REFERENCE__REAL____Round_Trip__2___1_
+        pbxCashierBooking.BackgroundImage = My.Resources.Resources.BOOKING_ROUND_TRIP
         pbxCashierBooking.Location = New Point(-1, -2)
         pbxCashierBooking.Name = "pbxCashierBooking"
         pbxCashierBooking.Size = New Size(1549, 915)
