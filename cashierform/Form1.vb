@@ -14,6 +14,8 @@ Public Class Form1
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Form2.Hide()
         Me.Show()
+
+
     End Sub
 
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
@@ -82,7 +84,15 @@ Public Class Form1
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         tbxFullname.Clear()
         tbxAddress.Clear()
-        'cbxGender.Clear()
+        cbxGender.Text = ""
+        dtpBookingDate.Text = ""
+        dtpBirthdate.Text = ""
+        cbxArrivalTime.Text = ""
+        cbxDepartureTime.Text = ""
+        cbxDeparture.Text = ""
+        cbxDestination.Text = ""
+        cbxSeatNumber.Text = ""
+
     End Sub
 
 
