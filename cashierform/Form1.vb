@@ -103,9 +103,7 @@ Public Class Form1
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
         Provide_tbxError(tbxFullname, ErrorProvider1)
         Provide_tbxError(tbxAddress, ErrorProvider1)
-        'Provide_tbxError(cbxGender, ErrorProvider1)
-
-
+        Provide_cbxError(cbxGender, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
@@ -114,18 +112,13 @@ Public Class Form1
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
         Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_tbxError(tbxAge, ErrorProvider1)
+        Provide_cbxError(cbxBaggage, ErrorProvider1)
+        Provide_cbxError(cbxDeparture, ErrorProvider1)
+        Provide_cbxError(cbxDestination, ErrorProvider1)
+        Provide_cbxError(cbxSeatNumber, ErrorProvider1)
+        Provide_cbxError(cbxDepartureTime, ErrorProvider1)
 
     End Sub
 
-    Private Sub tbxFullname_TextChanged(sender As Object, e As EventArgs) Handles tbxFullname.TextChanged
-
-    End Sub
-
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
-
-    End Sub
-
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-
-    End Sub
 End Class
