@@ -139,7 +139,7 @@ Partial Class Form1
         ' rbnOneWayTrip
         ' 
         rbnOneWayTrip.AutoSize = True
-        rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0)
         rbnOneWayTrip.Location = New Point(202, 240)
         rbnOneWayTrip.Margin = New Padding(3, 2, 3, 2)
         rbnOneWayTrip.Name = "rbnOneWayTrip"
@@ -152,7 +152,7 @@ Partial Class Form1
         ' rbnRoundTrip
         ' 
         rbnRoundTrip.AutoSize = True
-        rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0)
         rbnRoundTrip.Location = New Point(400, 240)
         rbnRoundTrip.Margin = New Padding(3, 2, 3, 2)
         rbnRoundTrip.Name = "rbnRoundTrip"
@@ -345,7 +345,6 @@ Partial Class Form1
         cbxpassbag1.Name = "cbxpassbag1"
         cbxpassbag1.Size = New Size(83, 23)
         cbxpassbag1.TabIndex = 42
-
         ' 
         ' chkpasspwd1
         ' 
@@ -371,10 +370,8 @@ Partial Class Form1
         tbxPassname1.Name = "tbxPassname1"
         tbxPassname1.Size = New Size(164, 23)
         tbxPassname1.TabIndex = 45
-
         ' tbxpassAge1
         ' 
-
         tbxpassAge1.Location = New Point(1012, 301)
         tbxpassAge1.Margin = New Padding(3, 2, 3, 2)
         tbxpassAge1.Name = "tbxpassAge1"
@@ -713,16 +710,12 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
-
-
-
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-
         ClientSize = New Size(1547, 911)
         Controls.Add(cbxpassgen6)
         Controls.Add(dtppassbday6)
@@ -766,9 +759,7 @@ Partial Class Form1
         Controls.Add(cbxpassseat1)
         Controls.Add(chkpasspwd1)
         Controls.Add(cbxpassbag1)
-
         ClientSize = New Size(1370, 749)
-
         Controls.Add(cbxBaggage)
         Controls.Add(chkPWD)
         Controls.Add(cbxGender)
