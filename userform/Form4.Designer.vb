@@ -688,7 +688,7 @@ Partial Class Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1444, 881)
+        ClientSize = New Size(1492, 881)
         Controls.Add(chbPWD6User)
         Controls.Add(chbPWD5User)
         Controls.Add(chbPWD4User)
