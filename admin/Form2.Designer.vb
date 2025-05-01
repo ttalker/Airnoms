@@ -41,7 +41,7 @@ Partial Class Form2
         ' 
         ' btnTransactions
         ' 
-        btnTransactions.Location = New Point(283, 34)
+        btnTransactions.Location = New Point(283, 33)
         btnTransactions.Name = "btnTransactions"
         btnTransactions.Size = New Size(250, 70)
         btnTransactions.TabIndex = 7
