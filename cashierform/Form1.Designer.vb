@@ -335,7 +335,7 @@ Partial Class Form1
         cbxBaggage.Name = "cbxBaggage"
         cbxBaggage.Size = New Size(59, 23)
         cbxBaggage.TabIndex = 41
-        ' 
+  
         ' cbxpassbag1
         ' 
         cbxpassbag1.FormattingEnabled = True
@@ -710,6 +710,7 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
+
         ' 
         ' Form1
         ' 
