@@ -165,7 +165,7 @@ Partial Class Form1
         ' cbxDeparture
         ' 
         cbxDeparture.FormattingEnabled = True
-        cbxDeparture.Location = New Point(275, 293)
+        cbxDeparture.Location = New Point(273, 293)
         cbxDeparture.Margin = New Padding(3, 2, 3, 2)
         cbxDeparture.Name = "cbxDeparture"
         cbxDeparture.Size = New Size(203, 23)
@@ -174,7 +174,7 @@ Partial Class Form1
         ' cbxDestination
         ' 
         cbxDestination.FormattingEnabled = True
-        cbxDestination.Location = New Point(275, 346)
+        cbxDestination.Location = New Point(272, 341)
         cbxDestination.Margin = New Padding(3, 2, 3, 2)
         cbxDestination.Name = "cbxDestination"
         cbxDestination.Size = New Size(203, 23)
@@ -182,7 +182,7 @@ Partial Class Form1
         ' 
         ' dtpDepartDate
         ' 
-        dtpDepartDate.Location = New Point(275, 394)
+        dtpDepartDate.Location = New Point(272, 389)
         dtpDepartDate.Margin = New Padding(3, 2, 3, 2)
         dtpDepartDate.Name = "dtpDepartDate"
         dtpDepartDate.Size = New Size(110, 23)
@@ -190,7 +190,7 @@ Partial Class Form1
         ' 
         ' dtpArrivalDate
         ' 
-        dtpArrivalDate.Location = New Point(275, 441)
+        dtpArrivalDate.Location = New Point(272, 435)
         dtpArrivalDate.Margin = New Padding(3, 2, 3, 2)
         dtpArrivalDate.Name = "dtpArrivalDate"
         dtpArrivalDate.Size = New Size(110, 23)
@@ -335,7 +335,7 @@ Partial Class Form1
         cbxBaggage.Name = "cbxBaggage"
         cbxBaggage.Size = New Size(59, 23)
         cbxBaggage.TabIndex = 41
-  
+        ' 
         ' cbxpassbag1
         ' 
         cbxpassbag1.FormattingEnabled = True
@@ -713,7 +713,6 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
-
         ' 
         ' Form1
         ' 
