@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         btnBooking = New Button()
         btnTicket = New Button()
         btnClear = New Button()
@@ -31,7 +32,7 @@ Partial Class Form1
         rbnRoundTrip = New RadioButton()
         cbxDeparture = New ComboBox()
         cbxDestination = New ComboBox()
-        dtpDeparture = New DateTimePicker()
+        dtpDepartDate = New DateTimePicker()
         dtpArrivalDate = New DateTimePicker()
         dtpBookingDate = New DateTimePicker()
         tbxFullname = New TextBox()
@@ -39,7 +40,6 @@ Partial Class Form1
         cbxDepartureTime = New ComboBox()
         cbxArrivalTime = New ComboBox()
         BTNFILL = New Button()
-        cbxFlight = New ComboBox()
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
         pbxCashierBooking = New PictureBox()
@@ -180,13 +180,13 @@ Partial Class Form1
         cbxDestination.Size = New Size(203, 23)
         cbxDestination.TabIndex = 5
         ' 
-        ' dtpDeparture
+        ' dtpDepartDate
         ' 
-        dtpDeparture.Location = New Point(275, 394)
-        dtpDeparture.Margin = New Padding(3, 2, 3, 2)
-        dtpDeparture.Name = "dtpDeparture"
-        dtpDeparture.Size = New Size(110, 23)
-        dtpDeparture.TabIndex = 7
+        dtpDepartDate.Location = New Point(275, 394)
+        dtpDepartDate.Margin = New Padding(3, 2, 3, 2)
+        dtpDepartDate.Name = "dtpDepartDate"
+        dtpDepartDate.Size = New Size(110, 23)
+        dtpDepartDate.TabIndex = 7
         ' 
         ' dtpArrivalDate
         ' 
@@ -223,7 +223,7 @@ Partial Class Form1
         ' cbxDepartureTime
         ' 
         cbxDepartureTime.FormattingEnabled = True
-        cbxDepartureTime.Location = New Point(602, 391)
+        cbxDepartureTime.Location = New Point(602, 343)
         cbxDepartureTime.Margin = New Padding(3, 2, 3, 2)
         cbxDepartureTime.Name = "cbxDepartureTime"
         cbxDepartureTime.Size = New Size(134, 23)
@@ -232,7 +232,7 @@ Partial Class Form1
         ' cbxArrivalTime
         ' 
         cbxArrivalTime.FormattingEnabled = True
-        cbxArrivalTime.Location = New Point(602, 441)
+        cbxArrivalTime.Location = New Point(602, 392)
         cbxArrivalTime.Margin = New Padding(3, 2, 3, 2)
         cbxArrivalTime.Name = "cbxArrivalTime"
         cbxArrivalTime.Size = New Size(134, 23)
@@ -248,25 +248,15 @@ Partial Class Form1
         BTNFILL.Text = "FILL UP"
         BTNFILL.UseVisualStyleBackColor = True
         ' 
-        ' cbxFlight
-        ' 
-        cbxFlight.FormattingEnabled = True
-        cbxFlight.Items.AddRange(New Object() {"AC1"})
-        cbxFlight.Location = New Point(602, 293)
-        cbxFlight.Margin = New Padding(3, 2, 3, 2)
-        cbxFlight.Name = "cbxFlight"
-        cbxFlight.Size = New Size(108, 23)
-        cbxFlight.TabIndex = 33
-        ' 
         ' cbxSeatNumber
         ' 
         cbxSeatNumber.FormattingEnabled = True
         cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumber.Location = New Point(602, 340)
+        cbxSeatNumber.Location = New Point(602, 293)
         cbxSeatNumber.Margin = New Padding(3, 2, 3, 2)
         cbxSeatNumber.Name = "cbxSeatNumber"
         cbxSeatNumber.Size = New Size(108, 23)
-        cbxSeatNumber.TabIndex = 31
+        cbxSeatNumber.TabIndex = 33
         ' 
         ' btnSupport
         ' 
@@ -280,8 +270,8 @@ Partial Class Form1
         ' 
         ' pbxCashierBooking
         ' 
-        pbxCashierBooking.BackgroundImage = My.Resources.Resources.BOOKING_ROUND_TRIP__2_
-        pbxCashierBooking.Location = New Point(-1, -2)
+        pbxCashierBooking.BackgroundImage = CType(resources.GetObject("pbxCashierBooking.BackgroundImage"), Image)
+        pbxCashierBooking.Location = New Point(-2, -2)
         pbxCashierBooking.Name = "pbxCashierBooking"
         pbxCashierBooking.Size = New Size(1549, 915)
         pbxCashierBooking.TabIndex = 34
@@ -345,7 +335,7 @@ Partial Class Form1
         cbxBaggage.Name = "cbxBaggage"
         cbxBaggage.Size = New Size(59, 23)
         cbxBaggage.TabIndex = 41
-        ' 
+  
         ' cbxpassbag1
         ' 
         cbxpassbag1.FormattingEnabled = True
@@ -723,6 +713,7 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
+
         ' 
         ' Form1
         ' 
@@ -778,10 +769,9 @@ Partial Class Form1
         Controls.Add(dtpBirthdate)
         Controls.Add(tbxAge)
         Controls.Add(btnExit)
-        Controls.Add(cbxSeatNumber)
         Controls.Add(btnSupport)
         Controls.Add(btnTicket)
-        Controls.Add(cbxFlight)
+        Controls.Add(cbxSeatNumber)
         Controls.Add(btnBooking)
         Controls.Add(BTNFILL)
         Controls.Add(btnBook)
@@ -792,7 +782,7 @@ Partial Class Form1
         Controls.Add(rbnRoundTrip)
         Controls.Add(cbxDeparture)
         Controls.Add(cbxDestination)
-        Controls.Add(dtpDeparture)
+        Controls.Add(dtpDepartDate)
         Controls.Add(dtpArrivalDate)
         Controls.Add(dtpBookingDate)
         Controls.Add(tbxFullname)
@@ -825,7 +815,7 @@ Partial Class Form1
     Friend WithEvents rbnRoundTrip As RadioButton
     Friend WithEvents cbxDeparture As ComboBox
     Friend WithEvents cbxDestination As ComboBox
-    Friend WithEvents dtpDeparture As DateTimePicker
+    Friend WithEvents dtpDepartDate As DateTimePicker
     Friend WithEvents dtpArrivalDate As DateTimePicker
     Friend WithEvents dtpBookingDate As DateTimePicker
     Friend WithEvents tbxFullname As TextBox
@@ -833,7 +823,6 @@ Partial Class Form1
     Friend WithEvents cbxDepartureTime As ComboBox
     Friend WithEvents cbxArrivalTime As ComboBox
     Friend WithEvents BTNFILL As Button
-    Friend WithEvents cbxFlight As ComboBox
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
     Friend WithEvents pbxCashierBooking As PictureBox

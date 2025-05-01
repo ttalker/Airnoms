@@ -79,7 +79,7 @@ Public Class Form1
         cbxDepartureTime.Text = "May 1, 2025"
         cbxArrivalTime.Text = "May 1, 2025"
         dtpArrivalDate.Text = "May 1, 2025"
-        dtpDeparture.Text = "May 1, 2025"
+        dtpDepartDate.Text = "May 1, 2025"
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
