@@ -2,6 +2,7 @@
 'Imports admin.Module1
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
+Imports System.Windows.Forms
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -82,6 +83,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        'Clear all the inputs 
         tbxFullname.Clear()
         tbxAddress.Clear()
         cbxGender.Text = ""
@@ -92,6 +94,26 @@ Public Class Form1
         cbxDeparture.Text = ""
         cbxDestination.Text = ""
         cbxSeatNumber.Text = ""
+        tbxAge.Text = ""
+
+        'Clear the inputs in passenger
+        For i As Integer = 1 To 6
+            'finds the controls no matter their parent
+            Dim tbxName = Me.Controls.Find("tbxPassname" & i, True).FirstOrDefault()
+            Dim tbxAge = Me.Controls.Find("tbxpassAge" & i, True).FirstOrDefault()
+            Dim dtpBday = Me.Controls.Find("dtppassbday" & i, True).FirstOrDefault()
+            Dim cbxGen = Me.Controls.Find("cbxpassgen" & i, True).FirstOrDefault()
+            Dim cbxSeat = Me.Controls.Find("cbxpassseat" & i, True).FirstOrDefault()
+            Dim cbxBag = Me.Controls.Find("cbxpassbag" & i, True).FirstOrDefault()
+
+            'clears the input
+            If TypeOf tbxName Is System.Windows.Forms.TextBox Then DirectCast(tbxName, System.Windows.Forms.TextBox).Clear()
+            If TypeOf tbxAge Is System.Windows.Forms.TextBox Then DirectCast(tbxAge, System.Windows.Forms.TextBox).Clear()
+            If TypeOf dtpBday Is System.Windows.Forms.DateTimePicker Then DirectCast(dtpBday, System.Windows.Forms.DateTimePicker).Value = DateTime.Now
+            If TypeOf cbxGen Is System.Windows.Forms.ComboBox Then DirectCast(cbxGen, System.Windows.Forms.ComboBox).SelectedIndex = -1
+            If TypeOf cbxSeat Is System.Windows.Forms.ComboBox Then DirectCast(cbxSeat, System.Windows.Forms.ComboBox).SelectedIndex = -1
+            If TypeOf cbxBag Is System.Windows.Forms.ComboBox Then DirectCast(cbxBag, System.Windows.Forms.ComboBox).SelectedIndex = -1
+        Next
 
     End Sub
 
