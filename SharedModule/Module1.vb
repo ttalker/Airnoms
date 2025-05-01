@@ -7,7 +7,7 @@ Imports MySql.Data.MySqlClient
 Public Module Module1
     Public con As New MySqlConnection
     Public cmd As New MySqlCommand
-    Public rd As MySqlDataReader = cmd.ExecuteReader()
+    'Public rd As MySqlDataReader = cmd.ExecuteReader()
 
     'admin sql
     Public Sub openCon()
