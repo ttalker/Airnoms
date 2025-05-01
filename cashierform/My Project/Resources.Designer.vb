@@ -183,6 +183,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property BOOKING_ROUND_TRIP__2_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BOOKING ROUND TRIP (2)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property BOOKING_ROUND_TRIP1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("BOOKING ROUND TRIP1", resourceCulture)
@@ -266,6 +276,16 @@ Namespace My.Resources
         Friend ReadOnly Property TICKET_PAGE() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("TICKET PAGE", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property TICKET_PAGE__1_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("TICKET PAGE (1)", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
