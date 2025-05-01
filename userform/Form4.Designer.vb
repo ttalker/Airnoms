@@ -39,16 +39,9 @@ Partial Class Form4
         cbxSeatNumberUser = New ComboBox()
         cbxFlightUser = New ComboBox()
         btnBookUser = New Button()
-        tbxEmailUser = New TextBox()
         btnResetUser = New Button()
-        tbxContactUser = New TextBox()
-        tbxCountryUser = New TextBox()
-        tbxPostalCodeUser = New TextBox()
-        tbxCityUser = New TextBox()
-        tbxGenderUser = New TextBox()
-        tbxAddressUser = New TextBox()
-        dtpBdayUser = New DateTimePicker()
         tbxFullnameUser = New TextBox()
+        tbxAgeUser = New TextBox()
         dtpBookingDateUser = New DateTimePicker()
         rbnOneWayTrip = New RadioButton()
         rbnRoundTrip = New RadioButton()
@@ -73,19 +66,29 @@ Partial Class Form4
         ComboBox10 = New ComboBox()
         ComboBox11 = New ComboBox()
         ComboBox12 = New ComboBox()
-        TextBox1 = New TextBox()
-        TextBox2 = New TextBox()
-        TextBox3 = New TextBox()
-        TextBox4 = New TextBox()
-        TextBox5 = New TextBox()
-        TextBox6 = New TextBox()
-        DateTimePicker1 = New DateTimePicker()
-        DateTimePicker2 = New DateTimePicker()
+        tbxAge6User = New TextBox()
+        tbxAge4User = New TextBox()
+        tbxAge5User = New TextBox()
+        tbxAge3User = New TextBox()
+        tbxAge1User = New TextBox()
+        tbxAge2User = New TextBox()
+        dtpBirthDate1User = New DateTimePicker()
+        dtpBirthDate2User = New DateTimePicker()
         DateTimePicker3 = New DateTimePicker()
         DateTimePicker4 = New DateTimePicker()
         DateTimePicker5 = New DateTimePicker()
         DateTimePicker6 = New DateTimePicker()
-        CheckBox1 = New CheckBox()
+        chbPWD1User = New CheckBox()
+        cbxBgAllowanceUser = New ComboBox()
+        tbxAddressUser = New TextBox()
+        dtpDateBirthUser = New DateTimePicker()
+        cbxGenderUser = New ComboBox()
+        chbPWDUser = New CheckBox()
+        chbPWD2User = New CheckBox()
+        chbPWD3User = New CheckBox()
+        chbPWD4User = New CheckBox()
+        chbPWD5User = New CheckBox()
+        chbPWD6User = New CheckBox()
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -220,7 +223,7 @@ Partial Class Form4
         ' cbxSeatNumberUser
         ' 
         cbxSeatNumberUser.FormattingEnabled = True
-        cbxSeatNumberUser.Location = New Point(1086, 314)
+        cbxSeatNumberUser.Location = New Point(1087, 341)
         cbxSeatNumberUser.Margin = New Padding(2)
         cbxSeatNumberUser.Name = "cbxSeatNumberUser"
         cbxSeatNumberUser.Size = New Size(145, 23)
@@ -229,7 +232,7 @@ Partial Class Form4
         ' cbxFlightUser
         ' 
         cbxFlightUser.FormattingEnabled = True
-        cbxFlightUser.Location = New Point(1086, 271)
+        cbxFlightUser.Location = New Point(1087, 288)
         cbxFlightUser.Margin = New Padding(2)
         cbxFlightUser.Name = "cbxFlightUser"
         cbxFlightUser.Size = New Size(145, 23)
@@ -245,14 +248,6 @@ Partial Class Form4
         btnBookUser.Text = " "
         btnBookUser.UseVisualStyleBackColor = True
         ' 
-        ' tbxEmailUser
-        ' 
-        tbxEmailUser.Location = New Point(1086, 733)
-        tbxEmailUser.Margin = New Padding(2)
-        tbxEmailUser.Name = "tbxEmailUser"
-        tbxEmailUser.Size = New Size(218, 23)
-        tbxEmailUser.TabIndex = 76
-        ' 
         ' btnResetUser
         ' 
         btnResetUser.Location = New Point(1071, 801)
@@ -263,73 +258,25 @@ Partial Class Form4
         btnResetUser.Text = " "
         btnResetUser.UseVisualStyleBackColor = True
         ' 
-        ' tbxContactUser
-        ' 
-        tbxContactUser.Location = New Point(1086, 691)
-        tbxContactUser.Margin = New Padding(2)
-        tbxContactUser.Name = "tbxContactUser"
-        tbxContactUser.Size = New Size(218, 23)
-        tbxContactUser.TabIndex = 74
-        ' 
-        ' tbxCountryUser
-        ' 
-        tbxCountryUser.Location = New Point(1086, 644)
-        tbxCountryUser.Margin = New Padding(2)
-        tbxCountryUser.Name = "tbxCountryUser"
-        tbxCountryUser.Size = New Size(218, 23)
-        tbxCountryUser.TabIndex = 72
-        ' 
-        ' tbxPostalCodeUser
-        ' 
-        tbxPostalCodeUser.Location = New Point(1085, 599)
-        tbxPostalCodeUser.Margin = New Padding(2)
-        tbxPostalCodeUser.Name = "tbxPostalCodeUser"
-        tbxPostalCodeUser.Size = New Size(144, 23)
-        tbxPostalCodeUser.TabIndex = 70
-        ' 
-        ' tbxCityUser
-        ' 
-        tbxCityUser.Location = New Point(1085, 554)
-        tbxCityUser.Margin = New Padding(2)
-        tbxCityUser.Name = "tbxCityUser"
-        tbxCityUser.Size = New Size(144, 23)
-        tbxCityUser.TabIndex = 68
-        ' 
-        ' tbxGenderUser
-        ' 
-        tbxGenderUser.Location = New Point(1085, 464)
-        tbxGenderUser.Margin = New Padding(2)
-        tbxGenderUser.Name = "tbxGenderUser"
-        tbxGenderUser.Size = New Size(146, 23)
-        tbxGenderUser.TabIndex = 66
-        ' 
-        ' tbxAddressUser
-        ' 
-        tbxAddressUser.Location = New Point(1086, 509)
-        tbxAddressUser.Margin = New Padding(2)
-        tbxAddressUser.Name = "tbxAddressUser"
-        tbxAddressUser.Size = New Size(218, 23)
-        tbxAddressUser.TabIndex = 64
-        ' 
-        ' dtpBdayUser
-        ' 
-        dtpBdayUser.Location = New Point(1086, 416)
-        dtpBdayUser.Margin = New Padding(2)
-        dtpBdayUser.Name = "dtpBdayUser"
-        dtpBdayUser.Size = New Size(143, 23)
-        dtpBdayUser.TabIndex = 61
-        ' 
         ' tbxFullnameUser
         ' 
-        tbxFullnameUser.Location = New Point(1086, 363)
+        tbxFullnameUser.Location = New Point(1087, 448)
         tbxFullnameUser.Margin = New Padding(2)
         tbxFullnameUser.Name = "tbxFullnameUser"
-        tbxFullnameUser.Size = New Size(218, 23)
-        tbxFullnameUser.TabIndex = 60
+        tbxFullnameUser.Size = New Size(217, 23)
+        tbxFullnameUser.TabIndex = 66
+        ' 
+        ' tbxAgeUser
+        ' 
+        tbxAgeUser.Location = New Point(1087, 500)
+        tbxAgeUser.Margin = New Padding(2)
+        tbxAgeUser.Name = "tbxAgeUser"
+        tbxAgeUser.Size = New Size(63, 23)
+        tbxAgeUser.TabIndex = 64
         ' 
         ' dtpBookingDateUser
         ' 
-        dtpBookingDateUser.Location = New Point(1085, 221)
+        dtpBookingDateUser.Location = New Point(1087, 230)
         dtpBookingDateUser.Margin = New Padding(2)
         dtpBookingDateUser.Name = "dtpBookingDateUser"
         dtpBookingDateUser.Size = New Size(146, 23)
@@ -560,67 +507,67 @@ Partial Class Form4
         ComboBox12.Size = New Size(86, 23)
         ComboBox12.TabIndex = 94
         ' 
-        ' TextBox1
+        ' tbxAge6User
         ' 
-        TextBox1.Location = New Point(298, 813)
-        TextBox1.Margin = New Padding(2)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(54, 23)
-        TextBox1.TabIndex = 105
+        tbxAge6User.Location = New Point(298, 813)
+        tbxAge6User.Margin = New Padding(2)
+        tbxAge6User.Name = "tbxAge6User"
+        tbxAge6User.Size = New Size(54, 23)
+        tbxAge6User.TabIndex = 105
         ' 
-        ' TextBox2
+        ' tbxAge4User
         ' 
-        TextBox2.Location = New Point(299, 738)
-        TextBox2.Margin = New Padding(2)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(53, 23)
-        TextBox2.TabIndex = 103
+        tbxAge4User.Location = New Point(299, 738)
+        tbxAge4User.Margin = New Padding(2)
+        tbxAge4User.Name = "tbxAge4User"
+        tbxAge4User.Size = New Size(53, 23)
+        tbxAge4User.TabIndex = 103
         ' 
-        ' TextBox3
+        ' tbxAge5User
         ' 
-        TextBox3.Location = New Point(298, 776)
-        TextBox3.Margin = New Padding(2)
-        TextBox3.Name = "TextBox3"
-        TextBox3.Size = New Size(54, 23)
-        TextBox3.TabIndex = 104
+        tbxAge5User.Location = New Point(298, 776)
+        tbxAge5User.Margin = New Padding(2)
+        tbxAge5User.Name = "tbxAge5User"
+        tbxAge5User.Size = New Size(54, 23)
+        tbxAge5User.TabIndex = 104
         ' 
-        ' TextBox4
+        ' tbxAge3User
         ' 
-        TextBox4.Location = New Point(299, 701)
-        TextBox4.Margin = New Padding(2)
-        TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(54, 23)
-        TextBox4.TabIndex = 102
+        tbxAge3User.Location = New Point(299, 701)
+        tbxAge3User.Margin = New Padding(2)
+        tbxAge3User.Name = "tbxAge3User"
+        tbxAge3User.Size = New Size(54, 23)
+        tbxAge3User.TabIndex = 102
         ' 
-        ' TextBox5
+        ' tbxAge1User
         ' 
-        TextBox5.Location = New Point(299, 627)
-        TextBox5.Margin = New Padding(2)
-        TextBox5.Name = "TextBox5"
-        TextBox5.Size = New Size(54, 23)
-        TextBox5.TabIndex = 100
+        tbxAge1User.Location = New Point(299, 627)
+        tbxAge1User.Margin = New Padding(2)
+        tbxAge1User.Name = "tbxAge1User"
+        tbxAge1User.Size = New Size(54, 23)
+        tbxAge1User.TabIndex = 100
         ' 
-        ' TextBox6
+        ' tbxAge2User
         ' 
-        TextBox6.Location = New Point(299, 665)
-        TextBox6.Margin = New Padding(2)
-        TextBox6.Name = "TextBox6"
-        TextBox6.Size = New Size(53, 23)
-        TextBox6.TabIndex = 101
+        tbxAge2User.Location = New Point(299, 665)
+        tbxAge2User.Margin = New Padding(2)
+        tbxAge2User.Name = "tbxAge2User"
+        tbxAge2User.Size = New Size(53, 23)
+        tbxAge2User.TabIndex = 101
         ' 
-        ' DateTimePicker1
+        ' dtpBirthDate1User
         ' 
-        DateTimePicker1.Location = New Point(365, 627)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(101, 23)
-        DateTimePicker1.TabIndex = 106
+        dtpBirthDate1User.Location = New Point(365, 627)
+        dtpBirthDate1User.Name = "dtpBirthDate1User"
+        dtpBirthDate1User.Size = New Size(101, 23)
+        dtpBirthDate1User.TabIndex = 106
         ' 
-        ' DateTimePicker2
+        ' dtpBirthDate2User
         ' 
-        DateTimePicker2.Location = New Point(365, 665)
-        DateTimePicker2.Name = "DateTimePicker2"
-        DateTimePicker2.Size = New Size(101, 23)
-        DateTimePicker2.TabIndex = 107
+        dtpBirthDate2User.Location = New Point(365, 665)
+        dtpBirthDate2User.Name = "dtpBirthDate2User"
+        dtpBirthDate2User.Size = New Size(101, 23)
+        dtpBirthDate2User.TabIndex = 107
         ' 
         ' DateTimePicker3
         ' 
@@ -650,33 +597,131 @@ Partial Class Form4
         DateTimePicker6.Size = New Size(101, 23)
         DateTimePicker6.TabIndex = 109
         ' 
-        ' CheckBox1
+        ' chbPWD1User
         ' 
-        CheckBox1.AutoSize = True
-        CheckBox1.Location = New Point(748, 627)
-        CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(15, 14)
-        CheckBox1.TabIndex = 112
-        CheckBox1.UseVisualStyleBackColor = True
+        chbPWD1User.AutoSize = True
+        chbPWD1User.Location = New Point(758, 631)
+        chbPWD1User.Name = "chbPWD1User"
+        chbPWD1User.Size = New Size(15, 14)
+        chbPWD1User.TabIndex = 112
+        chbPWD1User.UseVisualStyleBackColor = True
+        ' 
+        ' cbxBgAllowanceUser
+        ' 
+        cbxBgAllowanceUser.FormattingEnabled = True
+        cbxBgAllowanceUser.Location = New Point(1086, 396)
+        cbxBgAllowanceUser.Margin = New Padding(2)
+        cbxBgAllowanceUser.Name = "cbxBgAllowanceUser"
+        cbxBgAllowanceUser.Size = New Size(145, 23)
+        cbxBgAllowanceUser.TabIndex = 113
+        ' 
+        ' tbxAddressUser
+        ' 
+        tbxAddressUser.Location = New Point(1087, 642)
+        tbxAddressUser.Margin = New Padding(2)
+        tbxAddressUser.Name = "tbxAddressUser"
+        tbxAddressUser.Size = New Size(218, 23)
+        tbxAddressUser.TabIndex = 114
+        ' 
+        ' dtpDateBirthUser
+        ' 
+        dtpDateBirthUser.Location = New Point(1087, 551)
+        dtpDateBirthUser.Margin = New Padding(2)
+        dtpDateBirthUser.Name = "dtpDateBirthUser"
+        dtpDateBirthUser.Size = New Size(146, 23)
+        dtpDateBirthUser.TabIndex = 115
+        ' 
+        ' cbxGenderUser
+        ' 
+        cbxGenderUser.FormattingEnabled = True
+        cbxGenderUser.Location = New Point(1086, 596)
+        cbxGenderUser.Margin = New Padding(2)
+        cbxGenderUser.Name = "cbxGenderUser"
+        cbxGenderUser.Size = New Size(79, 23)
+        cbxGenderUser.TabIndex = 116
+        ' 
+        ' chbPWDUser
+        ' 
+        chbPWDUser.AutoSize = True
+        chbPWDUser.Location = New Point(1087, 705)
+        chbPWDUser.Name = "chbPWDUser"
+        chbPWDUser.Size = New Size(15, 14)
+        chbPWDUser.TabIndex = 117
+        chbPWDUser.UseVisualStyleBackColor = True
+        ' 
+        ' chbPWD2User
+        ' 
+        chbPWD2User.AutoSize = True
+        chbPWD2User.Location = New Point(758, 669)
+        chbPWD2User.Name = "chbPWD2User"
+        chbPWD2User.Size = New Size(15, 14)
+        chbPWD2User.TabIndex = 118
+        chbPWD2User.UseVisualStyleBackColor = True
+        ' 
+        ' chbPWD3User
+        ' 
+        chbPWD3User.AutoSize = True
+        chbPWD3User.Location = New Point(758, 705)
+        chbPWD3User.Name = "chbPWD3User"
+        chbPWD3User.Size = New Size(15, 14)
+        chbPWD3User.TabIndex = 119
+        chbPWD3User.UseVisualStyleBackColor = True
+        ' 
+        ' chbPWD4User
+        ' 
+        chbPWD4User.AutoSize = True
+        chbPWD4User.Location = New Point(758, 742)
+        chbPWD4User.Name = "chbPWD4User"
+        chbPWD4User.Size = New Size(15, 14)
+        chbPWD4User.TabIndex = 120
+        chbPWD4User.UseVisualStyleBackColor = True
+        ' 
+        ' chbPWD5User
+        ' 
+        chbPWD5User.AutoSize = True
+        chbPWD5User.Location = New Point(758, 780)
+        chbPWD5User.Name = "chbPWD5User"
+        chbPWD5User.Size = New Size(15, 14)
+        chbPWD5User.TabIndex = 121
+        chbPWD5User.UseVisualStyleBackColor = True
+        ' 
+        ' chbPWD6User
+        ' 
+        chbPWD6User.AutoSize = True
+        chbPWD6User.Location = New Point(758, 817)
+        chbPWD6User.Name = "chbPWD6User"
+        chbPWD6User.Size = New Size(15, 14)
+        chbPWD6User.TabIndex = 122
+        chbPWD6User.UseVisualStyleBackColor = True
         ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1547, 911)
-        Controls.Add(CheckBox1)
+        ClientSize = New Size(1444, 881)
+        Controls.Add(chbPWD6User)
+        Controls.Add(chbPWD5User)
+        Controls.Add(chbPWD4User)
+        Controls.Add(chbPWD3User)
+        Controls.Add(chbPWD2User)
+        Controls.Add(chbPWDUser)
+        Controls.Add(cbxGenderUser)
+        Controls.Add(dtpDateBirthUser)
+        Controls.Add(tbxAddressUser)
+        Controls.Add(cbxBgAllowanceUser)
+        Controls.Add(chbPWD1User)
         Controls.Add(DateTimePicker4)
         Controls.Add(DateTimePicker5)
         Controls.Add(DateTimePicker6)
         Controls.Add(DateTimePicker3)
-        Controls.Add(DateTimePicker2)
-        Controls.Add(DateTimePicker1)
-        Controls.Add(TextBox1)
-        Controls.Add(TextBox2)
-        Controls.Add(TextBox3)
-        Controls.Add(TextBox4)
-        Controls.Add(TextBox5)
-        Controls.Add(TextBox6)
+        Controls.Add(dtpBirthDate2User)
+        Controls.Add(dtpBirthDate1User)
+        Controls.Add(tbxAge6User)
+        Controls.Add(tbxAge4User)
+        Controls.Add(tbxAge5User)
+        Controls.Add(tbxAge3User)
+        Controls.Add(tbxAge1User)
+        Controls.Add(tbxAge2User)
         Controls.Add(ComboBox7)
         Controls.Add(ComboBox8)
         Controls.Add(ComboBox9)
@@ -699,30 +744,23 @@ Partial Class Form4
         Controls.Add(cbxDepartTimeUser)
         Controls.Add(btnBookUser)
         Controls.Add(cbxSeatNumberFourUser)
-        Controls.Add(tbxEmailUser)
         Controls.Add(cbxSeatNumberFiveUser)
         Controls.Add(btnResetUser)
         Controls.Add(cbxDestinationUser)
         Controls.Add(cbxSeatNumberThreeUser)
-        Controls.Add(tbxContactUser)
         Controls.Add(btnBookingUser)
         Controls.Add(cbxSeatNumberTwoUser)
-        Controls.Add(tbxCountryUser)
         Controls.Add(cbxDepartureUser)
         Controls.Add(cbxSeatNumberOneUser)
-        Controls.Add(tbxPostalCodeUser)
         Controls.Add(btnHomeUser)
-        Controls.Add(tbxCityUser)
         Controls.Add(dtpArrivalDateUser)
-        Controls.Add(tbxGenderUser)
+        Controls.Add(tbxFullnameUser)
         Controls.Add(rbnOneWayTrip)
         Controls.Add(tbxFullnamePassengerFourUser)
-        Controls.Add(tbxAddressUser)
+        Controls.Add(tbxAgeUser)
         Controls.Add(dtpDepartDateUser)
         Controls.Add(tbxFullnamePassengerFiveUser)
         Controls.Add(rbnRoundTrip)
-        Controls.Add(dtpBdayUser)
-        Controls.Add(tbxFullnameUser)
         Controls.Add(tbxFullnamePassengerThreeUser)
         Controls.Add(tbxFullnamePassengerOneUser)
         Controls.Add(tbxFullnamePassengerTwoUser)
@@ -751,17 +789,10 @@ Partial Class Form4
     Friend WithEvents tbxFullnamePassengerTwoUser As TextBox
     Friend WithEvents tbxFullnamePassengerOneUser As TextBox
     Friend WithEvents dtpBookingDateUser As DateTimePicker
-    Friend WithEvents tbxPostalCodeUser As TextBox
-    Friend WithEvents tbxCityUser As TextBox
-    Friend WithEvents tbxGenderUser As TextBox
-    Friend WithEvents tbxAddressUser As TextBox
-    Friend WithEvents dtpBdayUser As DateTimePicker
     Friend WithEvents tbxFullnameUser As TextBox
+    Friend WithEvents tbxAgeUser As TextBox
     Friend WithEvents btnBookUser As Button
-    Friend WithEvents tbxEmailUser As TextBox
     Friend WithEvents btnResetUser As Button
-    Friend WithEvents tbxContactUser As TextBox
-    Friend WithEvents tbxCountryUser As TextBox
     Friend WithEvents cbxFlightUser As ComboBox
     Friend WithEvents cbxArrivalTimeUser As ComboBox
     Friend WithEvents cbxDepartTimeUser As ComboBox
@@ -789,17 +820,27 @@ Partial Class Form4
     Friend WithEvents ComboBox10 As ComboBox
     Friend WithEvents ComboBox11 As ComboBox
     Friend WithEvents ComboBox12 As ComboBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents DateTimePicker1 As DateTimePicker
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents tbxAge6User As TextBox
+    Friend WithEvents tbxAge4User As TextBox
+    Friend WithEvents tbxAge5User As TextBox
+    Friend WithEvents tbxAge3User As TextBox
+    Friend WithEvents tbxAge1User As TextBox
+    Friend WithEvents tbxAge2User As TextBox
+    Friend WithEvents dtpBirthDate1User As DateTimePicker
+    Friend WithEvents dtpBirthDate2User As DateTimePicker
     Friend WithEvents DateTimePicker3 As DateTimePicker
     Friend WithEvents DateTimePicker4 As DateTimePicker
     Friend WithEvents DateTimePicker5 As DateTimePicker
     Friend WithEvents DateTimePicker6 As DateTimePicker
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents chbPWD1User As CheckBox
+    Friend WithEvents cbxBgAllowanceUser As ComboBox
+    Friend WithEvents tbxAddressUser As TextBox
+    Friend WithEvents dtpDateBirthUser As DateTimePicker
+    Friend WithEvents cbxGenderUser As ComboBox
+    Friend WithEvents chbPWDUser As CheckBox
+    Friend WithEvents chbPWD2User As CheckBox
+    Friend WithEvents chbPWD3User As CheckBox
+    Friend WithEvents chbPWD4User As CheckBox
+    Friend WithEvents chbPWD5User As CheckBox
+    Friend WithEvents chbPWD6User As CheckBox
 End Class
