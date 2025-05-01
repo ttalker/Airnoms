@@ -132,7 +132,7 @@ Partial Class Form2
         ' 
         ' pbxCashierTicket
         ' 
-        pbxCashierTicket.BackgroundImage = My.Resources.Resources.TICKET_PAGE1
+        pbxCashierTicket.BackgroundImage = My.Resources.Resources.TICKET_PAGE__1_
         pbxCashierTicket.Location = New Point(2, -1)
         pbxCashierTicket.Name = "pbxCashierTicket"
         pbxCashierTicket.Size = New Size(1551, 910)
