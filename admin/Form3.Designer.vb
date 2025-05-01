@@ -27,15 +27,16 @@ Partial Class Form3
         btnFlights = New Button()
         pbxAdmin = New PictureBox()
         btnTransactions = New Button()
-        Label1 = New Label()
         lblBookingDateAdmin = New Label()
-        Label2 = New Label()
-        Label3 = New Label()
-        Label4 = New Label()
-        Label5 = New Label()
-        Label6 = New Label()
-        Label7 = New Label()
-        Label8 = New Label()
+        lblSeatNumAdmin = New Label()
+        lblBaggageAllowanceAdmin = New Label()
+        lblFullNameAdmin = New Label()
+        lblAgeAdmin = New Label()
+        lblDateOfBirthAdmin = New Label()
+        lblGenderAdmin = New Label()
+        lblAddressAdmin = New Label()
+        lblPWDAdmin = New Label()
+        TextBox1 = New TextBox()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -84,110 +85,119 @@ Partial Class Form3
         btnTransactions.Text = " "
         btnTransactions.UseVisualStyleBackColor = True
         ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(1168, 324)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(56, 21)
-        Label1.TabIndex = 12
-        Label1.Text = "Label1"
-        ' 
         ' lblBookingDateAdmin
         ' 
         lblBookingDateAdmin.AutoSize = True
-        lblBookingDateAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblBookingDateAdmin.Location = New Point(1168, 272)
+        lblBookingDateAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBookingDateAdmin.Location = New Point(1168, 267)
         lblBookingDateAdmin.Name = "lblBookingDateAdmin"
-        lblBookingDateAdmin.Size = New Size(56, 21)
+        lblBookingDateAdmin.Size = New Size(61, 25)
         lblBookingDateAdmin.TabIndex = 13
         lblBookingDateAdmin.Text = "Label2"
         ' 
-        ' Label2
+        ' lblSeatNumAdmin
         ' 
-        Label2.AutoSize = True
-        Label2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(1168, 380)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(56, 21)
-        Label2.TabIndex = 14
-        Label2.Text = "Label2"
+        lblSeatNumAdmin.AutoSize = True
+        lblSeatNumAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSeatNumAdmin.Location = New Point(1168, 320)
+        lblSeatNumAdmin.Name = "lblSeatNumAdmin"
+        lblSeatNumAdmin.Size = New Size(61, 25)
+        lblSeatNumAdmin.TabIndex = 14
+        lblSeatNumAdmin.Text = "Label2"
         ' 
-        ' Label3
+        ' lblBaggageAllowanceAdmin
         ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(1168, 436)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(56, 21)
-        Label3.TabIndex = 15
-        Label3.Text = "Label3"
+        lblBaggageAllowanceAdmin.AutoSize = True
+        lblBaggageAllowanceAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBaggageAllowanceAdmin.Location = New Point(1168, 374)
+        lblBaggageAllowanceAdmin.Name = "lblBaggageAllowanceAdmin"
+        lblBaggageAllowanceAdmin.Size = New Size(61, 25)
+        lblBaggageAllowanceAdmin.TabIndex = 15
+        lblBaggageAllowanceAdmin.Text = "Label2"
         ' 
-        ' Label4
+        ' lblFullNameAdmin
         ' 
-        Label4.AutoSize = True
-        Label4.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(1168, 490)
-        Label4.Name = "Label4"
-        Label4.Size = New Size(56, 21)
-        Label4.TabIndex = 16
-        Label4.Text = "Label4"
+        lblFullNameAdmin.AutoSize = True
+        lblFullNameAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblFullNameAdmin.Location = New Point(1168, 430)
+        lblFullNameAdmin.Name = "lblFullNameAdmin"
+        lblFullNameAdmin.Size = New Size(61, 25)
+        lblFullNameAdmin.TabIndex = 16
+        lblFullNameAdmin.Text = "Label2"
         ' 
-        ' Label5
+        ' lblAgeAdmin
         ' 
-        Label5.AutoSize = True
-        Label5.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(1168, 547)
-        Label5.Name = "Label5"
-        Label5.Size = New Size(56, 21)
-        Label5.TabIndex = 17
-        Label5.Text = "Label5"
+        lblAgeAdmin.AutoSize = True
+        lblAgeAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAgeAdmin.Location = New Point(1168, 489)
+        lblAgeAdmin.Name = "lblAgeAdmin"
+        lblAgeAdmin.Size = New Size(61, 25)
+        lblAgeAdmin.TabIndex = 17
+        lblAgeAdmin.Text = "Label2"
         ' 
-        ' Label6
+        ' lblDateOfBirthAdmin
         ' 
-        Label6.AutoSize = True
-        Label6.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(1168, 603)
-        Label6.Name = "Label6"
-        Label6.Size = New Size(56, 21)
-        Label6.TabIndex = 18
-        Label6.Text = "Label6"
+        lblDateOfBirthAdmin.AutoSize = True
+        lblDateOfBirthAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDateOfBirthAdmin.Location = New Point(1168, 543)
+        lblDateOfBirthAdmin.Name = "lblDateOfBirthAdmin"
+        lblDateOfBirthAdmin.Size = New Size(61, 25)
+        lblDateOfBirthAdmin.TabIndex = 18
+        lblDateOfBirthAdmin.Text = "Label2"
         ' 
-        ' Label7
+        ' lblGenderAdmin
         ' 
-        Label7.AutoSize = True
-        Label7.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label7.Location = New Point(1168, 662)
-        Label7.Name = "Label7"
-        Label7.Size = New Size(56, 21)
-        Label7.TabIndex = 19
-        Label7.Text = "Label7"
+        lblGenderAdmin.AutoSize = True
+        lblGenderAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblGenderAdmin.Location = New Point(1168, 598)
+        lblGenderAdmin.Name = "lblGenderAdmin"
+        lblGenderAdmin.Size = New Size(61, 25)
+        lblGenderAdmin.TabIndex = 19
+        lblGenderAdmin.Text = "Label2"
         ' 
-        ' Label8
+        ' lblAddressAdmin
         ' 
-        Label8.AutoSize = True
-        Label8.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label8.Location = New Point(1168, 718)
-        Label8.Name = "Label8"
-        Label8.Size = New Size(56, 21)
-        Label8.TabIndex = 20
-        Label8.Text = "Label8"
+        lblAddressAdmin.AutoSize = True
+        lblAddressAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAddressAdmin.Location = New Point(1168, 657)
+        lblAddressAdmin.Name = "lblAddressAdmin"
+        lblAddressAdmin.Size = New Size(61, 25)
+        lblAddressAdmin.TabIndex = 20
+        lblAddressAdmin.Text = "Label2"
+        ' 
+        ' lblPWDAdmin
+        ' 
+        lblPWDAdmin.AutoSize = True
+        lblPWDAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblPWDAdmin.Location = New Point(1168, 716)
+        lblPWDAdmin.Name = "lblPWDAdmin"
+        lblPWDAdmin.Size = New Size(61, 25)
+        lblPWDAdmin.TabIndex = 21
+        lblPWDAdmin.Text = "Label2"
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Font = New Font("Josefin Sans", 21.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TextBox1.Location = New Point(94, 239)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(289, 36)
+        TextBox1.TabIndex = 22
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 881)
-        Controls.Add(Label8)
-        Controls.Add(Label7)
-        Controls.Add(Label6)
-        Controls.Add(Label5)
-        Controls.Add(Label4)
-        Controls.Add(Label3)
-        Controls.Add(Label2)
+        Controls.Add(TextBox1)
+        Controls.Add(lblPWDAdmin)
+        Controls.Add(lblAddressAdmin)
+        Controls.Add(lblGenderAdmin)
+        Controls.Add(lblDateOfBirthAdmin)
+        Controls.Add(lblAgeAdmin)
+        Controls.Add(lblFullNameAdmin)
+        Controls.Add(lblBaggageAllowanceAdmin)
+        Controls.Add(lblSeatNumAdmin)
         Controls.Add(lblBookingDateAdmin)
-        Controls.Add(Label1)
         Controls.Add(btnTransactions)
         Controls.Add(btnExit)
         Controls.Add(btnBookings)
@@ -205,13 +215,14 @@ Partial Class Form3
     Friend WithEvents btnFlights As Button
     Friend WithEvents pbxAdmin As PictureBox
     Friend WithEvents btnTransactions As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents lblBookingDateAdmin As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
+    Friend WithEvents lblSeatNumAdmin As Label
+    Friend WithEvents lblBaggageAllowanceAdmin As Label
+    Friend WithEvents lblFullNameAdmin As Label
+    Friend WithEvents lblAgeAdmin As Label
+    Friend WithEvents lblDateOfBirthAdmin As Label
+    Friend WithEvents lblGenderAdmin As Label
+    Friend WithEvents lblAddressAdmin As Label
+    Friend WithEvents lblPWDAdmin As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class
