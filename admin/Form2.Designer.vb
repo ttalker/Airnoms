@@ -41,7 +41,7 @@ Partial Class Form2
         ' 
         ' btnTransactions
         ' 
-        btnTransactions.Location = New Point(283, 34)
+        btnTransactions.Location = New Point(283, 33)
         btnTransactions.Name = "btnTransactions"
         btnTransactions.Size = New Size(250, 70)
         btnTransactions.TabIndex = 7
@@ -79,7 +79,7 @@ Partial Class Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1547, 911)
+        ClientSize = New Size(1547, 881)
         Controls.Add(btnBookings)
         Controls.Add(btnExit)
         Controls.Add(btnTransactions)

@@ -109,6 +109,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+
         ClientSize = New Size(1547, 911)
         Controls.Add(btnViewFlightAdmin)
         Controls.Add(btnBookings)

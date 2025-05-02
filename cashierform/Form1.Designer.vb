@@ -43,7 +43,6 @@ Partial Class Form1
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
         pbxCashierBooking = New PictureBox()
-        btnExit = New Button()
         ErrorProvider1 = New ErrorProvider(components)
         tbxAge = New TextBox()
         dtpBirthdate = New DateTimePicker()
@@ -92,6 +91,7 @@ Partial Class Form1
         cbxpassseat6 = New ComboBox()
         chkpasspwd6 = New CheckBox()
         cbxpassbag6 = New ComboBox()
+        btnExit = New Button()
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -276,16 +276,6 @@ Partial Class Form1
         pbxCashierBooking.Size = New Size(1549, 915)
         pbxCashierBooking.TabIndex = 34
         pbxCashierBooking.TabStop = False
-        ' 
-        ' btnExit
-        ' 
-        btnExit.Location = New Point(703, 31)
-        btnExit.Margin = New Padding(2)
-        btnExit.Name = "btnExit"
-        btnExit.Size = New Size(143, 61)
-        btnExit.TabIndex = 35
-        btnExit.Text = " "
-        btnExit.UseVisualStyleBackColor = True
         ' 
         ' ErrorProvider1
         ' 
@@ -713,6 +703,18 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
+
+        ' 
+        ' btnExit
+        ' 
+        btnExit.Location = New Point(703, 31)
+        btnExit.Margin = New Padding(2)
+        btnExit.Name = "btnExit"
+        btnExit.Size = New Size(143, 61)
+        btnExit.TabIndex = 35
+        btnExit.Text = " "
+        btnExit.UseVisualStyleBackColor = True
+
         ' 
         ' Form1
         ' 
@@ -825,7 +827,6 @@ Partial Class Form1
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
     Friend WithEvents pbxCashierBooking As PictureBox
-    Friend WithEvents btnExit As Button
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents cbxGender As ComboBox
     Friend WithEvents dtpBirthdate As DateTimePicker
@@ -874,4 +875,5 @@ Partial Class Form1
     Friend WithEvents cbxpassseat2 As ComboBox
     Friend WithEvents chkpasspwd2 As CheckBox
     Friend WithEvents cbxpassbag2 As ComboBox
+    Friend WithEvents btnExit As Button
 End Class
