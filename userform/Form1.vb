@@ -1,4 +1,6 @@
 ﻿Imports SharedModule
+Imports admin
+Imports cashierform
 Imports MySql.Data.MySqlClient
 Public Class Form1
 
@@ -38,15 +40,30 @@ Public Class Form1
             adapter.Fill(table)
 
             If table.Rows.Count > 0 Then
+                Dim dbUsername As String = table.Rows(0)("Username").ToString()
+                Dim dbPassword As String = table.Rows(0)("Password").ToString()
+
                 MessageBox.Show("Login Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 tbxUsername.Clear()
                 tbxPassword.Clear()
                 Me.Hide()
-                Form3.Show()
+
+                If dbUsername = "admin" AndAlso dbPassword = "admin123" Then
+                    ' Open the Admin project's Form1
+                    Dim adminForm As New admin.Form1()
+                    adminForm.Show()
+                ElseIf dbUsername = "cashier" AndAlso dbPassword = "cashier123" Then
+                    ' Open the Cashier project's Form1
+                    Dim cashierForm As New cashierform.Form1()
+                    cashierForm.Show()
+                Else
+                    Form3.Show()
+                End If
             Else
                 MessageBox.Show("Invalid username or password")
             End If
+
 
         Catch ex As Exception
             MessageBox.Show("Login Failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -55,7 +72,6 @@ Public Class Form1
             con.Close()
         End Try
     End Sub
-
 
 
 End Class

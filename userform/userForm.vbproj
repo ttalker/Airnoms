@@ -51,6 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\admin\admin.vbproj" />
     <ProjectReference Include="..\cashierform\cashierform.vbproj" />
     <ProjectReference Include="..\SharedModule\SharedModule.vbproj" />
   </ItemGroup>
