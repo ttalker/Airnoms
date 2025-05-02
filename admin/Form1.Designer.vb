@@ -29,6 +29,7 @@ Partial Class Form1
         btnCancelFlight = New Button()
         btnAddFlight = New Button()
         btnBookings = New Button()
+        btnViewFlightAdmin = New Button()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -95,11 +96,22 @@ Partial Class Form1
         btnBookings.Text = " "
         btnBookings.UseVisualStyleBackColor = True
         ' 
+        ' btnViewFlightAdmin
+        ' 
+        btnViewFlightAdmin.Location = New Point(929, 795)
+        btnViewFlightAdmin.Name = "btnViewFlightAdmin"
+        btnViewFlightAdmin.Size = New Size(164, 66)
+        btnViewFlightAdmin.TabIndex = 10
+        btnViewFlightAdmin.Text = " "
+        btnViewFlightAdmin.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1547, 881)
+
+        ClientSize = New Size(1547, 911)
+        Controls.Add(btnViewFlightAdmin)
         Controls.Add(btnBookings)
         Controls.Add(btnAddFlight)
         Controls.Add(btnCancelFlight)
@@ -120,5 +132,6 @@ Partial Class Form1
     Friend WithEvents btnCancelFlight As Button
     Friend WithEvents btnAddFlight As Button
     Friend WithEvents btnBookings As Button
+    Friend WithEvents btnViewFlightAdmin As Button
 
 End Class
