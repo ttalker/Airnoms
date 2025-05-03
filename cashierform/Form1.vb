@@ -170,10 +170,26 @@ Public Class CustomerInfo
     Public Property Arrival_time As String
 
     'constructor (objects should only be instantiated after fulfilling conditions)
-    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String, seat As String,
-                   baggage As Integer, isPwd As Boolean, destination As String, departure As String, depart_date As Date,
-                   depart_time As String, arrival_date As Date, arrival_time As String)
 
+    ' Constructor WITHOUT Arrival info
+    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String, seat As String, baggage As Integer, isPwd As Boolean, destination As String, departure As String, depart_date As Date, depart_time As String)
+        Me.Fullname = fullname
+        Me.Age = age
+        Me.Birthdate = birthdate
+        Me.Address = address
+        Me.Gender = gender
+        Me.Seat = seat
+        Me.Baggage = baggage
+        Me.IsPwd = isPwd
+        Me.Destination = destination
+        Me.Departure = departure
+        Me.Depart_date = depart_date
+        Me.Depart_time = depart_time
+        ' Arrival_date and Arrival_time remain default (e.g., 1/1/0001 and "")
+    End Sub
+
+    ' Constructor WITH Arrival info
+    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String, seat As String, baggage As Integer, isPwd As Boolean, destination As String, departure As String, depart_date As Date, depart_time As String, arrival_date As Date, arrival_time As String)
         Me.Fullname = fullname
         Me.Age = age
         Me.Birthdate = birthdate
@@ -188,8 +204,6 @@ Public Class CustomerInfo
         Me.Depart_time = depart_time
         Me.Arrival_date = arrival_date
         Me.Arrival_time = arrival_time
-
     End Sub
-
 
 End Class
