@@ -90,4 +90,68 @@ Public Module Module1
         End If
     End Sub
 
+    Public customer_info_list As New List(Of CustomerInfo)
+
 End Module
+
+Public Class CustomerInfo
+    Public Property Fullname As String
+    Public Property Age As Integer
+    Public Property Birthdate As Date
+    Public Property Address As String
+    Public Property Gender As String
+    Public Property Seat As String
+    Public Property Baggage As Integer
+    Public Property IsPwd As Boolean
+
+    Public Property Destination As String
+    Public Property Departure As String
+    Public Property Depart_date As Date
+    Public Property Depart_time As String
+
+    Public Property Arrival_date As Date
+    Public Property Arrival_time As String
+
+    'constructor (objects should only be instantiated after fulfilling conditions)
+
+    ' Constructor WITHOUT Arrival info
+    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String,
+                   seat As String, baggage As Integer, isPwd As Boolean, destination As String,
+                   departure As String, depart_date As Date, depart_time As String)
+        Me.Fullname = fullname
+        Me.Age = age
+        Me.Birthdate = birthdate
+        Me.Address = address
+        Me.Gender = gender
+        Me.Seat = seat
+        Me.Baggage = baggage
+        Me.IsPwd = isPwd
+        Me.Destination = destination
+        Me.Departure = departure
+        Me.Depart_date = depart_date
+        Me.Depart_time = depart_time
+        ' Arrival_date and Arrival_time remain default (e.g., 1/1/0001 and "")
+
+    End Sub
+
+    ' Constructor WITH Arrival info
+    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String,
+                   seat As String, baggage As Integer, isPwd As Boolean, destination As String,
+                   departure As String, depart_date As Date, depart_time As String, arrival_date As Date, arrival_time As String)
+        Me.Fullname = fullname
+        Me.Age = age
+        Me.Birthdate = birthdate
+        Me.Address = address
+        Me.Gender = gender
+        Me.Seat = seat
+        Me.Baggage = baggage
+        Me.IsPwd = isPwd
+        Me.Destination = destination
+        Me.Departure = departure
+        Me.Depart_date = depart_date
+        Me.Depart_time = depart_time
+        Me.Arrival_date = arrival_date
+        Me.Arrival_time = arrival_time
+    End Sub
+
+End Class
