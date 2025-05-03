@@ -147,6 +147,14 @@ Public Class Form1
         Provide_cbxError(cbxDepartureTime, ErrorProvider1)
 
 
+        If ticketIdentifier = "One Way Trip" Then
+
+
+
+        ElseIf ticketIdentifier = "Round Trip" Then
+
+        End If
+
 
 
     End Sub
