@@ -1,9 +1,9 @@
 ﻿Imports System.IO
 
 Imports MySql.Data.MySqlClient
+Imports ZstdSharp.Unsafe
 'Imports System.Data.SqlClient
-'Imports cashierform
-'Imports userform
+
 Public Module Module1
     Public con As New MySqlConnection
     Public cmd As New MySqlCommand
@@ -79,4 +79,83 @@ Public Module Module1
         End If
     End Sub
 
+
 End Module
+
+Public Class PassengerInfo
+    Public Property FullName As String
+    Public Property Age As Integer
+    Public Property DateOfBirth As Date
+    Public Property Gender As String
+    Public Property SeatNumber As String
+    Public Property BaggageAllowance As String
+    Public Property IsPWD As Boolean
+
+    Public Sub New()
+        ' Default constructor /  parameterless constructor
+    End Sub
+    Public Sub New(Fullname As String, Age As Integer, DateOfBirth As Date, Gender As String, SeatNumber As String, BaggageAllowance As String, isPWD As Boolean)
+        Me.FullName = Fullname
+        Me.Age = Age
+        Me.DateOfBirth = DateOfBirth
+        Me.Gender = Gender
+        Me.SeatNumber = SeatNumber
+        Me.BaggageAllowance = BaggageAllowance
+        Me.IsPWD = isPWD
+    End Sub
+End Class
+
+Public Class BookingInfo
+    Public Property TripType As String
+    Public Property Departure As String
+    Public Property Destination As String
+    Public Property DepartDate As Date
+    Public Property DepartTime As String
+    Public Property ArrivalDate As Date
+    Public Property ArrivalTime As String
+    Public Property BookingDate As Date
+
+    ' Main Booker
+    Public Property BookerFullName As String
+    Public Property BookerAge As Integer
+    Public Property BookerBirthDate As Date
+    Public Property BookerGender As String
+    Public Property BookerAddress As String
+    Public Property BookerIsPWD As Boolean
+    Public Property BookerSeatNumber As String
+    Public Property BookerBaggageAllowance As String
+    Public Property CoPassengers As List(Of PassengerInfo)
+
+    Public Sub New()
+        Me.CoPassengers = New List(Of PassengerInfo)()
+    End Sub
+    Public Sub New(tripType As String, departure As String, destination As String,
+                   departDate As Date, departTime As String, arrivalDate As Date,
+                   arrivalTime As String, bookingDate As Date,
+                   bookerFullName As String, bookerAge As Integer,
+                   bookerBirthDate As Date, bookerGender As String,
+                   bookerAddress As String, bookerIsPWD As Boolean,
+                   bookerSeatNumber As String, bookerBaggageAllowance As String,
+                   Optional coPassengers As List(Of PassengerInfo) = Nothing)
+
+        Me.TripType = tripType
+        Me.Departure = departure
+        Me.Destination = destination
+        Me.DepartDate = departDate
+        Me.DepartTime = departTime
+        Me.ArrivalDate = arrivalDate
+        Me.ArrivalTime = arrivalTime
+        Me.BookingDate = bookingDate
+
+        Me.BookerFullName = bookerFullName
+        Me.BookerAge = bookerAge
+        Me.BookerBirthDate = bookerBirthDate
+        Me.BookerGender = bookerGender
+        Me.BookerAddress = bookerAddress
+        Me.BookerIsPWD = bookerIsPWD
+        Me.BookerSeatNumber = bookerSeatNumber
+        Me.BookerBaggageAllowance = bookerBaggageAllowance
+
+        Me.CoPassengers = If(coPassengers, New List(Of PassengerInfo)())
+    End Sub
+End Class
