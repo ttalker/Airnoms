@@ -150,7 +150,6 @@ Public Class Form1
         If ticketIdentifier = "One Way Trip" Then
 
 
-
         ElseIf ticketIdentifier = "Round Trip" Then
 
         End If
