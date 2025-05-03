@@ -1,7 +1,7 @@
 ﻿Imports System.DirectoryServices.ActiveDirectory
 Imports cashierform
+Imports MySql.Data.MySqlClient
 Imports SharedModule
-
 
 Public Class Form4
     Dim bookinginfo As New BookingInfo()
@@ -33,6 +33,8 @@ Public Class Form4
         lblCover.Visible = True ' cover for one way trip
         lblCover.BringToFront()
 
+        ' Set default trip type
+        tripIndicator = "One Way Trip"
     End Sub
 
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
@@ -47,11 +49,9 @@ Public Class Form4
         lblCover.SendToBack()
     End Sub
 
-
     Private Sub btnHomeUser_Click(sender As Object, e As EventArgs) Handles btnHomeUser.Click
         Hide()
         Form3.Show()
-
     End Sub
 
     Private Sub btnBookingUser_Click(sender As Object, e As EventArgs) Handles btnBookingUser.Click
@@ -65,100 +65,272 @@ Public Class Form4
     End Sub
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
+        If Not ValidateForm() Then
+            Return
+        End If
+        Dim countPassenger As Integer = 1 '1 cause the booker is one of the passengers
+        Dim copassengers As New List(Of PassengerInfo)()
 
+        For i As Integer = 1 To 6
+            Try
+                Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
+                If nameCtrl IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(nameCtrl.Text) Then
+                    Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
+                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+                    Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
+                    Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
+                    Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
+                    Dim pwdCtrl = TryCast(Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault(), CheckBox)
+
+                    Dim passengerAge As Integer
+                    'If ageCtrl Is Nothing OrElse Not Integer.TryParse(ageCtrl.Text, passengerAge) Then
+                    '    MessageBox.Show($"Please enter a valid age for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    '    Return
+                    'End If
+
+                    'If genderCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(genderCtrl.Text) Then
+                    '    MessageBox.Show($"Please select a gender for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    '    Return
+                    'End If
+
+                    'If seatCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(seatCtrl.Text) Then
+                    '    MessageBox.Show($"Please select a seat number for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    '    Return
+                    'End If
+
+                    'If baggageCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(baggageCtrl.Text) Then
+                    '    MessageBox.Show($"Please select baggage allowance for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    '    Return
+                    'End If
+
+                    Dim isPWD As Boolean = False
+                    If pwdCtrl IsNot Nothing Then
+                        isPWD = pwdCtrl.Checked
+                    End If
+
+                    copassengers.Add(New PassengerInfo With {
+                        .FullName = nameCtrl.Text,
+                        .Age = passengerAge,
+                        .DateOfBirth = If(birthCtrl IsNot Nothing, birthCtrl.Value, DateTime.Now),
+                        .Gender = If(genderCtrl IsNot Nothing, genderCtrl.Text, ""),
+                        .SeatNumber = If(seatCtrl IsNot Nothing, seatCtrl.Text, ""),
+                        .BaggageAllowance = If(baggageCtrl IsNot Nothing, baggageCtrl.Text, ""),
+                        .IsPWD = isPWD
+                    })
+                    countPassenger += 1
+                End If
+            Catch ex As Exception
+                MessageBox.Show($"Error processing passenger {i}: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End Try
+        Next
+
+        bookinginfo = New BookingInfo(
+            tripType:=tripIndicator,
+            departure:=cbxDepartureUser.Text,
+            destination:=cbxDestinationUser.Text,
+            departDate:=dtpDepartDateUser.Value,
+            departTime:=cbxDepartTimeUser.Text,
+            arrivalDate:=dtpArrivalDateUser.Value,
+            arrivalTime:=cbxArrivalTimeUser.Text,
+            bookingDate:=DateTime.Now,
+            bookerFullName:=tbxFullnameUser.Text,
+            bookerAge:=Integer.Parse(tbxAgeUser.Text),
+            bookerBirthDate:=dtpDateBirthUser.Value,
+            bookerGender:=cbxGenderUser.Text,
+            bookerAddress:=tbxAddressUser.Text,
+            bookerIsPWD:=chbPWDUser.Checked,
+            bookerSeatNumber:=cbxSeatNumberUser.Text,
+            bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
+            coPassengers:=copassengers,
+            countPassenger:=countPassenger
+        )
+
+        MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
+               "Co-passengers: " & bookinginfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
+               "Booking Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        ' Save booking to database
+        SaveBookingToDatabase(bookinginfo)
+    End Sub
+
+    Private Function ValidateForm() As Boolean
+        ' Validate booker information
         If String.IsNullOrWhiteSpace(tbxFullnameUser.Text) Then
             MessageBox.Show("Please enter your full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         Dim bookerAge As Integer ' Validate the age input
         If Not Integer.TryParse(tbxAgeUser.Text, bookerAge) Then
             MessageBox.Show("Please enter a valid age.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         If String.IsNullOrWhiteSpace(cbxGenderUser.Text) Then
             MessageBox.Show("Please select a gender.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         If String.IsNullOrWhiteSpace(tbxAddressUser.Text) Then
             MessageBox.Show("Please enter an address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         If String.IsNullOrWhiteSpace(cbxSeatNumberUser.Text) Then
             MessageBox.Show("Please select a seat number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         If String.IsNullOrWhiteSpace(cbxBgAllowanceUser.Text) Then
             MessageBox.Show("Please select a baggage allowance.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
         If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
             MessageBox.Show("Departure date must be today or later.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            Return False
         End If
 
-        ' Create co-passengers list
-        Dim countPassenger As Integer = 1 '1 cause the booker is one of the passengers
-        Dim copassengers As New List(Of PassengerInfo)()
-        For i As Integer = 1 To 6
-            Dim nameCtrl = Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault()
-            Dim ageCtrl = Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault()
-            Dim birthCtrl = Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault()
-            Dim genderCtrl = Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault()
-            Dim seatCtrl = Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault()
-            Dim baggageCtrl = Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault()
-            Dim pwdCtrl = Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault()
+        ' Validate departure and destination
+        If String.IsNullOrWhiteSpace(cbxDepartureUser.Text) Then
+            MessageBox.Show("Please select a departure location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
 
-            If TypeOf nameCtrl Is TextBox AndAlso Not String.IsNullOrWhiteSpace(DirectCast(nameCtrl, TextBox).Text) Then
-                Dim passengerAge As Integer
-                If Not Integer.TryParse(DirectCast(ageCtrl, TextBox).Text, passengerAge) Then
-                    MessageBox.Show("Please enter a valid age for passenger " & i, "Validation Error",
-                           MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    Return
-                End If
+        If String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
+            MessageBox.Show("Please select a destination.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
 
-                Dim passenger As New PassengerInfo With {
-                .FullName = DirectCast(nameCtrl, TextBox).Text,
-                .Age = passengerAge,
-                .DateOfBirth = DirectCast(birthCtrl, DateTimePicker).Value,
-                .Gender = DirectCast(genderCtrl, ComboBox).Text,
-                .SeatNumber = DirectCast(seatCtrl, ComboBox).Text,
-                .BaggageAllowance = DirectCast(baggageCtrl, ComboBox).Text,
-                .IsPWD = DirectCast(pwdCtrl, CheckBox).Checked
-            }
+        If String.IsNullOrWhiteSpace(cbxDepartTimeUser.Text) Then
+            MessageBox.Show("Please select a departure time.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return False
+        End If
 
-                copassengers.Add(passenger)
+        ' For round trip, validate arrival info
+        If tripIndicator = "Round Trip" Then
+            If String.IsNullOrWhiteSpace(cbxArrivalTimeUser.Text) Then
+                MessageBox.Show("Please select an arrival time for round trip.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
             End If
+
+            If dtpArrivalDateUser.Value.Date < dtpDepartDateUser.Value.Date Then
+                MessageBox.Show("Arrival date must be on or after departure date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+        End If
+
+        Return True
+    End Function
+
+    Private Sub SaveBookingToDatabase(booking As BookingInfo)
+        Try
+            openConTesting()
+            Using cmd2 As New MySqlCommand("ALTER TABLE testing_table_customer MODIFY customer_id INT AUTO_INCREMENT;", conn)
+                cmd2.ExecuteNonQuery()
+            End Using
+            ' Insert the main booker
+            Dim insertQuery As String = "
+    INSERT INTO testing_table_customer (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+    seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time)
+    VALUES (@FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime)"
+
+            Using cmd As New MySqlCommand(insertQuery, conn)
+                cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
+                cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
+                cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
+                cmd.Parameters.AddWithValue("@DOB", booking.BookerBirthDate)
+                cmd.Parameters.AddWithValue("@Gender", booking.BookerGender)
+                cmd.Parameters.AddWithValue("@Destination", booking.Destination)
+                cmd.Parameters.AddWithValue("@Departure", booking.Departure)
+                cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
+                cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
+                cmd.Parameters.AddWithValue("@PWD", booking.BookerIsPWD)
+                cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+                cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+                cmd.Parameters.AddWithValue("@TripType", booking.TripType)
+                cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartTime)
+                cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalTime)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' Insert all co-passengers
+            For Each p As PassengerInfo In booking.CoPassengers
+                Using passengerCmd As New MySqlCommand(insertQuery, conn)
+                    passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
+                    passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress) ' Use booker's address for co-passengers
+                    passengerCmd.Parameters.AddWithValue("@Age", p.Age)
+                    passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
+                    passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
+                    passengerCmd.Parameters.AddWithValue("@Destination", booking.Destination)
+                    passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
+                    passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
+                    passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
+                    passengerCmd.Parameters.AddWithValue("@PWD", p.IsPWD)
+                    passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+                    passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+                    passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
+                    passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartTime)
+                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalTime)
+                    passengerCmd.ExecuteNonQuery()
+                End Using
+            Next
+
+            MessageBox.Show("Booking and passengers saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Make sure to close the connection
+            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+        End Try
+    End Sub
+
+    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
+        tbxFullnameUser.Clear()
+        tbxAgeUser.Clear()
+        tbxAddressUser.Clear()
+        cbxGenderUser.SelectedIndex = -1
+        cbxSeatNumberUser.SelectedIndex = -1
+        cbxBgAllowanceUser.SelectedIndex = -1
+        chbPWDUser.Checked = False
+
+        cbxDepartureUser.SelectedIndex = -1
+        cbxDestinationUser.SelectedIndex = -1
+        cbxDepartTimeUser.SelectedIndex = -1
+        cbxArrivalTimeUser.SelectedIndex = -1
+
+        dtpDateBirthUser.Value = DateTime.Now
+        dtpDepartDateUser.Value = DateTime.Now
+        dtpArrivalDateUser.Value = DateTime.Now
+
+        rbnOneWayTrip.Checked = True
+
+        For i As Integer = 1 To 6
+            Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
+            If nameCtrl IsNot Nothing Then nameCtrl.Clear()
+
+            Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
+            If ageCtrl IsNot Nothing Then ageCtrl.Clear()
+
+            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+            If birthCtrl IsNot Nothing Then birthCtrl.Value = DateTime.Now
+
+            Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If genderCtrl IsNot Nothing Then genderCtrl.SelectedIndex = -1
+
+            Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If seatCtrl IsNot Nothing Then seatCtrl.SelectedIndex = -1
+
+            Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
+            If baggageCtrl IsNot Nothing Then baggageCtrl.SelectedIndex = -1
+
+            Dim pwdCtrl = TryCast(Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault(), CheckBox)
+            If pwdCtrl IsNot Nothing Then pwdCtrl.Checked = False
         Next
 
-
-        bookinginfo = New BookingInfo(
-        tripType:=tripIndicator,
-        departure:=cbxDepartureUser.Text,
-        destination:=cbxDestinationUser.Text,
-        departDate:=dtpDepartDateUser.Value,
-        departTime:=cbxDepartTimeUser.Text,
-        arrivalDate:=dtpArrivalDateUser.Value,
-        arrivalTime:=cbxArrivalTimeUser.Text,
-        bookingDate:=DateTime.Now,
-        bookerFullName:=tbxFullnameUser.Text,
-        bookerAge:=bookerAge,
-        bookerBirthDate:=dtpDateBirthUser.Value,
-        bookerGender:=cbxGenderUser.Text,
-        bookerAddress:=tbxAddressUser.Text,
-        bookerIsPWD:=chbPWDUser.Checked,
-        bookerSeatNumber:=cbxSeatNumberUser.Text,
-        bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
-        coPassengers:=copassengers)
-
-
-        MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName &
-                   " with " & bookinginfo.CoPassengers.Count & " co-passengers.",
-                   "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show("Form has been reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class

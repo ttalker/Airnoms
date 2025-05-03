@@ -7,13 +7,18 @@ Imports ZstdSharp.Unsafe
 Public Module Module1
     Public con As New MySqlConnection
     Public cmd As New MySqlCommand
+    Public conn As New MySqlConnection
+    Public cmd2 As New MySqlCommand
 
     'admin sql
     Public Sub openCon()
         con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
         con.Open()
     End Sub
-
+    Public Sub openConTesting()
+        conn.ConnectionString = "server=100.89.19.71; username=root; password=; database=testing_db"
+        conn.Open()
+    End Sub
     'cashier
     Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
         Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
@@ -125,6 +130,7 @@ Public Class BookingInfo
     Public Property BookerSeatNumber As String
     Public Property BookerBaggageAllowance As String
     Public Property CoPassengers As List(Of PassengerInfo)
+    Public Property countPassenger As Integer = 1
 
     Public Sub New()
         Me.CoPassengers = New List(Of PassengerInfo)()
@@ -136,7 +142,9 @@ Public Class BookingInfo
                    bookerBirthDate As Date, bookerGender As String,
                    bookerAddress As String, bookerIsPWD As Boolean,
                    bookerSeatNumber As String, bookerBaggageAllowance As String,
-                   Optional coPassengers As List(Of PassengerInfo) = Nothing)
+                   countPassenger As Integer,
+                   Optional coPassengers As List(Of PassengerInfo) = Nothing
+                   )
 
         Me.TripType = tripType
         Me.Departure = departure
@@ -157,5 +165,6 @@ Public Class BookingInfo
         Me.BookerBaggageAllowance = bookerBaggageAllowance
 
         Me.CoPassengers = If(coPassengers, New List(Of PassengerInfo)())
+        Me.countPassenger = countPassenger
     End Sub
 End Class
