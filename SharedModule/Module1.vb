@@ -90,15 +90,13 @@ Public Module Module1
         End If
     End Sub
 
-    Public Sub isPwd(check As CheckBox)
-        Dim result As String
+    Public Function IsPWD(check As CheckBox) As String
         If check.Checked Then
-            result = "Yes"
+            Return "Yes"
         Else
-            result = "No"
+            Return "No"
         End If
-
-    End Sub
+    End Function
 
     Public customer_info_list As New List(Of CustomerInfo)
 
