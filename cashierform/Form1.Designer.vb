@@ -139,6 +139,7 @@ Partial Class Form1
         ' rbnOneWayTrip
         ' 
         rbnOneWayTrip.AutoSize = True
+        rbnOneWayTrip.BackColor = Color.Transparent
         rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         rbnOneWayTrip.Location = New Point(202, 240)
         rbnOneWayTrip.Margin = New Padding(3, 2, 3, 2)
@@ -147,11 +148,12 @@ Partial Class Form1
         rbnOneWayTrip.TabIndex = 0
         rbnOneWayTrip.TabStop = True
         rbnOneWayTrip.Text = " "
-        rbnOneWayTrip.UseVisualStyleBackColor = True
+        rbnOneWayTrip.UseVisualStyleBackColor = False
         ' 
         ' rbnRoundTrip
         ' 
         rbnRoundTrip.AutoSize = True
+        rbnRoundTrip.BackColor = Color.Transparent
         rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         rbnRoundTrip.Location = New Point(400, 240)
         rbnRoundTrip.Margin = New Padding(3, 2, 3, 2)
@@ -160,7 +162,7 @@ Partial Class Form1
         rbnRoundTrip.TabIndex = 1
         rbnRoundTrip.TabStop = True
         rbnRoundTrip.Text = " "
-        rbnRoundTrip.UseVisualStyleBackColor = True
+        rbnRoundTrip.UseVisualStyleBackColor = False
         ' 
         ' cbxDeparture
         ' 

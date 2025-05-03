@@ -3,6 +3,9 @@
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
 Imports System.Windows.Forms
+
+
+
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -123,6 +126,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+
         Provide_tbxError(tbxFullname, ErrorProvider1)
         Provide_tbxError(tbxAddress, ErrorProvider1)
         Provide_cbxError(cbxGender, ErrorProvider1)
@@ -140,6 +144,7 @@ Public Class Form1
         Provide_cbxError(cbxDestination, ErrorProvider1)
         Provide_cbxError(cbxSeatNumber, ErrorProvider1)
         Provide_cbxError(cbxDepartureTime, ErrorProvider1)
+
 
     End Sub
 
