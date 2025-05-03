@@ -7,7 +7,6 @@ Imports MySql.Data.MySqlClient
 Public Module Module1
     Public con As New MySqlConnection
     Public cmd As New MySqlCommand
-    'Public rd As MySqlDataReader = cmd.ExecuteReader()
 
     'admin sql
     Public Sub openCon()
@@ -64,20 +63,10 @@ Public Module Module1
         btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(50, 79, 176, 231)
     End Sub
 
-
-    'userform
-    'Sub LogoutAndRedirect(currentForm As Form, loginFormType As Type)
-    '    currentForm.Hide()
-    '    Dim loginForm As Form = Activator.CreateInstance(loginFormType)
-    '    loginForm.Show()
-    'End Sub
-
     Public Sub Provide_tbxError(tbx As TextBox, errors As ErrorProvider)
         If String.IsNullOrEmpty(tbx.Text) Then
-            ' Display an error in the ErrorProvider
             errors.SetError(tbx, "This field is required.")
         Else
-            ' Clear the error if the TextBox has text
             errors.SetError(tbx, "")
         End If
     End Sub
