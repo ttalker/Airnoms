@@ -316,6 +316,7 @@ Partial Class Form4
         ' cbxDepartureUser
         ' 
         cbxDepartureUser.FormattingEnabled = True
+        cbxDepartureUser.Items.AddRange(New Object() {"Manila"})
         cbxDepartureUser.Location = New Point(549, 267)
         cbxDepartureUser.Margin = New Padding(2)
         cbxDepartureUser.Name = "cbxDepartureUser"
@@ -381,7 +382,7 @@ Partial Class Form4
         ' cbxGenderPassenger6
         ' 
         cbxGenderPassenger6.FormattingEnabled = True
-        cbxGenderPassenger6.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger6.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger6.Location = New Point(476, 813)
         cbxGenderPassenger6.Margin = New Padding(2)
         cbxGenderPassenger6.Name = "cbxGenderPassenger6"
@@ -391,7 +392,7 @@ Partial Class Form4
         ' cbxGenderPassenger4
         ' 
         cbxGenderPassenger4.FormattingEnabled = True
-        cbxGenderPassenger4.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger4.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger4.Location = New Point(476, 738)
         cbxGenderPassenger4.Margin = New Padding(2)
         cbxGenderPassenger4.Name = "cbxGenderPassenger4"
@@ -401,7 +402,7 @@ Partial Class Form4
         ' cbxGenderPassenger5
         ' 
         cbxGenderPassenger5.FormattingEnabled = True
-        cbxGenderPassenger5.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger5.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger5.Location = New Point(476, 776)
         cbxGenderPassenger5.Margin = New Padding(2)
         cbxGenderPassenger5.Name = "cbxGenderPassenger5"
@@ -411,7 +412,7 @@ Partial Class Form4
         ' cbxGenderPassenger3
         ' 
         cbxGenderPassenger3.FormattingEnabled = True
-        cbxGenderPassenger3.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger3.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger3.Location = New Point(476, 701)
         cbxGenderPassenger3.Margin = New Padding(2)
         cbxGenderPassenger3.Name = "cbxGenderPassenger3"
@@ -421,7 +422,7 @@ Partial Class Form4
         ' cbxGenderPassenger2
         ' 
         cbxGenderPassenger2.FormattingEnabled = True
-        cbxGenderPassenger2.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger2.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger2.Location = New Point(476, 665)
         cbxGenderPassenger2.Margin = New Padding(2)
         cbxGenderPassenger2.Name = "cbxGenderPassenger2"
@@ -431,7 +432,7 @@ Partial Class Form4
         ' cbxGenderPassenger1
         ' 
         cbxGenderPassenger1.FormattingEnabled = True
-        cbxGenderPassenger1.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger1.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger1.Location = New Point(476, 627)
         cbxGenderPassenger1.Margin = New Padding(2)
         cbxGenderPassenger1.Name = "cbxGenderPassenger1"
@@ -600,6 +601,7 @@ Partial Class Form4
         ' cbxBgAllowanceUser
         ' 
         cbxBgAllowanceUser.FormattingEnabled = True
+        cbxBgAllowanceUser.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBgAllowanceUser.Location = New Point(1086, 364)
         cbxBgAllowanceUser.Margin = New Padding(2)
         cbxBgAllowanceUser.Name = "cbxBgAllowanceUser"
@@ -625,6 +627,7 @@ Partial Class Form4
         ' cbxGenderUser
         ' 
         cbxGenderUser.FormattingEnabled = True
+        cbxGenderUser.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderUser.Location = New Point(1085, 568)
         cbxGenderUser.Margin = New Padding(2)
         cbxGenderUser.Name = "cbxGenderUser"
