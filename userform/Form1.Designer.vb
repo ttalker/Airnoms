@@ -59,21 +59,23 @@ Partial Class Form1
         ' 
         ' tbxUsername
         ' 
+        tbxUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxUsername.ForeColor = SystemColors.InactiveCaption
         tbxUsername.Location = New Point(529, 205)
         tbxUsername.Margin = New Padding(3, 2, 3, 2)
         tbxUsername.MaximumSize = New Size(304, 33)
         tbxUsername.Name = "tbxUsername"
-        tbxUsername.Size = New Size(304, 23)
+        tbxUsername.Size = New Size(304, 29)
         tbxUsername.TabIndex = 7
         ' 
         ' tbxPassword
         ' 
+        tbxPassword.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxPassword.Location = New Point(529, 299)
         tbxPassword.Margin = New Padding(3, 2, 3, 2)
         tbxPassword.MaximumSize = New Size(304, 33)
         tbxPassword.Name = "tbxPassword"
-        tbxPassword.Size = New Size(304, 23)
+        tbxPassword.Size = New Size(304, 29)
         tbxPassword.TabIndex = 8
         ' 
         ' pbxSignIn
