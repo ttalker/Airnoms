@@ -165,6 +165,7 @@ Public Class PassengerInfo
 End Class
 
 Public Class BookingInfo
+
     Public Property TripType As String
     Public Property Departure As String
     Public Property Destination As String
@@ -187,7 +188,9 @@ Public Class BookingInfo
     Public Property countPassenger As Integer = 1
 
     Public Sub New()
+        CoPassengers = New List(Of PassengerInfo)
     End Sub
+
     Public Sub New(tripType As String, departure As String,
                    destination As String, departDate As Date,
                    arrivalDate As Date, bookingDate As Date,
@@ -195,12 +198,14 @@ Public Class BookingInfo
                    bookerBirthDate As Date, bookerGender As String,
                    bookerAddress As String, bookerIsPWD As Boolean,
                    bookerSeatNumber As String, bookerBaggageAllowance As String,
-                   coPassengers As List(Of PassengerInfo), countPassenger As Integer)
+                   coPassengers As List(Of PassengerInfo), countPassenger As Integer) ' departTime As String, arrivalTime As String
         Me.TripType = tripType
         Me.Departure = departure
         Me.Destination = destination
         Me.DepartDate = departDate
+        'Me.DepartTime = DepartTime
         Me.ArrivalDate = arrivalDate
+        'Me.ArrivalTime = ArrivalTime
         Me.BookingDate = bookingDate
         Me.BookerFullName = bookerFullName
         Me.BookerAge = bookerAge
@@ -212,7 +217,12 @@ Public Class BookingInfo
         Me.BookerBaggageAllowance = bookerBaggageAllowance
         Me.CoPassengers = coPassengers
         Me.countPassenger = countPassenger
+
     End Sub
+
+    'Public Sub New(tripType As String, departure As String, destination As String, departDate As Date, arrivalDate As Date, bookingDate As Date, bookerFullName As String, bookerAge As Integer, bookerBirthDate As Date, bookerGender As String, bookerAddress As String, bookerIsPWD As Boolean, bookerSeatNumber As String, bookerBaggageAllowance As String, coPassengers As List(Of PassengerInfo), countPassenger As Integer, departTime As String, arrivalTime As String, value As Object)
+    '    Me.New(tripType, departure, destination, departDate, arrivalDate, bookingDate, bookerFullName, bookerAge, bookerBirthDate, bookerGender, bookerAddress, bookerIsPWD, bookerSeatNumber, bookerBaggageAllowance, coPassengers, countPassenger, departTime, arrivalTime)
+    'End Sub
 End Class
 
 Public Class RouteInfo

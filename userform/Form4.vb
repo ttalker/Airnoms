@@ -5,7 +5,6 @@ Imports SharedModule
 
 Public Class Form4
     Dim bookinginfo As New BookingInfo()
-    Dim passengerInfo As New PassengerInfo()
     Public Property tripIndicator As String
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -66,7 +65,7 @@ Public Class Form4
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
 
-
+        'Dim bookinginfo As BookingInfo = New BookingInfo()
 
         If Not ValidateForm() Then
             Return
@@ -130,14 +129,14 @@ Public Class Form4
             bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
             coPassengers:=copassengers,
             countPassenger:=countPassenger
-        )
+)
 
-        MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
-               "Co-passengers: " & bookinginfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
+        MessageBox.Show("Booking completed successfully for " & BookingInfo.BookerFullName & "." & vbNewLine &
+               "Co-passengers: " & BookingInfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
                "Booking Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         ' Save booking to database
-        SaveBookingToDatabase(bookinginfo)
+        SaveBookingToDatabase(BookingInfo)
     End Sub
 
     Private Function ValidateForm() As Boolean

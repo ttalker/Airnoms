@@ -2,8 +2,6 @@
 Imports SharedModule
 Imports System.Windows.Forms
 
-
-
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -282,10 +280,8 @@ Public Class Form1
             tripType:=ticketIdentifier, ' Use your trip identifier here
             departure:=cbxDeparture.Text,
             destination:=cbxDestination.Text,
-            departDate:=Convert.ToDateTime(dtpDepartDate.Text),
-            departTime:=cbxDepartureTime.Text,
-            arrivalDate:=Convert.ToDateTime(dtpArrivalDate.Text),
-            arrivalTime:=cbxArrivalTime.Text,
+            departDate:=DateTime.Parse(dtpDepartDate.Value.ToShortDateString() & " " & cbxDepartureTime.Text),
+            arrivalDate:=DateTime.Parse(dtpArrivalDate.Value.ToShortDateString() & " " & cbxArrivalTime.Text),
             bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
             bookerFullName:=mainBooker.FullName,
             bookerAge:=mainBooker.Age,
