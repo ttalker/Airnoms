@@ -62,7 +62,7 @@ Public Class Form2
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
-        'pass in the info
+
 
         Dim allPassengers As New List(Of PassengerInfo)
 
