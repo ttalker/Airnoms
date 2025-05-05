@@ -1,6 +1,4 @@
-﻿'Imports cashierform
-'Imports admin.Module1
-'Imports Windows.Win32.System
+﻿
 Imports SharedModule
 Public Class Form2
     Public Property username As String
@@ -61,7 +59,7 @@ Public Class Form2
             hasError = True
         End If
 
-        If tbxPasswordSignUp.Text.Length < 8 Then 'error on password error provider
+        If tbxPasswordSignUp.Text.Length < 8 Then
             ErrorProvider.SetError(tbxPasswordSignUp, "Password must be at least 8 characters long")
             hasError = True
         End If
@@ -106,5 +104,6 @@ Public Class Form2
             Me.Hide()
             Form1.Show()
         End Try
+
     End Sub
 End Class

@@ -2,6 +2,10 @@
 'Imports admin.Module1
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
+Imports System.Windows.Forms
+
+
+
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -14,6 +18,8 @@ Public Class Form1
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Form2.Hide()
         Me.Show()
+
+
     End Sub
 
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
@@ -76,46 +82,81 @@ Public Class Form1
         cbxDepartureTime.Text = "May 1, 2025"
         cbxArrivalTime.Text = "May 1, 2025"
         dtpArrivalDate.Text = "May 1, 2025"
-        dtpDepartDate.Text = "May 1, 2025"
+
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        'Clear all the inputs 
         tbxFullname.Clear()
         tbxAddress.Clear()
-        'cbxGender.Clear()
+        cbxGender.Text = ""
+        dtpBookingDate.Text = ""
+        dtpBirthdate.Text = ""
+        cbxArrivalTime.Text = ""
+        cbxDepartureTime.Text = ""
+        cbxDeparture.Text = ""
+        cbxDestination.Text = ""
+        cbxSeatNumber.Text = ""
+        tbxAge.Text = ""
+
+        'Clear the inputs in passenger
+        For i As Integer = 1 To 6
+            'finds the controls no matter their parent
+            Dim tbxName = Me.Controls.Find("tbxPassname" & i, True).FirstOrDefault()
+            Dim tbxAge = Me.Controls.Find("tbxpassAge" & i, True).FirstOrDefault()
+            Dim dtpBday = Me.Controls.Find("dtppassbday" & i, True).FirstOrDefault()
+            Dim cbxGen = Me.Controls.Find("cbxpassgen" & i, True).FirstOrDefault()
+            Dim cbxSeat = Me.Controls.Find("cbxpassseat" & i, True).FirstOrDefault()
+            Dim cbxBag = Me.Controls.Find("cbxpassbag" & i, True).FirstOrDefault()
+
+            'clears the input
+            If TypeOf tbxName Is System.Windows.Forms.TextBox Then DirectCast(tbxName, System.Windows.Forms.TextBox).Clear()
+            If TypeOf tbxAge Is System.Windows.Forms.TextBox Then DirectCast(tbxAge, System.Windows.Forms.TextBox).Clear()
+            If TypeOf dtpBday Is System.Windows.Forms.DateTimePicker Then DirectCast(dtpBday, System.Windows.Forms.DateTimePicker).Value = DateTime.Now
+            If TypeOf cbxGen Is System.Windows.Forms.ComboBox Then DirectCast(cbxGen, System.Windows.Forms.ComboBox).SelectedIndex = -1
+            If TypeOf cbxSeat Is System.Windows.Forms.ComboBox Then DirectCast(cbxSeat, System.Windows.Forms.ComboBox).SelectedIndex = -1
+            If TypeOf cbxBag Is System.Windows.Forms.ComboBox Then DirectCast(cbxBag, System.Windows.Forms.ComboBox).SelectedIndex = -1
+        Next
+
     End Sub
 
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles pbxCashierBooking.Click
-        Me.DoubleBuffered = True
+        DoubleBuffered = True
     End Sub
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+
+        'provide errors to main booker 
         Provide_tbxError(tbxFullname, ErrorProvider1)
         Provide_tbxError(tbxAddress, ErrorProvider1)
-        'Provide_tbxError(cbxGender, ErrorProvider1)
+        Provide_cbxError(cbxGender, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        Provide_tbxError(tbxAge, ErrorProvider1)
+        Provide_cbxError(cbxBaggage, ErrorProvider1)
+        Provide_cbxError(cbxDeparture, ErrorProvider1)
+        Provide_cbxError(cbxDestination, ErrorProvider1)
+        Provide_cbxError(cbxSeatNumber, ErrorProvider1)
+        Provide_cbxError(cbxDepartureTime, ErrorProvider1)
 
 
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+        If ticketIdentifier = "One Way Trip" Then
+
+
+        ElseIf ticketIdentifier = "Round Trip" Then
+
+        End If
+
+
 
     End Sub
 
-    Private Sub tbxFullname_TextChanged(sender As Object, e As EventArgs) Handles tbxFullname.TextChanged
-
-    End Sub
-
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkPWD.CheckedChanged
-
-    End Sub
-
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-
-    End Sub
 End Class
+

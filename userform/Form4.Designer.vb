@@ -24,16 +24,16 @@ Partial Class Form4
     Private Sub InitializeComponent()
         btnBookingUser = New Button()
         btnHomeUser = New Button()
-        cbxSeatNumberFourUser = New ComboBox()
-        cbxSeatNumberFiveUser = New ComboBox()
-        cbxSeatNumberThreeUser = New ComboBox()
-        cbxSeatNumberTwoUser = New ComboBox()
-        cbxSeatNumberOneUser = New ComboBox()
-        tbxFullnamePassengerFourUser = New TextBox()
-        tbxFullnamePassengerFiveUser = New TextBox()
-        tbxFullnamePassengerThreeUser = New TextBox()
-        tbxFullnamePassengerTwoUser = New TextBox()
-        tbxFullnamePassengerOneUser = New TextBox()
+        cbxSeatNumberPassenger4 = New ComboBox()
+        cbxSeatNumberPassenger5 = New ComboBox()
+        cbxSeatNumberPassenger3 = New ComboBox()
+        cbxSeatNumberPassenger2 = New ComboBox()
+        cbxSeatNumberPassenger1 = New ComboBox()
+        tbxFullnamePassenger4 = New TextBox()
+        tbxFullnamePassenger5 = New TextBox()
+        tbxFullnamePassenger3 = New TextBox()
+        tbxFullnamePassenger2 = New TextBox()
+        tbxFullnamePassenger1 = New TextBox()
         cbxArrivalTimeUser = New ComboBox()
         cbxDepartTimeUser = New ComboBox()
         cbxSeatNumberUser = New ComboBox()
@@ -49,45 +49,46 @@ Partial Class Form4
         cbxDepartureUser = New ComboBox()
         cbxDestinationUser = New ComboBox()
         pbxUserBooking = New PictureBox()
-        cbxSeatNumberSixUser = New ComboBox()
-        tbxFullnamePassengeSixUser = New TextBox()
+        cbxSeatNumberPassenger6 = New ComboBox()
+        tbxFullnamePassenger6 = New TextBox()
         btnSupportUser = New Button()
         btnExit = New Button()
-        cbxGender6User = New ComboBox()
-        cbxGender4User = New ComboBox()
-        cbxGender5User = New ComboBox()
-        cbxGender3User = New ComboBox()
-        cbxGender2User = New ComboBox()
-        cbxGender1User = New ComboBox()
-        cbxBgAllowance6User = New ComboBox()
-        cbxBgAllowance4User = New ComboBox()
-        cbxBgAllowance5User = New ComboBox()
-        cbxBgAllowance3User = New ComboBox()
-        cbxBgAllowance2User = New ComboBox()
-        cbxBgAllowance1User = New ComboBox()
-        tbxAge6User = New TextBox()
-        tbxAge4User = New TextBox()
-        tbxAge5User = New TextBox()
-        tbxAge3User = New TextBox()
-        tbxAge1User = New TextBox()
-        tbxAge2User = New TextBox()
-        dtpBirthDate1User = New DateTimePicker()
-        dtpBirthDate2User = New DateTimePicker()
-        dtpBirthDate3User = New DateTimePicker()
-        dtpBirthDate6User = New DateTimePicker()
-        dtpBirthDate5User = New DateTimePicker()
-        dtpBirthDate4User = New DateTimePicker()
-        chbPWD1User = New CheckBox()
+        cbxGenderPassenger6 = New ComboBox()
+        cbxGenderPassenger4 = New ComboBox()
+        cbxGenderPassenger5 = New ComboBox()
+        cbxGenderPassenger3 = New ComboBox()
+        cbxGenderPassenger2 = New ComboBox()
+        cbxGenderPassenger1 = New ComboBox()
+        cbxBagAllowancePassenegr6 = New ComboBox()
+        cbxBagAllowancePassenegr4 = New ComboBox()
+        cbxBagAllowancePassenegr5 = New ComboBox()
+        cbxBagAllowancePassenegr3 = New ComboBox()
+        cbxBagAllowancePassenegr2 = New ComboBox()
+        cbxBagAllowancePassenegr1 = New ComboBox()
+        tbxAgePassenger6 = New TextBox()
+        tbxAgePassenger4 = New TextBox()
+        tbxAgePassenger5 = New TextBox()
+        tbxAgePassenger3 = New TextBox()
+        tbxAgePassenger1 = New TextBox()
+        tbxAgePassenger2 = New TextBox()
+        dtpBirthDatePassenger1 = New DateTimePicker()
+        dtpBirthDatePassenger2 = New DateTimePicker()
+        dtpBirthDatePassenger3 = New DateTimePicker()
+        dtpBirthDatePassenger6 = New DateTimePicker()
+        dtpBirthDatePassenger5 = New DateTimePicker()
+        dtpBirthDatePassenger4 = New DateTimePicker()
+        chbPWDPassenger1 = New CheckBox()
         cbxBgAllowanceUser = New ComboBox()
         tbxAddressUser = New TextBox()
         dtpDateBirthUser = New DateTimePicker()
         cbxGenderUser = New ComboBox()
         chbPWDUser = New CheckBox()
-        chbPWD2User = New CheckBox()
-        chbPWD3User = New CheckBox()
-        chbPWD4User = New CheckBox()
-        chbPWD5User = New CheckBox()
-        chbPWD6User = New CheckBox()
+        chbPWDPassenger2 = New CheckBox()
+        chbPWDPassenger3 = New CheckBox()
+        chbPWDPassenger4 = New CheckBox()
+        chbPWDPassenger5 = New CheckBox()
+        chbPWDPassenger6 = New CheckBox()
+        lblCover = New Label()
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -111,95 +112,95 @@ Partial Class Form4
         btnHomeUser.Text = " "
         btnHomeUser.UseVisualStyleBackColor = True
         ' 
-        ' cbxSeatNumberFourUser
+        ' cbxSeatNumberPassenger4
         ' 
-        cbxSeatNumberFourUser.FormattingEnabled = True
-        cbxSeatNumberFourUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberFourUser.Location = New Point(559, 738)
-        cbxSeatNumberFourUser.Margin = New Padding(2)
-        cbxSeatNumberFourUser.Name = "cbxSeatNumberFourUser"
-        cbxSeatNumberFourUser.Size = New Size(69, 23)
-        cbxSeatNumberFourUser.TabIndex = 55
+        cbxSeatNumberPassenger4.FormattingEnabled = True
+        cbxSeatNumberPassenger4.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger4.Location = New Point(559, 738)
+        cbxSeatNumberPassenger4.Margin = New Padding(2)
+        cbxSeatNumberPassenger4.Name = "cbxSeatNumberPassenger4"
+        cbxSeatNumberPassenger4.Size = New Size(69, 23)
+        cbxSeatNumberPassenger4.TabIndex = 55
         ' 
-        ' cbxSeatNumberFiveUser
+        ' cbxSeatNumberPassenger5
         ' 
-        cbxSeatNumberFiveUser.FormattingEnabled = True
-        cbxSeatNumberFiveUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberFiveUser.Location = New Point(559, 776)
-        cbxSeatNumberFiveUser.Margin = New Padding(2)
-        cbxSeatNumberFiveUser.Name = "cbxSeatNumberFiveUser"
-        cbxSeatNumberFiveUser.Size = New Size(69, 23)
-        cbxSeatNumberFiveUser.TabIndex = 55
+        cbxSeatNumberPassenger5.FormattingEnabled = True
+        cbxSeatNumberPassenger5.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger5.Location = New Point(559, 776)
+        cbxSeatNumberPassenger5.Margin = New Padding(2)
+        cbxSeatNumberPassenger5.Name = "cbxSeatNumberPassenger5"
+        cbxSeatNumberPassenger5.Size = New Size(69, 23)
+        cbxSeatNumberPassenger5.TabIndex = 55
         ' 
-        ' cbxSeatNumberThreeUser
+        ' cbxSeatNumberPassenger3
         ' 
-        cbxSeatNumberThreeUser.FormattingEnabled = True
-        cbxSeatNumberThreeUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberThreeUser.Location = New Point(559, 701)
-        cbxSeatNumberThreeUser.Margin = New Padding(2)
-        cbxSeatNumberThreeUser.Name = "cbxSeatNumberThreeUser"
-        cbxSeatNumberThreeUser.Size = New Size(69, 23)
-        cbxSeatNumberThreeUser.TabIndex = 54
+        cbxSeatNumberPassenger3.FormattingEnabled = True
+        cbxSeatNumberPassenger3.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger3.Location = New Point(559, 701)
+        cbxSeatNumberPassenger3.Margin = New Padding(2)
+        cbxSeatNumberPassenger3.Name = "cbxSeatNumberPassenger3"
+        cbxSeatNumberPassenger3.Size = New Size(69, 23)
+        cbxSeatNumberPassenger3.TabIndex = 54
         ' 
-        ' cbxSeatNumberTwoUser
+        ' cbxSeatNumberPassenger2
         ' 
-        cbxSeatNumberTwoUser.FormattingEnabled = True
-        cbxSeatNumberTwoUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberTwoUser.Location = New Point(559, 665)
-        cbxSeatNumberTwoUser.Margin = New Padding(2)
-        cbxSeatNumberTwoUser.Name = "cbxSeatNumberTwoUser"
-        cbxSeatNumberTwoUser.Size = New Size(69, 23)
-        cbxSeatNumberTwoUser.TabIndex = 53
+        cbxSeatNumberPassenger2.FormattingEnabled = True
+        cbxSeatNumberPassenger2.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger2.Location = New Point(559, 665)
+        cbxSeatNumberPassenger2.Margin = New Padding(2)
+        cbxSeatNumberPassenger2.Name = "cbxSeatNumberPassenger2"
+        cbxSeatNumberPassenger2.Size = New Size(69, 23)
+        cbxSeatNumberPassenger2.TabIndex = 53
         ' 
-        ' cbxSeatNumberOneUser
+        ' cbxSeatNumberPassenger1
         ' 
-        cbxSeatNumberOneUser.FormattingEnabled = True
-        cbxSeatNumberOneUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberOneUser.Location = New Point(559, 627)
-        cbxSeatNumberOneUser.Margin = New Padding(2)
-        cbxSeatNumberOneUser.Name = "cbxSeatNumberOneUser"
-        cbxSeatNumberOneUser.Size = New Size(69, 23)
-        cbxSeatNumberOneUser.TabIndex = 52
+        cbxSeatNumberPassenger1.FormattingEnabled = True
+        cbxSeatNumberPassenger1.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger1.Location = New Point(559, 627)
+        cbxSeatNumberPassenger1.Margin = New Padding(2)
+        cbxSeatNumberPassenger1.Name = "cbxSeatNumberPassenger1"
+        cbxSeatNumberPassenger1.Size = New Size(69, 23)
+        cbxSeatNumberPassenger1.TabIndex = 52
         ' 
-        ' tbxFullnamePassengerFourUser
+        ' tbxFullnamePassenger4
         ' 
-        tbxFullnamePassengerFourUser.Location = New Point(104, 738)
-        tbxFullnamePassengerFourUser.Margin = New Padding(2)
-        tbxFullnamePassengerFourUser.Name = "tbxFullnamePassengerFourUser"
-        tbxFullnamePassengerFourUser.Size = New Size(190, 23)
-        tbxFullnamePassengerFourUser.TabIndex = 50
+        tbxFullnamePassenger4.Location = New Point(104, 738)
+        tbxFullnamePassenger4.Margin = New Padding(2)
+        tbxFullnamePassenger4.Name = "tbxFullnamePassenger4"
+        tbxFullnamePassenger4.Size = New Size(190, 23)
+        tbxFullnamePassenger4.TabIndex = 50
         ' 
-        ' tbxFullnamePassengerFiveUser
+        ' tbxFullnamePassenger5
         ' 
-        tbxFullnamePassengerFiveUser.Location = New Point(103, 776)
-        tbxFullnamePassengerFiveUser.Margin = New Padding(2)
-        tbxFullnamePassengerFiveUser.Name = "tbxFullnamePassengerFiveUser"
-        tbxFullnamePassengerFiveUser.Size = New Size(191, 23)
-        tbxFullnamePassengerFiveUser.TabIndex = 50
+        tbxFullnamePassenger5.Location = New Point(103, 776)
+        tbxFullnamePassenger5.Margin = New Padding(2)
+        tbxFullnamePassenger5.Name = "tbxFullnamePassenger5"
+        tbxFullnamePassenger5.Size = New Size(191, 23)
+        tbxFullnamePassenger5.TabIndex = 50
         ' 
-        ' tbxFullnamePassengerThreeUser
+        ' tbxFullnamePassenger3
         ' 
-        tbxFullnamePassengerThreeUser.Location = New Point(104, 701)
-        tbxFullnamePassengerThreeUser.Margin = New Padding(2)
-        tbxFullnamePassengerThreeUser.Name = "tbxFullnamePassengerThreeUser"
-        tbxFullnamePassengerThreeUser.Size = New Size(191, 23)
-        tbxFullnamePassengerThreeUser.TabIndex = 48
+        tbxFullnamePassenger3.Location = New Point(104, 701)
+        tbxFullnamePassenger3.Margin = New Padding(2)
+        tbxFullnamePassenger3.Name = "tbxFullnamePassenger3"
+        tbxFullnamePassenger3.Size = New Size(191, 23)
+        tbxFullnamePassenger3.TabIndex = 48
         ' 
-        ' tbxFullnamePassengerTwoUser
+        ' tbxFullnamePassenger2
         ' 
-        tbxFullnamePassengerTwoUser.Location = New Point(104, 665)
-        tbxFullnamePassengerTwoUser.Margin = New Padding(2)
-        tbxFullnamePassengerTwoUser.Name = "tbxFullnamePassengerTwoUser"
-        tbxFullnamePassengerTwoUser.Size = New Size(190, 23)
-        tbxFullnamePassengerTwoUser.TabIndex = 46
+        tbxFullnamePassenger2.Location = New Point(104, 665)
+        tbxFullnamePassenger2.Margin = New Padding(2)
+        tbxFullnamePassenger2.Name = "tbxFullnamePassenger2"
+        tbxFullnamePassenger2.Size = New Size(190, 23)
+        tbxFullnamePassenger2.TabIndex = 46
         ' 
-        ' tbxFullnamePassengerOneUser
+        ' tbxFullnamePassenger1
         ' 
-        tbxFullnamePassengerOneUser.Location = New Point(104, 627)
-        tbxFullnamePassengerOneUser.Margin = New Padding(2)
-        tbxFullnamePassengerOneUser.Name = "tbxFullnamePassengerOneUser"
-        tbxFullnamePassengerOneUser.Size = New Size(191, 23)
-        tbxFullnamePassengerOneUser.TabIndex = 44
+        tbxFullnamePassenger1.Location = New Point(104, 627)
+        tbxFullnamePassenger1.Margin = New Padding(2)
+        tbxFullnamePassenger1.Name = "tbxFullnamePassenger1"
+        tbxFullnamePassenger1.Size = New Size(191, 23)
+        tbxFullnamePassenger1.TabIndex = 44
         ' 
         ' cbxArrivalTimeUser
         ' 
@@ -339,23 +340,23 @@ Partial Class Form4
         pbxUserBooking.TabIndex = 82
         pbxUserBooking.TabStop = False
         ' 
-        ' cbxSeatNumberSixUser
+        ' cbxSeatNumberPassenger6
         ' 
-        cbxSeatNumberSixUser.FormattingEnabled = True
-        cbxSeatNumberSixUser.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumberSixUser.Location = New Point(559, 813)
-        cbxSeatNumberSixUser.Margin = New Padding(2)
-        cbxSeatNumberSixUser.Name = "cbxSeatNumberSixUser"
-        cbxSeatNumberSixUser.Size = New Size(69, 23)
-        cbxSeatNumberSixUser.TabIndex = 85
+        cbxSeatNumberPassenger6.FormattingEnabled = True
+        cbxSeatNumberPassenger6.Items.AddRange(New Object() {"AC1"})
+        cbxSeatNumberPassenger6.Location = New Point(559, 813)
+        cbxSeatNumberPassenger6.Margin = New Padding(2)
+        cbxSeatNumberPassenger6.Name = "cbxSeatNumberPassenger6"
+        cbxSeatNumberPassenger6.Size = New Size(69, 23)
+        cbxSeatNumberPassenger6.TabIndex = 85
         ' 
-        ' tbxFullnamePassengeSixUser
+        ' tbxFullnamePassenger6
         ' 
-        tbxFullnamePassengeSixUser.Location = New Point(103, 813)
-        tbxFullnamePassengeSixUser.Margin = New Padding(2)
-        tbxFullnamePassengeSixUser.Name = "tbxFullnamePassengeSixUser"
-        tbxFullnamePassengeSixUser.Size = New Size(191, 23)
-        tbxFullnamePassengeSixUser.TabIndex = 83
+        tbxFullnamePassenger6.Location = New Point(103, 813)
+        tbxFullnamePassenger6.Margin = New Padding(2)
+        tbxFullnamePassenger6.Name = "tbxFullnamePassenger6"
+        tbxFullnamePassenger6.Size = New Size(191, 23)
+        tbxFullnamePassenger6.TabIndex = 83
         ' 
         ' btnSupportUser
         ' 
@@ -377,224 +378,224 @@ Partial Class Form4
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
         ' 
-        ' cbxGender6User
+        ' cbxGenderPassenger6
         ' 
-        cbxGender6User.FormattingEnabled = True
-        cbxGender6User.Items.AddRange(New Object() {"AC1"})
-        cbxGender6User.Location = New Point(476, 813)
-        cbxGender6User.Margin = New Padding(2)
-        cbxGender6User.Name = "cbxGender6User"
-        cbxGender6User.Size = New Size(69, 23)
-        cbxGender6User.TabIndex = 93
+        cbxGenderPassenger6.FormattingEnabled = True
+        cbxGenderPassenger6.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger6.Location = New Point(476, 813)
+        cbxGenderPassenger6.Margin = New Padding(2)
+        cbxGenderPassenger6.Name = "cbxGenderPassenger6"
+        cbxGenderPassenger6.Size = New Size(69, 23)
+        cbxGenderPassenger6.TabIndex = 93
         ' 
-        ' cbxGender4User
+        ' cbxGenderPassenger4
         ' 
-        cbxGender4User.FormattingEnabled = True
-        cbxGender4User.Items.AddRange(New Object() {"AC1"})
-        cbxGender4User.Location = New Point(476, 738)
-        cbxGender4User.Margin = New Padding(2)
-        cbxGender4User.Name = "cbxGender4User"
-        cbxGender4User.Size = New Size(69, 23)
-        cbxGender4User.TabIndex = 91
+        cbxGenderPassenger4.FormattingEnabled = True
+        cbxGenderPassenger4.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger4.Location = New Point(476, 738)
+        cbxGenderPassenger4.Margin = New Padding(2)
+        cbxGenderPassenger4.Name = "cbxGenderPassenger4"
+        cbxGenderPassenger4.Size = New Size(69, 23)
+        cbxGenderPassenger4.TabIndex = 91
         ' 
-        ' cbxGender5User
+        ' cbxGenderPassenger5
         ' 
-        cbxGender5User.FormattingEnabled = True
-        cbxGender5User.Items.AddRange(New Object() {"AC1"})
-        cbxGender5User.Location = New Point(476, 776)
-        cbxGender5User.Margin = New Padding(2)
-        cbxGender5User.Name = "cbxGender5User"
-        cbxGender5User.Size = New Size(69, 23)
-        cbxGender5User.TabIndex = 92
+        cbxGenderPassenger5.FormattingEnabled = True
+        cbxGenderPassenger5.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger5.Location = New Point(476, 776)
+        cbxGenderPassenger5.Margin = New Padding(2)
+        cbxGenderPassenger5.Name = "cbxGenderPassenger5"
+        cbxGenderPassenger5.Size = New Size(69, 23)
+        cbxGenderPassenger5.TabIndex = 92
         ' 
-        ' cbxGender3User
+        ' cbxGenderPassenger3
         ' 
-        cbxGender3User.FormattingEnabled = True
-        cbxGender3User.Items.AddRange(New Object() {"AC1"})
-        cbxGender3User.Location = New Point(476, 701)
-        cbxGender3User.Margin = New Padding(2)
-        cbxGender3User.Name = "cbxGender3User"
-        cbxGender3User.Size = New Size(69, 23)
-        cbxGender3User.TabIndex = 90
+        cbxGenderPassenger3.FormattingEnabled = True
+        cbxGenderPassenger3.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger3.Location = New Point(476, 701)
+        cbxGenderPassenger3.Margin = New Padding(2)
+        cbxGenderPassenger3.Name = "cbxGenderPassenger3"
+        cbxGenderPassenger3.Size = New Size(69, 23)
+        cbxGenderPassenger3.TabIndex = 90
         ' 
-        ' cbxGender2User
+        ' cbxGenderPassenger2
         ' 
-        cbxGender2User.FormattingEnabled = True
-        cbxGender2User.Items.AddRange(New Object() {"AC1"})
-        cbxGender2User.Location = New Point(476, 665)
-        cbxGender2User.Margin = New Padding(2)
-        cbxGender2User.Name = "cbxGender2User"
-        cbxGender2User.Size = New Size(69, 23)
-        cbxGender2User.TabIndex = 89
+        cbxGenderPassenger2.FormattingEnabled = True
+        cbxGenderPassenger2.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger2.Location = New Point(476, 665)
+        cbxGenderPassenger2.Margin = New Padding(2)
+        cbxGenderPassenger2.Name = "cbxGenderPassenger2"
+        cbxGenderPassenger2.Size = New Size(69, 23)
+        cbxGenderPassenger2.TabIndex = 89
         ' 
-        ' cbxGender1User
+        ' cbxGenderPassenger1
         ' 
-        cbxGender1User.FormattingEnabled = True
-        cbxGender1User.Items.AddRange(New Object() {"AC1"})
-        cbxGender1User.Location = New Point(476, 627)
-        cbxGender1User.Margin = New Padding(2)
-        cbxGender1User.Name = "cbxGender1User"
-        cbxGender1User.Size = New Size(69, 23)
-        cbxGender1User.TabIndex = 88
+        cbxGenderPassenger1.FormattingEnabled = True
+        cbxGenderPassenger1.Items.AddRange(New Object() {"AC1"})
+        cbxGenderPassenger1.Location = New Point(476, 627)
+        cbxGenderPassenger1.Margin = New Padding(2)
+        cbxGenderPassenger1.Name = "cbxGenderPassenger1"
+        cbxGenderPassenger1.Size = New Size(69, 23)
+        cbxGenderPassenger1.TabIndex = 88
         ' 
-        ' cbxBgAllowance6User
+        ' cbxBagAllowancePassenegr6
         ' 
-        cbxBgAllowance6User.FormattingEnabled = True
-        cbxBgAllowance6User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance6User.Location = New Point(649, 813)
-        cbxBgAllowance6User.Margin = New Padding(2)
-        cbxBgAllowance6User.Name = "cbxBgAllowance6User"
-        cbxBgAllowance6User.Size = New Size(86, 23)
-        cbxBgAllowance6User.TabIndex = 99
+        cbxBagAllowancePassenegr6.FormattingEnabled = True
+        cbxBagAllowancePassenegr6.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr6.Location = New Point(649, 813)
+        cbxBagAllowancePassenegr6.Margin = New Padding(2)
+        cbxBagAllowancePassenegr6.Name = "cbxBagAllowancePassenegr6"
+        cbxBagAllowancePassenegr6.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr6.TabIndex = 99
         ' 
-        ' cbxBgAllowance4User
+        ' cbxBagAllowancePassenegr4
         ' 
-        cbxBgAllowance4User.FormattingEnabled = True
-        cbxBgAllowance4User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance4User.Location = New Point(649, 738)
-        cbxBgAllowance4User.Margin = New Padding(2)
-        cbxBgAllowance4User.Name = "cbxBgAllowance4User"
-        cbxBgAllowance4User.Size = New Size(86, 23)
-        cbxBgAllowance4User.TabIndex = 97
+        cbxBagAllowancePassenegr4.FormattingEnabled = True
+        cbxBagAllowancePassenegr4.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr4.Location = New Point(649, 738)
+        cbxBagAllowancePassenegr4.Margin = New Padding(2)
+        cbxBagAllowancePassenegr4.Name = "cbxBagAllowancePassenegr4"
+        cbxBagAllowancePassenegr4.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr4.TabIndex = 97
         ' 
-        ' cbxBgAllowance5User
+        ' cbxBagAllowancePassenegr5
         ' 
-        cbxBgAllowance5User.FormattingEnabled = True
-        cbxBgAllowance5User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance5User.Location = New Point(649, 776)
-        cbxBgAllowance5User.Margin = New Padding(2)
-        cbxBgAllowance5User.Name = "cbxBgAllowance5User"
-        cbxBgAllowance5User.Size = New Size(86, 23)
-        cbxBgAllowance5User.TabIndex = 98
+        cbxBagAllowancePassenegr5.FormattingEnabled = True
+        cbxBagAllowancePassenegr5.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr5.Location = New Point(649, 776)
+        cbxBagAllowancePassenegr5.Margin = New Padding(2)
+        cbxBagAllowancePassenegr5.Name = "cbxBagAllowancePassenegr5"
+        cbxBagAllowancePassenegr5.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr5.TabIndex = 98
         ' 
-        ' cbxBgAllowance3User
+        ' cbxBagAllowancePassenegr3
         ' 
-        cbxBgAllowance3User.FormattingEnabled = True
-        cbxBgAllowance3User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance3User.Location = New Point(649, 701)
-        cbxBgAllowance3User.Margin = New Padding(2)
-        cbxBgAllowance3User.Name = "cbxBgAllowance3User"
-        cbxBgAllowance3User.Size = New Size(86, 23)
-        cbxBgAllowance3User.TabIndex = 96
+        cbxBagAllowancePassenegr3.FormattingEnabled = True
+        cbxBagAllowancePassenegr3.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr3.Location = New Point(649, 701)
+        cbxBagAllowancePassenegr3.Margin = New Padding(2)
+        cbxBagAllowancePassenegr3.Name = "cbxBagAllowancePassenegr3"
+        cbxBagAllowancePassenegr3.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr3.TabIndex = 96
         ' 
-        ' cbxBgAllowance2User
+        ' cbxBagAllowancePassenegr2
         ' 
-        cbxBgAllowance2User.FormattingEnabled = True
-        cbxBgAllowance2User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance2User.Location = New Point(649, 665)
-        cbxBgAllowance2User.Margin = New Padding(2)
-        cbxBgAllowance2User.Name = "cbxBgAllowance2User"
-        cbxBgAllowance2User.Size = New Size(86, 23)
-        cbxBgAllowance2User.TabIndex = 95
+        cbxBagAllowancePassenegr2.FormattingEnabled = True
+        cbxBagAllowancePassenegr2.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr2.Location = New Point(649, 665)
+        cbxBagAllowancePassenegr2.Margin = New Padding(2)
+        cbxBagAllowancePassenegr2.Name = "cbxBagAllowancePassenegr2"
+        cbxBagAllowancePassenegr2.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr2.TabIndex = 95
         ' 
-        ' cbxBgAllowance1User
+        ' cbxBagAllowancePassenegr1
         ' 
-        cbxBgAllowance1User.FormattingEnabled = True
-        cbxBgAllowance1User.Items.AddRange(New Object() {"AC1"})
-        cbxBgAllowance1User.Location = New Point(649, 627)
-        cbxBgAllowance1User.Margin = New Padding(2)
-        cbxBgAllowance1User.Name = "cbxBgAllowance1User"
-        cbxBgAllowance1User.Size = New Size(86, 23)
-        cbxBgAllowance1User.TabIndex = 94
+        cbxBagAllowancePassenegr1.FormattingEnabled = True
+        cbxBagAllowancePassenegr1.Items.AddRange(New Object() {"AC1"})
+        cbxBagAllowancePassenegr1.Location = New Point(649, 627)
+        cbxBagAllowancePassenegr1.Margin = New Padding(2)
+        cbxBagAllowancePassenegr1.Name = "cbxBagAllowancePassenegr1"
+        cbxBagAllowancePassenegr1.Size = New Size(86, 23)
+        cbxBagAllowancePassenegr1.TabIndex = 94
         ' 
-        ' tbxAge6User
+        ' tbxAgePassenger6
         ' 
-        tbxAge6User.Location = New Point(298, 813)
-        tbxAge6User.Margin = New Padding(2)
-        tbxAge6User.Name = "tbxAge6User"
-        tbxAge6User.Size = New Size(54, 23)
-        tbxAge6User.TabIndex = 105
+        tbxAgePassenger6.Location = New Point(298, 813)
+        tbxAgePassenger6.Margin = New Padding(2)
+        tbxAgePassenger6.Name = "tbxAgePassenger6"
+        tbxAgePassenger6.Size = New Size(54, 23)
+        tbxAgePassenger6.TabIndex = 105
         ' 
-        ' tbxAge4User
+        ' tbxAgePassenger4
         ' 
-        tbxAge4User.Location = New Point(299, 738)
-        tbxAge4User.Margin = New Padding(2)
-        tbxAge4User.Name = "tbxAge4User"
-        tbxAge4User.Size = New Size(53, 23)
-        tbxAge4User.TabIndex = 103
+        tbxAgePassenger4.Location = New Point(299, 738)
+        tbxAgePassenger4.Margin = New Padding(2)
+        tbxAgePassenger4.Name = "tbxAgePassenger4"
+        tbxAgePassenger4.Size = New Size(53, 23)
+        tbxAgePassenger4.TabIndex = 103
         ' 
-        ' tbxAge5User
+        ' tbxAgePassenger5
         ' 
-        tbxAge5User.Location = New Point(298, 776)
-        tbxAge5User.Margin = New Padding(2)
-        tbxAge5User.Name = "tbxAge5User"
-        tbxAge5User.Size = New Size(54, 23)
-        tbxAge5User.TabIndex = 104
+        tbxAgePassenger5.Location = New Point(298, 776)
+        tbxAgePassenger5.Margin = New Padding(2)
+        tbxAgePassenger5.Name = "tbxAgePassenger5"
+        tbxAgePassenger5.Size = New Size(54, 23)
+        tbxAgePassenger5.TabIndex = 104
         ' 
-        ' tbxAge3User
+        ' tbxAgePassenger3
         ' 
-        tbxAge3User.Location = New Point(299, 701)
-        tbxAge3User.Margin = New Padding(2)
-        tbxAge3User.Name = "tbxAge3User"
-        tbxAge3User.Size = New Size(54, 23)
-        tbxAge3User.TabIndex = 102
+        tbxAgePassenger3.Location = New Point(299, 701)
+        tbxAgePassenger3.Margin = New Padding(2)
+        tbxAgePassenger3.Name = "tbxAgePassenger3"
+        tbxAgePassenger3.Size = New Size(54, 23)
+        tbxAgePassenger3.TabIndex = 102
         ' 
-        ' tbxAge1User
+        ' tbxAgePassenger1
         ' 
-        tbxAge1User.Location = New Point(299, 627)
-        tbxAge1User.Margin = New Padding(2)
-        tbxAge1User.Name = "tbxAge1User"
-        tbxAge1User.Size = New Size(54, 23)
-        tbxAge1User.TabIndex = 100
+        tbxAgePassenger1.Location = New Point(299, 627)
+        tbxAgePassenger1.Margin = New Padding(2)
+        tbxAgePassenger1.Name = "tbxAgePassenger1"
+        tbxAgePassenger1.Size = New Size(54, 23)
+        tbxAgePassenger1.TabIndex = 100
         ' 
-        ' tbxAge2User
+        ' tbxAgePassenger2
         ' 
-        tbxAge2User.Location = New Point(299, 665)
-        tbxAge2User.Margin = New Padding(2)
-        tbxAge2User.Name = "tbxAge2User"
-        tbxAge2User.Size = New Size(53, 23)
-        tbxAge2User.TabIndex = 101
+        tbxAgePassenger2.Location = New Point(299, 665)
+        tbxAgePassenger2.Margin = New Padding(2)
+        tbxAgePassenger2.Name = "tbxAgePassenger2"
+        tbxAgePassenger2.Size = New Size(53, 23)
+        tbxAgePassenger2.TabIndex = 101
         ' 
-        ' dtpBirthDate1User
+        ' dtpBirthDatePassenger1
         ' 
-        dtpBirthDate1User.Location = New Point(365, 627)
-        dtpBirthDate1User.Name = "dtpBirthDate1User"
-        dtpBirthDate1User.Size = New Size(101, 23)
-        dtpBirthDate1User.TabIndex = 106
+        dtpBirthDatePassenger1.Location = New Point(365, 627)
+        dtpBirthDatePassenger1.Name = "dtpBirthDatePassenger1"
+        dtpBirthDatePassenger1.Size = New Size(101, 23)
+        dtpBirthDatePassenger1.TabIndex = 106
         ' 
-        ' dtpBirthDate2User
+        ' dtpBirthDatePassenger2
         ' 
-        dtpBirthDate2User.Location = New Point(365, 665)
-        dtpBirthDate2User.Name = "dtpBirthDate2User"
-        dtpBirthDate2User.Size = New Size(101, 23)
-        dtpBirthDate2User.TabIndex = 107
+        dtpBirthDatePassenger2.Location = New Point(365, 665)
+        dtpBirthDatePassenger2.Name = "dtpBirthDatePassenger2"
+        dtpBirthDatePassenger2.Size = New Size(101, 23)
+        dtpBirthDatePassenger2.TabIndex = 107
         ' 
-        ' dtpBirthDate3User
+        ' dtpBirthDatePassenger3
         ' 
-        dtpBirthDate3User.Location = New Point(365, 701)
-        dtpBirthDate3User.Name = "dtpBirthDate3User"
-        dtpBirthDate3User.Size = New Size(101, 23)
-        dtpBirthDate3User.TabIndex = 108
+        dtpBirthDatePassenger3.Location = New Point(365, 701)
+        dtpBirthDatePassenger3.Name = "dtpBirthDatePassenger3"
+        dtpBirthDatePassenger3.Size = New Size(101, 23)
+        dtpBirthDatePassenger3.TabIndex = 108
         ' 
-        ' dtpBirthDate6User
+        ' dtpBirthDatePassenger6
         ' 
-        dtpBirthDate6User.Location = New Point(367, 812)
-        dtpBirthDate6User.Name = "dtpBirthDate6User"
-        dtpBirthDate6User.Size = New Size(101, 23)
-        dtpBirthDate6User.TabIndex = 111
+        dtpBirthDatePassenger6.Location = New Point(367, 812)
+        dtpBirthDatePassenger6.Name = "dtpBirthDatePassenger6"
+        dtpBirthDatePassenger6.Size = New Size(101, 23)
+        dtpBirthDatePassenger6.TabIndex = 111
         ' 
-        ' dtpBirthDate5User
+        ' dtpBirthDatePassenger5
         ' 
-        dtpBirthDate5User.Location = New Point(367, 776)
-        dtpBirthDate5User.Name = "dtpBirthDate5User"
-        dtpBirthDate5User.Size = New Size(101, 23)
-        dtpBirthDate5User.TabIndex = 110
+        dtpBirthDatePassenger5.Location = New Point(367, 776)
+        dtpBirthDatePassenger5.Name = "dtpBirthDatePassenger5"
+        dtpBirthDatePassenger5.Size = New Size(101, 23)
+        dtpBirthDatePassenger5.TabIndex = 110
         ' 
-        ' dtpBirthDate4User
+        ' dtpBirthDatePassenger4
         ' 
-        dtpBirthDate4User.Location = New Point(367, 738)
-        dtpBirthDate4User.Name = "dtpBirthDate4User"
-        dtpBirthDate4User.Size = New Size(101, 23)
-        dtpBirthDate4User.TabIndex = 109
+        dtpBirthDatePassenger4.Location = New Point(367, 738)
+        dtpBirthDatePassenger4.Name = "dtpBirthDatePassenger4"
+        dtpBirthDatePassenger4.Size = New Size(101, 23)
+        dtpBirthDatePassenger4.TabIndex = 109
         ' 
-        ' chbPWD1User
+        ' chbPWDPassenger1
         ' 
-        chbPWD1User.AutoSize = True
-        chbPWD1User.Location = New Point(758, 631)
-        chbPWD1User.Name = "chbPWD1User"
-        chbPWD1User.Size = New Size(15, 14)
-        chbPWD1User.TabIndex = 112
-        chbPWD1User.UseVisualStyleBackColor = True
+        chbPWDPassenger1.AutoSize = True
+        chbPWDPassenger1.Location = New Point(758, 631)
+        chbPWDPassenger1.Name = "chbPWDPassenger1"
+        chbPWDPassenger1.Size = New Size(15, 14)
+        chbPWDPassenger1.TabIndex = 112
+        chbPWDPassenger1.UseVisualStyleBackColor = True
         ' 
         ' cbxBgAllowanceUser
         ' 
@@ -639,120 +640,129 @@ Partial Class Form4
         chbPWDUser.TabIndex = 117
         chbPWDUser.UseVisualStyleBackColor = True
         ' 
-        ' chbPWD2User
+        ' chbPWDPassenger2
         ' 
-        chbPWD2User.AutoSize = True
-        chbPWD2User.Location = New Point(758, 669)
-        chbPWD2User.Name = "chbPWD2User"
-        chbPWD2User.Size = New Size(15, 14)
-        chbPWD2User.TabIndex = 118
-        chbPWD2User.UseVisualStyleBackColor = True
+        chbPWDPassenger2.AutoSize = True
+        chbPWDPassenger2.Location = New Point(758, 669)
+        chbPWDPassenger2.Name = "chbPWDPassenger2"
+        chbPWDPassenger2.Size = New Size(15, 14)
+        chbPWDPassenger2.TabIndex = 118
+        chbPWDPassenger2.UseVisualStyleBackColor = True
         ' 
-        ' chbPWD3User
+        ' chbPWDPassenger3
         ' 
-        chbPWD3User.AutoSize = True
-        chbPWD3User.Location = New Point(758, 705)
-        chbPWD3User.Name = "chbPWD3User"
-        chbPWD3User.Size = New Size(15, 14)
-        chbPWD3User.TabIndex = 119
-        chbPWD3User.UseVisualStyleBackColor = True
+        chbPWDPassenger3.AutoSize = True
+        chbPWDPassenger3.Location = New Point(758, 705)
+        chbPWDPassenger3.Name = "chbPWDPassenger3"
+        chbPWDPassenger3.Size = New Size(15, 14)
+        chbPWDPassenger3.TabIndex = 119
+        chbPWDPassenger3.UseVisualStyleBackColor = True
         ' 
-        ' chbPWD4User
+        ' chbPWDPassenger4
         ' 
-        chbPWD4User.AutoSize = True
-        chbPWD4User.Location = New Point(758, 742)
-        chbPWD4User.Name = "chbPWD4User"
-        chbPWD4User.Size = New Size(15, 14)
-        chbPWD4User.TabIndex = 120
-        chbPWD4User.UseVisualStyleBackColor = True
+        chbPWDPassenger4.AutoSize = True
+        chbPWDPassenger4.Location = New Point(758, 742)
+        chbPWDPassenger4.Name = "chbPWDPassenger4"
+        chbPWDPassenger4.Size = New Size(15, 14)
+        chbPWDPassenger4.TabIndex = 120
+        chbPWDPassenger4.UseVisualStyleBackColor = True
         ' 
-        ' chbPWD5User
+        ' chbPWDPassenger5
         ' 
-        chbPWD5User.AutoSize = True
-        chbPWD5User.Location = New Point(758, 780)
-        chbPWD5User.Name = "chbPWD5User"
-        chbPWD5User.Size = New Size(15, 14)
-        chbPWD5User.TabIndex = 121
-        chbPWD5User.UseVisualStyleBackColor = True
+        chbPWDPassenger5.AutoSize = True
+        chbPWDPassenger5.Location = New Point(758, 780)
+        chbPWDPassenger5.Name = "chbPWDPassenger5"
+        chbPWDPassenger5.Size = New Size(15, 14)
+        chbPWDPassenger5.TabIndex = 121
+        chbPWDPassenger5.UseVisualStyleBackColor = True
         ' 
-        ' chbPWD6User
+        ' chbPWDPassenger6
         ' 
-        chbPWD6User.AutoSize = True
-        chbPWD6User.Location = New Point(758, 817)
-        chbPWD6User.Name = "chbPWD6User"
-        chbPWD6User.Size = New Size(15, 14)
-        chbPWD6User.TabIndex = 122
-        chbPWD6User.UseVisualStyleBackColor = True
+        chbPWDPassenger6.AutoSize = True
+        chbPWDPassenger6.Location = New Point(758, 817)
+        chbPWDPassenger6.Name = "chbPWDPassenger6"
+        chbPWDPassenger6.Size = New Size(15, 14)
+        chbPWDPassenger6.TabIndex = 122
+        chbPWDPassenger6.UseVisualStyleBackColor = True
+        ' 
+        ' lblCover
+        ' 
+        lblCover.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblCover.Location = New Point(513, 425)
+        lblCover.Name = "lblCover"
+        lblCover.Size = New Size(273, 58)
+        lblCover.TabIndex = 123
         ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1444, 881)
-        Controls.Add(chbPWD6User)
-        Controls.Add(chbPWD5User)
-        Controls.Add(chbPWD4User)
-        Controls.Add(chbPWD3User)
-        Controls.Add(chbPWD2User)
+        ClientSize = New Size(1547, 911)
+        Controls.Add(lblCover)
+        Controls.Add(chbPWDPassenger6)
+        Controls.Add(chbPWDPassenger5)
+        Controls.Add(chbPWDPassenger4)
+        Controls.Add(chbPWDPassenger3)
+        Controls.Add(chbPWDPassenger2)
         Controls.Add(chbPWDUser)
         Controls.Add(cbxGenderUser)
         Controls.Add(dtpDateBirthUser)
         Controls.Add(tbxAddressUser)
         Controls.Add(cbxBgAllowanceUser)
-        Controls.Add(chbPWD1User)
-        Controls.Add(dtpBirthDate6User)
-        Controls.Add(dtpBirthDate5User)
-        Controls.Add(dtpBirthDate4User)
-        Controls.Add(dtpBirthDate3User)
-        Controls.Add(dtpBirthDate2User)
-        Controls.Add(dtpBirthDate1User)
-        Controls.Add(tbxAge6User)
-        Controls.Add(tbxAge4User)
-        Controls.Add(tbxAge5User)
-        Controls.Add(tbxAge3User)
-        Controls.Add(tbxAge1User)
-        Controls.Add(tbxAge2User)
-        Controls.Add(cbxBgAllowance6User)
-        Controls.Add(cbxBgAllowance4User)
-        Controls.Add(cbxBgAllowance5User)
-        Controls.Add(cbxBgAllowance3User)
-        Controls.Add(cbxBgAllowance2User)
-        Controls.Add(cbxBgAllowance1User)
-        Controls.Add(cbxGender6User)
-        Controls.Add(cbxGender4User)
-        Controls.Add(cbxGender5User)
-        Controls.Add(cbxGender3User)
-        Controls.Add(cbxGender2User)
-        Controls.Add(cbxGender1User)
+        Controls.Add(chbPWDPassenger1)
+        Controls.Add(dtpBirthDatePassenger6)
+        Controls.Add(dtpBirthDatePassenger5)
+        Controls.Add(dtpBirthDatePassenger4)
+        Controls.Add(dtpBirthDatePassenger3)
+        Controls.Add(dtpBirthDatePassenger2)
+        Controls.Add(dtpBirthDatePassenger1)
+        Controls.Add(tbxAgePassenger6)
+        Controls.Add(tbxAgePassenger4)
+        Controls.Add(tbxAgePassenger5)
+        Controls.Add(tbxAgePassenger3)
+        Controls.Add(tbxAgePassenger1)
+        Controls.Add(tbxAgePassenger2)
+        Controls.Add(cbxBagAllowancePassenegr6)
+        Controls.Add(cbxBagAllowancePassenegr4)
+        Controls.Add(cbxBagAllowancePassenegr5)
+        Controls.Add(cbxBagAllowancePassenegr3)
+        Controls.Add(cbxBagAllowancePassenegr2)
+        Controls.Add(cbxBagAllowancePassenegr1)
+        Controls.Add(cbxGenderPassenger6)
+        Controls.Add(cbxGenderPassenger4)
+        Controls.Add(cbxGenderPassenger5)
+        Controls.Add(cbxGenderPassenger3)
+        Controls.Add(cbxGenderPassenger2)
+        Controls.Add(cbxGenderPassenger1)
         Controls.Add(btnExit)
         Controls.Add(btnSupportUser)
-        Controls.Add(cbxSeatNumberSixUser)
-        Controls.Add(tbxFullnamePassengeSixUser)
+        Controls.Add(cbxSeatNumberPassenger6)
+        Controls.Add(tbxFullnamePassenger6)
         Controls.Add(cbxArrivalTimeUser)
         Controls.Add(cbxSeatNumberUser)
         Controls.Add(cbxDepartTimeUser)
         Controls.Add(btnBookUser)
-        Controls.Add(cbxSeatNumberFourUser)
-        Controls.Add(cbxSeatNumberFiveUser)
+        Controls.Add(cbxSeatNumberPassenger4)
+        Controls.Add(cbxSeatNumberPassenger5)
         Controls.Add(btnResetUser)
         Controls.Add(cbxDestinationUser)
-        Controls.Add(cbxSeatNumberThreeUser)
+        Controls.Add(cbxSeatNumberPassenger3)
         Controls.Add(btnBookingUser)
-        Controls.Add(cbxSeatNumberTwoUser)
+        Controls.Add(cbxSeatNumberPassenger2)
         Controls.Add(cbxDepartureUser)
-        Controls.Add(cbxSeatNumberOneUser)
+        Controls.Add(cbxSeatNumberPassenger1)
         Controls.Add(btnHomeUser)
         Controls.Add(dtpArrivalDateUser)
         Controls.Add(tbxFullnameUser)
         Controls.Add(rbnOneWayTrip)
-        Controls.Add(tbxFullnamePassengerFourUser)
+        Controls.Add(tbxFullnamePassenger4)
         Controls.Add(tbxAgeUser)
         Controls.Add(dtpDepartDateUser)
-        Controls.Add(tbxFullnamePassengerFiveUser)
+        Controls.Add(tbxFullnamePassenger5)
         Controls.Add(rbnRoundTrip)
-        Controls.Add(tbxFullnamePassengerThreeUser)
-        Controls.Add(tbxFullnamePassengerOneUser)
-        Controls.Add(tbxFullnamePassengerTwoUser)
+        Controls.Add(tbxFullnamePassenger3)
+        Controls.Add(tbxFullnamePassenger1)
+        Controls.Add(tbxFullnamePassenger2)
         Controls.Add(dtpBookingDateUser)
         Controls.Add(pbxUserBooking)
         Margin = New Padding(2)
@@ -767,16 +777,16 @@ Partial Class Form4
 
     Friend WithEvents btnBookingUser As Button
     Friend WithEvents btnHomeUser As Button
-    Friend WithEvents cbxSeatNumberFourUser As ComboBox
-    Friend WithEvents cbxSeatNumberFiveUser As ComboBox
-    Friend WithEvents cbxSeatNumberThreeUser As ComboBox
-    Friend WithEvents cbxSeatNumberTwoUser As ComboBox
-    Friend WithEvents cbxSeatNumberOneUser As ComboBox
-    Friend WithEvents tbxFullnamePassengerFourUser As TextBox
-    Friend WithEvents tbxFullnamePassengerFiveUser As TextBox
-    Friend WithEvents tbxFullnamePassengerThreeUser As TextBox
-    Friend WithEvents tbxFullnamePassengerTwoUser As TextBox
-    Friend WithEvents tbxFullnamePassengerOneUser As TextBox
+    Friend WithEvents cbxSeatNumberPassenger4 As ComboBox
+    Friend WithEvents cbxSeatNumberPassenger5 As ComboBox
+    Friend WithEvents cbxSeatNumberPassenger3 As ComboBox
+    Friend WithEvents cbxSeatNumberPassenger2 As ComboBox
+    Friend WithEvents cbxSeatNumberPassenger1 As ComboBox
+    Friend WithEvents tbxFullnamePassenger4 As TextBox
+    Friend WithEvents tbxFullnamePassenger5 As TextBox
+    Friend WithEvents tbxFullnamePassenger3 As TextBox
+    Friend WithEvents tbxFullnamePassenger2 As TextBox
+    Friend WithEvents tbxFullnamePassenger1 As TextBox
     Friend WithEvents dtpBookingDateUser As DateTimePicker
     Friend WithEvents tbxFullnameUser As TextBox
     Friend WithEvents tbxAgeUser As TextBox
@@ -792,43 +802,44 @@ Partial Class Form4
     Friend WithEvents cbxDepartureUser As ComboBox
     Friend WithEvents cbxDestinationUser As ComboBox
     Friend WithEvents pbxUserBooking As PictureBox
-    Friend WithEvents cbxSeatNumberSixUser As ComboBox
-    Friend WithEvents tbxFullnamePassengeSixUser As TextBox
+    Friend WithEvents cbxSeatNumberPassenger6 As ComboBox
+    Friend WithEvents tbxFullnamePassenger6 As TextBox
     Friend WithEvents btnSupportUser As Button
     Friend WithEvents btnExit As Button
-    Friend WithEvents cbxGender6User As ComboBox
-    Friend WithEvents cbxGender4User As ComboBox
-    Friend WithEvents cbxGender5User As ComboBox
-    Friend WithEvents cbxGender3User As ComboBox
-    Friend WithEvents cbxGender2User As ComboBox
-    Friend WithEvents cbxGender1User As ComboBox
-    Friend WithEvents cbxBgAllowance6User As ComboBox
-    Friend WithEvents cbxBgAllowance4User As ComboBox
-    Friend WithEvents cbxBgAllowance5User As ComboBox
-    Friend WithEvents cbxBgAllowance3User As ComboBox
-    Friend WithEvents cbxBgAllowance2User As ComboBox
-    Friend WithEvents cbxBgAllowance1User As ComboBox
-    Friend WithEvents tbxAge6User As TextBox
-    Friend WithEvents tbxAge4User As TextBox
-    Friend WithEvents tbxAge5User As TextBox
-    Friend WithEvents tbxAge3User As TextBox
-    Friend WithEvents tbxAge1User As TextBox
-    Friend WithEvents tbxAge2User As TextBox
-    Friend WithEvents dtpBirthDate1User As DateTimePicker
-    Friend WithEvents dtpBirthDate2User As DateTimePicker
-    Friend WithEvents dtpBirthDate3User As DateTimePicker
-    Friend WithEvents dtpBirthDate6User As DateTimePicker
-    Friend WithEvents dtpBirthDate5User As DateTimePicker
-    Friend WithEvents dtpBirthDate4User As DateTimePicker
-    Friend WithEvents chbPWD1User As CheckBox
+    Friend WithEvents cbxGenderPassenger6 As ComboBox
+    Friend WithEvents cbxGenderPassenger4 As ComboBox
+    Friend WithEvents cbxGenderPassenger5 As ComboBox
+    Friend WithEvents cbxGenderPassenger3 As ComboBox
+    Friend WithEvents cbxGenderPassenger2 As ComboBox
+    Friend WithEvents cbxGenderPassenger1 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr6 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr4 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr5 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr3 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr2 As ComboBox
+    Friend WithEvents cbxBagAllowancePassenegr1 As ComboBox
+    Friend WithEvents tbxAgePassenger6 As TextBox
+    Friend WithEvents tbxAgePassenger4 As TextBox
+    Friend WithEvents tbxAgePassenger5 As TextBox
+    Friend WithEvents tbxAgePassenger3 As TextBox
+    Friend WithEvents tbxAgePassenger1 As TextBox
+    Friend WithEvents tbxAgePassenger2 As TextBox
+    Friend WithEvents dtpBirthDatePassenger1 As DateTimePicker
+    Friend WithEvents dtpBirthDatePassenger2 As DateTimePicker
+    Friend WithEvents dtpBirthDatePassenger3 As DateTimePicker
+    Friend WithEvents dtpBirthDatePassenger6 As DateTimePicker
+    Friend WithEvents dtpBirthDatePassenger5 As DateTimePicker
+    Friend WithEvents dtpBirthDatePassenger4 As DateTimePicker
+    Friend WithEvents chbPWDPassenger1 As CheckBox
     Friend WithEvents cbxBgAllowanceUser As ComboBox
     Friend WithEvents tbxAddressUser As TextBox
     Friend WithEvents dtpDateBirthUser As DateTimePicker
     Friend WithEvents cbxGenderUser As ComboBox
     Friend WithEvents chbPWDUser As CheckBox
-    Friend WithEvents chbPWD2User As CheckBox
-    Friend WithEvents chbPWD3User As CheckBox
-    Friend WithEvents chbPWD4User As CheckBox
-    Friend WithEvents chbPWD5User As CheckBox
-    Friend WithEvents chbPWD6User As CheckBox
+    Friend WithEvents chbPWDPassenger2 As CheckBox
+    Friend WithEvents chbPWDPassenger3 As CheckBox
+    Friend WithEvents chbPWDPassenger4 As CheckBox
+    Friend WithEvents chbPWDPassenger5 As CheckBox
+    Friend WithEvents chbPWDPassenger6 As CheckBox
+    Friend WithEvents lblCover As Label
 End Class
