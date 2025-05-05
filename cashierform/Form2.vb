@@ -64,11 +64,25 @@ Public Class Form2
 
         'pass in the info
 
-        Debug.WriteLine($"CoPassengers count in current form: {CurrentBooking.CoPassengers.Count}")
-        Dim mainName As String = CurrentBooking.BookerFullName
-        Dim passengers As List(Of PassengerInfo) = CurrentBooking.CoPassengers
-        Dim totalPassengers As Integer = 1 + passengers.Count
-        MessageBox.Show($"Main booker: {mainName}, Total passengers: {totalPassengers}")
+        Dim allPassengers As New List(Of PassengerInfo)
+
+        ' Add main booker
+        allPassengers.Add(New PassengerInfo(
+             CurrentBooking.BookerFullName,
+            CurrentBooking.BookerAge,
+            CurrentBooking.BookerBirthDate,
+            CurrentBooking.BookerGender,
+            CurrentBooking.BookerSeatNumber,
+            CurrentBooking.BookerBaggageAllowance,
+            CurrentBooking.BookerIsPWD
+            ))
+
+        ' Add co-passengers
+        allPassengers.AddRange(CurrentBooking.CoPassengers)
+
+        ' Optional: Display total
+        MessageBox.Show($"Total passengers: {allPassengers.Count}")
+
 
     End Sub
 
