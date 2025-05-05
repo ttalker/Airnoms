@@ -2,6 +2,7 @@
 
 Imports MySql.Data.MySqlClient
 Imports ZstdSharp.Unsafe
+Imports System.Linq
 'Imports System.Data.SqlClient
 
 Public Module Module1
@@ -96,7 +97,45 @@ Public Module Module1
     Public AllBookings As New List(Of BookingInfo)
     Public CurrentBooking As BookingInfo
 
+    Public AllRoutes As New List(Of RouteInfo) From {
+        New RouteInfo("Manila", "Seoul", 2600, 12240D, 30600D, 48960D),
+        New RouteInfo("Manila", "Beijing", 2800, 11660D, 29150D, 46640D),
+        New RouteInfo("Manila", "Tokyo", 3000, 14300D, 35750D, 57200D),
+        New RouteInfo("Manila", "Los Angeles", 11800, 37180D, 92950D, 148720D),
+        New RouteInfo("Manila", "Taipei", 1200, 7400D, 18500D, 29600D),
+        New RouteInfo("Manila", "Sydney", 6200, 19140D, 47850D, 76560D),
+        New RouteInfo("Manila", "Vancouver", 10400, 30960D, 77400D, 123840D),
+        New RouteInfo("Manila", "London", 10800, 37240D, 93100D, 148960D),
+        New RouteInfo("Manila", "Singapore", 2400, 8820D, 22050D, 35280D),
+        New RouteInfo("Manila", "Kuala Lumpur", 2500, 9000D, 22500D, 36000D)
+    }
 
+    Public Function GetEconomyFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.EconomyFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
+
+    Public Function GetBusinessFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.BusinessFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
+
+    Public Function GetFirstClassFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.FirstFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
 End Module
 
 
@@ -182,3 +221,20 @@ Public Class BookingInfo
     End Sub
 End Class
 
+Public Class RouteInfo
+    Public Property FromLocation As String
+    Public Property ToLocation As String
+    Public Property DistanceKM As Integer
+    Public Property EconomyFare As Decimal
+    Public Property BusinessFare As Decimal
+    Public Property FirstFare As Decimal
+
+    Public Sub New(fromLoc As String, toLoc As String, distance As Integer, economy As Decimal, business As Decimal, firstClass As Decimal)
+        FromLocation = fromLoc
+        ToLocation = toLoc
+        DistanceKM = distance
+        EconomyFare = economy
+        BusinessFare = business
+        FirstFare = firstClass
+    End Sub
+End Class
