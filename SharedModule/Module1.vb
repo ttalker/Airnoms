@@ -20,7 +20,7 @@ Public Module Module1
         conn.ConnectionString = "server=100.89.19.71; username=root; password=; database=testing_db"
         conn.Open()
     End Sub
-    'cashier
+
     Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
         Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
         ptbImages.Size = New Size(1, 1)
@@ -136,6 +136,8 @@ Public Module Module1
             Throw New Exception("Route not found.")
         End If
     End Function
+
+
 End Module
 
 
