@@ -53,6 +53,7 @@ Partial Class Form2
         lblChangeTicket = New Label()
         lblTotalTicket = New Label()
         lblTaxTicket = New Label()
+        lblTicketAmt = New Label()
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -182,178 +183,189 @@ Partial Class Form2
         ' lblDepartDateTicket
         ' 
         lblDepartDateTicket.AutoSize = True
-        lblDepartDateTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDepartDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDepartDateTicket.Location = New Point(272, 363)
         lblDepartDateTicket.Name = "lblDepartDateTicket"
-        lblDepartDateTicket.Size = New Size(57, 25)
+        lblDepartDateTicket.Size = New Size(57, 20)
         lblDepartDateTicket.TabIndex = 43
         lblDepartDateTicket.Text = "Label1"
         ' 
         ' lblArrivalDateTicket
         ' 
         lblArrivalDateTicket.AutoSize = True
-        lblArrivalDateTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblArrivalDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblArrivalDateTicket.Location = New Point(272, 415)
         lblArrivalDateTicket.Name = "lblArrivalDateTicket"
-        lblArrivalDateTicket.Size = New Size(61, 25)
+        lblArrivalDateTicket.Size = New Size(57, 20)
         lblArrivalDateTicket.TabIndex = 44
         lblArrivalDateTicket.Text = "Label2"
         ' 
         ' lblDepartTimeTicket
         ' 
         lblDepartTimeTicket.AutoSize = True
-        lblDepartTimeTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDepartTimeTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDepartTimeTicket.Location = New Point(597, 365)
         lblDepartTimeTicket.Name = "lblDepartTimeTicket"
-        lblDepartTimeTicket.Size = New Size(60, 25)
+        lblDepartTimeTicket.Size = New Size(57, 20)
         lblDepartTimeTicket.TabIndex = 45
         lblDepartTimeTicket.Text = "Label3"
         ' 
         ' lblArrivalTimeTicket
         ' 
         lblArrivalTimeTicket.AutoSize = True
-        lblArrivalTimeTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblArrivalTimeTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblArrivalTimeTicket.Location = New Point(597, 415)
         lblArrivalTimeTicket.Name = "lblArrivalTimeTicket"
-        lblArrivalTimeTicket.Size = New Size(61, 25)
+        lblArrivalTimeTicket.Size = New Size(57, 20)
         lblArrivalTimeTicket.TabIndex = 46
         lblArrivalTimeTicket.Text = "Label4"
         ' 
         ' lblGenderTicket
         ' 
         lblGenderTicket.AutoSize = True
-        lblGenderTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblGenderTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblGenderTicket.Location = New Point(269, 752)
         lblGenderTicket.Name = "lblGenderTicket"
-        lblGenderTicket.Size = New Size(60, 25)
+        lblGenderTicket.Size = New Size(57, 20)
         lblGenderTicket.TabIndex = 50
         lblGenderTicket.Text = "Label5"
         ' 
         ' lblDateOfBirthTicket
         ' 
         lblDateOfBirthTicket.AutoSize = True
-        lblDateOfBirthTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDateOfBirthTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDateOfBirthTicket.Location = New Point(269, 697)
         lblDateOfBirthTicket.Name = "lblDateOfBirthTicket"
-        lblDateOfBirthTicket.Size = New Size(61, 25)
+        lblDateOfBirthTicket.Size = New Size(57, 20)
         lblDateOfBirthTicket.TabIndex = 49
         lblDateOfBirthTicket.Text = "Label6"
         ' 
         ' lblFullNameTicket
         ' 
         lblFullNameTicket.AutoSize = True
-        lblFullNameTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblFullNameTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblFullNameTicket.Location = New Point(269, 650)
         lblFullNameTicket.Name = "lblFullNameTicket"
-        lblFullNameTicket.Size = New Size(60, 25)
+        lblFullNameTicket.Size = New Size(57, 20)
         lblFullNameTicket.TabIndex = 48
         lblFullNameTicket.Text = "Label7"
         ' 
         ' lblBookingDateTicket
         ' 
         lblBookingDateTicket.AutoSize = True
-        lblBookingDateTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBookingDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBookingDateTicket.Location = New Point(269, 600)
         lblBookingDateTicket.Name = "lblBookingDateTicket"
-        lblBookingDateTicket.Size = New Size(60, 25)
+        lblBookingDateTicket.Size = New Size(57, 20)
         lblBookingDateTicket.TabIndex = 47
         lblBookingDateTicket.Text = "Label8"
         ' 
         ' lblBaggageAllowanceTicket
         ' 
         lblBaggageAllowanceTicket.AutoSize = True
-        lblBaggageAllowanceTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBaggageAllowanceTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBaggageAllowanceTicket.Location = New Point(608, 752)
         lblBaggageAllowanceTicket.Name = "lblBaggageAllowanceTicket"
-        lblBaggageAllowanceTicket.Size = New Size(61, 25)
+        lblBaggageAllowanceTicket.Size = New Size(57, 20)
         lblBaggageAllowanceTicket.TabIndex = 54
         lblBaggageAllowanceTicket.Text = "Label9"
         ' 
         ' lblDestinationTicket
         ' 
         lblDestinationTicket.AutoSize = True
-        lblDestinationTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDestinationTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDestinationTicket.Location = New Point(608, 697)
         lblDestinationTicket.Name = "lblDestinationTicket"
-        lblDestinationTicket.Size = New Size(67, 25)
+        lblDestinationTicket.Size = New Size(66, 20)
         lblDestinationTicket.TabIndex = 53
         lblDestinationTicket.Text = "Label10"
         ' 
         ' lblSeatNumTicket
         ' 
         lblSeatNumTicket.AutoSize = True
-        lblSeatNumTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSeatNumTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSeatNumTicket.Location = New Point(608, 650)
         lblSeatNumTicket.Name = "lblSeatNumTicket"
-        lblSeatNumTicket.Size = New Size(62, 25)
+        lblSeatNumTicket.Size = New Size(66, 20)
         lblSeatNumTicket.TabIndex = 52
         lblSeatNumTicket.Text = "Label11"
         ' 
         ' lblBookedUnderTicket
         ' 
         lblBookedUnderTicket.AutoSize = True
-        lblBookedUnderTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBookedUnderTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBookedUnderTicket.Location = New Point(608, 600)
         lblBookedUnderTicket.Name = "lblBookedUnderTicket"
-        lblBookedUnderTicket.Size = New Size(66, 25)
+        lblBookedUnderTicket.Size = New Size(66, 20)
         lblBookedUnderTicket.TabIndex = 51
         lblBookedUnderTicket.Text = "Label12"
         ' 
         ' lblAdressTicket
         ' 
         lblAdressTicket.AutoSize = True
-        lblAdressTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAdressTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblAdressTicket.Location = New Point(272, 804)
         lblAdressTicket.Name = "lblAdressTicket"
-        lblAdressTicket.Size = New Size(65, 25)
+        lblAdressTicket.Size = New Size(66, 20)
         lblAdressTicket.TabIndex = 55
         lblAdressTicket.Text = "Label13"
         ' 
         ' lblPWDTicket
         ' 
         lblPWDTicket.AutoSize = True
-        lblPWDTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblPWDTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPWDTicket.Location = New Point(610, 807)
         lblPWDTicket.Name = "lblPWDTicket"
-        lblPWDTicket.Size = New Size(66, 25)
+        lblPWDTicket.Size = New Size(66, 20)
         lblPWDTicket.TabIndex = 56
         lblPWDTicket.Text = "Label14"
         ' 
         ' lblChangeTicket
         ' 
         lblChangeTicket.AutoSize = True
-        lblChangeTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblChangeTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblChangeTicket.Location = New Point(1121, 660)
         lblChangeTicket.Name = "lblChangeTicket"
-        lblChangeTicket.Size = New Size(65, 25)
+        lblChangeTicket.Size = New Size(66, 20)
         lblChangeTicket.TabIndex = 59
         lblChangeTicket.Text = "Label15"
         ' 
         ' lblTotalTicket
         ' 
         lblTotalTicket.AutoSize = True
-        lblTotalTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTotalTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTotalTicket.Location = New Point(1121, 392)
         lblTotalTicket.Name = "lblTotalTicket"
-        lblTotalTicket.Size = New Size(66, 25)
+        lblTotalTicket.Size = New Size(66, 20)
         lblTotalTicket.TabIndex = 58
         lblTotalTicket.Text = "Label16"
         ' 
         ' lblTaxTicket
         ' 
         lblTaxTicket.AutoSize = True
-        lblTaxTicket.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTaxTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblTaxTicket.Location = New Point(1121, 324)
         lblTaxTicket.Name = "lblTaxTicket"
-        lblTaxTicket.Size = New Size(65, 25)
+        lblTaxTicket.Size = New Size(66, 20)
         lblTaxTicket.TabIndex = 57
         lblTaxTicket.Text = "Label17"
+        ' 
+        ' lblTicketAmt
+        ' 
+        lblTicketAmt.AutoSize = True
+        lblTicketAmt.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblTicketAmt.Location = New Point(1121, 283)
+        lblTicketAmt.Name = "lblTicketAmt"
+        lblTicketAmt.Size = New Size(66, 20)
+        lblTicketAmt.TabIndex = 60
+        lblTicketAmt.Text = "Label15"
         ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 911)
+        Controls.Add(lblTicketAmt)
         Controls.Add(lblChangeTicket)
         Controls.Add(lblTotalTicket)
         Controls.Add(lblTaxTicket)
@@ -423,4 +435,5 @@ Partial Class Form2
     Friend WithEvents lblDestinationTicket As Label
     Friend WithEvents lblSeatNumTicket As Label
     Friend WithEvents lblBookedUnderTicket As Label
+    Friend WithEvents lblTicketAmt As Label
 End Class
