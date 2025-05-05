@@ -61,11 +61,44 @@ Public Class Form2
         ' Set the background color of the form to transparent   
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
+
+
+
+        Dim allPassengers As New List(Of PassengerInfo)
+
+        ' Add main booker
+        allPassengers.Add(New PassengerInfo(
+            CurrentBooking.BookerFullName,
+            CurrentBooking.BookerAge,
+            CurrentBooking.BookerBirthDate,
+            CurrentBooking.BookerGender,
+            CurrentBooking.BookerSeatNumber,
+            CurrentBooking.BookerBaggageAllowance,
+            CurrentBooking.BookerIsPWD
+            ))
+
+        ' Add co-passengers
+        allPassengers.AddRange(CurrentBooking.CoPassengers)
+
+        ' Optional: Display total
+        MessageBox.Show($"Total passengers: {allPassengers.Count}")
+
+        MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
+
+        cbxPassengerTicket.Items.Clear()
+
+        ' Add each passenger to the ComboBox
+        For Each passenger As PassengerInfo In allPassengers
+            cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
+        Next
+
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
 
     End Sub
 
+    Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
 
+    End Sub
 End Class
