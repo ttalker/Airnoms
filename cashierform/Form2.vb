@@ -68,7 +68,7 @@ Public Class Form2
 
         ' Add main booker
         allPassengers.Add(New PassengerInfo(
-             CurrentBooking.BookerFullName,
+            CurrentBooking.BookerFullName,
             CurrentBooking.BookerAge,
             CurrentBooking.BookerBirthDate,
             CurrentBooking.BookerGender,
@@ -83,6 +83,14 @@ Public Class Form2
         ' Optional: Display total
         MessageBox.Show($"Total passengers: {allPassengers.Count}")
 
+        MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
+
+        cbxPassengerTicket.Items.Clear()
+
+        ' Add each passenger to the ComboBox
+        For Each passenger As PassengerInfo In allPassengers
+            cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
+        Next
 
     End Sub
 
@@ -90,5 +98,7 @@ Public Class Form2
 
     End Sub
 
+    Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
 
+    End Sub
 End Class
