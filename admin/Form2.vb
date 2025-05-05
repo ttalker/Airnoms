@@ -43,4 +43,8 @@ Public Class Form2
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         'ExitApplication(Me)
     End Sub
+
+    Private Sub pbxAdmin_Click(sender As Object, e As EventArgs) Handles pbxAdmin.Click
+
+    End Sub
 End Class
