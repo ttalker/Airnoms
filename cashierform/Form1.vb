@@ -1,6 +1,4 @@
-﻿'Imports userForm.Module1
-'Imports admin.Module1
-'Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿
 Imports SharedModule
 Imports System.Windows.Forms
 
@@ -275,6 +273,7 @@ Public Class Form1
                 ))
 
                 passengerCount += 1
+                Debug.WriteLine($"Added co-passenger #{i}. Total passengers: {passengerCount}")
             End If
         Next
 
@@ -306,6 +305,10 @@ Public Class Form1
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
         AllBookings.Add(booking)
+
+        btnClear.PerformClick()
+        Form2.Show()
+        Me.Hide()
 
     End Sub
 

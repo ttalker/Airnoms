@@ -61,6 +61,15 @@ Public Class Form2
         ' Set the background color of the form to transparent   
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
+
+        'pass in the info
+
+        Debug.WriteLine($"CoPassengers count in current form: {CurrentBooking.CoPassengers.Count}")
+        Dim mainName As String = CurrentBooking.BookerFullName
+        Dim passengers As List(Of PassengerInfo) = CurrentBooking.CoPassengers
+        Dim totalPassengers As Integer = 1 + passengers.Count
+        MessageBox.Show($"Main booker: {mainName}, Total passengers: {totalPassengers}")
+
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
