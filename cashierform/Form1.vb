@@ -126,6 +126,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+
         ' Clear previous error states
         ErrorProvider1.Clear()
 
@@ -301,6 +302,10 @@ Public Class Form1
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")
+
+        '=== 7. Store the info to a global list ===
+        CurrentBooking = booking
+        AllBookings.Add(booking)
 
     End Sub
 

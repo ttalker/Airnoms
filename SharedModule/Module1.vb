@@ -93,7 +93,9 @@ Public Module Module1
         End If
     End Function
 
-    Public customer_info_list As New List(Of CustomerInfo)
+    Public AllBookings As New List(Of BookingInfo)
+    Public CurrentBooking As BookingInfo
+
 
 End Module
 
