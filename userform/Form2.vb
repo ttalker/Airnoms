@@ -104,5 +104,6 @@ Public Class Form2
             Me.Hide()
             Form1.Show()
         End Try
+
     End Sub
 End Class
