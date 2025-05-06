@@ -241,6 +241,7 @@ Public Class Form1
                     Provide_tbxError(nameBox, ErrorProvider1)
                     hasError = True
                 End If
+
                 If String.IsNullOrWhiteSpace(ageBox.Text) Then
                     Provide_tbxError(ageBox, ErrorProvider1)
                     hasError = True

@@ -1,9 +1,18 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports SharedModule
+
 Public Class Form2
+    Dim allPassengers As New List(Of PassengerInfo)
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
-        Me.Hide()
-        Form1.Show()
+
+        If isBooked Then
+            MessageBox.Show("Please process the current bookings first!")
+        Else
+            Me.Hide()
+            Form1.Show()
+        End If
+
+
 
 
     End Sub
@@ -63,7 +72,7 @@ Public Class Form2
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
-        Dim allPassengers As New List(Of PassengerInfo)
+
 
         ' Add main booker
         allPassengers.Add(New PassengerInfo(
@@ -99,7 +108,31 @@ Public Class Form2
     End Sub
 
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
+        Dim selectedIndex As Integer = cbxPassengerTicket.SelectedIndex
 
+        If selectedIndex >= 0 AndAlso selectedIndex < allPassengers.Count Then
+            Dim selectedPassenger As PassengerInfo = allPassengers(selectedIndex)
+
+            ' Display in labels
+            lblFullNameTicket.Text = selectedPassenger.FullName
+            lblDateOfBirthTicket.Text = selectedPassenger.DateOfBirth.ToShortDateString()
+            lblGenderTicket.Text = selectedPassenger.Gender
+            lblSeatNumTicket.Text = selectedPassenger.SeatNumber
+            lblBaggageAllowanceTicket.Text = selectedPassenger.BaggageAllowance
+            lblPWDTicket.Text = If(selectedPassenger.IsPWD, "Yes", "No")
+            lblAdressTicket.Text = CurrentBooking.BookerAddress.ToString
+            lblBookingDateTicket.Text = CurrentBooking.BookingDate.ToShortDateString()
+
+
+
+            lblDestinationTicket.Text = CurrentBooking.Destination
+
+            lblDepartDateTicket.Text = CurrentBooking.DepartDate.ToShortDateString()
+            lblArrivalDateTicket.Text = CurrentBooking.ArrivalDate.ToShortDateString()
+            lblDepartTimeTicket.Text = CurrentBooking.DepartTime
+            lblArrivalTimeTicket.Text = CurrentBooking.ArrivalTime
+            lblBookedUnderTicket.Text = CurrentBooking.BookerFullName
+        End If
     End Sub
 
 
