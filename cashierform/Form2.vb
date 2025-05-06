@@ -7,7 +7,7 @@ Public Class Form2
     Dim allPassengers As New List(Of PassengerInfo)
     Dim currentFare As Double
     Dim totalFare As Double
-    Dim discount
+
 
     Public BaggagePrices As New Dictionary(Of String, Integer) From {
     {"10kg", 1000},
