@@ -1,8 +1,19 @@
 ﻿Imports System.Runtime.CompilerServices
 Imports SharedModule
 
+
+
 Public Class Form2
     Dim allPassengers As New List(Of PassengerInfo)
+    Dim currentFare As Double
+    Dim totalFare As Double
+    Dim discount
+
+    Public BaggagePrices As New Dictionary(Of String, Integer) From {
+    {"10kg", 1000},
+    {"20kg", 1800},
+    {"40kg", 3000}
+}
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
 
         If isBooked Then
@@ -11,9 +22,6 @@ Public Class Form2
             Me.Hide()
             Form1.Show()
         End If
-
-
-
 
     End Sub
 
@@ -122,16 +130,14 @@ Public Class Form2
             lblPWDTicket.Text = If(selectedPassenger.IsPWD, "Yes", "No")
             lblAdressTicket.Text = CurrentBooking.BookerAddress.ToString
             lblBookingDateTicket.Text = CurrentBooking.BookingDate.ToShortDateString()
-
-
-
             lblDestinationTicket.Text = CurrentBooking.Destination
-
             lblDepartDateTicket.Text = CurrentBooking.DepartDate.ToShortDateString()
             lblArrivalDateTicket.Text = CurrentBooking.ArrivalDate.ToShortDateString()
             lblDepartTimeTicket.Text = CurrentBooking.DepartTime
             lblArrivalTimeTicket.Text = CurrentBooking.ArrivalTime
             lblBookedUnderTicket.Text = CurrentBooking.BookerFullName
+
+
         End If
     End Sub
 

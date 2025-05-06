@@ -183,40 +183,44 @@ Partial Class Form2
         ' lblDepartDateTicket
         ' 
         lblDepartDateTicket.AutoSize = True
-        lblDepartDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblDepartDateTicket.Location = New Point(272, 363)
+        lblDepartDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblDepartDateTicket.Font = New Font("Trebuchet MS", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDepartDateTicket.Location = New Point(272, 365)
         lblDepartDateTicket.Name = "lblDepartDateTicket"
-        lblDepartDateTicket.Size = New Size(57, 20)
+        lblDepartDateTicket.Size = New Size(56, 22)
         lblDepartDateTicket.TabIndex = 43
         lblDepartDateTicket.Text = "Label1"
         ' 
         ' lblArrivalDateTicket
         ' 
         lblArrivalDateTicket.AutoSize = True
-        lblArrivalDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblArrivalDateTicket.Location = New Point(272, 415)
+        lblArrivalDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblArrivalDateTicket.Font = New Font("Trebuchet MS", 12F)
+        lblArrivalDateTicket.Location = New Point(272, 421)
         lblArrivalDateTicket.Name = "lblArrivalDateTicket"
-        lblArrivalDateTicket.Size = New Size(57, 20)
+        lblArrivalDateTicket.Size = New Size(56, 22)
         lblArrivalDateTicket.TabIndex = 44
         lblArrivalDateTicket.Text = "Label2"
         ' 
         ' lblDepartTimeTicket
         ' 
         lblDepartTimeTicket.AutoSize = True
-        lblDepartTimeTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblDepartTimeTicket.Location = New Point(597, 365)
+        lblDepartTimeTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblDepartTimeTicket.Font = New Font("Trebuchet MS", 12F)
+        lblDepartTimeTicket.Location = New Point(597, 367)
         lblDepartTimeTicket.Name = "lblDepartTimeTicket"
-        lblDepartTimeTicket.Size = New Size(57, 20)
+        lblDepartTimeTicket.Size = New Size(56, 22)
         lblDepartTimeTicket.TabIndex = 45
         lblDepartTimeTicket.Text = "Label3"
         ' 
         ' lblArrivalTimeTicket
         ' 
         lblArrivalTimeTicket.AutoSize = True
-        lblArrivalTimeTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblArrivalTimeTicket.Location = New Point(597, 415)
+        lblArrivalTimeTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblArrivalTimeTicket.Font = New Font("Trebuchet MS", 12F)
+        lblArrivalTimeTicket.Location = New Point(597, 419)
         lblArrivalTimeTicket.Name = "lblArrivalTimeTicket"
-        lblArrivalTimeTicket.Size = New Size(57, 20)
+        lblArrivalTimeTicket.Size = New Size(56, 22)
         lblArrivalTimeTicket.TabIndex = 46
         lblArrivalTimeTicket.Text = "Label4"
         ' 
@@ -243,6 +247,7 @@ Partial Class Form2
         ' lblFullNameTicket
         ' 
         lblFullNameTicket.AutoSize = True
+        lblFullNameTicket.BackColor = Color.Transparent
         lblFullNameTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblFullNameTicket.Location = New Point(269, 650)
         lblFullNameTicket.Name = "lblFullNameTicket"
@@ -253,6 +258,7 @@ Partial Class Form2
         ' lblBookingDateTicket
         ' 
         lblBookingDateTicket.AutoSize = True
+        lblBookingDateTicket.BackColor = Color.Transparent
         lblBookingDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBookingDateTicket.Location = New Point(269, 600)
         lblBookingDateTicket.Name = "lblBookingDateTicket"
