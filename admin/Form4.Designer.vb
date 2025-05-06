@@ -90,7 +90,7 @@ Partial Class Cancel_Delay_Form
         Controls.Add(btnCancel)
         Controls.Add(btnDelay)
         Name = "Cancel_Delay_Form"
-        Text = "Form4"
+        Text = "Cancel_Delay_Form"
         ResumeLayout(False)
         PerformLayout()
     End Sub
