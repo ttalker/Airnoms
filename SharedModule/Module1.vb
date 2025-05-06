@@ -138,6 +138,9 @@ Public Module Module1
     End Function
 
 
+    Public isBooked As Boolean
+
+
 End Module
 
 

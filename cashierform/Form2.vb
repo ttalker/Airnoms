@@ -1,4 +1,5 @@
-﻿Imports SharedModule
+﻿Imports System.Runtime.CompilerServices
+Imports SharedModule
 Public Class Form2
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
         Me.Hide()
@@ -62,20 +63,18 @@ Public Class Form2
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
-
-
         Dim allPassengers As New List(Of PassengerInfo)
 
         ' Add main booker
         allPassengers.Add(New PassengerInfo(
-            CurrentBooking.BookerFullName,
-            CurrentBooking.BookerAge,
-            CurrentBooking.BookerBirthDate,
-            CurrentBooking.BookerGender,
-            CurrentBooking.BookerSeatNumber,
-            CurrentBooking.BookerBaggageAllowance,
-            CurrentBooking.BookerIsPWD
-            ))
+                CurrentBooking.BookerFullName,
+                CurrentBooking.BookerAge,
+                CurrentBooking.BookerBirthDate,
+                CurrentBooking.BookerGender,
+                CurrentBooking.BookerSeatNumber,
+                CurrentBooking.BookerBaggageAllowance,
+                CurrentBooking.BookerIsPWD
+                ))
 
         ' Add co-passengers
         allPassengers.AddRange(CurrentBooking.CoPassengers)
@@ -92,6 +91,7 @@ Public Class Form2
             cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
         Next
 
+
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
@@ -101,4 +101,6 @@ Public Class Form2
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
 
     End Sub
+
+
 End Class
