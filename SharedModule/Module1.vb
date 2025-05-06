@@ -1,9 +1,6 @@
 ﻿Imports System.IO
 
 Imports MySql.Data.MySqlClient
-Imports ZstdSharp.Unsafe
-Imports System.Linq
-'Imports System.Data.SqlClient
 
 Public Module Module1
     Public con As New MySqlConnection
@@ -137,7 +134,75 @@ Public Module Module1
         End If
     End Function
 
+    ' Moving these functions into Module1 where they belong
+    Public Function GenerateDailyFlights() As List(Of Flight)
+        Dim flights As New List(Of Flight)
+        Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
+        Dim rnd As New Random()
+        Dim today As Date = Date.Today
 
+        For i As Integer = 0 To destinations.Length - 1
+            Dim flightID As String = $"FL{(i + 1).ToString("D3")}"
+            Dim departureTime As DateTime = today.AddHours(6 + i) ' flights from 6AM to 3PM
+            Dim durationHours As Integer = rnd.Next(3, 15) ' random duration
+            Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
+
+            flights.Add(New Flight(
+                    flightID,
+                    "Manila",
+                    destinations(i),
+                    departureTime.Date,
+                    departureTime.ToString("HH:mm"),
+                    arrivalTime.Date,
+                    arrivalTime.ToString("HH:mm"),
+                    rnd.Next(150, 251) ' random capacity / ill fix this later
+                ))
+        Next
+
+        Return flights
+    End Function
+
+    Public Function FlightsExistForToday() As Boolean
+        Dim today As Date = Date.Today
+        openCon()
+        cmd = New MySqlCommand("SELECT COUNT(*) FROM Flights WHERE FlightDate = @FlightDate", con)
+        cmd.Parameters.AddWithValue("@FlightDate", today)
+        Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+        con.Close()
+        Return count > 0
+    End Function
+
+    Public Sub GenerateAndSaveFlightsIfNotExist()
+        If Not FlightsExistForToday() Then
+            Dim flights = GenerateDailyFlights()
+            openCon()
+
+            For Each flight In flights
+                cmd = New MySqlCommand("INSERT INTO Flights (FlightID, Departure, Destination, DepartureDate, DepartureTime, ArrivalDate, ArrivalTime, Capacity, FlightDate) VALUES (@FlightID, @Departure, @Destination, @DepartureDate, @DepartureTime, @ArrivalDate, @ArrivalTime, @Capacity, @FlightDate)", con)
+                cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
+                cmd.Parameters.AddWithValue("@Departure", flight.Departure)
+                cmd.Parameters.AddWithValue("@Destination", flight.Destination)
+                cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
+                cmd.Parameters.AddWithValue("@DepartureTime", flight.DepartureTime)
+                cmd.Parameters.AddWithValue("@ArrivalDate", flight.ArrivalDate)
+                cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
+                cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
+                cmd.Parameters.AddWithValue("@FlightDate", flight.FlightDate)
+                cmd.ExecuteNonQuery()
+            Next
+
+            con.Close()
+        End If
+    End Sub
+
+    Public Sub DeleteOldFlights()
+        Dim today As Date = Date.Today
+        openCon()
+        cmd = New MySqlCommand("DELETE FROM Flights WHERE FlightDate < @FlightDate", con)
+        cmd.Parameters.AddWithValue("@FlightDate", today)
+        cmd.ExecuteNonQuery()
+        con.Close()
+    End Sub
 End Module
 
 
@@ -203,9 +268,7 @@ Public Class BookingInfo
         Me.Departure = departure
         Me.Destination = destination
         Me.DepartDate = departDate
-        'Me.DepartTime = DepartTime
         Me.ArrivalDate = arrivalDate
-        'Me.ArrivalTime = ArrivalTime
         Me.BookingDate = bookingDate
         Me.BookerFullName = bookerFullName
         Me.BookerAge = bookerAge
@@ -220,9 +283,35 @@ Public Class BookingInfo
 
     End Sub
 
-    'Public Sub New(tripType As String, departure As String, destination As String, departDate As Date, arrivalDate As Date, bookingDate As Date, bookerFullName As String, bookerAge As Integer, bookerBirthDate As Date, bookerGender As String, bookerAddress As String, bookerIsPWD As Boolean, bookerSeatNumber As String, bookerBaggageAllowance As String, coPassengers As List(Of PassengerInfo), countPassenger As Integer, departTime As String, arrivalTime As String, value As Object)
-    '    Me.New(tripType, departure, destination, departDate, arrivalDate, bookingDate, bookerFullName, bookerAge, bookerBirthDate, bookerGender, bookerAddress, bookerIsPWD, bookerSeatNumber, bookerBaggageAllowance, coPassengers, countPassenger, departTime, arrivalTime)
-    'End Sub
+End Class
+
+Public Class Flight
+    Public Property FlightID As String
+    Public Property Departure As String
+    Public Property Destination As String
+    Public Property DepartureDate As Date
+    Public Property DepartureTime As String
+    Public Property ArrivalDate As Date
+    Public Property ArrivalTime As String
+    Public Property Capacity As Integer
+    Public Property FlightDate As Date ' The date this flight was scheduled/generated
+
+    Public Sub New()
+    End Sub
+
+    Public Sub New(flightID As String, departure As String, destination As String,
+                   departureDate As Date, departureTime As String,
+                   arrivalDate As Date, arrivalTime As String, capacity As Integer)
+        Me.FlightID = flightID
+        Me.Departure = departure
+        Me.Destination = destination
+        Me.DepartureDate = departureDate
+        Me.DepartureTime = departureTime
+        Me.ArrivalDate = arrivalDate
+        Me.ArrivalTime = arrivalTime
+        Me.Capacity = capacity
+        Me.FlightDate = Date.Today
+    End Sub
 End Class
 
 Public Class RouteInfo
