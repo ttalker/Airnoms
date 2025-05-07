@@ -1,6 +1,4 @@
-﻿'Imports userForm.Module1
-'Imports admin.Module1
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿
 Imports SharedModule
 Imports System.Windows.Forms
 
@@ -127,34 +125,190 @@ Public Class Form1
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
 
-        'provide errors to main booker 
-        Provide_tbxError(tbxFullname, ErrorProvider1)
-        Provide_tbxError(tbxAddress, ErrorProvider1)
-        Provide_cbxError(cbxGender, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-        Provide_tbxError(tbxAge, ErrorProvider1)
-        Provide_cbxError(cbxBaggage, ErrorProvider1)
-        Provide_cbxError(cbxDeparture, ErrorProvider1)
-        Provide_cbxError(cbxDestination, ErrorProvider1)
-        Provide_cbxError(cbxSeatNumber, ErrorProvider1)
-        Provide_cbxError(cbxDepartureTime, ErrorProvider1)
+        ' Clear previous error states
+        ErrorProvider1.Clear()
 
+        ' Flag to track validation status
+        Dim hasError As Boolean = False
 
-        If ticketIdentifier = "One Way Trip" Then
-
-
-        ElseIf ticketIdentifier = "Round Trip" Then
-
+        ' === 1. Validate Main Booker Fields ===
+        If String.IsNullOrWhiteSpace(tbxFullname.Text) Then
+            Provide_tbxError(tbxFullname, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(tbxAge.Text) Then
+            Provide_tbxError(tbxAge, ErrorProvider1)
+            hasError = True
+        ElseIf Not Integer.TryParse(tbxAge.Text, Nothing) Then
+            MessageBox.Show("Main Booker Age must be a number.")
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(tbxAddress.Text) Then
+            Provide_tbxError(tbxAddress, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxGender.Text) Then
+            Provide_cbxError(cbxGender, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxBaggage.Text) Then
+            Provide_cbxError(cbxBaggage, ErrorProvider1)
+            hasError = True
+        End If
+        If Not Date.TryParse(dtpBirthdate.Text, Nothing) Then
+            MessageBox.Show("Invalid birthdate format.")
+            hasError = True
+        End If
+        If Not Date.TryParse(dtpBookingDate.Text, Nothing) Then
+            MessageBox.Show("Invalid booking date format.")
+            hasError = True
         End If
 
+        ' === 2. Validate Flight Details ===
+        If String.IsNullOrWhiteSpace(cbxDeparture.Text) Then
+            Provide_cbxError(cbxDeparture, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            Provide_cbxError(cbxDestination, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxSeatNumber.Text) Then
+            Provide_cbxError(cbxSeatNumber, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxDepartureTime.Text) Then
+            Provide_cbxError(cbxDepartureTime, ErrorProvider1)
+            hasError = True
+        End If
+        If String.IsNullOrWhiteSpace(cbxArrivalTime.Text) Then
+            Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+            hasError = True
+        End If
+        If Not Date.TryParse(dtpDepartDate.Text, Nothing) Then
+            MessageBox.Show("Invalid departure date format.")
+            hasError = True
+        End If
+        If Not Date.TryParse(dtpArrivalDate.Text, Nothing) Then
+            MessageBox.Show("Invalid arrival date format.")
+            hasError = True
+        End If
 
+        If hasError Then
+            MessageBox.Show("Please correct the errors before continuing.")
+            Exit Sub
+        End If
+
+        ' === 3. Create Main Booker ===
+        Dim mainBooker As New PassengerInfo(
+            tbxFullname.Text,
+            Convert.ToInt32(tbxAge.Text),
+            Convert.ToDateTime(dtpBirthdate.Text),
+            cbxGender.Text,
+            cbxSeatNumber.Text,
+            cbxBaggage.Text,
+            chkPWD.Checked
+        )
+
+        ' === 4. Validate Co-Passengers ===
+        Dim coPassengers As New List(Of PassengerInfo)
+        Dim passengerCount As Integer = 1 ' Starts with 1 for the main booker
+
+        For i = 1 To 5
+            Dim nameBox = CType(Me.Controls($"tbxPassname{i}"), TextBox)
+            Dim ageBox = CType(Me.Controls($"tbxpassAge{i}"), TextBox)
+            Dim genderBox = CType(Me.Controls($"cbxpassgen{i}"), ComboBox)
+            Dim dobPicker = CType(Me.Controls($"dtppassbday{i}"), DateTimePicker)
+            Dim seatBox = CType(Me.Controls($"cbxpassseat{i}"), ComboBox)
+            Dim bagBox = CType(Me.Controls($"cbxpassbag{i}"), ComboBox)
+            Dim pwdBox = CType(Me.Controls($"chkpasspwd{i}"), CheckBox)
+
+            Dim anyFilled = Not String.IsNullOrWhiteSpace(nameBox.Text) OrElse
+                            Not String.IsNullOrWhiteSpace(ageBox.Text) OrElse
+                            Not String.IsNullOrWhiteSpace(genderBox.Text) OrElse
+                            Not String.IsNullOrWhiteSpace(seatBox.Text) OrElse
+                            Not String.IsNullOrWhiteSpace(bagBox.Text)
+
+            If anyFilled Then
+                If String.IsNullOrWhiteSpace(nameBox.Text) Then
+                    Provide_tbxError(nameBox, ErrorProvider1)
+                    hasError = True
+                End If
+                If String.IsNullOrWhiteSpace(ageBox.Text) Then
+                    Provide_tbxError(ageBox, ErrorProvider1)
+                    hasError = True
+                ElseIf Not Integer.TryParse(ageBox.Text, Nothing) Then
+                    MessageBox.Show($"Passenger #{i + 1} age must be a number.")
+                    hasError = True
+                End If
+                If String.IsNullOrWhiteSpace(genderBox.Text) Then
+                    Provide_cbxError(genderBox, ErrorProvider1)
+                    hasError = True
+                End If
+                If String.IsNullOrWhiteSpace(seatBox.Text) Then
+                    Provide_cbxError(seatBox, ErrorProvider1)
+                    hasError = True
+                End If
+                If String.IsNullOrWhiteSpace(bagBox.Text) Then
+                    Provide_cbxError(bagBox, ErrorProvider1)
+                    hasError = True
+                End If
+                If Not Date.TryParse(dobPicker.Text, Nothing) Then
+                    MessageBox.Show($"Invalid birthdate for Passenger #{i + 1}.")
+                    hasError = True
+                End If
+
+                If hasError Then
+                    Exit Sub
+                End If
+
+                coPassengers.Add(New PassengerInfo(
+                    nameBox.Text,
+                    Convert.ToInt32(ageBox.Text),
+                    Convert.ToDateTime(dobPicker.Text),
+                    genderBox.Text,
+                    seatBox.Text,
+                    bagBox.Text,
+                    pwdBox.Checked
+                ))
+
+                passengerCount += 1
+                Debug.WriteLine($"Added co-passenger #{i}. Total passengers: {passengerCount}")
+            End If
+        Next
+
+        ' === 5. Store into BookingInfo ===
+        Dim booking As New BookingInfo(
+            tripType:=ticketIdentifier, ' Use your trip identifier here
+            departure:=cbxDeparture.Text,
+            destination:=cbxDestination.Text,
+            departDate:=Convert.ToDateTime(dtpDepartDate.Text),
+            departTime:=cbxDepartureTime.Text,
+            arrivalDate:=Convert.ToDateTime(dtpArrivalDate.Text),
+            arrivalTime:=cbxArrivalTime.Text,
+            bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
+            bookerFullName:=mainBooker.FullName,
+            bookerAge:=mainBooker.Age,
+            bookerBirthDate:=mainBooker.DateOfBirth,
+            bookerGender:=mainBooker.Gender,
+            bookerAddress:=tbxAddress.Text,
+            bookerIsPWD:=mainBooker.IsPWD,
+            bookerSeatNumber:=mainBooker.SeatNumber,
+            bookerBaggageAllowance:=mainBooker.BaggageAllowance,
+            countPassenger:=passengerCount,
+            coPassengers:=coPassengers
+        )
+
+        ' === 6. Success Message ===
+        MessageBox.Show("Booking validated and stored successfully!")
+
+        '=== 7. Store the info to a global list ===
+        CurrentBooking = booking
+        AllBookings.Add(booking)
+
+        btnClear.PerformClick()
+        Form2.Show()
+        Me.Hide()
 
     End Sub
 

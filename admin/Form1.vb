@@ -10,14 +10,17 @@ Public Class Form1
         MakeTransparent(btnExit)
         MakeTransparent(btnCancelFlight)
         MakeTransparent(btnAddFlight)
+        MakeTransparent(btnViewFlightAdmin)
         btnFlights.Parent = pbxAdmin
         btnTransactions.Parent = pbxAdmin
         btnBookings.Parent = pbxAdmin
         btnExit.Parent = pbxAdmin
         btnCancelFlight.Parent = pbxAdmin
         btnAddFlight.Parent = pbxAdmin
+        btnViewFlightAdmin.Parent = pbxAdmin
 
         ' transparency of the buttons
+        hoverButton(btnViewFlightAdmin)
         hoverButton(btnFlights)
         hoverButton(btnTransactions)
         hoverButton(btnBookings)
@@ -56,6 +59,11 @@ Public Class Form1
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         'ExitApplication(Me)
+    End Sub
+
+    Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
+        Form4.Show()
+        Me.Enabled = False
     End Sub
 End Class
 

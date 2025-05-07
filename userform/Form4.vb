@@ -1,4 +1,4 @@
-﻿Imports System.DirectoryServices.ActiveDirectory
+﻿
 Imports cashierform
 Imports MySql.Data.MySqlClient
 Imports SharedModule
@@ -65,6 +65,9 @@ Public Class Form4
     End Sub
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
+
+
+
         If Not ValidateForm() Then
             Return
         End If
@@ -82,26 +85,11 @@ Public Class Form4
                     Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim pwdCtrl = TryCast(Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault(), CheckBox)
 
-                    Dim passengerAge As Integer
-                    'If ageCtrl Is Nothing OrElse Not Integer.TryParse(ageCtrl.Text, passengerAge) Then
-                    '    MessageBox.Show($"Please enter a valid age for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    '    Return
-                    'End If
-
-                    'If genderCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(genderCtrl.Text) Then
-                    '    MessageBox.Show($"Please select a gender for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    '    Return
-                    'End If
-
-                    'If seatCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(seatCtrl.Text) Then
-                    '    MessageBox.Show($"Please select a seat number for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    '    Return
-                    'End If
-
-                    'If baggageCtrl Is Nothing OrElse String.IsNullOrWhiteSpace(baggageCtrl.Text) Then
-                    '    MessageBox.Show($"Please select baggage allowance for passenger {i}.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    '    Return
-                    'End If
+                    Dim passengerAge As Integer = 0
+                    If ageCtrl IsNot Nothing AndAlso Integer.TryParse(ageCtrl.Text, passengerAge) = False Then
+                        MessageBox.Show($"Invalid age for co-passenger {i}. Please enter a numeric value.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                        Return
+                    End If
 
                     Dim isPWD As Boolean = False
                     If pwdCtrl IsNot Nothing Then
@@ -129,10 +117,8 @@ Public Class Form4
             tripType:=tripIndicator,
             departure:=cbxDepartureUser.Text,
             destination:=cbxDestinationUser.Text,
-            departDate:=dtpDepartDateUser.Value,
-            departTime:=cbxDepartTimeUser.Text,
-            arrivalDate:=dtpArrivalDateUser.Value,
-            arrivalTime:=cbxArrivalTimeUser.Text,
+            departDate:=DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text),
+            arrivalDate:=DateTime.Parse(dtpArrivalDateUser.Value.ToShortDateString() & " " & cbxArrivalTimeUser.Text),
             bookingDate:=DateTime.Now,
             bookerFullName:=tbxFullnameUser.Text,
             bookerAge:=Integer.Parse(tbxAgeUser.Text),
@@ -224,7 +210,7 @@ Public Class Form4
         Return True
     End Function
 
-    Private Sub SaveBookingToDatabase(booking As BookingInfo)
+    Private Sub SaveBookingToDatabase(booking As BookingInfo) ' save function for database
         Try
             openConTesting()
             Using cmd2 As New MySqlCommand("ALTER TABLE testing_table_customer MODIFY customer_id INT AUTO_INCREMENT;", conn)
@@ -246,12 +232,17 @@ Public Class Form4
                 cmd.Parameters.AddWithValue("@Departure", booking.Departure)
                 cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
                 cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
-                cmd.Parameters.AddWithValue("@PWD", booking.BookerIsPWD)
+                cmd.Parameters.AddWithValue("@PWD", If(booking.BookerIsPWD, "Yes", "No"))
                 cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
                 cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
                 cmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartTime)
-                cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalTime)
+
+                Dim departureDateTime As DateTime = booking.DepartDate
+                cmd.Parameters.AddWithValue("@DepartureTime", departureDateTime.ToString("HH:mm:ss"))
+
+                Dim arrivalDateTime As DateTime = booking.ArrivalDate
+                cmd.Parameters.AddWithValue("@ArrivalTime", arrivalDateTime.ToString("HH:mm:ss"))
+
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -267,12 +258,17 @@ Public Class Form4
                     passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
                     passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
                     passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
-                    passengerCmd.Parameters.AddWithValue("@PWD", p.IsPWD)
+                    passengerCmd.Parameters.AddWithValue("@PWD", If(p.IsPWD, "Yes", "No"))
                     passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
                     passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
                     passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                    passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartTime)
-                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalTime)
+
+                    Dim departureDateTime As DateTime = booking.DepartDate
+                    passengerCmd.Parameters.AddWithValue("@DepartureTime", departureDateTime.ToString("HH:mm:ss"))
+
+                    Dim arrivalDateTime As DateTime = booking.ArrivalDate
+                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", arrivalDateTime.ToString("HH:mm:ss"))
+
                     passengerCmd.ExecuteNonQuery()
                 End Using
             Next
@@ -288,7 +284,8 @@ Public Class Form4
         End Try
     End Sub
 
-    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
+
+    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click ' just resets everything
         tbxFullnameUser.Clear()
         tbxAgeUser.Clear()
         tbxAddressUser.Clear()
@@ -302,7 +299,7 @@ Public Class Form4
         cbxDepartTimeUser.SelectedIndex = -1
         cbxArrivalTimeUser.SelectedIndex = -1
 
-        dtpDateBirthUser.Value = DateTime.Now
+        dtpDateBirthUser.Value = Date.Now
         dtpDepartDateUser.Value = DateTime.Now
         dtpArrivalDateUser.Value = DateTime.Now
 
@@ -316,7 +313,7 @@ Public Class Form4
             If ageCtrl IsNot Nothing Then ageCtrl.Clear()
 
             Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
-            If birthCtrl IsNot Nothing Then birthCtrl.Value = DateTime.Now
+            If birthCtrl IsNot Nothing Then birthCtrl.Value = Date.Now
 
             Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
             If genderCtrl IsNot Nothing Then genderCtrl.SelectedIndex = -1

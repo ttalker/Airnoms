@@ -37,39 +37,43 @@ Partial Class Form2
         ' 
         ' tbxUsernameSignUp
         ' 
+        tbxUsernameSignUp.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxUsernameSignUp.Location = New Point(535, 279)
         tbxUsernameSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxUsernameSignUp.MaximumSize = New Size(304, 33)
         tbxUsernameSignUp.Name = "tbxUsernameSignUp"
-        tbxUsernameSignUp.Size = New Size(304, 23)
+        tbxUsernameSignUp.Size = New Size(304, 29)
         tbxUsernameSignUp.TabIndex = 17
         ' 
         ' tbxFullnameSignUp
         ' 
+        tbxFullnameSignUp.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxFullnameSignUp.ForeColor = SystemColors.ControlText
         tbxFullnameSignUp.Location = New Point(535, 196)
         tbxFullnameSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxFullnameSignUp.MaximumSize = New Size(304, 33)
         tbxFullnameSignUp.Name = "tbxFullnameSignUp"
-        tbxFullnameSignUp.Size = New Size(304, 23)
+        tbxFullnameSignUp.Size = New Size(304, 29)
         tbxFullnameSignUp.TabIndex = 16
         ' 
         ' tbxPasswordSignUp
         ' 
+        tbxPasswordSignUp.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxPasswordSignUp.Location = New Point(535, 368)
         tbxPasswordSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxPasswordSignUp.MaximumSize = New Size(304, 33)
         tbxPasswordSignUp.Name = "tbxPasswordSignUp"
-        tbxPasswordSignUp.Size = New Size(304, 23)
+        tbxPasswordSignUp.Size = New Size(304, 29)
         tbxPasswordSignUp.TabIndex = 20
         ' 
         ' tbxEmailSignUp
         ' 
+        tbxEmailSignUp.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxEmailSignUp.Location = New Point(535, 463)
         tbxEmailSignUp.Margin = New Padding(3, 2, 3, 2)
         tbxEmailSignUp.MaximumSize = New Size(304, 33)
         tbxEmailSignUp.Name = "tbxEmailSignUp"
-        tbxEmailSignUp.Size = New Size(304, 23)
+        tbxEmailSignUp.Size = New Size(304, 29)
         tbxEmailSignUp.TabIndex = 22
         ' 
         ' btnSignIn
