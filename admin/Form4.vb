@@ -1,3 +1,4 @@
+
 ﻿'Imports cashierform
 'Imports userForm.Module1
 Imports SharedModule
@@ -29,4 +30,7 @@ Public Class Form4
         cbxPilotAdmin.Text = ""
         cbxPlaneAdmin.Text = ""
     End Sub
+
+﻿Public Class Cancel_Delay_Form
+
 End Class
