@@ -97,6 +97,7 @@ Partial Class Form4
         ' 
         cbxPilotAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxPilotAdmin.FormattingEnabled = True
+        cbxPilotAdmin.Items.AddRange(New Object() {"try", "test", "me"})
         cbxPilotAdmin.Location = New Point(234, 272)
         cbxPilotAdmin.Name = "cbxPilotAdmin"
         cbxPilotAdmin.Size = New Size(186, 29)

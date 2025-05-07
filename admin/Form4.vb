@@ -29,4 +29,10 @@ Public Class Form4
         cbxPilotAdmin.Text = ""
         cbxPlaneAdmin.Text = ""
     End Sub
+
+    Private Sub btnAddAdmin_Click(sender As Object, e As EventArgs) Handles btnAddAdmin.Click
+        Dim pilot As String
+        pilot = cbxPilotAdmin.Text
+        cbxPilotAdmin.Items.Add(pilot)
+    End Sub
 End Class
