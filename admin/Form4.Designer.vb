@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form4
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form4
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         btnAddFlight = New Button()
         btnCLearAdmin = New Button()
@@ -71,7 +71,7 @@ Partial Class Form4
         ' 
         ' tbxDepartureAdmin
         ' 
-        tbxDepartureAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDepartureAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDepartureAdmin.Location = New Point(234, 117)
         tbxDepartureAdmin.Name = "tbxDepartureAdmin"
         tbxDepartureAdmin.Size = New Size(186, 29)
@@ -79,7 +79,7 @@ Partial Class Form4
         ' 
         ' tbxDestinationAdmin
         ' 
-        tbxDestinationAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDestinationAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDestinationAdmin.Location = New Point(234, 166)
         tbxDestinationAdmin.Name = "tbxDestinationAdmin"
         tbxDestinationAdmin.Size = New Size(186, 29)
@@ -87,7 +87,7 @@ Partial Class Form4
         ' 
         ' tbxDepartureTimeAdmin
         ' 
-        tbxDepartureTimeAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDepartureTimeAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDepartureTimeAdmin.Location = New Point(234, 217)
         tbxDepartureTimeAdmin.Name = "tbxDepartureTimeAdmin"
         tbxDepartureTimeAdmin.Size = New Size(186, 29)
@@ -95,7 +95,7 @@ Partial Class Form4
         ' 
         ' cbxPilotAdmin
         ' 
-        cbxPilotAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxPilotAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxPilotAdmin.FormattingEnabled = True
         cbxPilotAdmin.Items.AddRange(New Object() {"try", "test", "me"})
         cbxPilotAdmin.Location = New Point(234, 272)
@@ -105,7 +105,7 @@ Partial Class Form4
         ' 
         ' cbxPlaneAdmin
         ' 
-        cbxPlaneAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxPlaneAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxPlaneAdmin.FormattingEnabled = True
         cbxPlaneAdmin.Location = New Point(234, 318)
         cbxPlaneAdmin.Name = "cbxPlaneAdmin"
@@ -114,7 +114,7 @@ Partial Class Form4
         ' 
         ' Form4
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.Admin__add_flight___1_
         ClientSize = New Size(620, 492)
