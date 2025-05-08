@@ -124,22 +124,22 @@ Public Class Form2
 
             Dim baseFare As Decimal
 
-            Try
-                Select Case passenger.FareClass.ToLower()
-                    Case "economy"
-                        baseFare = GetEconomyFare(departure, destination)
-                    Case "business"
-                        baseFare = GetBusinessFare(departure, destination)
-                    Case "first"
-                        baseFare = GetFirstClassFare(departure, destination)
-                    Case Else
-                        MessageBox.Show($"{passenger.FullName} has an invalid fare class.")
-                        Continue For
-                End Select
-            Catch ex As Exception
-                MessageBox.Show($"Error processing fare for {passenger.FullName}: {ex.Message}")
-                Continue For
-            End Try
+            'Try
+            '    Select Case passenger.FareClass.ToLower()
+            '        Case "economy"
+            '            baseFare = GetEconomyFare(departure, destination)
+            '        Case "business"
+            '            baseFare = GetBusinessFare(departure, destination)
+            '        Case "first"
+            '            baseFare = GetFirstClassFare(departure, destination)
+            '        Case Else
+            '            MessageBox.Show($"{passenger.FullName} has an invalid fare class.")
+            '            Continue For
+            '    End Select
+            'Catch ex As Exception
+            '    MessageBox.Show($"Error processing fare for {passenger.FullName}: {ex.Message}")
+            '    Continue For
+            'End Try
 
             ' Get baggage price
             Dim baggagePrice As Integer
