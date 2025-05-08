@@ -1,8 +1,6 @@
 ﻿Imports System.IO
 
 Imports MySql.Data.MySqlClient
-Imports ZstdSharp.Unsafe
-'Imports System.Data.SqlClient
 
 Public Module Module1
     Public con As New MySqlConnection
@@ -19,7 +17,7 @@ Public Module Module1
         conn.ConnectionString = "server=100.89.19.71; username=root; password=; database=testing_db"
         conn.Open()
     End Sub
-    'cashier
+
     Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
         Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
         ptbImages.Size = New Size(1, 1)
@@ -93,71 +91,119 @@ Public Module Module1
         End If
     End Function
 
-    Public customer_info_list As New List(Of CustomerInfo)
+    Public AllBookings As New List(Of BookingInfo)
+    Public CurrentBooking As BookingInfo
 
+    Public AllRoutes As New List(Of RouteInfo) From {
+        New RouteInfo("Manila", "Seoul", 2600, 12240D, 30600D, 48960D),
+        New RouteInfo("Manila", "Beijing", 2800, 11660D, 29150D, 46640D),
+        New RouteInfo("Manila", "Tokyo", 3000, 14300D, 35750D, 57200D),
+        New RouteInfo("Manila", "Los Angeles", 11800, 37180D, 92950D, 148720D),
+        New RouteInfo("Manila", "Taipei", 1200, 7400D, 18500D, 29600D),
+        New RouteInfo("Manila", "Sydney", 6200, 19140D, 47850D, 76560D),
+        New RouteInfo("Manila", "Vancouver", 10400, 30960D, 77400D, 123840D),
+        New RouteInfo("Manila", "London", 10800, 37240D, 93100D, 148960D),
+        New RouteInfo("Manila", "Singapore", 2400, 8820D, 22050D, 35280D),
+        New RouteInfo("Manila", "Kuala Lumpur", 2500, 9000D, 22500D, 36000D)
+    }
+
+    Public Function GetEconomyFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.EconomyFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
+
+    Public Function GetBusinessFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.BusinessFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
+
+    Public Function GetFirstClassFare(departure As String, destination As String) As Decimal
+        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+        If route IsNot Nothing Then
+            Return route.FirstFare
+        Else
+            Throw New Exception("Route not found.")
+        End If
+    End Function
+
+    ' Moving these functions into Module1 where they belong
+    Public Function GenerateDailyFlights() As List(Of Flight)
+        Dim flights As New List(Of Flight)
+        Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
+        Dim rnd As New Random()
+        Dim today As Date = Date.Today
+
+        For i As Integer = 0 To destinations.Length - 1
+            Dim flightID As String = $"FL{(i + 1).ToString("D3")}"
+            Dim departureTime As DateTime = today.AddHours(6 + i) ' flights from 6AM to 3PM
+            Dim durationHours As Integer = rnd.Next(3, 15) ' random duration
+            Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
+
+            flights.Add(New Flight(
+                    flightID,
+                    "Manila",
+                    destinations(i),
+                    departureTime.Date,
+                    departureTime.ToString("HH:mm"),
+                    arrivalTime.Date,
+                    arrivalTime.ToString("HH:mm"),
+                    rnd.Next(150, 251) ' random capacity / ill fix this later
+                ))
+        Next
+
+        Return flights
+    End Function
+
+    Public Function FlightsExistForToday() As Boolean
+        Dim today As Date = Date.Today
+        openCon()
+        cmd = New MySqlCommand("SELECT COUNT(*) FROM Flights WHERE FlightDate = @FlightDate", con)
+        cmd.Parameters.AddWithValue("@FlightDate", today)
+        Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+        con.Close()
+        Return count > 0
+    End Function
+
+    Public Sub GenerateAndSaveFlightsIfNotExist()
+        If Not FlightsExistForToday() Then
+            Dim flights = GenerateDailyFlights()
+            openCon()
+
+            For Each flight In flights
+                cmd = New MySqlCommand("INSERT INTO Flights (FlightID, Departure, Destination, DepartureDate, DepartureTime, ArrivalDate, ArrivalTime, Capacity, FlightDate) VALUES (@FlightID, @Departure, @Destination, @DepartureDate, @DepartureTime, @ArrivalDate, @ArrivalTime, @Capacity, @FlightDate)", con)
+                cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
+                cmd.Parameters.AddWithValue("@Departure", flight.Departure)
+                cmd.Parameters.AddWithValue("@Destination", flight.Destination)
+                cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
+                cmd.Parameters.AddWithValue("@DepartureTime", flight.DepartureTime)
+                cmd.Parameters.AddWithValue("@ArrivalDate", flight.ArrivalDate)
+                cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
+                cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
+                cmd.Parameters.AddWithValue("@FlightDate", flight.FlightDate)
+                cmd.ExecuteNonQuery()
+            Next
+
+            con.Close()
+        End If
+    End Sub
+
+    Public Sub DeleteOldFlights()
+        Dim today As Date = Date.Today
+        openCon()
+        cmd = New MySqlCommand("DELETE FROM Flights WHERE FlightDate < @FlightDate", con)
+        cmd.Parameters.AddWithValue("@FlightDate", today)
+        cmd.ExecuteNonQuery()
+        con.Close()
+    End Sub
 End Module
-
-Public Class CustomerInfo
-    Public Property Fullname As String
-    Public Property Age As Integer
-    Public Property Birthdate As Date
-    Public Property Address As String
-    Public Property Gender As String
-    Public Property Seat As String
-    Public Property Baggage As Integer
-    Public Property IsPwd As Boolean
-
-    Public Property Destination As String
-    Public Property Departure As String
-    Public Property Depart_date As Date
-    Public Property Depart_time As String
-
-    Public Property Arrival_date As Date
-    Public Property Arrival_time As String
-
-    'constructor (objects should only be instantiated after fulfilling conditions)
-
-    ' Constructor WITHOUT Arrival info
-    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String,
-                   seat As String, baggage As Integer, isPwd As Boolean, destination As String,
-                   departure As String, depart_date As Date, depart_time As String)
-        Me.Fullname = fullname
-        Me.Age = age
-        Me.Birthdate = birthdate
-        Me.Address = address
-        Me.Gender = gender
-        Me.Seat = seat
-        Me.Baggage = baggage
-        Me.IsPwd = isPwd
-        Me.Destination = destination
-        Me.Departure = departure
-        Me.Depart_date = depart_date
-        Me.Depart_time = depart_time
-        ' Arrival_date and Arrival_time remain default (e.g., 1/1/0001 and "")
-
-    End Sub
-
-    ' Constructor WITH Arrival info
-    Public Sub New(fullname As String, age As Integer, birthdate As Date, address As String, gender As String,
-                   seat As String, baggage As Integer, isPwd As Boolean, destination As String,
-                   departure As String, depart_date As Date, depart_time As String, arrival_date As Date, arrival_time As String)
-        Me.Fullname = fullname
-        Me.Age = age
-        Me.Birthdate = birthdate
-        Me.Address = address
-        Me.Gender = gender
-        Me.Seat = seat
-        Me.Baggage = baggage
-        Me.IsPwd = isPwd
-        Me.Destination = destination
-        Me.Departure = departure
-        Me.Depart_date = depart_date
-        Me.Depart_time = depart_time
-        Me.Arrival_date = arrival_date
-        Me.Arrival_time = arrival_time
-    End Sub
-
-End Class
 
 
 Public Class PassengerInfo
@@ -184,6 +230,7 @@ Public Class PassengerInfo
 End Class
 
 Public Class BookingInfo
+
     Public Property TripType As String
     Public Property Departure As String
     Public Property Destination As String
@@ -206,28 +253,23 @@ Public Class BookingInfo
     Public Property countPassenger As Integer = 1
 
     Public Sub New()
-        Me.CoPassengers = New List(Of PassengerInfo)()
+        CoPassengers = New List(Of PassengerInfo)
     End Sub
-    Public Sub New(tripType As String, departure As String, destination As String,
-                   departDate As Date, departTime As String, arrivalDate As Date,
-                   arrivalTime As String, bookingDate As Date,
+
+    Public Sub New(tripType As String, departure As String,
+                   destination As String, departDate As Date,
+                   arrivalDate As Date, bookingDate As Date,
                    bookerFullName As String, bookerAge As Integer,
                    bookerBirthDate As Date, bookerGender As String,
                    bookerAddress As String, bookerIsPWD As Boolean,
                    bookerSeatNumber As String, bookerBaggageAllowance As String,
-                   countPassenger As Integer,
-                   Optional coPassengers As List(Of PassengerInfo) = Nothing
-                   )
-
+                   coPassengers As List(Of PassengerInfo), countPassenger As Integer) ' departTime As String, arrivalTime As String
         Me.TripType = tripType
         Me.Departure = departure
         Me.Destination = destination
         Me.DepartDate = departDate
-        Me.DepartTime = departTime
         Me.ArrivalDate = arrivalDate
-        Me.ArrivalTime = arrivalTime
         Me.BookingDate = bookingDate
-
         Me.BookerFullName = bookerFullName
         Me.BookerAge = bookerAge
         Me.BookerBirthDate = bookerBirthDate
@@ -236,9 +278,56 @@ Public Class BookingInfo
         Me.BookerIsPWD = bookerIsPWD
         Me.BookerSeatNumber = bookerSeatNumber
         Me.BookerBaggageAllowance = bookerBaggageAllowance
-
-        Me.CoPassengers = If(coPassengers, New List(Of PassengerInfo)())
+        Me.CoPassengers = coPassengers
         Me.countPassenger = countPassenger
+
+    End Sub
+
+End Class
+
+Public Class Flight
+    Public Property FlightID As String
+    Public Property Departure As String
+    Public Property Destination As String
+    Public Property DepartureDate As Date
+    Public Property DepartureTime As String
+    Public Property ArrivalDate As Date
+    Public Property ArrivalTime As String
+    Public Property Capacity As Integer
+    Public Property FlightDate As Date ' The date this flight was scheduled/generated
+
+    Public Sub New()
+    End Sub
+
+    Public Sub New(flightID As String, departure As String, destination As String,
+                   departureDate As Date, departureTime As String,
+                   arrivalDate As Date, arrivalTime As String, capacity As Integer)
+        Me.FlightID = flightID
+        Me.Departure = departure
+        Me.Destination = destination
+        Me.DepartureDate = departureDate
+        Me.DepartureTime = departureTime
+        Me.ArrivalDate = arrivalDate
+        Me.ArrivalTime = arrivalTime
+        Me.Capacity = capacity
+        Me.FlightDate = Date.Today
     End Sub
 End Class
 
+Public Class RouteInfo
+    Public Property FromLocation As String
+    Public Property ToLocation As String
+    Public Property DistanceKM As Integer
+    Public Property EconomyFare As Decimal
+    Public Property BusinessFare As Decimal
+    Public Property FirstFare As Decimal
+
+    Public Sub New(fromLoc As String, toLoc As String, distance As Integer, economy As Decimal, business As Decimal, firstClass As Decimal)
+        FromLocation = fromLoc
+        ToLocation = toLoc
+        DistanceKM = distance
+        EconomyFare = economy
+        BusinessFare = business
+        FirstFare = firstClass
+    End Sub
+End Class
