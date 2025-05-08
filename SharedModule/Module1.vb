@@ -8,6 +8,8 @@ Public Module Module1
     Public conn As New MySqlConnection
     Public cmd2 As New MySqlCommand
 
+    Public Property Isbooked As Boolean
+
     'admin sql
     Public Sub openCon()
         con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
