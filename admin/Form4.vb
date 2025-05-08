@@ -14,6 +14,14 @@ Public Class Cancel_Delay_Form
     End Sub
 
 
+
 End Class
-'﻿Public Class Cancel_Delay_Form
+
+
+
+    Private Sub btnAddAdmin_Click(sender As Object, e As EventArgs) Handles btnAddAdmin.Click
+        Dim pilot As String
+        pilot = cbxPilotAdmin.Text
+        cbxPilotAdmin.Items.Add(pilot)
+    End Sub
 

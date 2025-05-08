@@ -6,9 +6,16 @@ Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
 
+
+
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-        Me.Hide()
-        Form2.Show()
+        If isBooked Then
+            Me.Hide()
+            Form2.Show()
+        Else
+            MessageBox.Show("There is no current active bookings to be processed!")
+        End If
+
     End Sub
 
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
@@ -232,6 +239,7 @@ Public Class Form1
                     Provide_tbxError(nameBox, ErrorProvider1)
                     hasError = True
                 End If
+
                 If String.IsNullOrWhiteSpace(ageBox.Text) Then
                     Provide_tbxError(ageBox, ErrorProvider1)
                     hasError = True
@@ -314,6 +322,7 @@ Public Class Form1
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")
+        Isbooked = True
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
