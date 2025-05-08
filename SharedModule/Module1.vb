@@ -135,75 +135,156 @@ Public Module Module1
     End Function
 
     ' Moving these functions into Module1 where they belong
-    Public Function GenerateDailyFlights() As List(Of Flight)
+
+    Public Function GenerateDailyFlights(startFlightNumber As Integer) As List(Of Flight)
         Dim flights As New List(Of Flight)
         Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
         Dim rnd As New Random()
         Dim today As Date = Date.Today
 
         For i As Integer = 0 To destinations.Length - 1
-            Dim flightID As String = $"FL{(i + 1).ToString("D3")}"
+            Dim flightNumber As Integer = startFlightNumber + i + 1
+            Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
             Dim departureTime As DateTime = today.AddHours(6 + i) ' flights from 6AM to 3PM
-            Dim durationHours As Integer = rnd.Next(3, 15) ' random duration
+            Dim durationHours As Integer = rnd.Next(3, 15)
             Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
+            Dim status As String = "Waiting"
 
             flights.Add(New Flight(
-                    flightID,
-                    "Manila",
-                    destinations(i),
-                    departureTime.Date,
-                    departureTime.ToString("HH:mm"),
-                    arrivalTime.Date,
-                    arrivalTime.ToString("HH:mm"),
-                    rnd.Next(150, 251) ' random capacity / ill fix this later
-                ))
+            flightID,
+            "Manila",
+            destinations(i),
+            departureTime.Date,
+            departureTime.ToString("HH:mm"),
+            arrivalTime.ToString("HH:mm"),
+            rnd.Next(150, 251),
+            status
+        ))
         Next
 
         Return flights
     End Function
 
+
     Public Function FlightsExistForToday() As Boolean
         Dim today As Date = Date.Today
         openCon()
-        cmd = New MySqlCommand("SELECT COUNT(*) FROM Flights WHERE FlightDate = @FlightDate", con)
+        cmd = New MySqlCommand("SELECT COUNT(*) FROM flight_table WHERE departure_date = @FlightDate", con)
         cmd.Parameters.AddWithValue("@FlightDate", today)
         Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
         con.Close()
         Return count > 0
     End Function
+    Public Function GetMaxFlightNumber() As Integer
+        Dim maxNumber As Integer = 0
+        openCon()
+        cmd = New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3) AS UNSIGNED)) FROM flight_table", con)
+        Dim result = cmd.ExecuteScalar()
+        If Not IsDBNull(result) Then
+            maxNumber = Convert.ToInt32(result)
+        End If
+        con.Close()
+        Return maxNumber
+    End Function
 
     Public Sub GenerateAndSaveFlightsIfNotExist()
         If Not FlightsExistForToday() Then
-            Dim flights = GenerateDailyFlights()
-            openCon()
+            Dim maxFlightNumber As Integer = GetMaxFlightNumber()
+            Dim flights = GenerateDailyFlights(maxFlightNumber)
 
+            openCon()
             For Each flight In flights
-                cmd = New MySqlCommand("INSERT INTO Flights (FlightID, Departure, Destination, DepartureDate, DepartureTime, ArrivalDate, ArrivalTime, Capacity, FlightDate) VALUES (@FlightID, @Departure, @Destination, @DepartureDate, @DepartureTime, @ArrivalDate, @ArrivalTime, @Capacity, @FlightDate)", con)
+                cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, departure, destination, departure_date, " &
+                "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
+                "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
                 cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
                 cmd.Parameters.AddWithValue("@Departure", flight.Departure)
                 cmd.Parameters.AddWithValue("@Destination", flight.Destination)
                 cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
                 cmd.Parameters.AddWithValue("@DepartureTime", flight.DepartureTime)
-                cmd.Parameters.AddWithValue("@ArrivalDate", flight.ArrivalDate)
                 cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
                 cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
-                cmd.Parameters.AddWithValue("@FlightDate", flight.FlightDate)
-                cmd.ExecuteNonQuery()
+                cmd.Parameters.AddWithValue("@Status", flight.Status)
+                Try
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show($"Error inserting flight {flight.FlightID}: {ex.Message}")
+                End Try
             Next
-
             con.Close()
         End If
+    End Sub
+
+
+
+    Public Sub UpdateFlightStatuses()
+        Dim now As DateTime = DateTime.Now
+        Dim today As Date = Date.Today
+
+        openCon()
+
+        Dim query As String = "SELECT flight_id, departure_date, departure_time, arrival_time " &
+                              "FROM flight_table WHERE departure_date = @Today"
+
+        Dim cmd As New MySqlCommand(query, con)
+        cmd.Parameters.AddWithValue("@Today", today)
+
+        Dim reader As MySqlDataReader = cmd.ExecuteReader()
+        Dim flightsToUpdate As New List(Of Tuple(Of String, String))
+
+        While reader.Read()
+            Dim flightId As String = reader("flight_id").ToString()
+            Dim depDate As Date = CDate(reader("departure_date"))
+            Dim depTime As String = reader("departure_time").ToString()
+            Dim arrTime As String = reader("arrival_time").ToString()
+
+            ' Construct DateTime for departure
+            Dim depHour As Integer = Integer.Parse(depTime.Split(":"c)(0))
+            Dim depMin As Integer = Integer.Parse(depTime.Split(":"c)(1))
+            Dim departureDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, depHour, depMin, 0)
+
+            ' Construct DateTime for arrival, assuming it could be the next day
+            Dim arrHour As Integer = Integer.Parse(arrTime.Split(":"c)(0))
+            Dim arrMin As Integer = Integer.Parse(arrTime.Split(":"c)(1))
+            Dim arrivalDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, arrHour, arrMin, 0)
+            If arrivalDateTime < departureDateTime Then
+                arrivalDateTime = arrivalDateTime.AddDays(1) ' arrived after midnight
+            End If
+
+            Dim status As String = "Waiting"
+            If now > arrivalDateTime Then
+                status = "Arrived"
+            ElseIf now >= departureDateTime AndAlso now <= arrivalDateTime Then
+                status = "On Flight"
+            End If
+
+            flightsToUpdate.Add(New Tuple(Of String, String)(flightId, status))
+        End While
+
+        reader.Close()
+
+        ' Update statuses
+        For Each flightInfo In flightsToUpdate
+            Dim updateCmd As New MySqlCommand("UPDATE flight_table SET status = @Status WHERE flight_id = @FlightID", con)
+            updateCmd.Parameters.AddWithValue("@Status", flightInfo.Item2)
+            updateCmd.Parameters.AddWithValue("@FlightID", flightInfo.Item1)
+            updateCmd.ExecuteNonQuery()
+        Next
+
+        con.Close()
     End Sub
 
     Public Sub DeleteOldFlights()
         Dim today As Date = Date.Today
         openCon()
-        cmd = New MySqlCommand("DELETE FROM Flights WHERE FlightDate < @FlightDate", con)
+        cmd = New MySqlCommand("DELETE FROM flight_table WHERE departure_date < @FlightDate", con)
         cmd.Parameters.AddWithValue("@FlightDate", today)
         cmd.ExecuteNonQuery()
         con.Close()
     End Sub
+
 End Module
+
 
 
 Public Class PassengerInfo
@@ -291,9 +372,9 @@ Public Class Flight
     Public Property Destination As String
     Public Property DepartureDate As Date
     Public Property DepartureTime As String
-    Public Property ArrivalDate As Date
     Public Property ArrivalTime As String
     Public Property Capacity As Integer
+    Public Property Status As String ' Added status property
     Public Property FlightDate As Date ' The date this flight was scheduled/generated
 
     Public Sub New()
@@ -301,15 +382,15 @@ Public Class Flight
 
     Public Sub New(flightID As String, departure As String, destination As String,
                    departureDate As Date, departureTime As String,
-                   arrivalDate As Date, arrivalTime As String, capacity As Integer)
+                    arrivalTime As String, capacity As Integer, status As String)
         Me.FlightID = flightID
         Me.Departure = departure
         Me.Destination = destination
         Me.DepartureDate = departureDate
         Me.DepartureTime = departureTime
-        Me.ArrivalDate = arrivalDate
         Me.ArrivalTime = arrivalTime
         Me.Capacity = capacity
+        Me.Status = status ' Default status
         Me.FlightDate = Date.Today
     End Sub
 End Class

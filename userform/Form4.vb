@@ -1,5 +1,4 @@
 ﻿
-Imports cashierform
 Imports MySql.Data.MySqlClient
 Imports SharedModule
 
@@ -140,84 +139,88 @@ Public Class Form4
     End Sub
 
     Private Function ValidateForm() As Boolean
+        Dim isValid As Boolean = True
+        ErrorProvider1.Clear() ' Clear any previous error indicators
+
         ' Validate booker information
         If String.IsNullOrWhiteSpace(tbxFullnameUser.Text) Then
-            MessageBox.Show("Please enter your full name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(tbxFullnameUser, "Full name is required.")
+            isValid = False
         End If
 
-        Dim bookerAge As Integer ' Validate the age input
+        ' Validate the age input
+        Dim bookerAge As Integer
         If Not Integer.TryParse(tbxAgeUser.Text, bookerAge) Then
-            MessageBox.Show("Please enter a valid age.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(tbxAgeUser, "Age must be a number.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(cbxGenderUser.Text) Then
-            MessageBox.Show("Please select a gender.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxGenderUser, "Gender is required.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(tbxAddressUser.Text) Then
-            MessageBox.Show("Please enter an address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(tbxAddressUser, "Address is required.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(cbxSeatNumberUser.Text) Then
-            MessageBox.Show("Please select a seat number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxSeatNumberUser, "Seat number is required.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(cbxBgAllowanceUser.Text) Then
-            MessageBox.Show("Please select a baggage allowance.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxBgAllowanceUser, "Baggage allowance is required.")
+            isValid = False
         End If
 
         If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
-            MessageBox.Show("Departure date must be today or later.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(dtpDepartDateUser, "Departure date must be today or later.")
+            isValid = False
         End If
 
         ' Validate departure and destination
         If String.IsNullOrWhiteSpace(cbxDepartureUser.Text) Then
-            MessageBox.Show("Please select a departure location.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxDepartureUser, "Departure location is required.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
-            MessageBox.Show("Please select a destination.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxDestinationUser, "Destination is required.")
+            isValid = False
         End If
 
         If String.IsNullOrWhiteSpace(cbxDepartTimeUser.Text) Then
-            MessageBox.Show("Please select a departure time.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return False
+            ErrorProvider1.SetError(cbxDepartTimeUser, "Departure time is required.")
+            isValid = False
         End If
 
         ' For round trip, validate arrival info
         If tripIndicator = "Round Trip" Then
             If String.IsNullOrWhiteSpace(cbxArrivalTimeUser.Text) Then
-                MessageBox.Show("Please select an arrival time for round trip.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return False
+                ErrorProvider1.SetError(cbxArrivalTimeUser, "Arrival time is required.")
+                isValid = False
             End If
 
             If dtpArrivalDateUser.Value.Date < dtpDepartDateUser.Value.Date Then
-                MessageBox.Show("Arrival date must be on or after departure date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return False
+                ErrorProvider1.SetError(dtpArrivalDateUser, "Arrival date must be on or after departure date.")
+                isValid = False
             End If
         End If
 
-        Return True
+        Return isValid
     End Function
 
     Private Sub SaveBookingToDatabase(booking As BookingInfo) ' save function for database
         Try
-            openConTesting()
-            Using cmd2 As New MySqlCommand("ALTER TABLE testing_table_customer MODIFY customer_id INT AUTO_INCREMENT;", conn)
-                cmd2.ExecuteNonQuery()
+            openCon()
+            Using cmd As New MySqlCommand("ALTER TABLE testing_table_customer MODIFY customer_id INT AUTO_INCREMENT;", conn)
+                cmd.ExecuteNonQuery()
             End Using
             ' Insert the main booker
             Dim insertQuery As String = "
-    INSERT INTO testing_table_customer (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+    INSERT INTO customer_table (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
     seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time)
     VALUES (@FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime)"
 
@@ -277,8 +280,8 @@ Public Class Form4
             MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             ' Make sure to close the connection
-            If conn IsNot Nothing AndAlso conn.State = ConnectionState.Open Then
-                conn.Close()
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
             End If
         End Try
     End Sub

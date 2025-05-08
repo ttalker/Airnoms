@@ -132,7 +132,6 @@ Inherits System.Windows.Forms.Form
         Name = "Form4"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form4"
-
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Cancel_Delay_Form))
         btnDelay = New Button()
         btnCancel = New Button()
@@ -144,9 +143,9 @@ Inherits System.Windows.Forms.Form
         ' btnDelay
         ' 
         btnDelay.BackColor = Color.Transparent
-        btnDelay.Location = New Point(298, 289)
+        btnDelay.Location = New Point(290, 287)
         btnDelay.Name = "btnDelay"
-        btnDelay.Size = New Size(127, 39)
+        btnDelay.Size = New Size(139, 41)
         btnDelay.TabIndex = 0
         btnDelay.Text = "DELAY"
         btnDelay.UseVisualStyleBackColor = False
@@ -154,9 +153,9 @@ Inherits System.Windows.Forms.Form
         ' btnCancel
         ' 
         btnCancel.BackColor = Color.Transparent
-        btnCancel.Location = New Point(437, 287)
+        btnCancel.Location = New Point(434, 287)
         btnCancel.Name = "btnCancel"
-        btnCancel.Size = New Size(128, 40)
+        btnCancel.Size = New Size(135, 40)
         btnCancel.TabIndex = 1
         btnCancel.Text = "CANCEL"
         btnCancel.UseVisualStyleBackColor = False
@@ -182,9 +181,9 @@ Inherits System.Windows.Forms.Form
         ' 
         ' btnReturn
         ' 
-        btnReturn.Location = New Point(465, 371)
+        btnReturn.Location = New Point(459, 369)
         btnReturn.Name = "btnReturn"
-        btnReturn.Size = New Size(121, 42)
+        btnReturn.Size = New Size(132, 50)
         btnReturn.TabIndex = 4
         btnReturn.Text = "RETURN"
         btnReturn.UseVisualStyleBackColor = True
@@ -200,22 +199,13 @@ Inherits System.Windows.Forms.Form
         Controls.Add(lblFlightID)
         Controls.Add(btnCancel)
         Controls.Add(btnDelay)
+        FormBorderStyle = FormBorderStyle.None
         Name = "Cancel_Delay_Form"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Cancel_Delay_Form"
-
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents btnAddFlight As Button
-    Friend WithEvents btnCLearAdmin As Button
-    Friend WithEvents btnBackAdmin As Button
-    Friend WithEvents btnAddAdmin As Button
-    Friend WithEvents tbxDepartureAdmin As TextBox
-    Friend WithEvents tbxDestinationAdmin As TextBox
-    Friend WithEvents tbxDepartureTimeAdmin As TextBox
-    Friend WithEvents cbxPilotAdmin As ComboBox
-    Friend WithEvents cbxPlaneAdmin As ComboBox
     Friend WithEvents btnDelay As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents lblFlightID As Label

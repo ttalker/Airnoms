@@ -60,7 +60,7 @@ Partial Class Form1
         ' tbxUsername
         ' 
         tbxUsername.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbxUsername.ForeColor = SystemColors.InactiveCaption
+        tbxUsername.ForeColor = SystemColors.WindowText
         tbxUsername.Location = New Point(529, 205)
         tbxUsername.Margin = New Padding(3, 2, 3, 2)
         tbxUsername.MaximumSize = New Size(304, 33)

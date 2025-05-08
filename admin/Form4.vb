@@ -1,35 +1,22 @@
-
-﻿'Imports cashierform
-'Imports userForm.Module1
 Imports SharedModule
-Public Class Form4
+
+'Imports userForm.Module1
+
+Public Class Cancel_Delay_Form
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MakeTransparent(btnAddAdmin)
-        MakeTransparent(btnAddFlight)
-        MakeTransparent(btnCLearAdmin)
-        MakeTransparent(btnBackAdmin)
-
-        hoverButton(btnAddAdmin)
-        hoverButton(btnAddFlight)
-        hoverButton(btnBackAdmin)
-        hoverButton(btnCLearAdmin)
-
 
     End Sub
 
-    Private Sub btnBackAdmin_Click(sender As Object, e As EventArgs) Handles btnBackAdmin.Click
+    Private Sub btnBackAdmin_Click(sender As Object, e As EventArgs)
         Form1.Enabled = True
-        Me.Hide()
+        Hide()
 
     End Sub
 
-    Private Sub btnCLearAdmin_Click(sender As Object, e As EventArgs) Handles btnCLearAdmin.Click
-        tbxDepartureAdmin.Clear()
-        tbxDestinationAdmin.Clear()
-        tbxDepartureTimeAdmin.Clear()
-        cbxPilotAdmin.Text = ""
-        cbxPlaneAdmin.Text = ""
-    End Sub
+
+
+End Class
+
 
 
     Private Sub btnAddAdmin_Click(sender As Object, e As EventArgs) Handles btnAddAdmin.Click
@@ -37,4 +24,4 @@ Public Class Form4
         pilot = cbxPilotAdmin.Text
         cbxPilotAdmin.Items.Add(pilot)
     End Sub
-End Class
+

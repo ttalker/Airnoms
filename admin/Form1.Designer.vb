@@ -30,7 +30,9 @@ Partial Class Form1
         btnAddFlight = New Button()
         btnBookings = New Button()
         btnViewFlightAdmin = New Button()
+        dgvFlights = New DataGridView()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvFlights, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' pbxAdmin
@@ -38,7 +40,7 @@ Partial Class Form1
         pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_TEST_2
         pbxAdmin.Location = New Point(-4, -1)
         pbxAdmin.Name = "pbxAdmin"
-        pbxAdmin.Size = New Size(1552, 884)
+        pbxAdmin.Size = New Size(1552, 916)
         pbxAdmin.TabIndex = 0
         pbxAdmin.TabStop = False
         ' 
@@ -105,11 +107,20 @@ Partial Class Form1
         btnViewFlightAdmin.Text = " "
         btnViewFlightAdmin.UseVisualStyleBackColor = True
         ' 
+        ' dgvFlights
+        ' 
+        dgvFlights.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvFlights.Location = New Point(143, 264)
+        dgvFlights.Name = "dgvFlights"
+        dgvFlights.Size = New Size(1245, 500)
+        dgvFlights.TabIndex = 11
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 911)
+        Controls.Add(dgvFlights)
         Controls.Add(btnViewFlightAdmin)
         Controls.Add(btnBookings)
         Controls.Add(btnAddFlight)
@@ -121,6 +132,7 @@ Partial Class Form1
         Name = "Form1"
         Text = "FLIGHTS"
         CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvFlights, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -132,5 +144,6 @@ Partial Class Form1
     Friend WithEvents btnAddFlight As Button
     Friend WithEvents btnBookings As Button
     Friend WithEvents btnViewFlightAdmin As Button
+    Friend WithEvents dgvFlights As DataGridView
 
 End Class
