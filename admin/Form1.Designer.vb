@@ -98,7 +98,7 @@ Partial Class Form1
         ' 
         ' btnViewFlightAdmin
         ' 
-        btnViewFlightAdmin.Location = New Point(929, 795)
+        btnViewFlightAdmin.Location = New Point(939, 794)
         btnViewFlightAdmin.Name = "btnViewFlightAdmin"
         btnViewFlightAdmin.Size = New Size(164, 66)
         btnViewFlightAdmin.TabIndex = 10
@@ -109,7 +109,6 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-
         ClientSize = New Size(1547, 911)
         Controls.Add(btnViewFlightAdmin)
         Controls.Add(btnBookings)

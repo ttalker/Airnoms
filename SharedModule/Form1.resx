@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Admin (add flight) (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin (add flight) (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin Panel(TEST)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin Panel(TEST)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin Panel(TEST)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin Panel(TEST)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin Panel(bookings)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin Panel(bookings).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin (transaction history)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin (transaction history).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin Panel(TEST)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin Panel(TEST).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin Panel(bookings) (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin Panel(bookings) (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Admin (add flight) (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin (add flight) (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>
