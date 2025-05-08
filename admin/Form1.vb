@@ -35,11 +35,12 @@ Public Class Form1
         btnCancelFlight.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
 
 
-
+        'DeleteOldFlights()
         GenerateAndSaveFlightsIfNotExist()
         AddStatusTimerToForm1_Load()
         UpdateFlightStatuses()
         LoadDailyFlights()
+
     End Sub
     Private Sub LoadDailyFlights()
         Dim today As Date = Date.Today
@@ -47,30 +48,42 @@ Public Class Form1
 
         openCon()
         Dim query As String = "SELECT flight_id as 'Flight No.', 
-                                     departure as 'From', 
-                                     destination as 'To', 
-                                     departure_date as 'Date',
-                                     departure_time as 'Departure', 
-                                     arrival_time as 'Arrival Time', 
-                                     capacity as 'Capacity',
-                                     status as 'Status'
-                              FROM flight_table 
-                              WHERE departure_date = @DepartureDate
-                              ORDER BY departure_time"
+                         departure as 'From', 
+                         destination as 'To', 
+                         departure_date as 'Date',
+                         departure_time as 'Departure', 
+                         arrival_time as 'Arrival Time', 
+                         capacity as 'Capacity',
+                         status as 'Status'
+                  FROM flight_table 
+                  WHERE departure_date = @DepartureDate
+                  ORDER BY departure_time"
 
         Dim adapter As New MySqlDataAdapter(query, con)
         adapter.SelectCommand.Parameters.AddWithValue("@DepartureDate", today)
         adapter.Fill(dt)
         con.Close()
+        'For Each row As DataRow In dt.Rows
+        '    Console.WriteLine($"Loaded Flight ID: {row("Flight No.")}, From: {row("From")}, To: {row("To")}")
+        'Next
+        'MessageBox.Show("Total Rows in DataTable: " & dt.Rows.Count)
 
-        ' Bind the data to DataGridView
+        ' **Ensure DataGridView refreshes properly**
+        dgvFlights.DataSource = Nothing
         dgvFlights.DataSource = dt
+        dgvFlights.Refresh()
+
+        ' Ensure rows are visible after loading data
+        For Each row As DataGridViewRow In dgvFlights.Rows
+            row.Visible = True
+        Next
 
         ' Format the DataGridView
         FormatFlightDataGridView()
     End Sub
 
     Private Sub FormatFlightDataGridView()
+
         dgvFlights.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvFlights.RowHeadersVisible = False
         dgvFlights.AllowUserToAddRows = False
@@ -149,4 +162,3 @@ Public Class Form1
     '    Form5.Show()
     'End Sub
 End Class
-

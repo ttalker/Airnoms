@@ -22,6 +22,7 @@ Partial Class Form4
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         btnBookingUser = New Button()
         btnHomeUser = New Button()
         cbxSeatNumberPassenger4 = New ComboBox()
@@ -89,7 +90,9 @@ Partial Class Form4
         chbPWDPassenger5 = New CheckBox()
         chbPWDPassenger6 = New CheckBox()
         lblCover = New Label()
+        ErrorProvider1 = New ErrorProvider(components)
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnBookingUser
@@ -747,11 +750,15 @@ Partial Class Form4
         lblCover.Size = New Size(273, 58)
         lblCover.TabIndex = 123
         ' 
+        ' ErrorProvider1
+        ' 
+        ErrorProvider1.ContainerControl = Me
+        ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1547, 911)
+        ClientSize = New Size(1547, 881)
         Controls.Add(lblCover)
         Controls.Add(chbPWDPassenger6)
         Controls.Add(chbPWDPassenger5)
@@ -825,6 +832,7 @@ Partial Class Form4
         StartPosition = FormStartPosition.CenterScreen
         Text = "BOOKING"
         CType(pbxUserBooking, ComponentModel.ISupportInitialize).EndInit()
+        CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -896,4 +904,5 @@ Partial Class Form4
     Friend WithEvents chbPWDPassenger5 As CheckBox
     Friend WithEvents chbPWDPassenger6 As CheckBox
     Friend WithEvents lblCover As Label
+    Friend WithEvents ErrorProvider1 As ErrorProvider
 End Class

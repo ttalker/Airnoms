@@ -136,31 +136,35 @@ Public Module Module1
 
     ' Moving these functions into Module1 where they belong
 
-    Public Function GenerateDailyFlights() As List(Of Flight)
+    Public Function GenerateDailyFlights(startFlightNumber As Integer) As List(Of Flight)
         Dim flights As New List(Of Flight)
         Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
         Dim rnd As New Random()
         Dim today As Date = Date.Today
+
         For i As Integer = 0 To destinations.Length - 1
-            Dim flightID As String = $"FL{(i + 1).ToString("D3")}"
+            Dim flightNumber As Integer = startFlightNumber + i + 1
+            Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
             Dim departureTime As DateTime = today.AddHours(6 + i) ' flights from 6AM to 3PM
             Dim durationHours As Integer = rnd.Next(3, 15)
             Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
             Dim status As String = "Waiting"
 
             flights.Add(New Flight(
-                flightID,
-                "Manila",
-                destinations(i),
-                departureTime.Date,
-                departureTime.ToString("HH:mm"),
-                arrivalTime.ToString("HH:mm"),
-                rnd.Next(150, 251),
-                status
-            ))
+            flightID,
+            "Manila",
+            destinations(i),
+            departureTime.Date,
+            departureTime.ToString("HH:mm"),
+            arrivalTime.ToString("HH:mm"),
+            rnd.Next(150, 251),
+            status
+        ))
         Next
+
         Return flights
     End Function
+
 
     Public Function FlightsExistForToday() As Boolean
         Dim today As Date = Date.Today
@@ -171,15 +175,28 @@ Public Module Module1
         con.Close()
         Return count > 0
     End Function
+    Public Function GetMaxFlightNumber() As Integer
+        Dim maxNumber As Integer = 0
+        openCon()
+        cmd = New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3) AS UNSIGNED)) FROM flight_table", con)
+        Dim result = cmd.ExecuteScalar()
+        If Not IsDBNull(result) Then
+            maxNumber = Convert.ToInt32(result)
+        End If
+        con.Close()
+        Return maxNumber
+    End Function
 
     Public Sub GenerateAndSaveFlightsIfNotExist()
         If Not FlightsExistForToday() Then
-            Dim flights = GenerateDailyFlights()
+            Dim maxFlightNumber As Integer = GetMaxFlightNumber()
+            Dim flights = GenerateDailyFlights(maxFlightNumber)
+
             openCon()
             For Each flight In flights
                 cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, departure, destination, departure_date, " &
-                    "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
-                    "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
+                "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
+                "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
                 cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
                 cmd.Parameters.AddWithValue("@Departure", flight.Departure)
                 cmd.Parameters.AddWithValue("@Destination", flight.Destination)
@@ -188,11 +205,17 @@ Public Module Module1
                 cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
                 cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
                 cmd.Parameters.AddWithValue("@Status", flight.Status)
-                cmd.ExecuteNonQuery()
+                Try
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show($"Error inserting flight {flight.FlightID}: {ex.Message}")
+                End Try
             Next
             con.Close()
         End If
     End Sub
+
+
 
     Public Sub UpdateFlightStatuses()
         Dim now As DateTime = DateTime.Now
