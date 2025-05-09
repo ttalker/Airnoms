@@ -300,33 +300,34 @@ Public Class Form1
         If Not DateTime.TryParse(fullArrivalString, parsedArrivalDate) Then
             MessageBox.Show("Invalid arrival date or time format.")
             Exit Sub
+        End If
 
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
-            tripType:=ticketIdentifier, ' Use your trip identifier here
-            departure:=cbxDeparture.Text,
-            destination:=cbxDestination.Text,
-            departDate:=parsedDepartureDate,
-            arrivalDate:=parsedArrivalDate,
-            bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
-            bookerFullName:=mainBooker.FullName,
-            bookerAge:=mainBooker.Age,
-            bookerBirthDate:=mainBooker.DateOfBirth,
-            bookerGender:=mainBooker.Gender,
-            bookerAddress:=tbxAddress.Text,
-            bookerIsPWD:=mainBooker.IsPWD,
-            bookerSeatNumber:=mainBooker.SeatNumber,
-            bookerBaggageAllowance:=mainBooker.BaggageAllowance,
-            countPassenger:=passengerCount,
-            coPassengers:=coPassengers
-        )
+                tripType:=ticketIdentifier, ' Use your trip identifier here
+                departure:=cbxDeparture.Text,
+                destination:=cbxDestination.Text,
+                departDate:=parsedDepartureDate,
+                arrivalDate:=parsedArrivalDate,
+                bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
+                bookerFullName:=mainBooker.FullName,
+                bookerAge:=mainBooker.Age,
+                bookerBirthDate:=mainBooker.DateOfBirth,
+                bookerGender:=mainBooker.Gender,
+                bookerAddress:=tbxAddress.Text,
+                bookerIsPWD:=mainBooker.IsPWD,
+                bookerSeatNumber:=mainBooker.SeatNumber,
+                bookerBaggageAllowance:=mainBooker.BaggageAllowance,
+                countPassenger:=passengerCount,
+                coPassengers:=coPassengers
+            )
 
-        ' === 6. Success Message ===
-        MessageBox.Show("Booking validated and stored successfully!")
-        isBooked = True
+            ' === 6. Success Message ===
+            MessageBox.Show("Booking validated and stored successfully!")
+            isBooked = True
 
-        '=== 7. Store the info to a global list ===
-        CurrentBooking = booking
+            '=== 7. Store the info to a global list ===
+            CurrentBooking = booking
         AllBookings.Add(booking)
 
         btnClear.PerformClick()
