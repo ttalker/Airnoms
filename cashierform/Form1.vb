@@ -286,15 +286,28 @@ Public Class Form1
             End If
         Next
 
+        ' Parse combined departure date and time / combined
+        Dim fullDepartureString As String = dtpDepartDate.Value.ToShortDateString() & " " & cbxDepartureTime.Text
+        Dim parsedDepartureDate As DateTime
+        If Not DateTime.TryParse(fullDepartureString, parsedDepartureDate) Then
+            MessageBox.Show("Invalid departure date or time format.")
+            Exit Sub
+        End If
+
+        ' Parse combined arrival date and time
+        Dim fullArrivalString As String = dtpArrivalDate.Value.ToShortDateString() & " " & cbxArrivalTime.Text
+        Dim parsedArrivalDate As DateTime
+        If Not DateTime.TryParse(fullArrivalString, parsedArrivalDate) Then
+            MessageBox.Show("Invalid arrival date or time format.")
+            Exit Sub
+
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
             tripType:=ticketIdentifier, ' Use your trip identifier here
             departure:=cbxDeparture.Text,
             destination:=cbxDestination.Text,
-            departDate:=Convert.ToDateTime(dtpDepartDate.Text),
-            departTime:=cbxDepartureTime.Text,
-            arrivalDate:=Convert.ToDateTime(dtpArrivalDate.Text),
-            arrivalTime:=cbxArrivalTime.Text,
+            departDate:=parsedDepartureDate,
+            arrivalDate:=parsedArrivalDate,
             bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
             bookerFullName:=mainBooker.FullName,
             bookerAge:=mainBooker.Age,
