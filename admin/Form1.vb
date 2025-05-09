@@ -1,5 +1,6 @@
 ﻿'Imports cashierform
 'Imports userForm.Module1
+Imports MySql.Data.MySqlClient
 Imports SharedModule
 Public Class Form1
 
@@ -34,9 +35,105 @@ Public Class Form1
         btnCancelFlight.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
 
 
+        'DeleteOldFlights()
+        GenerateAndSaveFlightsIfNotExist()
+        AddStatusTimerToForm1_Load()
+        UpdateFlightStatuses()
+        LoadDailyFlights()
 
+    End Sub
+    Private Sub LoadDailyFlights()
+        Dim today As Date = Date.Today
+        Dim dt As New DataTable()
 
+        openCon()
+        Dim query As String = "SELECT flight_id as 'Flight No.', 
+                         departure as 'From', 
+                         destination as 'To', 
+                         departure_date as 'Date',
+                         departure_time as 'Departure', 
+                         arrival_time as 'Arrival Time', 
+                         capacity as 'Capacity',
+                         status as 'Status'
+                  FROM flight_table 
+                  WHERE departure_date = @DepartureDate
+                  ORDER BY departure_time"
 
+        Dim adapter As New MySqlDataAdapter(query, con)
+        adapter.SelectCommand.Parameters.AddWithValue("@DepartureDate", today)
+        adapter.Fill(dt)
+        con.Close()
+        'For Each row As DataRow In dt.Rows
+        '    Console.WriteLine($"Loaded Flight ID: {row("Flight No.")}, From: {row("From")}, To: {row("To")}")
+        'Next
+        'MessageBox.Show("Total Rows in DataTable: " & dt.Rows.Count)
+
+        ' **Ensure DataGridView refreshes properly**
+        dgvFlights.DataSource = Nothing
+        dgvFlights.DataSource = dt
+        dgvFlights.Refresh()
+
+        ' Ensure rows are visible after loading data
+        For Each row As DataGridViewRow In dgvFlights.Rows
+            row.Visible = True
+        Next
+
+        ' Format the DataGridView
+        FormatFlightDataGridView()
+    End Sub
+
+    Private Sub FormatFlightDataGridView()
+
+        dgvFlights.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvFlights.RowHeadersVisible = False
+        dgvFlights.AllowUserToAddRows = False
+        dgvFlights.AllowUserToDeleteRows = False
+        dgvFlights.ReadOnly = True
+        dgvFlights.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+
+        ' Add color coding based on flight status
+        For Each row As DataGridViewRow In dgvFlights.Rows
+            Dim status As String = row.Cells("Status").Value.ToString()
+
+            Select Case status
+                Case "Waiting"
+                    row.DefaultCellStyle.BackColor = Color.LightYellow
+                Case "On Flight"
+                    row.DefaultCellStyle.BackColor = Color.LightBlue
+                Case "Arrived"
+                    row.DefaultCellStyle.BackColor = Color.LightGreen
+            End Select
+        Next
+    End Sub
+
+    ' Timer to update flight statuses automatically
+    Private WithEvents statusUpdateTimer As New Timer()
+
+    Private Sub InitializeStatusTimer()
+        ' Update flight statuses every 5 minutes
+        statusUpdateTimer.Interval = 5 * 60 * 1000 ' 5 minutes in milliseconds
+        statusUpdateTimer.Start()
+        AddHandler statusUpdateTimer.Tick, AddressOf StatusTimer_Tick
+    End Sub
+
+    Private Sub StatusTimer_Tick(sender As Object, e As EventArgs)
+        ' Update flight statuses and refresh the grid
+        UpdateFlightStatuses()
+        RefreshFlightData()
+    End Sub
+
+    ' Call this in Form1_Load as well
+    Private Sub AddStatusTimerToForm1_Load()
+        ' Add this line to your Form1_Load method
+        InitializeStatusTimer()
+    End Sub
+
+    ' Add this to your RefreshFlightData method
+    Public Sub RefreshFlightData()
+        ' Update flight statuses first
+        UpdateFlightStatuses()
+        ' Then load flights
+        LoadDailyFlights()
     End Sub
 
     Private Sub btnFlights_Click(sender As Object, e As EventArgs) Handles btnFlights.Click
@@ -61,9 +158,7 @@ Public Class Form1
         'ExitApplication(Me)
     End Sub
 
-    Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
-        Form4.Show()
-        Me.Enabled = False
-    End Sub
+    'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
+    '    Form5.Show()
+    'End Sub
 End Class
-

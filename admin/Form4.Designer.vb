@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Cancel_Delay_Form
-    Inherits System.Windows.Forms.Form
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class Form4
+Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Cancel_Delay_Form
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
 
         btnAddFlight = New Button()
@@ -72,7 +72,7 @@ Partial Class Cancel_Delay_Form
         ' 
         ' tbxDepartureAdmin
         ' 
-        tbxDepartureAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDepartureAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDepartureAdmin.Location = New Point(234, 117)
         tbxDepartureAdmin.Name = "tbxDepartureAdmin"
         tbxDepartureAdmin.Size = New Size(186, 29)
@@ -80,7 +80,7 @@ Partial Class Cancel_Delay_Form
         ' 
         ' tbxDestinationAdmin
         ' 
-        tbxDestinationAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDestinationAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDestinationAdmin.Location = New Point(234, 166)
         tbxDestinationAdmin.Name = "tbxDestinationAdmin"
         tbxDestinationAdmin.Size = New Size(186, 29)
@@ -88,7 +88,7 @@ Partial Class Cancel_Delay_Form
         ' 
         ' tbxDepartureTimeAdmin
         ' 
-        tbxDepartureTimeAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxDepartureTimeAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbxDepartureTimeAdmin.Location = New Point(234, 217)
         tbxDepartureTimeAdmin.Name = "tbxDepartureTimeAdmin"
         tbxDepartureTimeAdmin.Size = New Size(186, 29)
@@ -96,8 +96,9 @@ Partial Class Cancel_Delay_Form
         ' 
         ' cbxPilotAdmin
         ' 
-        cbxPilotAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxPilotAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxPilotAdmin.FormattingEnabled = True
+        cbxPilotAdmin.Items.AddRange(New Object() {"try", "test", "me"})
         cbxPilotAdmin.Location = New Point(234, 272)
         cbxPilotAdmin.Name = "cbxPilotAdmin"
         cbxPilotAdmin.Size = New Size(186, 29)
@@ -105,7 +106,7 @@ Partial Class Cancel_Delay_Form
         ' 
         ' cbxPlaneAdmin
         ' 
-        cbxPlaneAdmin.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxPlaneAdmin.Font = New Font("Segoe UI", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxPlaneAdmin.FormattingEnabled = True
         cbxPlaneAdmin.Location = New Point(234, 318)
         cbxPlaneAdmin.Name = "cbxPlaneAdmin"
@@ -114,7 +115,7 @@ Partial Class Cancel_Delay_Form
         ' 
         ' Form4
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.Admin__add_flight___1_
         ClientSize = New Size(620, 492)
@@ -131,7 +132,6 @@ Partial Class Cancel_Delay_Form
         Name = "Form4"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form4"
-
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Cancel_Delay_Form))
         btnDelay = New Button()
         btnCancel = New Button()
@@ -143,9 +143,9 @@ Partial Class Cancel_Delay_Form
         ' btnDelay
         ' 
         btnDelay.BackColor = Color.Transparent
-        btnDelay.Location = New Point(298, 289)
+        btnDelay.Location = New Point(290, 287)
         btnDelay.Name = "btnDelay"
-        btnDelay.Size = New Size(127, 39)
+        btnDelay.Size = New Size(139, 41)
         btnDelay.TabIndex = 0
         btnDelay.Text = "DELAY"
         btnDelay.UseVisualStyleBackColor = False
@@ -153,9 +153,9 @@ Partial Class Cancel_Delay_Form
         ' btnCancel
         ' 
         btnCancel.BackColor = Color.Transparent
-        btnCancel.Location = New Point(437, 287)
+        btnCancel.Location = New Point(434, 287)
         btnCancel.Name = "btnCancel"
-        btnCancel.Size = New Size(128, 40)
+        btnCancel.Size = New Size(135, 40)
         btnCancel.TabIndex = 1
         btnCancel.Text = "CANCEL"
         btnCancel.UseVisualStyleBackColor = False
@@ -181,9 +181,9 @@ Partial Class Cancel_Delay_Form
         ' 
         ' btnReturn
         ' 
-        btnReturn.Location = New Point(465, 371)
+        btnReturn.Location = New Point(459, 369)
         btnReturn.Name = "btnReturn"
-        btnReturn.Size = New Size(121, 42)
+        btnReturn.Size = New Size(132, 50)
         btnReturn.TabIndex = 4
         btnReturn.Text = "RETURN"
         btnReturn.UseVisualStyleBackColor = True
@@ -199,22 +199,13 @@ Partial Class Cancel_Delay_Form
         Controls.Add(lblFlightID)
         Controls.Add(btnCancel)
         Controls.Add(btnDelay)
+        FormBorderStyle = FormBorderStyle.None
         Name = "Cancel_Delay_Form"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Cancel_Delay_Form"
-
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents btnAddFlight As Button
-    Friend WithEvents btnCLearAdmin As Button
-    Friend WithEvents btnBackAdmin As Button
-    Friend WithEvents btnAddAdmin As Button
-    Friend WithEvents tbxDepartureAdmin As TextBox
-    Friend WithEvents tbxDestinationAdmin As TextBox
-    Friend WithEvents tbxDepartureTimeAdmin As TextBox
-    Friend WithEvents cbxPilotAdmin As ComboBox
-    Friend WithEvents cbxPlaneAdmin As ComboBox
     Friend WithEvents btnDelay As Button
     Friend WithEvents btnCancel As Button
     Friend WithEvents lblFlightID As Label
