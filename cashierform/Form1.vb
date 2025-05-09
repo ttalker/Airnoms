@@ -310,7 +310,7 @@ Public Class Form1
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")
-        Isbooked = True
+        isBooked = True
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking

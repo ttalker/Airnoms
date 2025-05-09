@@ -8,7 +8,7 @@ Public Module Module1
     Public conn As New MySqlConnection
     Public cmd2 As New MySqlCommand
 
-    Public Property Isbooked As Boolean
+    Public Property isBooked As Boolean
 
     'admin sql
     Public Sub openCon()
