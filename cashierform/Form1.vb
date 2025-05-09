@@ -282,7 +282,7 @@ Public Class Form1
                 Debug.WriteLine($"Added co-passenger #{i}. Total passengers: {passengerCount}")
             End If
         Next
-        ' Parse combined departure date and time
+        ' Parse combined departure date and time / combined
         Dim fullDepartureString As String = dtpDepartDate.Value.ToShortDateString() & " " & cbxDepartureTime.Text
         Dim parsedDepartureDate As DateTime
         If Not DateTime.TryParse(fullDepartureString, parsedDepartureDate) Then
