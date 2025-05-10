@@ -366,7 +366,7 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@departure", cbxDeparture.Text)
                     cmd.Parameters.AddWithValue("@baggage", passenger.BaggageAllowance)
                     cmd.Parameters.AddWithValue("@seat", passenger.SeatNumber)
-                    cmd.Parameters.AddWithValue("@pwd", passenger.IsPWD)
+                    cmd.Parameters.AddWithValue("@pwd", If(passenger.IsPWD, "Yes", "No"))
                     cmd.Parameters.AddWithValue("@bookedUnder", CurrentBooking.BookerFullName)
                     cmd.Parameters.AddWithValue("@numPassengers", passengerCount)
                     cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
