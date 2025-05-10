@@ -27,7 +27,9 @@ Partial Class Form2
         btnFlights = New Button()
         pbxAdmin = New PictureBox()
         btnBookings = New Button()
+        dgvTransactionHistory = New DataGridView()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvTransactionHistory, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnExit
@@ -75,11 +77,20 @@ Partial Class Form2
         btnBookings.Text = " "
         btnBookings.UseVisualStyleBackColor = True
         ' 
+        ' dgvTransactionHistory
+        ' 
+        dgvTransactionHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvTransactionHistory.Location = New Point(124, 238)
+        dgvTransactionHistory.Name = "dgvTransactionHistory"
+        dgvTransactionHistory.Size = New Size(1293, 579)
+        dgvTransactionHistory.TabIndex = 11
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 881)
+        Controls.Add(dgvTransactionHistory)
         Controls.Add(btnBookings)
         Controls.Add(btnExit)
         Controls.Add(btnTransactions)
@@ -88,6 +99,7 @@ Partial Class Form2
         Name = "Form2"
         Text = "TRANSACTIONS"
         CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvTransactionHistory, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
@@ -96,4 +108,5 @@ Partial Class Form2
     Friend WithEvents btnFlights As Button
     Friend WithEvents pbxAdmin As PictureBox
     Friend WithEvents btnBookings As Button
+    Friend WithEvents dgvTransactionHistory As DataGridView
 End Class

@@ -341,11 +341,6 @@ Public Class Form1
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
-        AllBookings.Add(booking)
-
-        '=== 7. Store the info to a global list ===
-        CurrentBooking = booking
-
 
         '=== 8. put all bookers in allpassengers and put them into the database ===
 
@@ -422,7 +417,7 @@ Public Class Form1
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
-
+    End Sub
     Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
         cbxDepartureTime.Text = ""
 
