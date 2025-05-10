@@ -368,7 +368,7 @@ Public Class Form1
              booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
             VALUES 
             (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
-             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con) ' <<< use con here
+             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con)
 
                     cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
                     cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
