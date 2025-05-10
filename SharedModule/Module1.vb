@@ -620,10 +620,97 @@ Public Module Module1
                         capacity += 1
                     Next
                 Next
+                'generate premium economy
+                For i As Integer = 12 To 14
+                    Dim letters() = {"A", "C", "D", "E", "G", "H", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Premium Economy")
+                        capacity += 1
+                    Next
+                Next
 
                 Return (seatmap, capacity)
-                ', AircraftType.AirbusA350_900
-                '        Case AircraftType.Boeing737_800, AircraftType.Boeing737_MAX_8, AircraftType.AirbusA320
+
+            Case AircraftType.AirbusA350_900
+
+                'generate busines
+                For i As Integer = 1 To 8
+                    Dim letters() = {"A", "D", "G", "K"}
+                    For Each letter In letters
+
+                        If (letter = "A" Or letter = "K") And (i = 8) Then
+                            Continue For
+                        End If
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Business")
+                        capacity += 1
+                    Next
+                Next
+
+                'generate economy
+                For i As Integer = 31 To 43
+                    Dim letters() = {"A", "B", "C", "D", "E", "G", "H", "J", "K"}
+                    For Each letter In letters
+                        If (letter = "D" Or letter = "E" Or letter = "G") And (i = 43) Then
+                            Continue For
+                        End If
+
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                For i As Integer = 51 To 65
+                    Dim letters() = {"A", "B", "C", "D", "E", "G", "H", "J", "K"}
+                    For Each letter In letters
+                        If (letter = "A" Or letter = "K" Or letter = "D" Or letter = "E" Or letter = "G") And (i = 52) Then
+                            Continue For
+                        End If
+
+                        If (letter = "A" Or letter = "B" Or letter = "C") And (i = 64) Then
+                            Continue For
+                        End If
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                'generate premium economy
+                For i As Integer = 21 To 23
+                    Dim letters() = {"A", "C", "D", "E", "F", "G", "H", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Premium Economy")
+                        capacity += 1
+                    Next
+                Next
+                Return (seatmap, capacity)
+            Case AircraftType.Boeing737_800
+                For i As Integer = 1 To 30
+                    Dim letters() = {"A", "B", "C", "D", "E", "F"}
+                    For Each letter In letters
+                        If (letter = "D" Or letter = "E" Or letter = "F") And (i = 1) Then
+                            Continue For
+                        End If
+
+                        If (letter = "A" Or letter = "F") And (i = 15) Then
+                            Continue For
+                        End If
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+                Return (seatmap, capacity)
+
+                '        Case , AircraftType.Boeing737_MAX_8, AircraftType.AirbusA320
                 '        totalrows = 30
                 '        seatLetters = {"A", "B", "C", "D", "E", "F"} ' 6 seats per row
                 '        Case AircraftType.AirbusA321
@@ -773,11 +860,6 @@ Public Class RouteInfo
     End Sub
 End Class
 ' After RouteInfo class definition
-
-Public Class Seat
-    Public Property SeatNumber As String
-    Public Property SeatClass As String
-End Class
 
 Public Enum AircraftType
     Boeing737_800
