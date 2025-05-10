@@ -27,7 +27,6 @@ Partial Class Form2
         btnBooking = New Button()
         tbxTicketPayment = New TextBox()
         btnCalculate = New Button()
-        cbxClassTicket = New ComboBox()
         cbxPassengerTicket = New ComboBox()
         btnProcessTicket = New Button()
         btnSupport = New Button()
@@ -54,6 +53,7 @@ Partial Class Form2
         lblTotalTicket = New Label()
         lblTaxTicket = New Label()
         lblTicketAmt = New Label()
+        lblClass = New Label()
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -98,15 +98,6 @@ Partial Class Form2
         btnCalculate.TabIndex = 38
         btnCalculate.Text = " "
         btnCalculate.UseVisualStyleBackColor = False
-        ' 
-        ' cbxClassTicket
-        ' 
-        cbxClassTicket.FormattingEnabled = True
-        cbxClassTicket.Location = New Point(272, 314)
-        cbxClassTicket.Margin = New Padding(3, 2, 3, 2)
-        cbxClassTicket.Name = "cbxClassTicket"
-        cbxClassTicket.Size = New Size(177, 23)
-        cbxClassTicket.TabIndex = 28
         ' 
         ' cbxPassengerTicket
         ' 
@@ -378,11 +369,23 @@ Partial Class Form2
         lblTicketAmt.TabIndex = 60
         lblTicketAmt.Text = "Label15"
         ' 
+        ' lblClass
+        ' 
+        lblClass.AutoSize = True
+        lblClass.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblClass.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblClass.Location = New Point(269, 313)
+        lblClass.Name = "lblClass"
+        lblClass.Size = New Size(57, 25)
+        lblClass.TabIndex = 61
+        lblClass.Text = "Label1"
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 911)
+        Controls.Add(lblClass)
         Controls.Add(lblTicketAmt)
         Controls.Add(lblChangeTicket)
         Controls.Add(lblTotalTicket)
@@ -408,7 +411,6 @@ Partial Class Form2
         Controls.Add(tbxTicketPayment)
         Controls.Add(cbxPassengerTicket)
         Controls.Add(btnSupport)
-        Controls.Add(cbxClassTicket)
         Controls.Add(btnProcessTicket)
         Controls.Add(btnTicket)
         Controls.Add(btnBooking)
@@ -427,7 +429,6 @@ Partial Class Form2
     Friend WithEvents lblArrivalDate As Label
     Friend WithEvents cbxPassengerTicket As ComboBox
     Friend WithEvents btnProcessTicket As Button
-    Friend WithEvents cbxClassTicket As ComboBox
     Friend WithEvents btnCalculate As Button
     Friend WithEvents tbxTicketPayment As TextBox
     Friend WithEvents btnSupport As Button
@@ -454,4 +455,5 @@ Partial Class Form2
     Friend WithEvents lblSeatNumTicket As Label
     Friend WithEvents lblBookedUnderTicket As Label
     Friend WithEvents lblTicketAmt As Label
+    Friend WithEvents lblClass As Label
 End Class

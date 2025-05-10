@@ -56,6 +56,19 @@ Public Class Form1
         dtpArrivalDate.Visible = False ' arrival date & time is hidden
         cbxArrivalTime.Visible = False
 
+        LoadAllDestinations(cbxDestination)
+
+        Dim result = GenerateSeats(AircraftType.Boeing737_800)
+        Dim seatmap = result.seatmap
+        Dim capacity = result.capacity
+
+        ' Output to console/debug window
+        For Each seat As KeyValuePair(Of String, String) In seatmap
+            Debug.WriteLine($"Seat: {seat.Key}, Class: {seat.Value}")
+        Next
+
+        ' Show total capacity
+        MessageBox.Show("Total seats: " & capacity.ToString(), "Seatmap Test")
     End Sub
 
 
@@ -327,7 +340,7 @@ Public Class Form1
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
-        AllBookings.Add(booking)
+
 
         '=== 8. put all bookers in allpassengers and put them into the database ===
 
@@ -366,7 +379,7 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@departure", cbxDeparture.Text)
                     cmd.Parameters.AddWithValue("@baggage", passenger.BaggageAllowance)
                     cmd.Parameters.AddWithValue("@seat", passenger.SeatNumber)
-                    cmd.Parameters.AddWithValue("@pwd", passenger.IsPWD)
+                    cmd.Parameters.AddWithValue("@pwd", If(passenger.IsPWD, "Yes", "No"))
                     cmd.Parameters.AddWithValue("@bookedUnder", CurrentBooking.BookerFullName)
                     cmd.Parameters.AddWithValue("@numPassengers", passengerCount)
                     cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
@@ -401,5 +414,18 @@ Public Class Form1
 
     End Sub
 
+    Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
+        cbxDepartureTime.Text = ""
+
+        If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+        End If
+    End Sub
+
+    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
+        If FlightsExistForDate(dtpDepartDate.Value) = False Then
+            MessageBox.Show("No flights are scheduled for the selected departure date.")
+        End If
+    End Sub
 End Class
 

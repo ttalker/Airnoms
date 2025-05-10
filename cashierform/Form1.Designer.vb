@@ -167,6 +167,7 @@ Partial Class Form1
         ' cbxDeparture
         ' 
         cbxDeparture.FormattingEnabled = True
+        cbxDeparture.Items.AddRange(New Object() {"Manila"})
         cbxDeparture.Location = New Point(273, 293)
         cbxDeparture.Margin = New Padding(3, 2, 3, 2)
         cbxDeparture.Name = "cbxDeparture"
@@ -705,7 +706,6 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
-
         ' 
         ' btnExit
         ' 
@@ -716,7 +716,6 @@ Partial Class Form1
         btnExit.TabIndex = 35
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
-
         ' 
         ' Form1
         ' 
