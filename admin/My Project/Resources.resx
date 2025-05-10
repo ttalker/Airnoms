@@ -133,13 +133,19 @@
   <data name="Admin (transaction history)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Admin (transaction history).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Admin (add flight) (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Admin (add flight) (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Admin Panel(TEST)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Admin Panel(TEST).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Admin Panel(bookings) (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Admin Panel(bookings) (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Admin (add flight) (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Admin (add flight) (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Admin (add flight) (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Admin (add flight) (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delay flight)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delay flight).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

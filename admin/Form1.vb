@@ -150,6 +150,25 @@ Public Class Form1
         'ExitApplication(Me)
     End Sub
 
+    Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
+        ' to avoid minimizing the pop up ui when the user click on form1
+        Me.Enabled = False
+        Form4.Show()
+
+    End Sub
+
+    Private Sub btnCancelFlight_Click(sender As Object, e As EventArgs) Handles btnCancelFlight.Click
+        ' to avoid minimizing the pop up ui when the user click on form1
+        Me.Enabled = False
+        Form6.Show()
+    End Sub
+
+    Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
+        ' to avoid minimizing the pop up ui when the user click on form1
+        Me.Enabled = False
+        Form6.Show()
+    End Sub
+
     'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
     '    Form5.Show()
     'End Sub

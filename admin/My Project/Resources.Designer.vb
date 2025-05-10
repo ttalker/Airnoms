@@ -83,6 +83,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property Admin__add_flight___2_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("Admin (add flight) (2)", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Admin__transaction_history_() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Admin (transaction history)", resourceCulture)
@@ -136,6 +146,16 @@ Namespace My.Resources
         Friend ReadOnly Property Admin_Panel_TEST_2() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Admin Panel(TEST)2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property delay_flight_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("delay flight)", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

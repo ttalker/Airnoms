@@ -49,7 +49,6 @@ Partial Class Form4
         dtpArrivalDateUser = New DateTimePicker()
         cbxDepartureUser = New ComboBox()
         cbxDestinationUser = New ComboBox()
-        pbxUserBooking = New PictureBox()
         cbxSeatNumberPassenger6 = New ComboBox()
         tbxFullnamePassenger6 = New TextBox()
         btnSupportUser = New Button()
@@ -91,7 +90,7 @@ Partial Class Form4
         chbPWDPassenger6 = New CheckBox()
         lblCover = New Label()
         ErrorProvider1 = New ErrorProvider(components)
-        CType(pbxUserBooking, ComponentModel.ISupportInitialize).BeginInit()
+        cbxClassUser = New ComboBox()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -239,7 +238,7 @@ Partial Class Form4
         ' 
         cbxSeatNumberUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxSeatNumberUser.FormattingEnabled = True
-        cbxSeatNumberUser.Location = New Point(1087, 312)
+        cbxSeatNumberUser.Location = New Point(1087, 331)
         cbxSeatNumberUser.Margin = New Padding(2)
         cbxSeatNumberUser.Name = "cbxSeatNumberUser"
         cbxSeatNumberUser.Size = New Size(145, 28)
@@ -268,7 +267,7 @@ Partial Class Form4
         ' tbxFullnameUser
         ' 
         tbxFullnameUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbxFullnameUser.Location = New Point(1086, 418)
+        tbxFullnameUser.Location = New Point(1087, 437)
         tbxFullnameUser.Margin = New Padding(2)
         tbxFullnameUser.Name = "tbxFullnameUser"
         tbxFullnameUser.Size = New Size(217, 27)
@@ -277,7 +276,7 @@ Partial Class Form4
         ' tbxAgeUser
         ' 
         tbxAgeUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbxAgeUser.Location = New Point(1086, 473)
+        tbxAgeUser.Location = New Point(1087, 484)
         tbxAgeUser.Margin = New Padding(2)
         tbxAgeUser.Name = "tbxAgeUser"
         tbxAgeUser.Size = New Size(63, 27)
@@ -287,7 +286,7 @@ Partial Class Form4
         ' 
         dtpBookingDateUser.CalendarFont = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         dtpBookingDateUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        dtpBookingDateUser.Location = New Point(1087, 254)
+        dtpBookingDateUser.Location = New Point(1086, 231)
         dtpBookingDateUser.Margin = New Padding(2)
         dtpBookingDateUser.Name = "dtpBookingDateUser"
         dtpBookingDateUser.Size = New Size(146, 27)
@@ -354,15 +353,6 @@ Partial Class Form4
         cbxDestinationUser.Name = "cbxDestinationUser"
         cbxDestinationUser.Size = New Size(186, 29)
         cbxDestinationUser.TabIndex = 13
-        ' 
-        ' pbxUserBooking
-        ' 
-        pbxUserBooking.BackgroundImage = My.Resources.Resources.BOOKING_PAGE4
-        pbxUserBooking.Location = New Point(2, -1)
-        pbxUserBooking.Name = "pbxUserBooking"
-        pbxUserBooking.Size = New Size(1546, 914)
-        pbxUserBooking.TabIndex = 82
-        pbxUserBooking.TabStop = False
         ' 
         ' cbxSeatNumberPassenger6
         ' 
@@ -652,7 +642,7 @@ Partial Class Form4
         cbxBgAllowanceUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxBgAllowanceUser.FormattingEnabled = True
         cbxBgAllowanceUser.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
-        cbxBgAllowanceUser.Location = New Point(1086, 367)
+        cbxBgAllowanceUser.Location = New Point(1087, 381)
         cbxBgAllowanceUser.Margin = New Padding(2)
         cbxBgAllowanceUser.Name = "cbxBgAllowanceUser"
         cbxBgAllowanceUser.Size = New Size(145, 28)
@@ -661,7 +651,7 @@ Partial Class Form4
         ' tbxAddressUser
         ' 
         tbxAddressUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbxAddressUser.Location = New Point(1086, 614)
+        tbxAddressUser.Location = New Point(1087, 623)
         tbxAddressUser.Margin = New Padding(2)
         tbxAddressUser.Name = "tbxAddressUser"
         tbxAddressUser.Size = New Size(218, 27)
@@ -670,7 +660,7 @@ Partial Class Form4
         ' dtpDateBirthUser
         ' 
         dtpDateBirthUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        dtpDateBirthUser.Location = New Point(1086, 521)
+        dtpDateBirthUser.Location = New Point(1087, 533)
         dtpDateBirthUser.Margin = New Padding(2)
         dtpDateBirthUser.Name = "dtpDateBirthUser"
         dtpDateBirthUser.Size = New Size(146, 27)
@@ -681,7 +671,7 @@ Partial Class Form4
         cbxGenderUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxGenderUser.FormattingEnabled = True
         cbxGenderUser.Items.AddRange(New Object() {"Male", "Female", "Others"})
-        cbxGenderUser.Location = New Point(1085, 568)
+        cbxGenderUser.Location = New Point(1087, 577)
         cbxGenderUser.Margin = New Padding(2)
         cbxGenderUser.Name = "cbxGenderUser"
         cbxGenderUser.Size = New Size(79, 28)
@@ -691,7 +681,7 @@ Partial Class Form4
         ' 
         chbPWDUser.AutoSize = True
         chbPWDUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        chbPWDUser.Location = New Point(1087, 674)
+        chbPWDUser.Location = New Point(1087, 690)
         chbPWDUser.Name = "chbPWDUser"
         chbPWDUser.Size = New Size(15, 14)
         chbPWDUser.TabIndex = 117
@@ -754,10 +744,21 @@ Partial Class Form4
         ' 
         ErrorProvider1.ContainerControl = Me
         ' 
+        ' cbxClassUser
+        ' 
+        cbxClassUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxClassUser.FormattingEnabled = True
+        cbxClassUser.Location = New Point(1086, 277)
+        cbxClassUser.Margin = New Padding(2)
+        cbxClassUser.Name = "cbxClassUser"
+        cbxClassUser.Size = New Size(145, 28)
+        cbxClassUser.TabIndex = 78
+        ' 
         ' Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
+        BackgroundImage = My.Resources.Resources.BOOKING_PAGE__2_
         ClientSize = New Size(1547, 881)
         Controls.Add(lblCover)
         Controls.Add(chbPWDPassenger6)
@@ -800,6 +801,7 @@ Partial Class Form4
         Controls.Add(cbxSeatNumberPassenger6)
         Controls.Add(tbxFullnamePassenger6)
         Controls.Add(cbxArrivalTimeUser)
+        Controls.Add(cbxClassUser)
         Controls.Add(cbxSeatNumberUser)
         Controls.Add(cbxDepartTimeUser)
         Controls.Add(btnBookUser)
@@ -825,13 +827,11 @@ Partial Class Form4
         Controls.Add(tbxFullnamePassenger1)
         Controls.Add(tbxFullnamePassenger2)
         Controls.Add(dtpBookingDateUser)
-        Controls.Add(pbxUserBooking)
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 950)
         Name = "Form4"
         StartPosition = FormStartPosition.CenterScreen
         Text = "BOOKING"
-        CType(pbxUserBooking, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -863,7 +863,6 @@ Partial Class Form4
     Friend WithEvents dtpArrivalDateUser As DateTimePicker
     Friend WithEvents cbxDepartureUser As ComboBox
     Friend WithEvents cbxDestinationUser As ComboBox
-    Friend WithEvents pbxUserBooking As PictureBox
     Friend WithEvents cbxSeatNumberPassenger6 As ComboBox
     Friend WithEvents tbxFullnamePassenger6 As TextBox
     Friend WithEvents btnSupportUser As Button
@@ -905,4 +904,5 @@ Partial Class Form4
     Friend WithEvents chbPWDPassenger6 As CheckBox
     Friend WithEvents lblCover As Label
     Friend WithEvents ErrorProvider1 As ErrorProvider
+    Friend WithEvents cbxClassUser As ComboBox
 End Class

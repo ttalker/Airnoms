@@ -23,7 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         btnBooking = New Button()
         btnTicket = New Button()
         btnClear = New Button()
@@ -42,13 +41,11 @@ Partial Class Form1
         BTNFILL = New Button()
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
-        pbxCashierBooking = New PictureBox()
         ErrorProvider1 = New ErrorProvider(components)
         tbxAge = New TextBox()
         dtpBirthdate = New DateTimePicker()
         cbxGender = New ComboBox()
         chkPWD = New CheckBox()
-        cbxBaggage = New ComboBox()
         cbxpassbag1 = New ComboBox()
         chkpasspwd1 = New CheckBox()
         cbxpassseat1 = New ComboBox()
@@ -92,7 +89,7 @@ Partial Class Form1
         chkpasspwd6 = New CheckBox()
         cbxpassbag6 = New ComboBox()
         btnExit = New Button()
-        CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
+        cbxBaggage = New ComboBox()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -167,7 +164,7 @@ Partial Class Form1
         ' cbxDeparture
         ' 
         cbxDeparture.FormattingEnabled = True
-        cbxDeparture.Location = New Point(273, 293)
+        cbxDeparture.Location = New Point(278, 294)
         cbxDeparture.Margin = New Padding(3, 2, 3, 2)
         cbxDeparture.Name = "cbxDeparture"
         cbxDeparture.Size = New Size(203, 23)
@@ -176,7 +173,7 @@ Partial Class Form1
         ' cbxDestination
         ' 
         cbxDestination.FormattingEnabled = True
-        cbxDestination.Location = New Point(272, 341)
+        cbxDestination.Location = New Point(278, 332)
         cbxDestination.Margin = New Padding(3, 2, 3, 2)
         cbxDestination.Name = "cbxDestination"
         cbxDestination.Size = New Size(203, 23)
@@ -184,7 +181,7 @@ Partial Class Form1
         ' 
         ' dtpDepartDate
         ' 
-        dtpDepartDate.Location = New Point(272, 389)
+        dtpDepartDate.Location = New Point(278, 370)
         dtpDepartDate.Margin = New Padding(3, 2, 3, 2)
         dtpDepartDate.Name = "dtpDepartDate"
         dtpDepartDate.Size = New Size(110, 23)
@@ -192,7 +189,7 @@ Partial Class Form1
         ' 
         ' dtpArrivalDate
         ' 
-        dtpArrivalDate.Location = New Point(272, 435)
+        dtpArrivalDate.Location = New Point(278, 412)
         dtpArrivalDate.Margin = New Padding(3, 2, 3, 2)
         dtpArrivalDate.Name = "dtpArrivalDate"
         dtpArrivalDate.Size = New Size(110, 23)
@@ -200,7 +197,7 @@ Partial Class Form1
         ' 
         ' dtpBookingDate
         ' 
-        dtpBookingDate.Location = New Point(626, 647)
+        dtpBookingDate.Location = New Point(626, 632)
         dtpBookingDate.Margin = New Padding(3, 2, 3, 2)
         dtpBookingDate.Name = "dtpBookingDate"
         dtpBookingDate.Size = New Size(110, 23)
@@ -225,7 +222,7 @@ Partial Class Form1
         ' cbxDepartureTime
         ' 
         cbxDepartureTime.FormattingEnabled = True
-        cbxDepartureTime.Location = New Point(602, 343)
+        cbxDepartureTime.Location = New Point(602, 370)
         cbxDepartureTime.Margin = New Padding(3, 2, 3, 2)
         cbxDepartureTime.Name = "cbxDepartureTime"
         cbxDepartureTime.Size = New Size(134, 23)
@@ -234,7 +231,7 @@ Partial Class Form1
         ' cbxArrivalTime
         ' 
         cbxArrivalTime.FormattingEnabled = True
-        cbxArrivalTime.Location = New Point(602, 392)
+        cbxArrivalTime.Location = New Point(602, 412)
         cbxArrivalTime.Margin = New Padding(3, 2, 3, 2)
         cbxArrivalTime.Name = "cbxArrivalTime"
         cbxArrivalTime.Size = New Size(134, 23)
@@ -254,7 +251,7 @@ Partial Class Form1
         ' 
         cbxSeatNumber.FormattingEnabled = True
         cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
-        cbxSeatNumber.Location = New Point(602, 293)
+        cbxSeatNumber.Location = New Point(602, 332)
         cbxSeatNumber.Margin = New Padding(3, 2, 3, 2)
         cbxSeatNumber.Name = "cbxSeatNumber"
         cbxSeatNumber.Size = New Size(108, 23)
@@ -269,15 +266,6 @@ Partial Class Form1
         btnSupport.TabIndex = 11
         btnSupport.Text = " "
         btnSupport.UseVisualStyleBackColor = True
-        ' 
-        ' pbxCashierBooking
-        ' 
-        pbxCashierBooking.BackgroundImage = CType(resources.GetObject("pbxCashierBooking.BackgroundImage"), Image)
-        pbxCashierBooking.Location = New Point(-2, -2)
-        pbxCashierBooking.Name = "pbxCashierBooking"
-        pbxCashierBooking.Size = New Size(1549, 915)
-        pbxCashierBooking.TabIndex = 34
-        pbxCashierBooking.TabStop = False
         ' 
         ' ErrorProvider1
         ' 
@@ -296,7 +284,7 @@ Partial Class Form1
         dtpBirthdate.Location = New Point(275, 712)
         dtpBirthdate.Margin = New Padding(3, 2, 3, 2)
         dtpBirthdate.Name = "dtpBirthdate"
-        dtpBirthdate.Size = New Size(203, 23)
+        dtpBirthdate.Size = New Size(156, 23)
         dtpBirthdate.TabIndex = 38
         ' 
         ' cbxGender
@@ -312,21 +300,11 @@ Partial Class Form1
         ' chkPWD
         ' 
         chkPWD.AutoSize = True
-        chkPWD.Location = New Point(568, 782)
+        chkPWD.Location = New Point(626, 785)
         chkPWD.Name = "chkPWD"
         chkPWD.Size = New Size(15, 14)
         chkPWD.TabIndex = 40
         chkPWD.UseVisualStyleBackColor = True
-        ' 
-        ' cbxBaggage
-        ' 
-        cbxBaggage.FormattingEnabled = True
-        cbxBaggage.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
-        cbxBaggage.Location = New Point(677, 712)
-        cbxBaggage.Margin = New Padding(3, 2, 3, 2)
-        cbxBaggage.Name = "cbxBaggage"
-        cbxBaggage.Size = New Size(59, 23)
-        cbxBaggage.TabIndex = 41
         ' 
         ' cbxpassbag1
         ' 
@@ -705,7 +683,6 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
-
         ' 
         ' btnExit
         ' 
@@ -716,13 +693,23 @@ Partial Class Form1
         btnExit.TabIndex = 35
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
-
+        ' 
+        ' cbxBaggage
+        ' 
+        cbxBaggage.FormattingEnabled = True
+        cbxBaggage.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxBaggage.Location = New Point(626, 712)
+        cbxBaggage.Margin = New Padding(3, 2, 3, 2)
+        cbxBaggage.Name = "cbxBaggage"
+        cbxBaggage.Size = New Size(59, 23)
+        cbxBaggage.TabIndex = 41
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
+        BackgroundImage = My.Resources.Resources.BOOKING_ROUND_TRIP__3___2_
         ClientSize = New Size(1518, 874)
         Controls.Add(cbxpassgen6)
         Controls.Add(dtppassbday6)
@@ -790,12 +777,10 @@ Partial Class Form1
         Controls.Add(dtpBookingDate)
         Controls.Add(tbxFullname)
         Controls.Add(tbxAddress)
-        Controls.Add(pbxCashierBooking)
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 969)
         Name = "Form1"
         Text = " CASHIER"
-        CType(pbxCashierBooking, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -828,12 +813,10 @@ Partial Class Form1
     Friend WithEvents BTNFILL As Button
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
-    Friend WithEvents pbxCashierBooking As PictureBox
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents cbxGender As ComboBox
     Friend WithEvents dtpBirthdate As DateTimePicker
     Friend WithEvents tbxAge As TextBox
-    Friend WithEvents cbxBaggage As ComboBox
     Friend WithEvents chkPWD As CheckBox
     Friend WithEvents chkpasspwd1 As CheckBox
     Friend WithEvents cbxpassbag1 As ComboBox
@@ -878,4 +861,5 @@ Partial Class Form1
     Friend WithEvents chkpasspwd2 As CheckBox
     Friend WithEvents cbxpassbag2 As ComboBox
     Friend WithEvents btnExit As Button
+    Friend WithEvents cbxBaggage As ComboBox
 End Class

@@ -38,12 +38,7 @@ Public Class Form1
         MakeTransparent(btnExit)
         MakeTransparent(btnClear)
         MakeTransparent(btnBook)
-        btnBooking.Parent = pbxCashierBooking
-        btnTicket.Parent = pbxCashierBooking
-        btnSupport.Parent = pbxCashierBooking
-        btnExit.Parent = pbxCashierBooking
-        btnClear.Parent = pbxCashierBooking
-        btnBook.Parent = pbxCashierBooking ' transparency of the buttons
+        ' transparency of the buttons
         hoverButton(btnBooking)
         hoverButton(btnTicket)
         hoverButton(btnSupport)
@@ -122,7 +117,7 @@ Public Class Form1
     End Sub
 
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles pbxCashierBooking.Click
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
         DoubleBuffered = True
     End Sub
 
@@ -400,6 +395,7 @@ Public Class Form1
 
 
     End Sub
+
 
 End Class
 

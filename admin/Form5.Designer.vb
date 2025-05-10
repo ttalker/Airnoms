@@ -35,7 +35,6 @@ Partial Class Form5
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(97, 27)
         btnSearch.TabIndex = 0
-        btnSearch.Text = "SEARCH"
         btnSearch.UseVisualStyleBackColor = True
         ' 
         ' btnBack
@@ -44,7 +43,6 @@ Partial Class Form5
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(110, 44)
         btnBack.TabIndex = 1
-        btnBack.Text = "BACK"
         btnBack.UseVisualStyleBackColor = True
         ' 
         ' dgvPassengers
