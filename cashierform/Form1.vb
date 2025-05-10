@@ -132,6 +132,8 @@ Public Class Form1
     End Sub
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+        'Clear previous passengers when booking again
+        allPassengers.Clear()
 
         ' Clear previous error states
         ErrorProvider1.Clear()
@@ -202,6 +204,8 @@ Public Class Form1
             hasError = True
         End If
 
+
+        'Check for errors and exit the process if there is errors 
         If hasError Then
             MessageBox.Show("Please correct the errors before continuing.")
             Exit Sub
@@ -350,9 +354,10 @@ Public Class Form1
         MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
 
 
+
+
         btnClear.PerformClick()
-        Form2.Show()
-        Me.Hide()
+
 
     End Sub
 
