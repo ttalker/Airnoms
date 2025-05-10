@@ -10,9 +10,10 @@ Public Module Module1
     Public conn As MySqlConnection
     Public cmd2 As MySqlCommand
 
+
+    Public Property isBooked As Boolean
     Public Property allPassengers As New List(Of PassengerInfo)
 
-    ' Database connection strings - Using property for better management
     Private ReadOnly Property AdminConnectionString As String
         Get
             Return "server=100.89.19.71; username=root; password=; database=comprog_db"
@@ -457,13 +458,20 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+    Public Sub ExitToUserForm(currentForm As Form)
+        Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-    Public Function ConfirmExitToUserForm() As Boolean
-        Dim result As DialogResult = MessageBox.Show("Do you want to go back to the main user form?", "Exit",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        Return result = DialogResult.Yes
-    End Function
+        If result = DialogResult.Yes Then
+            currentForm.Hide()
 
+
+            ' Create and show the login form from the other project
+            Dim loginForm As New userForm.Form1()
+            loginForm.Show()
+        End If
+    End Sub
+        
+        
     Public Function GenerateSeats(Type As AircraftType) As (seatmap As Dictionary(Of String, String), capacity As Integer)
         Dim seatmap As New Dictionary(Of String, String)
         Dim seat As String
@@ -898,8 +906,6 @@ Public Module Module1
 
 
     End Function
-
-
 
 End Module
 

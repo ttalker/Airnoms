@@ -147,7 +147,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        'ExitApplication(Me)
+           ExitToUserForm(Me)
     End Sub
 
     'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click

@@ -22,6 +22,9 @@
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector NET 9.2\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="userForm">
+      <HintPath>..\userform\bin\Debug\net8.0-windows\userForm.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
