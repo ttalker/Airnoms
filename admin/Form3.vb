@@ -12,17 +12,22 @@ Public Class Form3
         MakeTransparent(btnTransactions)
         MakeTransparent(btnBookings)
         MakeTransparent(btnExit)
+        MakeTransparent(btnSearch)
+        MakeTransparent(btnViewInfo)
         btnFlights.Parent = pbxAdmin
         btnTransactions.Parent = pbxAdmin
         btnBookings.Parent = pbxAdmin
         btnExit.Parent = pbxAdmin
-
+        btnSearch.Parent = pbxAdmin
+        btnViewInfo.Parent = pbxAdmin
 
         ' transparency of the buttons
         hoverButton(btnFlights)
         hoverButton(btnTransactions)
         hoverButton(btnBookings)
         hoverButton(btnExit)
+        hoverButton(btnSearch)
+        hoverButton(btnViewInfo)
         ' transparency of the background
 
         Me.DoubleBuffered = True
@@ -102,6 +107,21 @@ Public Class Form3
         dgvBookings.Columns("address").Visible = False
         dgvBookings.Columns("pwd_status").Visible = False
         ' Repeat for other columns that are only shown in labels
+        With dgvBookings.ColumnHeadersDefaultCellStyle
+            .BackColor = Color.FromArgb(17, 47, 78) ' Dark blue header
+            .ForeColor = Color.White                ' White header text
+            .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+        End With
+        dgvBookings.EnableHeadersVisualStyles = False
+
+        ' Row styling
+        With dgvBookings.DefaultCellStyle
+            .BackColor = Color.White                ' White row background
+            .ForeColor = Color.Black                ' Black text
+            .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .SelectionBackColor = Color.LightBlue
+            .SelectionForeColor = Color.Black
+        End With
     End Sub
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchText As String = tbxSearchInput.Text.Trim().ToLower()

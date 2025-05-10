@@ -82,7 +82,21 @@ Public Class Form1
         dgvFlights.AllowUserToDeleteRows = False
         dgvFlights.ReadOnly = True
         dgvFlights.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        With dgvFlights.ColumnHeadersDefaultCellStyle
+            .BackColor = Color.FromArgb(17, 47, 78) ' Dark blue header
+            .ForeColor = Color.White                ' White header text
+            .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+        End With
+        dgvFlights.EnableHeadersVisualStyles = False
 
+        ' Row styling
+        With dgvFlights.DefaultCellStyle
+            .BackColor = Color.White                ' White row background
+            .ForeColor = Color.Black                ' Black text
+            .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+            .SelectionBackColor = Color.LightBlue
+            .SelectionForeColor = Color.Black
+        End With
         ' Add color coding based on flight status
         For Each row As DataGridViewRow In dgvFlights.Rows
             Dim status As String = row.Cells("Status").Value.ToString()
@@ -147,7 +161,19 @@ Public Class Form1
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-           ExitToUserForm(Me)
+        ExitToUserForm(Me)
+    End Sub
+
+    Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
+        Form5.Show()
+    End Sub
+
+    Private Sub btnCancelFlight_Click(sender As Object, e As EventArgs) Handles btnCancelFlight.Click
+        Form4.Show()
+    End Sub
+
+    Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
+        'Form6.Show()
     End Sub
 
     'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
