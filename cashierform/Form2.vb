@@ -169,5 +169,7 @@ Public Class Form2
         End If
     End Sub
 
+    Private Sub cbxClassTicket_SelectedIndexChanged(sender As Object, e As EventArgs)
 
+    End Sub
 End Class
