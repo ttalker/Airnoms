@@ -327,7 +327,7 @@ Public Class Form1
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
-        AllBookings.Add(booking)
+
 
         '=== 8. put all bookers in allpassengers and put them into the database ===
 

@@ -155,7 +155,7 @@ Public Module Module1
         End If
     End Function
 
-    Public AllBookings As New List(Of BookingInfo)
+
     Public CurrentBooking As BookingInfo
 
     Public AllRoutes As New List(Of RouteInfo) From {
