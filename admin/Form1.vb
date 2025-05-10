@@ -173,7 +173,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
-        Form6.Show()
+        'Form6.Show()
     End Sub
 
     'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
