@@ -35,51 +35,43 @@ Public Class Form1
         btnCancelFlight.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
 
 
-        'DeleteOldFlights()
-        GenerateAndSaveFlightsIfNotExist()
+
+        GenerateAndSaveFlightsIfNotExist(Date.Today)
         AddStatusTimerToForm1_Load()
         UpdateFlightStatuses()
-        LoadDailyFlights()
-
+        LoadFlightsByDate(Date.Today)
     End Sub
-    Private Sub LoadDailyFlights()
-        Dim today As Date = Date.Today
+    Public Sub LoadFlightsByDate(flightDate As Date)
         Dim dt As New DataTable()
+        Try
+            openCon()
+            Dim query As String = "SELECT flight_id as 'Flight No.', 
+                                     departure as 'From', 
+                                     destination as 'To', 
+                                     departure_date as 'Date',
+                                     departure_time as 'Departure', 
+                                     arrival_time as 'Arrival Time', 
+                                     capacity as 'Capacity',
+                                     status as 'Status'
+                              FROM flight_table 
+                              WHERE departure_date = @DepartureDate
+                              ORDER BY departure_time"
 
-        openCon()
-        Dim query As String = "SELECT flight_id as 'Flight No.', 
-                         departure as 'From', 
-                         destination as 'To', 
-                         departure_date as 'Date',
-                         departure_time as 'Departure', 
-                         arrival_time as 'Arrival Time', 
-                         capacity as 'Capacity',
-                         status as 'Status'
-                  FROM flight_table 
-                  WHERE departure_date = @DepartureDate
-                  ORDER BY departure_time"
+            Dim adapter As New MySqlDataAdapter(query, con)
+            adapter.SelectCommand.Parameters.AddWithValue("@DepartureDate", flightDate)
+            adapter.Fill(dt)
+            con.Close()
 
-        Dim adapter As New MySqlDataAdapter(query, con)
-        adapter.SelectCommand.Parameters.AddWithValue("@DepartureDate", today)
-        adapter.Fill(dt)
-        con.Close()
-        'For Each row As DataRow In dt.Rows
-        '    Console.WriteLine($"Loaded Flight ID: {row("Flight No.")}, From: {row("From")}, To: {row("To")}")
-        'Next
-        'MessageBox.Show("Total Rows in DataTable: " & dt.Rows.Count)
+            dgvFlights.DataSource = Nothing
+            dgvFlights.DataSource = dt
+            dgvFlights.Refresh()
 
-        ' **Ensure DataGridView refreshes properly**
-        dgvFlights.DataSource = Nothing
-        dgvFlights.DataSource = dt
-        dgvFlights.Refresh()
-
-        ' Ensure rows are visible after loading data
-        For Each row As DataGridViewRow In dgvFlights.Rows
-            row.Visible = True
-        Next
-
-        ' Format the DataGridView
-        FormatFlightDataGridView()
+            FormatFlightDataGridView()
+        Catch ex As Exception
+            MessageBox.Show($"Error loading flights: {ex.Message}")
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
     End Sub
 
     Private Sub FormatFlightDataGridView()
@@ -133,7 +125,7 @@ Public Class Form1
         ' Update flight statuses first
         UpdateFlightStatuses()
         ' Then load flights
-        LoadDailyFlights()
+        LoadFlightsByDate(Date.Today)
     End Sub
 
     Private Sub btnFlights_Click(sender As Object, e As EventArgs) Handles btnFlights.Click
