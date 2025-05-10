@@ -464,6 +464,182 @@ Public Module Module1
         Return result = DialogResult.Yes
     End Function
 
+    Public Function GenerateSeats(Type As AircraftType) As (seatmap As Dictionary(Of String, String), capacity As Integer)
+        Dim seatmap As New Dictionary(Of String, String)
+        Dim seat As String
+        Dim capacity As Integer
+        Select Case Type
+            Case AircraftType.Boeing747_8
+
+                'Add first class seats
+                For i As Integer = 1 To 3
+                    Dim letters() = {"A", "D", "G", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "First")
+                        capacity += 1
+                    Next
+                Next
+                'Add business seats
+                For i As Integer = 4 To 11
+                    Dim letters() = {"A", "C", "D", "G", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Business")
+                        capacity += 1
+                    Next
+                Next
+
+                For i As Integer = 81 To 88
+                    Dim letters() = {"A", "C", "H", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Business")
+                        capacity += 1
+                    Next
+                Next
+
+                'Add economy seats
+                For i As Integer = 16 To 20
+                    Dim letters() = {"A", "B", "C", "D", "E", "F", "G", "H", "J", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                For i As Integer = 34 To 49
+                    Dim letters() = {"A", "B", "C", "D", "E", "F", "G", "H", "J", "K"}
+                    For Each letter In letters
+
+                        ' Stop using A after row 44
+                        If letter = "A" And i > 44 Then
+                            Continue For
+                        End If
+
+                        ' Stop using B, C, H, J after row 47
+                        If (letter = "B" Or letter = "C" Or letter = "H" Or letter = "J") And i > 47 Then
+                            Continue For
+                        End If
+
+                        ' Stop using K after row 44
+                        If letter = "K" And i > 44 Then
+                            Continue For
+                        End If
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                For i As Integer = 22 To 25
+                    Dim letters() = {"A", "C", "D", "E", "F", "G", "H", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Premium Economy")
+                        capacity += 1
+                    Next
+                Next
+                Return (seatmap, capacity)
+            Case AircraftType.Boeing777_300ER
+
+                'generate business
+                For i As Integer = 1 To 6
+                    Dim letters() = {"A", "C", "D", "E", "G", "H", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Business")
+                        capacity += 1
+                    Next
+                Next
+                'generate economy 
+                For i As Integer = 31 To 72
+                    Dim letters() = {"A", "B", "C", "D", "E", "F", "G", "H", "J", "K"}
+                    For Each letter In letters
+                        If (i > 54 AndAlso i < 61) Then
+                            Continue For
+                        End If
+
+
+                        If letter = "B" And (i > 52 AndAlso i < 61) Then
+                            Continue For
+                        End If
+
+
+                        If (letter = "A" Or letter = "C" Or letter = "H" Or letter = "K") And (i > 53 AndAlso i < 61) Then
+                            Continue For
+                        End If
+
+                        If (letter = "C" Or letter = "H") And (i > 68) Then
+                            Continue For
+                        End If
+
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                Return (seatmap, capacity)
+
+            Case AircraftType.Boeing787_9
+
+                'generate business
+                For i As Integer = 1 To 8
+                    Dim letters() = {"A", "D", "G", "K"}
+                    For Each letter In letters
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Business")
+                        capacity += 1
+                    Next
+                Next
+                'generate economy 
+                For i As Integer = 18 To 46
+                    Dim letters() = {"A", "B", "C", "D", "E", "G", "H", "J", "K"}
+                    For Each letter In letters
+
+                        If (letter = "A" Or letter = "K") And (i > 44) Then
+                            Continue For
+                        End If
+
+
+                        If (letter = "D" Or letter = "E" Or letter = "G" Or letter = "H" Or letter = "J" Or letter = "K") And (i = 30) Then
+                            Continue For
+                        End If
+
+                        If (letter = "B" Or letter = "C" Or letter = "H" Or letter = "J") And (i > 45) Then
+                            Continue For
+                        End If
+
+
+                        seat = i.ToString & letter
+                        seatmap.Add(seat, "Economy")
+                        capacity += 1
+                    Next
+                Next
+
+                Return (seatmap, capacity)
+                ', AircraftType.AirbusA350_900
+                '        Case AircraftType.Boeing737_800, AircraftType.Boeing737_MAX_8, AircraftType.AirbusA320
+                '        totalrows = 30
+                '        seatLetters = {"A", "B", "C", "D", "E", "F"} ' 6 seats per row
+                '        Case AircraftType.AirbusA321
+                '        totalrows = 35
+                '        seatLetters = {"A", "B", "C", "D", "E", "F"}
+                '        Case AircraftType.AirbusA330_300, AircraftType.AirbusA330_800
+                '        totalrows = 50
+                '        seatLetters = {"A", "B", "C", "D", "E", "F", "G", "H"} ' 8 seats per row
+                '        Case Else
+                '        totalrows = 30
+                '        seatLetters = {"A", "B", "C", "D", "E", "F"}
+        End Select
+
+
+    End Function
+
 
 
 End Module
@@ -597,3 +773,22 @@ Public Class RouteInfo
     End Sub
 End Class
 ' After RouteInfo class definition
+
+Public Class Seat
+    Public Property SeatNumber As String
+    Public Property SeatClass As String
+End Class
+
+Public Enum AircraftType
+    Boeing737_800
+    Boeing747_8
+    Boeing777_300ER
+    Boeing787_9
+    Boeing737_MAX_8
+    AirbusA320
+    AirbusA321
+    AirbusA330_300
+    AirbusA330_800
+    AirbusA350_900
+End Enum
+
