@@ -2,7 +2,6 @@
 Imports SharedModule
 Imports System.Windows.Forms
 
-
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -316,12 +315,12 @@ Public Class Form1
                 coPassengers:=coPassengers
             )
 
-            ' === 6. Success Message ===
-            MessageBox.Show("Booking validated and stored successfully!")
-            isBooked = True
+        ' === 6. Success Message ===
+        MessageBox.Show("Booking validated and stored successfully!")
+        isBooked = True
 
-            '=== 7. Store the info to a global list ===
-            CurrentBooking = booking
+        '=== 7. Store the info to a global list ===
+        CurrentBooking = booking
         AllBookings.Add(booking)
 
         btnClear.PerformClick()
@@ -330,5 +329,8 @@ Public Class Form1
 
     End Sub
 
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        ExitToUserForm(Me)
+    End Sub
 End Class
 

@@ -25,7 +25,6 @@ Partial Class Form3
         btnExit = New Button()
         btnBookings = New Button()
         btnFlights = New Button()
-        pbxAdmin = New PictureBox()
         btnTransactions = New Button()
         lblBookingDateAdmin = New Label()
         lblSeatNumAdmin = New Label()
@@ -36,7 +35,12 @@ Partial Class Form3
         lblGenderAdmin = New Label()
         lblAddressAdmin = New Label()
         lblPWDAdmin = New Label()
-        TextBox1 = New TextBox()
+        tbxSearchInput = New TextBox()
+        dgvBookings = New DataGridView()
+        pbxAdmin = New PictureBox()
+        btnSearch = New Button()
+        btnViewInfo = New Button()
+        CType(dgvBookings, ComponentModel.ISupportInitialize).BeginInit()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -67,15 +71,6 @@ Partial Class Form3
         btnFlights.Text = " "
         btnFlights.UseVisualStyleBackColor = True
         ' 
-        ' pbxAdmin
-        ' 
-        pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_bookings___2_
-        pbxAdmin.Location = New Point(-3, -2)
-        pbxAdmin.Name = "pbxAdmin"
-        pbxAdmin.Size = New Size(1552, 884)
-        pbxAdmin.TabIndex = 5
-        pbxAdmin.TabStop = False
-        ' 
         ' btnTransactions
         ' 
         btnTransactions.Location = New Point(280, 27)
@@ -88,107 +83,145 @@ Partial Class Form3
         ' lblBookingDateAdmin
         ' 
         lblBookingDateAdmin.AutoSize = True
-        lblBookingDateAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBookingDateAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBookingDateAdmin.Location = New Point(1168, 267)
         lblBookingDateAdmin.Name = "lblBookingDateAdmin"
-        lblBookingDateAdmin.Size = New Size(61, 25)
+        lblBookingDateAdmin.Size = New Size(57, 20)
         lblBookingDateAdmin.TabIndex = 13
         lblBookingDateAdmin.Text = "Label2"
         ' 
         ' lblSeatNumAdmin
         ' 
         lblSeatNumAdmin.AutoSize = True
-        lblSeatNumAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblSeatNumAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSeatNumAdmin.Location = New Point(1168, 320)
         lblSeatNumAdmin.Name = "lblSeatNumAdmin"
-        lblSeatNumAdmin.Size = New Size(61, 25)
+        lblSeatNumAdmin.Size = New Size(57, 20)
         lblSeatNumAdmin.TabIndex = 14
         lblSeatNumAdmin.Text = "Label2"
         ' 
         ' lblBaggageAllowanceAdmin
         ' 
         lblBaggageAllowanceAdmin.AutoSize = True
-        lblBaggageAllowanceAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblBaggageAllowanceAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblBaggageAllowanceAdmin.Location = New Point(1168, 374)
         lblBaggageAllowanceAdmin.Name = "lblBaggageAllowanceAdmin"
-        lblBaggageAllowanceAdmin.Size = New Size(61, 25)
+        lblBaggageAllowanceAdmin.Size = New Size(57, 20)
         lblBaggageAllowanceAdmin.TabIndex = 15
         lblBaggageAllowanceAdmin.Text = "Label2"
         ' 
         ' lblFullNameAdmin
         ' 
         lblFullNameAdmin.AutoSize = True
-        lblFullNameAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblFullNameAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblFullNameAdmin.Location = New Point(1168, 430)
         lblFullNameAdmin.Name = "lblFullNameAdmin"
-        lblFullNameAdmin.Size = New Size(61, 25)
+        lblFullNameAdmin.Size = New Size(57, 20)
         lblFullNameAdmin.TabIndex = 16
         lblFullNameAdmin.Text = "Label2"
         ' 
         ' lblAgeAdmin
         ' 
         lblAgeAdmin.AutoSize = True
-        lblAgeAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAgeAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblAgeAdmin.Location = New Point(1168, 489)
         lblAgeAdmin.Name = "lblAgeAdmin"
-        lblAgeAdmin.Size = New Size(61, 25)
+        lblAgeAdmin.Size = New Size(57, 20)
         lblAgeAdmin.TabIndex = 17
         lblAgeAdmin.Text = "Label2"
         ' 
         ' lblDateOfBirthAdmin
         ' 
         lblDateOfBirthAdmin.AutoSize = True
-        lblDateOfBirthAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblDateOfBirthAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblDateOfBirthAdmin.Location = New Point(1168, 543)
         lblDateOfBirthAdmin.Name = "lblDateOfBirthAdmin"
-        lblDateOfBirthAdmin.Size = New Size(61, 25)
+        lblDateOfBirthAdmin.Size = New Size(57, 20)
         lblDateOfBirthAdmin.TabIndex = 18
         lblDateOfBirthAdmin.Text = "Label2"
         ' 
         ' lblGenderAdmin
         ' 
         lblGenderAdmin.AutoSize = True
-        lblGenderAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblGenderAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblGenderAdmin.Location = New Point(1168, 598)
         lblGenderAdmin.Name = "lblGenderAdmin"
-        lblGenderAdmin.Size = New Size(61, 25)
+        lblGenderAdmin.Size = New Size(57, 20)
         lblGenderAdmin.TabIndex = 19
         lblGenderAdmin.Text = "Label2"
         ' 
         ' lblAddressAdmin
         ' 
         lblAddressAdmin.AutoSize = True
-        lblAddressAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAddressAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblAddressAdmin.Location = New Point(1168, 657)
         lblAddressAdmin.Name = "lblAddressAdmin"
-        lblAddressAdmin.Size = New Size(61, 25)
+        lblAddressAdmin.Size = New Size(57, 20)
         lblAddressAdmin.TabIndex = 20
         lblAddressAdmin.Text = "Label2"
         ' 
         ' lblPWDAdmin
         ' 
         lblPWDAdmin.AutoSize = True
-        lblPWDAdmin.Font = New Font("Josefin Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblPWDAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblPWDAdmin.Location = New Point(1168, 716)
         lblPWDAdmin.Name = "lblPWDAdmin"
-        lblPWDAdmin.Size = New Size(61, 25)
+        lblPWDAdmin.Size = New Size(57, 20)
         lblPWDAdmin.TabIndex = 21
         lblPWDAdmin.Text = "Label2"
         ' 
-        ' TextBox1
+        ' tbxSearchInput
         ' 
-        TextBox1.Font = New Font("Josefin Sans", 21.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(94, 239)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(289, 36)
-        TextBox1.TabIndex = 22
+        tbxSearchInput.Font = New Font("Microsoft Sans Serif", 21.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxSearchInput.Location = New Point(94, 239)
+        tbxSearchInput.Name = "tbxSearchInput"
+        tbxSearchInput.Size = New Size(289, 40)
+        tbxSearchInput.TabIndex = 22
+        ' 
+        ' dgvBookings
+        ' 
+        dgvBookings.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvBookings.Location = New Point(110, 301)
+        dgvBookings.Name = "dgvBookings"
+        dgvBookings.Size = New Size(720, 436)
+        dgvBookings.TabIndex = 23
+        ' 
+        ' pbxAdmin
+        ' 
+        pbxAdmin.BackgroundImage = My.Resources.Resources.Admin_Panel_bookings___2_
+        pbxAdmin.Location = New Point(-3, -2)
+        pbxAdmin.Name = "pbxAdmin"
+        pbxAdmin.Size = New Size(1552, 884)
+        pbxAdmin.TabIndex = 5
+        pbxAdmin.TabStop = False
+        ' 
+        ' btnSearch
+        ' 
+        btnSearch.Location = New Point(394, 235)
+        btnSearch.Name = "btnSearch"
+        btnSearch.Size = New Size(110, 42)
+        btnSearch.TabIndex = 24
+        btnSearch.Text = " "
+        btnSearch.UseVisualStyleBackColor = True
+        ' 
+        ' btnViewInfo
+        ' 
+        btnViewInfo.Location = New Point(696, 754)
+        btnViewInfo.Name = "btnViewInfo"
+        btnViewInfo.Size = New Size(162, 63)
+        btnViewInfo.TabIndex = 25
+        btnViewInfo.Text = " "
+        btnViewInfo.UseVisualStyleBackColor = True
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 881)
-        Controls.Add(TextBox1)
+        Controls.Add(btnViewInfo)
+        Controls.Add(btnSearch)
+        Controls.Add(dgvBookings)
+        Controls.Add(tbxSearchInput)
         Controls.Add(lblPWDAdmin)
         Controls.Add(lblAddressAdmin)
         Controls.Add(lblGenderAdmin)
@@ -205,6 +238,7 @@ Partial Class Form3
         Controls.Add(pbxAdmin)
         Name = "Form3"
         Text = "BOOKINGS"
+        CType(dgvBookings, ComponentModel.ISupportInitialize).EndInit()
         CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -213,7 +247,6 @@ Partial Class Form3
     Friend WithEvents btnExit As Button
     Friend WithEvents btnBookings As Button
     Friend WithEvents btnFlights As Button
-    Friend WithEvents pbxAdmin As PictureBox
     Friend WithEvents btnTransactions As Button
     Friend WithEvents lblBookingDateAdmin As Label
     Friend WithEvents lblSeatNumAdmin As Label
@@ -224,5 +257,9 @@ Partial Class Form3
     Friend WithEvents lblGenderAdmin As Label
     Friend WithEvents lblAddressAdmin As Label
     Friend WithEvents lblPWDAdmin As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents tbxSearchInput As TextBox
+    Friend WithEvents dgvBookings As DataGridView
+    Friend WithEvents pbxAdmin As PictureBox
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents btnViewInfo As Button
 End Class
