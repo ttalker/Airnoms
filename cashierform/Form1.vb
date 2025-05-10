@@ -1,4 +1,5 @@
 ﻿
+Imports MySql.Data.MySqlClient
 Imports SharedModule
 Imports System.Windows.Forms
 
@@ -271,6 +272,7 @@ Public Class Form1
                     hasError = True
                 End If
 
+                'check for errors on copassengers
                 If hasError Then
                     Exit Sub
                 End If
@@ -344,13 +346,50 @@ Public Class Form1
                 CurrentBooking.BookerBaggageAllowance,
                 CurrentBooking.BookerIsPWD
                 ))
-
         ' Add co-passengers
         allPassengers.AddRange(CurrentBooking.CoPassengers)
 
-        ' Optional: Display total
-        MessageBox.Show($"Total passengers: {allPassengers.Count}")
+        ' Add the information to the database
+        Try
+            openConTesting()
 
+            For Each passenger As PassengerInfo In allPassengers
+                Using cmd As New MySqlCommand("
+                INSERT INTO customer_table 
+                (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
+                 booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
+                VALUES 
+                (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
+                 @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", conn)
+
+                    cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
+                    cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
+                    cmd.Parameters.AddWithValue("@age", passenger.Age)
+                    cmd.Parameters.AddWithValue("@dob", passenger.DateOfBirth)
+                    cmd.Parameters.AddWithValue("@gender", passenger.Gender)
+                    cmd.Parameters.AddWithValue("@destination", cbxDestination.Text)
+                    cmd.Parameters.AddWithValue("@departure", cbxDeparture.Text)
+                    cmd.Parameters.AddWithValue("@baggage", passenger.BaggageAllowance)
+                    cmd.Parameters.AddWithValue("@seat", passenger.SeatNumber)
+                    cmd.Parameters.AddWithValue("@pwd", passenger.IsPWD)
+                    cmd.Parameters.AddWithValue("@bookedUnder", CurrentBooking.BookerFullName)
+                    cmd.Parameters.AddWithValue("@numPassengers", passengerCount)
+                    cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
+                    cmd.Parameters.AddWithValue("@departTime", parsedDepartureDate)
+                    cmd.Parameters.AddWithValue("@arriveTime", parsedArrivalDate)
+
+                    cmd.ExecuteNonQuery()
+                End Using
+            Next
+            MessageBox.Show("All passengers successfully inserted into the database.")
+        Catch ex As MySqlException
+            MessageBox.Show("Database error: " & ex.Message)
+        Catch ex As Exception
+            MessageBox.Show("Unexpected error: " & ex.Message)
+        End Try
+
+        ' Display total
+        MessageBox.Show($"Total passengers: {allPassengers.Count}")
         MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
 
 
