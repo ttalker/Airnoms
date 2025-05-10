@@ -10,6 +10,7 @@ Public Class Form1
 
 
 
+
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
 
         Me.Hide()
@@ -322,11 +323,32 @@ Public Class Form1
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")
-        isBooked = True
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
         AllBookings.Add(booking)
+
+        '=== 8. put all bookers in allpassengers and put them into the database ===
+
+        ' Add main booker
+        allPassengers.Add(New PassengerInfo(
+                CurrentBooking.BookerFullName,
+                CurrentBooking.BookerAge,
+                CurrentBooking.BookerBirthDate,
+                CurrentBooking.BookerGender,
+                CurrentBooking.BookerSeatNumber,
+                CurrentBooking.BookerBaggageAllowance,
+                CurrentBooking.BookerIsPWD
+                ))
+
+        ' Add co-passengers
+        allPassengers.AddRange(CurrentBooking.CoPassengers)
+
+        ' Optional: Display total
+        MessageBox.Show($"Total passengers: {allPassengers.Count}")
+
+        MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
+
 
         btnClear.PerformClick()
         Form2.Show()

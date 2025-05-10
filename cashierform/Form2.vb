@@ -4,7 +4,7 @@ Imports SharedModule
 
 
 Public Class Form2
-    Dim allPassengers As New List(Of PassengerInfo)
+
     Private ProcessedPassengers As New HashSet(Of String)
     Private TotalFare As Decimal = 0
 
@@ -78,7 +78,12 @@ Public Class Form2
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
 
+        cbxPassengerTicket.Items.Clear()
 
+        ' Add each passenger to the ComboBox
+        For Each passenger As PassengerInfo In allPassengers
+            cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
+        Next
 
 
 
