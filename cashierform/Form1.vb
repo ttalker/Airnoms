@@ -56,6 +56,9 @@ Public Class Form1
         dtpArrivalDate.Visible = False ' arrival date & time is hidden
         cbxArrivalTime.Visible = False
 
+        LoadAllDestinations(cbxDestination)
+
+
     End Sub
 
 
@@ -401,5 +404,16 @@ Public Class Form1
 
     End Sub
 
+    Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
+        If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+        End If
+    End Sub
+
+    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
+        If FlightsExistForDate(dtpDepartDate.Value) = False Then
+            MessageBox.Show("No flights are scheduled for the selected departure date.")
+        End If
+    End Sub
 End Class
 

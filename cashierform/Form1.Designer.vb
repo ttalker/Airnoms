@@ -705,7 +705,6 @@ Partial Class Form1
         cbxpassbag6.Name = "cbxpassbag6"
         cbxpassbag6.Size = New Size(83, 23)
         cbxpassbag6.TabIndex = 77
-
         ' 
         ' btnExit
         ' 
@@ -716,7 +715,6 @@ Partial Class Form1
         btnExit.TabIndex = 35
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
-
         ' 
         ' Form1
         ' 
