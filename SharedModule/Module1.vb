@@ -1,56 +1,119 @@
-﻿Imports System.IO
-
+﻿
+Imports System.IO
 Imports MySql.Data.MySqlClient
+Imports userForm
 
 Public Module Module1
-    Public con As New MySqlConnection
-    Public cmd As New MySqlCommand
-    Public conn As New MySqlConnection
-    Public cmd2 As New MySqlCommand
+    ' Connection objects
+    Public con As MySqlConnection
+    Public cmd As MySqlCommand
+    Public conn As MySqlConnection
+    Public cmd2 As MySqlCommand
 
     Public Property allPassengers As New List(Of PassengerInfo)
 
-    'admin sql
+    ' Database connection strings - Using property for better management
+    Private ReadOnly Property AdminConnectionString As String
+        Get
+            Return "server=100.89.19.71; username=root; password=; database=comprog_db"
+        End Get
+    End Property
+
+    Private ReadOnly Property TestingConnectionString As String
+        Get
+            Return "server=100.89.19.71; username=root; password=; database=testing_db"
+        End Get
+    End Property
+
+    ' Open admin database connection with proper error handling
     Public Sub openCon()
-        con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
-        con.Open()
+        Try
+            ' Initialize connection if needed
+            If con Is Nothing Then
+                con = New MySqlConnection()
+            End If
+
+            ' Close if already open
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+
+            con.ConnectionString = AdminConnectionString
+            con.Open()
+        Catch ex As Exception
+            MessageBox.Show("Database connection error: " & ex.Message, "Connection Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
+
+    ' Open testing database connection with proper error handling
     Public Sub openConTesting()
-        conn.ConnectionString = "server=100.89.19.71; username=root; password=; database=testing_db"
-        conn.Open()
+        Try
+            ' Initialize connection if needed
+            If conn Is Nothing Then
+                conn = New MySqlConnection()
+            End If
+
+            ' Close if already open
+            If conn.State = ConnectionState.Open Then
+                conn.Close()
+            End If
+
+            conn.ConnectionString = TestingConnectionString
+            conn.Open()
+        Catch ex As Exception
+            MessageBox.Show("Testing database connection error: " & ex.Message, "Connection Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
+    ' Safe method to show image with error handling
     Public Sub ShowImage(planes As String, ptbImages As PictureBox, pnlPlane As Panel)
-        Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
-        ptbImages.Size = New Size(1, 1)
-        ptbImages.Location = New Point(0, 0)
-        If ptbImages.Image IsNot Nothing Then
-            ptbImages.Image.Dispose()
-        End If
+        Try
+            Dim filepath = Path.Combine(Application.StartupPath, "Seatmaps", planes & ".png")
 
-        Dim img = Image.FromFile(filepath)
-        ptbImages.Image = img
+            ' Check if file exists before loading
+            If Not File.Exists(filepath) Then
+                MessageBox.Show($"Image file not found: {filepath}", "File Error",
+                               MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
 
-        ptbImages.SizeMode = PictureBoxSizeMode.Zoom
+            ptbImages.Size = New Size(1, 1)
+            ptbImages.Location = New Point(0, 0)
 
-        Dim panelWidth = pnlPlane.ClientSize.Width
-        Dim aspectRatio = img.Height / img.Width
-        Dim newWidth = panelWidth
-        Dim newHeight = CInt(newWidth * aspectRatio)
+            ' Properly dispose of previous image
+            If ptbImages.Image IsNot Nothing Then
+                ptbImages.Image.Dispose()
+            End If
 
-        ptbImages.Size = New Size(newWidth, newHeight)
+            ' Load image with error handling
+            Using fs As New FileStream(filepath, FileMode.Open, FileAccess.Read)
+                Dim img = Image.FromStream(fs)
+                ptbImages.Image = img.Clone()
+            End Using
 
+            ptbImages.SizeMode = PictureBoxSizeMode.Zoom
+
+            ' Calculate proper image dimensions
+            Dim panelWidth = pnlPlane.ClientSize.Width
+            Dim aspectRatio = CDbl(ptbImages.Image.Height) / CDbl(ptbImages.Image.Width)
+            Dim newWidth = panelWidth
+            Dim newHeight = CInt(newWidth * aspectRatio)
+
+            ptbImages.Size = New Size(newWidth, newHeight)
+        Catch ex As Exception
+            MessageBox.Show($"Error loading image: {ex.Message}", "Image Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Public Sub MakeTransparent(button As Button)
         button.BackColor = Color.Transparent
         button.FlatStyle = FlatStyle.Flat
         button.FlatAppearance.BorderSize = 0
-        button.FlatStyle = FlatStyle.Flat
-        button.FlatAppearance.BorderSize = 0
         button.FlatAppearance.MouseOverBackColor = Color.Transparent
         button.FlatAppearance.MouseDownBackColor = Color.Transparent
-        button.BackColor = Color.Transparent
     End Sub
 
     Public Sub AppearLabel(label As Label)
@@ -84,7 +147,6 @@ Public Module Module1
         End If
     End Sub
 
-
     Public Function IsPWD(check As CheckBox) As String
         If check.Checked Then
             Return "Yes"
@@ -109,181 +171,300 @@ Public Module Module1
         New RouteInfo("Manila", "Kuala Lumpur", 2500, 9000D, 22500D, 36000D)
     }
 
+    ' Get fare functions with better error handling
     Public Function GetEconomyFare(departure As String, destination As String) As Decimal
-        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
-        If route IsNot Nothing Then
-            Return route.EconomyFare
-        Else
-            Throw New Exception("Route not found.")
-        End If
+        Try
+            Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+            If route IsNot Nothing Then
+                Return route.EconomyFare
+            Else
+                Throw New Exception($"Route not found: {departure} to {destination}")
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error retrieving Economy fare: {ex.Message}", "Fare Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0D
+        End Try
     End Function
 
     Public Function GetBusinessFare(departure As String, destination As String) As Decimal
-        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
-        If route IsNot Nothing Then
-            Return route.BusinessFare
-        Else
-            Throw New Exception("Route not found.")
-        End If
+        Try
+            Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+            If route IsNot Nothing Then
+                Return route.BusinessFare
+            Else
+                Throw New Exception($"Route not found: {departure} to {destination}")
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error retrieving Business fare: {ex.Message}", "Fare Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0D
+        End Try
     End Function
 
     Public Function GetFirstClassFare(departure As String, destination As String) As Decimal
-        Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
-        If route IsNot Nothing Then
-            Return route.FirstFare
-        Else
-            Throw New Exception("Route not found.")
-        End If
+        Try
+            Dim route = AllRoutes.FirstOrDefault(Function(r) r.FromLocation = departure AndAlso r.ToLocation = destination)
+            If route IsNot Nothing Then
+                Return route.FirstFare
+            Else
+                Throw New Exception($"Route not found: {departure} to {destination}")
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error retrieving First Class fare: {ex.Message}", "Fare Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return 0D
+        End Try
     End Function
 
-    ' Moving these functions into Module1 where they belong
+    ' Flight generation function with improved error handling
+    Public Function GenerateDailyFlights(startFlightNumber As Integer, flightDate As Date) As List(Of Flight)
+        Dim flights As New List(Of Flight)()
+        Try
+            Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
+            Dim rnd As New Random()
 
-    Public Function GenerateDailyFlights(startFlightNumber As Integer) As List(Of Flight)
-        Dim flights As New List(Of Flight)
-        Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
-        Dim rnd As New Random()
-        Dim today As Date = Date.Today
+            For i As Integer = 0 To destinations.Length - 1
+                Dim flightNumber As Integer = startFlightNumber + i + 1
+                Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
+                Dim departureTime As DateTime = flightDate.AddHours(6 + i) ' flights from 6AM to 3PM
+                Dim durationHours As Integer = rnd.Next(3, 15)
+                Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
+                Dim status As String = "Waiting"
 
-        For i As Integer = 0 To destinations.Length - 1
-            Dim flightNumber As Integer = startFlightNumber + i + 1
-            Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
-            Dim departureTime As DateTime = today.AddHours(6 + i) ' flights from 6AM to 3PM
-            Dim durationHours As Integer = rnd.Next(3, 15)
-            Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
-            Dim status As String = "Waiting"
-
-            flights.Add(New Flight(
-            flightID,
-            "Manila",
-            destinations(i),
-            departureTime.Date,
-            departureTime.ToString("HH:mm"),
-            arrivalTime.ToString("HH:mm"),
-            rnd.Next(150, 251),
-            status
-        ))
-        Next
-
+                flights.Add(New Flight(
+                flightID,
+                "Manila",
+                destinations(i),
+                departureTime.Date,
+                departureTime.ToString("HH:mm"),
+                arrivalTime.ToString("HH:mm"),
+                rnd.Next(150, 251),
+                status
+            ))
+            Next
+        Catch ex As Exception
+            MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
         Return flights
     End Function
 
-
-    Public Function FlightsExistForToday() As Boolean
-        Dim today As Date = Date.Today
-        openCon()
-        cmd = New MySqlCommand("SELECT COUNT(*) FROM flight_table WHERE departure_date = @FlightDate", con)
-        cmd.Parameters.AddWithValue("@FlightDate", today)
-        Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-        con.Close()
-        Return count > 0
+    Public Function FlightsExistForDate(flightDate As Date) As Boolean
+        Try
+            openCon()
+            cmd = New MySqlCommand("SELECT COUNT(*) FROM flight_table WHERE departure_date = @FlightDate", con)
+            cmd.Parameters.AddWithValue("@FlightDate", flightDate)
+            Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+            Return count > 0
+        Catch ex As Exception
+            MessageBox.Show($"Error checking flights: {ex.Message}", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        Finally
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
     End Function
+
+
     Public Function GetMaxFlightNumber() As Integer
         Dim maxNumber As Integer = 0
-        openCon()
-        cmd = New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3) AS UNSIGNED)) FROM flight_table", con)
-        Dim result = cmd.ExecuteScalar()
-        If Not IsDBNull(result) Then
-            maxNumber = Convert.ToInt32(result)
-        End If
-        con.Close()
+        Try
+            openCon()
+            cmd = New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3) AS UNSIGNED)) FROM flight_table", con)
+            Dim result = cmd.ExecuteScalar()
+            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                maxNumber = Convert.ToInt32(result)
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error retrieving max flight number: {ex.Message}", "Database Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
         Return maxNumber
     End Function
 
-    Public Sub GenerateAndSaveFlightsIfNotExist()
-        If Not FlightsExistForToday() Then
-            Dim maxFlightNumber As Integer = GetMaxFlightNumber()
-            Dim flights = GenerateDailyFlights(maxFlightNumber)
+    Public Sub GenerateAndSaveFlightsIfNotExist(flightDate As Date)
+        Try
+            If Not FlightsExistForDate(flightDate) Then
+                Dim maxFlightNumber As Integer = GetMaxFlightNumber()
+                Dim flights = GenerateDailyFlights(maxFlightNumber, flightDate)
 
-            openCon()
-            For Each flight In flights
-                cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, departure, destination, departure_date, " &
-                "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
-                "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
-                cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
-                cmd.Parameters.AddWithValue("@Departure", flight.Departure)
-                cmd.Parameters.AddWithValue("@Destination", flight.Destination)
-                cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
-                cmd.Parameters.AddWithValue("@DepartureTime", flight.DepartureTime)
-                cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
-                cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
-                cmd.Parameters.AddWithValue("@Status", flight.Status)
-                Try
-                    cmd.ExecuteNonQuery()
-                Catch ex As Exception
-                    MessageBox.Show($"Error inserting flight {flight.FlightID}: {ex.Message}")
-                End Try
-            Next
-            con.Close()
-        End If
+                If flights.Count = 0 Then
+                    MessageBox.Show("No flights were generated.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+
+                openCon()
+                For Each flight In flights
+                    cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, departure, destination, departure_date, " &
+                 "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
+                 "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
+
+                    cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
+                    cmd.Parameters.AddWithValue("@Departure", flight.Departure)
+                    cmd.Parameters.AddWithValue("@Destination", flight.Destination)
+                    cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
+                    cmd.Parameters.AddWithValue("@DepartureTime", flight.DepartureTime)
+                    cmd.Parameters.AddWithValue("@ArrivalTime", flight.ArrivalTime)
+                    cmd.Parameters.AddWithValue("@Capacity", flight.Capacity)
+                    cmd.Parameters.AddWithValue("@Status", flight.Status)
+
+                    Try
+                        cmd.ExecuteNonQuery()
+                    Catch ex As Exception
+                        MessageBox.Show($"Error inserting flight {flight.FlightID}: {ex.Message}")
+                    End Try
+                Next
+            End If
+        Catch ex As Exception
+            MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
     End Sub
 
-
-
     Public Sub UpdateFlightStatuses()
-        Dim now As DateTime = DateTime.Now
-        Dim today As Date = Date.Today
+        Try
+            Dim now As DateTime = DateTime.Now
+            Dim today As Date = Date.Today
 
-        openCon()
+            openCon()
 
-        Dim query As String = "SELECT flight_id, departure_date, departure_time, arrival_time " &
-                              "FROM flight_table WHERE departure_date = @Today"
+            Dim query As String = "SELECT flight_id, departure_date, departure_time, arrival_time " &
+                                "FROM flight_table WHERE departure_date = @Today"
 
-        Dim cmd As New MySqlCommand(query, con)
-        cmd.Parameters.AddWithValue("@Today", today)
+            Dim cmd As New MySqlCommand(query, con)
+            cmd.Parameters.AddWithValue("@Today", today)
 
-        Dim reader As MySqlDataReader = cmd.ExecuteReader()
-        Dim flightsToUpdate As New List(Of Tuple(Of String, String))
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            Dim flightsToUpdate As New List(Of Tuple(Of String, String))
 
-        While reader.Read()
-            Dim flightId As String = reader("flight_id").ToString()
-            Dim depDate As Date = CDate(reader("departure_date"))
-            Dim depTime As String = reader("departure_time").ToString()
-            Dim arrTime As String = reader("arrival_time").ToString()
+            While reader.Read()
+                Try
+                    Dim flightId As String = reader("flight_id").ToString()
+                    Dim depDate As Date = CDate(reader("departure_date"))
+                    Dim depTime As String = reader("departure_time").ToString()
+                    Dim arrTime As String = reader("arrival_time").ToString()
 
-            ' Construct DateTime for departure
-            Dim depHour As Integer = Integer.Parse(depTime.Split(":"c)(0))
-            Dim depMin As Integer = Integer.Parse(depTime.Split(":"c)(1))
-            Dim departureDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, depHour, depMin, 0)
+                    ' Validate time format before parsing
+                    If Not depTime.Contains(":") Or Not arrTime.Contains(":") Then
+                        Continue While
+                    End If
 
-            ' Construct DateTime for arrival, assuming it could be the next day
-            Dim arrHour As Integer = Integer.Parse(arrTime.Split(":"c)(0))
-            Dim arrMin As Integer = Integer.Parse(arrTime.Split(":"c)(1))
-            Dim arrivalDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, arrHour, arrMin, 0)
-            If arrivalDateTime < departureDateTime Then
-                arrivalDateTime = arrivalDateTime.AddDays(1) ' arrived after midnight
+                    ' Construct DateTime for departure
+                    Dim depHour As Integer = Integer.Parse(depTime.Split(":"c)(0))
+                    Dim depMin As Integer = Integer.Parse(depTime.Split(":"c)(1))
+                    Dim departureDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, depHour, depMin, 0)
+
+                    ' Construct DateTime for arrival, assuming it could be the next day
+                    Dim arrHour As Integer = Integer.Parse(arrTime.Split(":"c)(0))
+                    Dim arrMin As Integer = Integer.Parse(arrTime.Split(":"c)(1))
+                    Dim arrivalDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, arrHour, arrMin, 0)
+                    If arrivalDateTime < departureDateTime Then
+                        arrivalDateTime = arrivalDateTime.AddDays(1) ' arrived after midnight
+                    End If
+
+                    Dim status As String = "Waiting"
+                    If now > arrivalDateTime Then
+                        status = "Arrived"
+                    ElseIf now >= departureDateTime AndAlso now <= arrivalDateTime Then
+                        status = "On Flight"
+                    End If
+
+                    flightsToUpdate.Add(New Tuple(Of String, String)(flightId, status))
+                Catch ex As Exception
+                    ' Skip problematic records but log the error
+                    Debug.WriteLine($"Error processing flight status: {ex.Message}")
+                End Try
+            End While
+
+            reader.Close()
+
+            ' Update statuses
+            For Each flightInfo In flightsToUpdate
+                Dim updateCmd As New MySqlCommand("UPDATE flight_table SET status = @Status WHERE flight_id = @FlightID", con)
+                updateCmd.Parameters.AddWithValue("@Status", flightInfo.Item2)
+                updateCmd.Parameters.AddWithValue("@FlightID", flightInfo.Item1)
+                updateCmd.ExecuteNonQuery()
+            Next
+        Catch ex As Exception
+            MessageBox.Show($"Error updating flight statuses: {ex.Message}", "Database Error",
+                          MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
             End If
-
-            Dim status As String = "Waiting"
-            If now > arrivalDateTime Then
-                status = "Arrived"
-            ElseIf now >= departureDateTime AndAlso now <= arrivalDateTime Then
-                status = "On Flight"
-            End If
-
-            flightsToUpdate.Add(New Tuple(Of String, String)(flightId, status))
-        End While
-
-        reader.Close()
-
-        ' Update statuses
-        For Each flightInfo In flightsToUpdate
-            Dim updateCmd As New MySqlCommand("UPDATE flight_table SET status = @Status WHERE flight_id = @FlightID", con)
-            updateCmd.Parameters.AddWithValue("@Status", flightInfo.Item2)
-            updateCmd.Parameters.AddWithValue("@FlightID", flightInfo.Item1)
-            updateCmd.ExecuteNonQuery()
-        Next
-
-        con.Close()
+        End Try
     End Sub
 
     Public Sub DeleteOldFlights()
-        Dim today As Date = Date.Today
-        openCon()
-        cmd = New MySqlCommand("DELETE FROM flight_table WHERE departure_date < @FlightDate", con)
-        cmd.Parameters.AddWithValue("@FlightDate", today)
-        cmd.ExecuteNonQuery()
-        con.Close()
+        Try
+            Dim today As Date = Date.Today
+            openCon()
+            cmd = New MySqlCommand("DELETE FROM flight_table WHERE departure_date < @FlightDate", con)
+            cmd.Parameters.AddWithValue("@FlightDate", today)
+            Dim rowsAffected = cmd.ExecuteNonQuery()
+            Debug.WriteLine($"Deleted {rowsAffected} old flights")
+        Catch ex As Exception
+            MessageBox.Show($"Error deleting old flights: {ex.Message}", "Database Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
     End Sub
+
+    Public Sub LoadAllDestinations(comboBox As ComboBox)
+        Try
+            openCon()
+            Dim cmd As New MySqlCommand("SELECT DISTINCT destination FROM flight_table ORDER BY destination", con)
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            comboBox.Items.Clear()
+            While reader.Read()
+                comboBox.Items.Add(reader("destination").ToString())
+            End While
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Failed to load destinations: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
+    End Sub
+
+    Public Sub LoadDepartureTimesForDestination(destination As String, comboBox As ComboBox)
+        Try
+            openCon()
+            Dim cmd As New MySqlCommand("SELECT DISTINCT departure_time FROM flight_table WHERE destination = @Destination ORDER BY departure_time", con)
+            cmd.Parameters.AddWithValue("@Destination", destination)
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            comboBox.Items.Clear()
+            While reader.Read()
+                comboBox.Items.Add(reader("departure_time").ToString())
+            End While
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Failed to load departure times: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
+    End Sub
+
+    Public Function ConfirmExitToUserForm() As Boolean
+        Dim result As DialogResult = MessageBox.Show("Do you want to go back to the main user form?", "Exit",
+                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Return result = DialogResult.Yes
+    End Function
+
+
 
 End Module
 
@@ -397,6 +578,7 @@ Public Class Flight
     End Sub
 End Class
 
+
 Public Class RouteInfo
     Public Property FromLocation As String
     Public Property ToLocation As String
@@ -414,3 +596,4 @@ Public Class RouteInfo
         FirstFare = firstClass
     End Sub
 End Class
+' After RouteInfo class definition

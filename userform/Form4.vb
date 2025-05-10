@@ -1,5 +1,4 @@
-﻿
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 Imports SharedModule
 
 Public Class Form4
@@ -33,6 +32,9 @@ Public Class Form4
 
         ' Set default trip type
         tripIndicator = "One Way Trip"
+
+        ' Load all destinations
+        LoadAllDestinations(cbxDestinationUser)
     End Sub
 
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
@@ -130,12 +132,13 @@ Public Class Form4
             countPassenger:=countPassenger
 )
 
-        MessageBox.Show("Booking completed successfully for " & BookingInfo.BookerFullName & "." & vbNewLine &
-               "Co-passengers: " & BookingInfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
+        MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
+               "Co-passengers: " & bookinginfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
                "Booking Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         ' Save booking to database
-        SaveBookingToDatabase(BookingInfo)
+        SaveBookingToDatabase(bookinginfo)
+
     End Sub
 
     Private Function ValidateForm() As Boolean
@@ -207,6 +210,17 @@ Public Class Form4
                 ErrorProvider1.SetError(dtpArrivalDateUser, "Arrival date must be on or after departure date.")
                 isValid = False
             End If
+        End If
+
+        If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
+            ErrorProvider1.SetError(dtpDepartDateUser, "Departure date must be today or later.")
+            isValid = False
+        End If
+
+        If dtpDepartDateUser.Value.Date = DateTime.Now.Date Then
+            ErrorProvider1.SetError(dtpDepartDateUser, "Booking for the same day is not allowed.")
+            MessageBox.Show("You cannot book a trip for today. Please select a future date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            isValid = False
         End If
 
         Return isValid
@@ -331,5 +345,24 @@ Public Class Form4
         Next
 
         MessageBox.Show("Form has been reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
+        If cbxDestinationUser.SelectedItem IsNot Nothing Then
+            ' Fixed: Pass the departure time combo box instead of the destination combo box
+            LoadDepartureTimesForDestination(cbxDestinationUser.SelectedItem.ToString(), cbxDepartTimeUser)
+        End If
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        ExitToUserForm(Me)
+    End Sub
+    Public Sub ExitToUserForm(currentForm As Form) ' function for exit 
+        Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit",
+                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            currentForm.Hide()
+            userForm.Form1.Show()
+        End If
     End Sub
 End Class

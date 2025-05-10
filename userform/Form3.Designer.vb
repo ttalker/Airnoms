@@ -84,7 +84,7 @@ Partial Class Form3
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
         BackColor = Color.FromArgb(CByte(252), CByte(252), CByte(253))
-        ClientSize = New Size(1547, 930)
+        ClientSize = New Size(1547, 881)
         Controls.Add(btnExitUser)
         Controls.Add(btnSupportUser)
         Controls.Add(btnBookingUser)
