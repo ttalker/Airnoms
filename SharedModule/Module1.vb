@@ -13,7 +13,6 @@ Public Module Module1
 
     Public Property isBooked As Boolean
 
-    ' Database connection strings - Using property for better management
     Private ReadOnly Property AdminConnectionString As String
         Get
             Return "server=100.89.19.71; username=root; password=; database=comprog_db"
