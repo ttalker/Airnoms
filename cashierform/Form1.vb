@@ -1,4 +1,5 @@
 ﻿
+Imports MySql.Data.MySqlClient
 Imports SharedModule
 Imports System.Windows.Forms
 
@@ -8,13 +9,13 @@ Public Class Form1
 
 
 
+
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-        If isBooked Then
-            Me.Hide()
-            Form2.Show()
-        Else
-            MessageBox.Show("There is no current active bookings to be processed!")
-        End If
+
+        Me.Hide()
+        Form2.Show()
+
+
 
     End Sub
 
@@ -54,6 +55,19 @@ Public Class Form1
         dtpArrivalDate.Visible = False ' arrival date & time is hidden
         cbxArrivalTime.Visible = False
 
+        LoadAllDestinations(cbxDestination)
+
+        Dim result = GenerateSeats(AircraftType.Boeing737_800)
+        Dim seatmap = result.seatmap
+        Dim capacity = result.capacity
+
+        ' Output to console/debug window
+        For Each seat As KeyValuePair(Of String, String) In seatmap
+            Debug.WriteLine($"Seat: {seat.Key}, Class: {seat.Value}")
+        Next
+
+        ' Show total capacity
+        MessageBox.Show("Total seats: " & capacity.ToString(), "Seatmap Test")
     End Sub
 
 
@@ -78,7 +92,7 @@ Public Class Form1
         cbxDeparture.Text = "Tarlac"
         cbxDestination.Text = "Seoul, Korea"
         cbxSeatNumber.Text = "1A"
-        cbxDepartureTime.Text = "May 1, 2025"
+        cbxDepartureTime.Text = "2:00 PM"
         cbxArrivalTime.Text = "2:00 PM"
         dtpArrivalDate.Text = "May 1, 2025"
 
@@ -125,6 +139,8 @@ Public Class Form1
     End Sub
 
     Private Sub btnBook_Click(sender As Object, e As EventArgs) Handles btnBook.Click
+        'Clear previous passengers when booking again
+        allPassengers.Clear()
 
         ' Clear previous error states
         ErrorProvider1.Clear()
@@ -195,6 +211,8 @@ Public Class Form1
             hasError = True
         End If
 
+
+        'Check for errors and exit the process if there is errors 
         If hasError Then
             MessageBox.Show("Please correct the errors before continuing.")
             Exit Sub
@@ -260,6 +278,7 @@ Public Class Form1
                     hasError = True
                 End If
 
+                'check for errors on copassengers
                 If hasError Then
                     Exit Sub
                 End If
@@ -317,20 +336,106 @@ Public Class Form1
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")
+
         isBooked = True
 
         '=== 7. Store the info to a global list ===
         CurrentBooking = booking
         AllBookings.Add(booking)
 
+        '=== 7. Store the info to a global list ===
+        CurrentBooking = booking
+
+
+        '=== 8. put all bookers in allpassengers and put them into the database ===
+
+        ' Add main booker
+        allPassengers.Add(New PassengerInfo(
+                CurrentBooking.BookerFullName,
+                CurrentBooking.BookerAge,
+                CurrentBooking.BookerBirthDate,
+                CurrentBooking.BookerGender,
+                CurrentBooking.BookerSeatNumber,
+                CurrentBooking.BookerBaggageAllowance,
+                CurrentBooking.BookerIsPWD
+                ))
+        ' Add co-passengers
+        allPassengers.AddRange(CurrentBooking.CoPassengers)
+
+        ' Add the information to the database
+        Try
+            openCon() ' opens con
+
+            For Each passenger As PassengerInfo In allPassengers
+                Using cmd As New MySqlCommand("
+            INSERT INTO customer_table 
+            (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
+             booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
+            VALUES 
+            (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
+             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con) ' <<< use con here
+
+                    cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
+                    cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
+                    cmd.Parameters.AddWithValue("@age", passenger.Age)
+                    cmd.Parameters.AddWithValue("@dob", passenger.DateOfBirth)
+                    cmd.Parameters.AddWithValue("@gender", passenger.Gender)
+                    cmd.Parameters.AddWithValue("@destination", cbxDestination.Text)
+                    cmd.Parameters.AddWithValue("@departure", cbxDeparture.Text)
+                    cmd.Parameters.AddWithValue("@baggage", passenger.BaggageAllowance)
+                    cmd.Parameters.AddWithValue("@seat", passenger.SeatNumber)
+                    cmd.Parameters.AddWithValue("@pwd", If(passenger.IsPWD, "Yes", "No"))
+                    cmd.Parameters.AddWithValue("@bookedUnder", CurrentBooking.BookerFullName)
+                    cmd.Parameters.AddWithValue("@numPassengers", passengerCount)
+                    cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
+                    cmd.Parameters.AddWithValue("@departTime", parsedDepartureDate)
+                    cmd.Parameters.AddWithValue("@arriveTime", parsedArrivalDate)
+
+                    cmd.ExecuteNonQuery()
+                End Using
+            Next
+
+            MessageBox.Show("All passengers successfully inserted into the database.")
+
+        Catch ex As MySqlException
+            MessageBox.Show("Database error: " & ex.Message)
+        Catch ex As Exception
+            MessageBox.Show("Unexpected error: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
+
+        ' Display total
+        MessageBox.Show($"Total passengers: {allPassengers.Count}")
+        MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
+
+
+
+
         btnClear.PerformClick()
-        Form2.Show()
-        Me.Hide()
+
 
     End Sub
 
+
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
+
+    Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
+        cbxDepartureTime.Text = ""
+
+        If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+        End If
+    End Sub
+
+    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
+        If FlightsExistForDate(dtpDepartDate.Value) = False Then
+            MessageBox.Show("No flights are scheduled for the selected departure date.")
+        End If
+
     End Sub
 End Class
 
