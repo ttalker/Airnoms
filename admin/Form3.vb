@@ -36,9 +36,9 @@ Public Class Form3
         Form2.Hide()
     End Sub
     Private Sub btnTransactions_Click(sender As Object, e As EventArgs) Handles btnTransactions.Click
-        Me.Show()
+        Me.Hide()
         Form1.Hide()
-        Form2.Hide()
+        Form2.Show()
     End Sub
     Private Sub btnBookings_Click(sender As Object, e As EventArgs) Handles btnBookings.Click
         Me.Hide()

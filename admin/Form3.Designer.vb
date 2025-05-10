@@ -55,7 +55,7 @@ Partial Class Form3
         ' 
         ' btnBookings
         ' 
-        btnBookings.Location = New Point(588, 26)
+        btnBookings.Location = New Point(586, 26)
         btnBookings.Name = "btnBookings"
         btnBookings.Size = New Size(183, 70)
         btnBookings.TabIndex = 8
