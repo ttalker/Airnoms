@@ -167,6 +167,7 @@ Partial Class Form1
         ' cbxDeparture
         ' 
         cbxDeparture.FormattingEnabled = True
+        cbxDeparture.Items.AddRange(New Object() {"Manila"})
         cbxDeparture.Location = New Point(273, 293)
         cbxDeparture.Margin = New Padding(3, 2, 3, 2)
         cbxDeparture.Name = "cbxDeparture"

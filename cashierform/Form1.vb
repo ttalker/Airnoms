@@ -58,7 +58,17 @@ Public Class Form1
 
         LoadAllDestinations(cbxDestination)
 
+        Dim result = GenerateSeats(AircraftType.Boeing737_800)
+        Dim seatmap = result.seatmap
+        Dim capacity = result.capacity
 
+        ' Output to console/debug window
+        For Each seat As KeyValuePair(Of String, String) In seatmap
+            Debug.WriteLine($"Seat: {seat.Key}, Class: {seat.Value}")
+        Next
+
+        ' Show total capacity
+        MessageBox.Show("Total seats: " & capacity.ToString(), "Seatmap Test")
     End Sub
 
 
@@ -405,6 +415,8 @@ Public Class Form1
     End Sub
 
     Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
+        cbxDepartureTime.Text = ""
+
         If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
             LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
         End If
