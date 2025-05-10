@@ -3,7 +3,6 @@ Imports SharedModule
 Imports System.Windows.Forms
 
 
-
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
@@ -29,10 +28,6 @@ Public Class Form1
 
     Private Sub btnSupport_Click(sender As Object, e As EventArgs) Handles btnSupport.Click
         support_form.Show()
-    End Sub
-
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        'ExitApplication(Me)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -87,7 +82,6 @@ Public Class Form1
         cbxDepartureTime.Text = "May 1, 2025"
         cbxArrivalTime.Text = "2:00 PM"
         dtpArrivalDate.Text = "May 1, 2025"
-
 
     End Sub
 
