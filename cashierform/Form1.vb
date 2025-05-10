@@ -351,16 +351,16 @@ Public Class Form1
 
         ' Add the information to the database
         Try
-            openConTesting()
+            openCon() ' opens con
 
             For Each passenger As PassengerInfo In allPassengers
                 Using cmd As New MySqlCommand("
-                INSERT INTO customer_table 
-                (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
-                 booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
-                VALUES 
-                (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
-                 @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", conn)
+            INSERT INTO customer_table 
+            (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
+             booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
+            VALUES 
+            (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
+             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con) ' <<< use con here
 
                     cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
                     cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
@@ -381,11 +381,17 @@ Public Class Form1
                     cmd.ExecuteNonQuery()
                 End Using
             Next
+
             MessageBox.Show("All passengers successfully inserted into the database.")
+
         Catch ex As MySqlException
             MessageBox.Show("Database error: " & ex.Message)
         Catch ex As Exception
             MessageBox.Show("Unexpected error: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
         End Try
 
         ' Display total
