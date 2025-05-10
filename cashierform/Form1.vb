@@ -11,12 +11,11 @@ Public Class Form1
 
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-        If isBooked Then
-            Me.Hide()
-            Form2.Show()
-        Else
-            MessageBox.Show("There is no current active bookings to be processed!")
-        End If
+
+        Me.Hide()
+        Form2.Show()
+
+
 
     End Sub
 
@@ -84,7 +83,7 @@ Public Class Form1
         cbxDeparture.Text = "Tarlac"
         cbxDestination.Text = "Seoul, Korea"
         cbxSeatNumber.Text = "1A"
-        cbxDepartureTime.Text = "May 1, 2025"
+        cbxDepartureTime.Text = "2:00 PM"
         cbxArrivalTime.Text = "2:00 PM"
         dtpArrivalDate.Text = "May 1, 2025"
 
@@ -300,26 +299,26 @@ Public Class Form1
         If Not DateTime.TryParse(fullArrivalString, parsedArrivalDate) Then
             MessageBox.Show("Invalid arrival date or time format.")
             Exit Sub
-
+        End If
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
-            tripType:=ticketIdentifier, ' Use your trip identifier here
-            departure:=cbxDeparture.Text,
-            destination:=cbxDestination.Text,
-            departDate:=parsedDepartureDate,
-            arrivalDate:=parsedArrivalDate,
-            bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
-            bookerFullName:=mainBooker.FullName,
-            bookerAge:=mainBooker.Age,
-            bookerBirthDate:=mainBooker.DateOfBirth,
-            bookerGender:=mainBooker.Gender,
-            bookerAddress:=tbxAddress.Text,
-            bookerIsPWD:=mainBooker.IsPWD,
-            bookerSeatNumber:=mainBooker.SeatNumber,
-            bookerBaggageAllowance:=mainBooker.BaggageAllowance,
-            countPassenger:=passengerCount,
-            coPassengers:=coPassengers
-        )
+                tripType:=ticketIdentifier, ' Use your trip identifier here
+                departure:=cbxDeparture.Text,
+                destination:=cbxDestination.Text,
+                departDate:=parsedDepartureDate,
+                arrivalDate:=parsedArrivalDate,
+                bookingDate:=Convert.ToDateTime(dtpBookingDate.Text),
+                bookerFullName:=mainBooker.FullName,
+                bookerAge:=mainBooker.Age,
+                bookerBirthDate:=mainBooker.DateOfBirth,
+                bookerGender:=mainBooker.Gender,
+                bookerAddress:=tbxAddress.Text,
+                bookerIsPWD:=mainBooker.IsPWD,
+                bookerSeatNumber:=mainBooker.SeatNumber,
+                bookerBaggageAllowance:=mainBooker.BaggageAllowance,
+                countPassenger:=passengerCount,
+                coPassengers:=coPassengers
+            )
 
         ' === 6. Success Message ===
         MessageBox.Show("Booking validated and stored successfully!")

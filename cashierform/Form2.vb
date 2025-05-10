@@ -16,12 +16,9 @@ Public Class Form2
 }
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
 
-        If isBooked Then
-            MessageBox.Show("Please process the current bookings first!")
-        Else
-            Me.Hide()
-            Form1.Show()
-        End If
+        Me.Hide()
+        Form1.Show()
+
 
     End Sub
 
@@ -82,31 +79,7 @@ Public Class Form2
 
 
 
-        ' Add main booker
-        allPassengers.Add(New PassengerInfo(
-                CurrentBooking.BookerFullName,
-                CurrentBooking.BookerAge,
-                CurrentBooking.BookerBirthDate,
-                CurrentBooking.BookerGender,
-                CurrentBooking.BookerSeatNumber,
-                CurrentBooking.BookerBaggageAllowance,
-                CurrentBooking.BookerIsPWD
-                ))
 
-        ' Add co-passengers
-        allPassengers.AddRange(CurrentBooking.CoPassengers)
-
-        ' Optional: Display total
-        MessageBox.Show($"Total passengers: {allPassengers.Count}")
-
-        MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
-
-        cbxPassengerTicket.Items.Clear()
-
-        ' Add each passenger to the ComboBox
-        For Each passenger As PassengerInfo In allPassengers
-            cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
-        Next
 
 
     End Sub
