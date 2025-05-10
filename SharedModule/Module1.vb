@@ -10,7 +10,7 @@ Public Module Module1
     Public conn As MySqlConnection
     Public cmd2 As MySqlCommand
 
-    Public Property isBooked As Boolean
+    Public Property allPassengers As New List(Of PassengerInfo)
 
     ' Database connection strings - Using property for better management
     Private ReadOnly Property AdminConnectionString As String
