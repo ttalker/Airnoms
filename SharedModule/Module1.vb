@@ -1,5 +1,6 @@
 ﻿
 Imports System.IO
+Imports System.Runtime.InteropServices
 Imports MySql.Data.MySqlClient
 Imports userForm
 
@@ -220,21 +221,30 @@ Public Module Module1
 
     ' Flight generation function with improved error handling
     Public Function GenerateDailyFlights(startFlightNumber As Integer, flightDate As Date) As List(Of Flight)
+
         Dim flights As New List(Of Flight)()
         Try
             Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
+            Dim planeTypes As String() = {"AirbusA350_900", "AirbusA330_800", "AirbusA330_300", "AirbusA321", "AirbusA320", "Boeing737_800", "Boeing747_8", "Boeing777_300ER", "Boeing787_9", "Boeing737_MAX_8"}
+            Dim pilots As String() = {"Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith", "Capt. Gualberto", "Capt, Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"}
+
             Dim rnd As New Random()
 
             For i As Integer = 0 To destinations.Length - 1
                 Dim flightNumber As Integer = startFlightNumber + i + 1
                 Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
-                Dim departureTime As DateTime = flightDate.AddHours(6 + i) ' flights from 6AM to 3PM
+                Dim departureTime As DateTime = flightDate.AddHours(6 + i) ' flights from 6AM onwards
                 Dim durationHours As Integer = rnd.Next(3, 15)
                 Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
                 Dim status As String = "Waiting"
 
+                Dim planeType As String = planeTypes(rnd.Next(planeTypes.Length))
+                Dim pilot As String = pilots(rnd.Next(pilots.Length))
+
                 flights.Add(New Flight(
                 flightID,
+                planeType,
+                pilot,
                 "Manila",
                 destinations(i),
                 departureTime.Date,
@@ -246,7 +256,7 @@ Public Module Module1
             Next
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error)
+                   MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Return flights
     End Function
@@ -302,11 +312,13 @@ Public Module Module1
 
                 openCon()
                 For Each flight In flights
-                    cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, departure, destination, departure_date, " &
-                 "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @Departure, " &
+                    cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, plane_type, pilot, departure, destination, departure_date, " &
+                 "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @PlaneType, @Pilot @Departure, " &
                  "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
 
                     cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
+                    cmd.Parameters.AddWithValue("@PlaneType", flight.PlaneType)
+                    cmd.Parameters.AddWithValue("@Pilot", flight.Pilot)
                     cmd.Parameters.AddWithValue("@Departure", flight.Departure)
                     cmd.Parameters.AddWithValue("@Destination", flight.Destination)
                     cmd.Parameters.AddWithValue("@DepartureDate", flight.DepartureDate)
@@ -470,8 +482,8 @@ Public Module Module1
             loginForm.Show()
         End If
     End Sub
-        
-        
+
+
     Public Function GenerateSeats(Type As AircraftType) As (seatmap As Dictionary(Of String, String), capacity As Integer)
         Dim seatmap As New Dictionary(Of String, String)
         Dim seat As String
@@ -992,7 +1004,10 @@ End Class
 
 Public Class Flight
     Public Property FlightID As String
+    Public Property PlaneType As String
+    Public Property Pilot As String
     Public Property Departure As String
+
     Public Property Destination As String
     Public Property DepartureDate As Date
     Public Property DepartureTime As String
@@ -1004,10 +1019,12 @@ Public Class Flight
     Public Sub New()
     End Sub
 
-    Public Sub New(flightID As String, departure As String, destination As String,
+    Public Sub New(flightID As String, planeType As String, pilot As String, departure As String, destination As String,
                    departureDate As Date, departureTime As String,
                     arrivalTime As String, capacity As Integer, status As String)
         Me.FlightID = flightID
+        Me.PlaneType = planeType
+        Me.Pilot = pilot
         Me.Departure = departure
         Me.Destination = destination
         Me.DepartureDate = departureDate

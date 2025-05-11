@@ -31,9 +31,9 @@ Partial Class Form5
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(228, 76)
+        btnSearch.Location = New Point(226, 72)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(97, 27)
+        btnSearch.Size = New Size(101, 35)
         btnSearch.TabIndex = 0
         btnSearch.Text = "SEARCH"
         btnSearch.UseVisualStyleBackColor = True

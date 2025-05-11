@@ -45,7 +45,9 @@ Public Class Form1
         Dim dt As New DataTable()
         Try
             openCon()
-            Dim query As String = "SELECT flight_id as 'Flight No.', 
+            Dim query As String = "SELECT flight_id as 'Flight No.',
+                                     plane_type as 'Plane Type',
+                                     pilot as 'Pilot',
                                      departure as 'From', 
                                      destination as 'To', 
                                      departure_date as 'Date',
