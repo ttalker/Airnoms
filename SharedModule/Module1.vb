@@ -225,7 +225,16 @@ Public Module Module1
         Try
             Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
             Dim planeTypes As String() = {"AirbusA350_900", "AirbusA330_800", "AirbusA330_300", "AirbusA321", "AirbusA320", "Boeing737_800", "Boeing747_8", "Boeing777_300ER", "Boeing787_9", "Boeing737_MAX_8"}
-            Dim pilots As String() = {"Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith", "Capt. Gualberto", "Capt, Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"}
+
+            ' List of pilots - we'll ensure each is used only once
+            Dim pilots As String() = {"Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith",
+                                 "Capt. Gualberto", "Capt. Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"}
+
+            ' Ensure we have enough pilots for all destinations
+            If pilots.Length < destinations.Length Then
+                MessageBox.Show("Warning: Not enough pilots for all flights. Some pilots will be assigned multiple flights.",
+                           "Pilot Assignment Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
 
             Dim planeCapacities As New Dictionary(Of String, Integer) From { ' total capacity
             {"Boeing737_800", 523},
@@ -240,19 +249,36 @@ Public Module Module1
             {"AirbusA350_900", 195}
         }
 
+            ' Create a shuffled list of pilots to ensure random but unique assignment
             Dim rnd As New Random()
+            Dim availablePilots As New List(Of String)(pilots)
+
+            ' Fisher-Yates shuffle algorithm to randomize pilot order
+            For i As Integer = availablePilots.Count - 1 To 1 Step -1
+                Dim j As Integer = rnd.Next(0, i + 1)
+                Dim temp As String = availablePilots(i)
+                availablePilots(i) = availablePilots(j)
+                availablePilots(j) = temp
+            Next
 
             For i As Integer = 0 To destinations.Length - 1
-                Dim flightNumber As Integer = startFlightNumber + i + 1
+                ' Get flight number
+                Dim flightNumber As Integer = startFlightNumber + i
                 Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
+
+                ' Set times
                 Dim departureTime As DateTime = flightDate.AddHours(6 + i) ' flights from 6AM onwards
                 Dim durationHours As Integer = rnd.Next(3, 15)
                 Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
                 Dim status As String = "Waiting"
 
+                ' Randomly select plane type
                 Dim planeType As String = planeTypes(rnd.Next(planeTypes.Length))
-                Dim pilot As String = pilots(rnd.Next(pilots.Length))
                 Dim capacity As Integer = planeCapacities(planeType)
+
+                ' Assign a unique pilot (cycling through if we have more flights than pilots)
+                Dim pilotIndex As Integer = i Mod availablePilots.Count
+                Dim pilot As String = availablePilots(pilotIndex)
 
                 flights.Add(New Flight(
                 flightID,
@@ -269,12 +295,10 @@ Public Module Module1
             Next
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Return flights
     End Function
-
-
     Public Function FlightsExistForDate(flightDate As Date) As Boolean
         Try
             openCon()
@@ -292,31 +316,11 @@ Public Module Module1
         End Try
     End Function
 
-
-    Public Function GetMaxFlightNumber() As Integer
-        Dim maxNumber As Integer = 0
-        Try
-            openCon()
-            cmd = New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3) AS UNSIGNED)) FROM flight_table", con)
-            Dim result = cmd.ExecuteScalar()
-            If result IsNot Nothing AndAlso Not IsDBNull(result) Then
-                maxNumber = Convert.ToInt32(result)
-            End If
-        Catch ex As Exception
-            MessageBox.Show($"Error retrieving max flight number: {ex.Message}", "Database Error",
-                           MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
-        End Try
-        Return maxNumber
-    End Function
-
     Public Sub GenerateAndSaveFlightsIfNotExist(flightDate As Date)
         Try
             If Not FlightsExistForDate(flightDate) Then
-                Dim maxFlightNumber As Integer = GetMaxFlightNumber()
+                ' Get the next available flight number
+                Dim maxFlightNumber As Integer = GetNextFlightNumber()
                 Dim flights = GenerateDailyFlights(maxFlightNumber, flightDate)
 
                 If flights.Count = 0 Then
@@ -326,8 +330,9 @@ Public Module Module1
 
                 openCon()
                 For Each flight In flights
+                    ' FIXED: Missing comma in SQL statement after @Pilot
                     cmd = New MySqlCommand("INSERT INTO flight_table (flight_id, plane_type, pilot, departure, destination, departure_date, " &
-                 "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @PlaneType, @Pilot @Departure, " &
+                 "departure_time, arrival_time, capacity, status) VALUES (@FlightID, @PlaneType, @Pilot, @Departure, " &
                  "@Destination, @DepartureDate, @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
 
                     cmd.Parameters.AddWithValue("@FlightID", flight.FlightID)
@@ -350,13 +355,37 @@ Public Module Module1
             End If
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             If con.State = ConnectionState.Open Then
                 con.Close()
             End If
         End Try
     End Sub
+
+    ' Fixed GetNextFlightNumber function
+    Public Function GetNextFlightNumber() As Integer
+        Dim highestNumber As Integer = 0
+        Try
+            openCon()
+            ' FIXED: Changed LEN() to LENGTH() for MySQL syntax
+            Using command As New MySqlCommand("SELECT MAX(CAST(SUBSTRING(flight_id, 3, LENGTH(flight_id)) AS UNSIGNED)) FROM flight_table", con)
+                Dim result = command.ExecuteScalar()
+                If result IsNot DBNull.Value And result IsNot Nothing Then
+                    highestNumber = Convert.ToInt32(result)
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error getting next flight number: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
+
+        ' Return the next available number
+        Return highestNumber + 1
+    End Function
 
     Public Sub UpdateFlightStatuses()
         Try

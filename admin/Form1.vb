@@ -172,9 +172,6 @@ Public Class Form1
 
             ' Use the column headers as you defined in SQL aliases
             Dim flightID As String = selectedRow.Cells("Flight No.").Value.ToString()
-            'Dim destination As String = selectedRow.Cells("To").Value.ToString()
-            'Dim depDate As Date = Date.Parse(selectedRow.Cells("Date").Value.ToString())
-            'Dim depTime As String = selectedRow.Cells("Departure").Value.ToString()
 
             Dim passengerPopup As New Form5()
 
