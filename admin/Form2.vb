@@ -97,5 +97,7 @@ Public Class Form2
         End Try
     End Sub
 
+    Private Sub dgvTransactionHistory_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTransactionHistory.CellContentClick
 
+    End Sub
 End Class

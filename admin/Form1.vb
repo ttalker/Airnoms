@@ -167,8 +167,27 @@ Public Class Form1
     End Sub
 
     Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
-        Form5.Show()
+        If dgvFlights.SelectedRows.Count > 0 Then
+            Dim selectedRow As DataGridViewRow = dgvFlights.SelectedRows(0)
+
+            ' Use the column headers as you defined in SQL aliases
+            Dim flightID As String = selectedRow.Cells("Flight No.").Value.ToString()
+            'Dim destination As String = selectedRow.Cells("To").Value.ToString()
+            'Dim depDate As Date = Date.Parse(selectedRow.Cells("Date").Value.ToString())
+            'Dim depTime As String = selectedRow.Cells("Departure").Value.ToString()
+
+            Dim passengerPopup As New Form5()
+
+            'passengerPopup.LoadPassengers(flightID), destination, depDate, depTime)
+            passengerPopup.LoadPassengers(flightID)
+            passengerPopup.ShowDialog()
+        Else
+            MessageBox.Show("Please select a flight to view passenger information.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
+
+
+
 
     Private Sub btnCancelFlight_Click(sender As Object, e As EventArgs) Handles btnCancelFlight.Click
         Form4.Show()
