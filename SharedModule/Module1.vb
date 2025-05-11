@@ -221,12 +221,24 @@ Public Module Module1
 
     ' Flight generation function with improved error handling
     Public Function GenerateDailyFlights(startFlightNumber As Integer, flightDate As Date) As List(Of Flight)
-
         Dim flights As New List(Of Flight)()
         Try
             Dim destinations As String() = {"Seoul", "Beijing", "Tokyo", "Los Angeles", "Taipei", "Sydney", "Vancouver", "London", "Singapore", "Kuala Lumpur"}
             Dim planeTypes As String() = {"AirbusA350_900", "AirbusA330_800", "AirbusA330_300", "AirbusA321", "AirbusA320", "Boeing737_800", "Boeing747_8", "Boeing777_300ER", "Boeing787_9", "Boeing737_MAX_8"}
             Dim pilots As String() = {"Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith", "Capt. Gualberto", "Capt, Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"}
+
+            Dim planeCapacities As New Dictionary(Of String, Integer) From { ' total capacity
+            {"Boeing737_800", 523},
+            {"Boeing747_8", 308},
+            {"Boeing777_300ER", 388},
+            {"Boeing787_9", 300},
+            {"Boeing737_MAX_8", 178},
+            {"AirbusA320", 186},
+            {"AirbusA321", 236},
+            {"AirbusA330_300", 314},
+            {"AirbusA330_800", 523},
+            {"AirbusA350_900", 195}
+        }
 
             Dim rnd As New Random()
 
@@ -240,6 +252,7 @@ Public Module Module1
 
                 Dim planeType As String = planeTypes(rnd.Next(planeTypes.Length))
                 Dim pilot As String = pilots(rnd.Next(pilots.Length))
+                Dim capacity As Integer = planeCapacities(planeType)
 
                 flights.Add(New Flight(
                 flightID,
@@ -250,16 +263,17 @@ Public Module Module1
                 departureTime.Date,
                 departureTime.ToString("HH:mm"),
                 arrivalTime.ToString("HH:mm"),
-                rnd.Next(150, 251),
+                capacity,
                 status
             ))
             Next
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
         Return flights
     End Function
+
 
     Public Function FlightsExistForDate(flightDate As Date) As Boolean
         Try
