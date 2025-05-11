@@ -5,19 +5,17 @@ Imports SharedModule
 Public Class Form5
     ' Optional: Store passed flight data for use inside the form
     Private flightID As String
-    Private destination As String
-    Private depDate As Date
-    Private depTime As String
+    'Private destination As String
+    'Private depDate As Date
+    'Private depTime As String
 
     ' Call this method from the main form to load passengers for a specific flight
-    Public Sub LoadPassengers(fID As String) ', dest As String, dDate As Date, dTime As String
+    Public Sub LoadPassengers(fID As String) ', dest As String, dDate As Date, dTime As String) ', dest As String, dDate As Date, dTime As String
         flightID = fID
         'destination = dest
         'depDate = dDate
         'depTime = dTime
-        '        And destination = @destination 
-        'And departure_date = @depDate 
-        'And departure_time = @depTime"
+
         Try
             openCon()
 

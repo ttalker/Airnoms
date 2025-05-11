@@ -281,17 +281,17 @@ Public Module Module1
                 Dim pilot As String = availablePilots(pilotIndex)
 
                 flights.Add(New Flight(
-                flightID,
-                planeType,
-                pilot,
-                "Manila",
-                destinations(i),
-                departureTime.Date,
-                departureTime.ToString("HH:mm"),
-                arrivalTime.ToString("HH:mm"),
-                capacity,
-                status
-            ))
+                    flightID,
+                    planeType,
+                    pilot,
+                    "Manila",
+                    destinations(i),
+                    departureTime.Date,
+                    departureTime.ToString("HH:mm:ss"), ' FIXED
+                    arrivalTime.ToString("HH:mm:ss"),    ' FIXED
+                    capacity,
+                    status
+                ))
             Next
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
@@ -513,6 +513,61 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+    Public Sub DelayFlight(flightID As String, delayHours As Integer)
+        Try
+            openCon()
+
+            ' Get current dep/arr times
+            Dim cmdSelect As New MySqlCommand("SELECT departure_time, arrival_time FROM flight_table WHERE flight_id = @FlightID", con)
+            cmdSelect.Parameters.AddWithValue("@FlightID", flightID)
+
+            Dim reader As MySqlDataReader = cmdSelect.ExecuteReader()
+            Dim depTimeStr As String = ""
+            Dim arrTimeStr As String = ""
+
+            If reader.Read() Then
+                depTimeStr = reader("departure_time").ToString()
+                arrTimeStr = reader("arrival_time").ToString()
+            End If
+            reader.Close()
+
+            ' Parse and apply delay
+            ' Parse and apply delay
+            Dim depTime As DateTime = DateTime.ParseExact(depTimeStr, "HH:mm:ss", Nothing)
+            Dim arrTime As DateTime = DateTime.ParseExact(arrTimeStr, "HH:mm:ss", Nothing)
+
+            depTime = depTime.AddHours(delayHours)
+            arrTime = arrTime.AddHours(delayHours)
+
+
+            ' Update in database
+            Dim cmdUpdate As New MySqlCommand("UPDATE flight_table SET departure_time = @NewDepTime, arrival_time = @NewArrTime, status = 'Delayed' WHERE flight_id = @FlightID", con)
+            cmdUpdate.Parameters.AddWithValue("@NewDepTime", depTime.ToString("HH:mm:ss"))
+            cmdUpdate.Parameters.AddWithValue("@NewArrTime", arrTime.ToString("HH:mm:ss"))
+            cmdUpdate.Parameters.AddWithValue("@FlightID", flightID)
+
+            cmdUpdate.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error delaying flight: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
+    End Sub
+    Public Sub CancelFlight(flightID As String) ' flight cancellation
+        Try
+            openCon()
+            Dim cmd As New MySqlCommand("UPDATE flight_table SET status = 'Cancelled' WHERE flight_id = @FlightID", con)
+            cmd.Parameters.AddWithValue("@FlightID", flightID)
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MessageBox.Show("Error cancelling flight: " & ex.Message, "Cancel Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
+    End Sub
+
     Public Sub ExitToUserForm(currentForm As Form)
         Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
