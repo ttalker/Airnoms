@@ -412,11 +412,7 @@ Public Class Form1
         MessageBox.Show($"Total passengers: {allPassengers.Count}")
         MessageBox.Show("Main Booker: " & CurrentBooking.BookerFullName)
 
-
-
-
         btnClear.PerformClick()
-
 
     End Sub
 

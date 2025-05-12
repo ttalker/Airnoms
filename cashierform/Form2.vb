@@ -113,7 +113,6 @@ Public Class Form2
             lblArrivalTimeTicket.Text = CurrentBooking.ArrivalTime
             lblBookedUnderTicket.Text = CurrentBooking.BookerFullName
 
-
         End If
     End Sub
 
