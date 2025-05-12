@@ -1,8 +1,6 @@
 ﻿
 Imports System.IO
-Imports System.Runtime.InteropServices
 Imports MySql.Data.MySqlClient
-Imports Org.BouncyCastle.Asn1.Cmp.Challenge
 Imports userForm
 
 Public Module Module1

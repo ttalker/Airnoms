@@ -392,6 +392,12 @@ Public Class Form4
 
             ' Step 3: Load Available Seats
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberUser)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger1)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger2)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger3)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger4)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger5)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger6)
         Else
             MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
