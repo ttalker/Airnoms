@@ -316,11 +316,8 @@ Public Class Form1
             Exit Sub
         End If
 
-        Dim flightId As Integer = GetFlightIdByDestinationAndTime(cbxDestination.Text, parsedDepartureDate)
-        If flightId = -1 Then
-            MessageBox.Show("No matching flight found for the selected destination and departure time.")
-            Exit Sub
-        End If
+        Dim flightId = GetFlightIdByDestinationAndTime(cbxDestination.Text, parsedDepartureDate)
+
 
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
@@ -339,7 +336,8 @@ Public Class Form1
                 bookerSeatNumber:=mainBooker.SeatNumber,
                 bookerBaggageAllowance:=mainBooker.BaggageAllowance,
                 countPassenger:=passengerCount,
-                coPassengers:=coPassengers
+                coPassengers:=coPassengers,
+                FlightId:=flightId
             )
 
         ' === 6. Success Message ===
