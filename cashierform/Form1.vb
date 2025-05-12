@@ -190,19 +190,25 @@ Public Class Form1
             hasError = True
         End If
 
-        If String.IsNullOrWhiteSpace(cbxArrivalTime.Text) Then
-            Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-            hasError = True
+        'only error checks if the flight is round trip
+        If ticketIdentifier = "Round Trip" Then
+            If String.IsNullOrWhiteSpace(cbxArrivalTime.Text) Then
+                Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+                hasError = True
+            End If
+
+            If Not Date.TryParse(dtpArrivalDate.Text, Nothing) Then
+                MessageBox.Show("Invalid arrival date format.")
+                hasError = True
+            End If
         End If
+
 
         If Not Date.TryParse(dtpDepartDate.Text, Nothing) Then
             MessageBox.Show("Invalid departure date format.")
             hasError = True
         End If
-        If Not Date.TryParse(dtpArrivalDate.Text, Nothing) Then
-            MessageBox.Show("Invalid arrival date format.")
-            hasError = True
-        End If
+
 
 
         'Check for errors and exit the process if there is errors 
