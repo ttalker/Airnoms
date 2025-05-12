@@ -36,18 +36,22 @@ Public Class Form4
         ' Load all destinations
         LoadAllDestinations(cbxDestinationUser)
     End Sub
-
     Private Sub rbnOneWayTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnOneWayTrip.CheckedChanged
         tripIndicator = "One Way Trip"
         lblCover.Visible = True
         lblCover.BringToFront()
+        cbxArrivalTimeUser.Enabled = False
+        dtpArrivalDateUser.Enabled = False
     End Sub
 
     Private Sub rbnRoundTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnRoundTrip.CheckedChanged
         tripIndicator = "Round Trip"
         lblCover.Visible = False
         lblCover.SendToBack()
+        cbxArrivalTimeUser.Enabled = True
+        dtpArrivalDateUser.Enabled = True
     End Sub
+
 
     Private Sub btnHomeUser_Click(sender As Object, e As EventArgs) Handles btnHomeUser.Click
         Hide()
@@ -112,6 +116,7 @@ Public Class Form4
                 Return
             End Try
         Next
+        ' Ensure this is done before creating bookinginfo
 
         bookinginfo = New BookingInfo(
             tripType:=tripIndicator,
@@ -129,7 +134,8 @@ Public Class Form4
             bookerSeatNumber:=cbxSeatNumberUser.Text,
             bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
             coPassengers:=copassengers,
-            countPassenger:=countPassenger
+            countPassenger:=countPassenger,
+            FlightId:=FlightId
 )
 
         MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
@@ -223,22 +229,55 @@ Public Class Form4
             isValid = False
         End If
 
+
         Return isValid
     End Function
+    Dim departDateTime As DateTime = DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text)
+    Dim flightID As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, departDateTime)
+    Private Function GetFlightID(departure As String, destination As String, departureTime As DateTime) As String
+        Dim flightID As String = ""
+        Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @Departure AND destination = @Destination AND departure_time = @DepartureTime LIMIT 1"
 
-    Private Sub SaveBookingToDatabase(booking As BookingInfo) ' save function for database
         Try
             openCon()
-            Using cmd As New MySqlCommand("ALTER TABLE customer_table MODIFY customer_id INT AUTO_INCREMENT;", con)
-                cmd.ExecuteNonQuery()
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@Departure", departure)
+                cmd.Parameters.AddWithValue("@Destination", destination)
+                cmd.Parameters.AddWithValue("@DepartureTime", departureTime.ToString("yyyy-MM-dd HH:mm:ss"))
+
+                Dim result = cmd.ExecuteScalar()
+                If result IsNot Nothing Then
+                    flightID = result.ToString()
+                End If
             End Using
+        Catch ex As Exception
+            MessageBox.Show("Error fetching flight ID: " & ex.Message)
+        End Try
+
+        Return flightID
+    End Function
+
+
+    Private Sub SaveBookingToDatabase(booking As BookingInfo)
+        Try
+            openCon()
+
+            ' Get the flight ID based on destination, departure, and time
+            Dim flightID As String = GetFlightID(booking.Departure, booking.Destination, booking.DepartDate)
+            If String.IsNullOrEmpty(flightID) Then
+                MessageBox.Show("Flight not found for the selected details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End If
+
             ' Insert the main booker
             Dim insertQuery As String = "
-    INSERT INTO customer_table (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
-    seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time)
-    VALUES (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime)"
+        INSERT INTO customer_table (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+        seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id)
+        VALUES (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, 
+        @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
 
             Using cmd As New MySqlCommand(insertQuery, con)
+
                 cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
                 cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
                 cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
@@ -253,13 +292,9 @@ Public Class Form4
                 cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
                 cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
                 cmd.Parameters.AddWithValue("@TripType", booking.TripType)
-
-                Dim departureDateTime As DateTime = booking.DepartDate
-                cmd.Parameters.AddWithValue("@DepartureTime", departureDateTime.ToString("HH:mm:ss"))
-
-                Dim arrivalDateTime As DateTime = booking.ArrivalDate
-                cmd.Parameters.AddWithValue("@ArrivalTime", arrivalDateTime.ToString("HH:mm:ss"))
-
+                cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+                cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+                cmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
                 cmd.ExecuteNonQuery()
             End Using
 
@@ -268,7 +303,7 @@ Public Class Form4
                 Using passengerCmd As New MySqlCommand(insertQuery, con)
                     passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
                     passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
-                    passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress) ' Use booker's address for co-passengers
+                    passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
                     passengerCmd.Parameters.AddWithValue("@Age", p.Age)
                     passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
                     passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
@@ -280,13 +315,9 @@ Public Class Form4
                     passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
                     passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
                     passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
-
-                    Dim departureDateTime As DateTime = booking.DepartDate
-                    passengerCmd.Parameters.AddWithValue("@DepartureTime", departureDateTime.ToString("HH:mm:ss"))
-
-                    Dim arrivalDateTime As DateTime = booking.ArrivalDate
-                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", arrivalDateTime.ToString("HH:mm:ss"))
-
+                    passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+                    passengerCmd.Parameters.AddWithValue("@FlightID", flightID)
                     passengerCmd.ExecuteNonQuery()
                 End Using
             Next
@@ -295,7 +326,6 @@ Public Class Form4
         Catch ex As Exception
             MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            ' Make sure to close the conection
             If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
                 con.Close()
             End If

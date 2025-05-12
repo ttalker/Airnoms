@@ -58,6 +58,9 @@ Public Class Form1
 
         LoadAllDestinations(cbxDestination)
 
+        Dim result = GenerateSeats(AircraftType.AirbusA330_800)
+        Dim seatmap = result.seatmap
+        Dim capacity = result.capacity
 
     End Sub
 

@@ -26,14 +26,15 @@ Partial Class Form5
         btnSearch = New Button()
         btnBack = New Button()
         dgvPassengers = New DataGridView()
+        tbxSearchInput = New TextBox()
         CType(dgvPassengers, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(228, 76)
+        btnSearch.Location = New Point(224, 72)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(97, 27)
+        btnSearch.Size = New Size(101, 35)
         btnSearch.TabIndex = 0
         btnSearch.Text = "SEARCH"
         btnSearch.UseVisualStyleBackColor = True
@@ -55,12 +56,21 @@ Partial Class Form5
         dgvPassengers.Size = New Size(499, 263)
         dgvPassengers.TabIndex = 2
         ' 
+        ' tbxSearchInput
+        ' 
+        tbxSearchInput.Font = New Font("Segoe UI", 11F)
+        tbxSearchInput.Location = New Point(68, 77)
+        tbxSearchInput.Name = "tbxSearchInput"
+        tbxSearchInput.Size = New Size(152, 27)
+        tbxSearchInput.TabIndex = 3
+        ' 
         ' Form5
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         ClientSize = New Size(626, 500)
+        Controls.Add(tbxSearchInput)
         Controls.Add(dgvPassengers)
         Controls.Add(btnBack)
         Controls.Add(btnSearch)
@@ -68,9 +78,11 @@ Partial Class Form5
         Text = "Form5"
         CType(dgvPassengers, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents btnSearch As Button
     Friend WithEvents btnBack As Button
     Friend WithEvents dgvPassengers As DataGridView
+    Friend WithEvents tbxSearchInput As TextBox
 End Class
