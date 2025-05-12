@@ -778,7 +778,7 @@ Public Module Module1
 
                 'generate business
                 For i As Integer = 1 To 5
-                    Dim letters() = {"A", "D", "G", "D", "K"}
+                    Dim letters() = {"A", "D", "G", "K"}
                     For Each letter In letters
 
                         If (letter = "D" Or letter = "G") And (i = 5) Then
