@@ -187,18 +187,10 @@ Public Class Form1
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        'ExitToUserForm(Me)
+        ExitToUserForm(Me)
     End Sub
 
-    'Public Sub ExitToUserForm(currentForm As Form) ' exit to user form
-    '    Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-    '    If result = DialogResult.Yes Then
-    '        currentForm.Hide()
-    '        Dim loginForm As New userForm.Form1()
-    '        loginForm.Show()
-    '    End If
-    'End Sub
 
     Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
         If dgvFlights.SelectedRows.Count > 0 Then

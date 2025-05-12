@@ -437,13 +437,6 @@ Public Class Form4
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
     End Sub
-    Public Sub ExitToUserForm(currentForm As Form) ' function for exit 
-        Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            currentForm.Hide()
-            Form1.Show()
-        End If
-    End Sub
+
 
 End Class

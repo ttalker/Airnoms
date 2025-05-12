@@ -37,4 +37,10 @@
     <Folder Include="userForm\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="userForm">
+      <HintPath>..\userform\bin\Debug\net8.0-windows\userForm.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

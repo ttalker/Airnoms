@@ -420,7 +420,7 @@ Public Class Form1
 
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        'ExitToUserForm(Me)
+        ExitToUserForm(Me)
     End Sub
     ' 1. When the destination changes, load available times for that destination on the selected date
     Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
