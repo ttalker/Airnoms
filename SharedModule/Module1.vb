@@ -1002,6 +1002,33 @@ Public Module Module1
             Return CType(0, AircraftType)
         End Try
     End Function
+
+    Public Sub LoadAvailableDepartureTimesForDestination(destination As String, comboBox As ComboBox)
+        Try
+            openCon()
+            Dim cmd As New MySqlCommand("
+            SELECT DISTINCT departure_time 
+            FROM flight_table 
+            WHERE destination = @Destination 
+              AND LOWER(status) = 'waiting'
+            ORDER BY departure_time", con)
+
+            cmd.Parameters.AddWithValue("@Destination", destination)
+
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            comboBox.Items.Clear()
+
+            While reader.Read()
+                comboBox.Items.Add(reader("departure_time").ToString())
+            End While
+
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Failed to load available departure times: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
+    End Sub
 End Module
 
 

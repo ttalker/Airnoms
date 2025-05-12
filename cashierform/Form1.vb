@@ -422,7 +422,7 @@ Public Class Form1
         cbxDepartureTime.Text = ""
 
         If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
-            LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+            LoadAvailableDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
 
 
         End If
