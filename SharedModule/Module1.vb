@@ -1072,9 +1072,106 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+
+
+    ' Global dictionary to store all unprocessed bookers
+    Public bookingDictionary As New Dictionary(Of String, Customers)
+
+    Public Function LoadBookers() As List(Of String)
+        Dim bookerKeys As New List(Of String)
+
+        Try
+            bookingDictionary.Clear()
+
+            ' Open connection
+            If con Is Nothing Then
+                con = New MySqlConnection()
+            End If
+
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+
+            con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
+            con.Open()
+
+            ' Get all processed bookers from transaction_table
+            Dim processedKeys As New HashSet(Of String)
+            Dim cmdProcessed As New MySqlCommand("SELECT fullname, flight_id FROM transaction_table", con)
+            Using readerProcessed = cmdProcessed.ExecuteReader()
+                While readerProcessed.Read()
+                    Dim fullname As String = readerProcessed("fullname").ToString()
+                    Dim customerID As String = readerProcessed("customer_id").ToString()
+                    Dim processedKey As String = fullname & "#" & customerID
+                    processedKeys.Add(processedKey)
+                End While
+            End Using
+
+            ' Load all customers from customer_table
+            Dim cmdBookers As New MySqlCommand("SELECT * FROM customer_table", con)
+            Using readerBookers = cmdBookers.ExecuteReader()
+                While readerBookers.Read()
+                    Dim fullname As String = readerBookers("fullname").ToString()
+                    Dim customerID As String = readerBookers("customer_id").ToString()
+                    Dim flightID As String = readerBookers("flight_id").ToString()
+                    Dim key As String = fullname & "#" & customerID
+
+                    If Not processedKeys.Contains(key) Then
+                        Dim booking As New Customers With {
+                            .CustomerID = customerID,
+                            .FullName = fullname,
+                            .Age = Convert.ToInt32(readerBookers("age")),
+                            .DateOfBirth = Convert.ToDateTime(readerBookers("date_of_birth")),
+                            .Gender = readerBookers("gender").ToString(),
+                            .SeatNumber = readerBookers("seat_number").ToString(),
+                            .BaggageAllowance = readerBookers("baggage_allowance").ToString(),
+                            .Address = readerBookers("address").ToString(),
+                            .PWDStatus = Convert.ToBoolean(readerBookers("pwd_status")),
+                            .Departure = readerBookers("departure").ToString(),
+                            .Destination = readerBookers("destination").ToString(),
+                            .TripType = readerBookers("trip_type").ToString(),
+                            .BookingDate = Convert.ToDateTime(readerBookers("booking_date")),
+                            .DepartureTime = readerBookers("departure_time").ToString(),
+                            .ArrivalTime = readerBookers("arrival_time").ToString(),
+                            .FlightID = flightID
+                        }
+
+                        bookingDictionary.Add(key, booking)
+                        bookerKeys.Add(key)
+                    End If
+                End While
+            End Using
+
+            con.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading bookers in module: " & ex.Message, "Module Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return bookerKeys
+    End Function
+
 End Module
 
-
+Public Class Customers
+    Public Property CustomerID As String
+    Public Property FullName As String
+    Public Property Age As Integer
+    Public Property DateOfBirth As Date
+    Public Property Gender As String
+    Public Property SeatNumber As String
+    Public Property BaggageAllowance As String
+    Public Property Address As String
+    Public Property PWDStatus As Boolean
+    Public Property Departure As String
+    Public Property Destination As String
+    Public Property TripType As String
+    Public Property BookingDate As Date
+    Public Property DepartureTime As String
+    Public Property ArrivalTime As String
+    Public Property FlightID As String
+End Class
 
 Public Class PassengerInfo
     Public Property FullName As String
