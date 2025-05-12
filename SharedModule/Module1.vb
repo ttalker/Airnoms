@@ -1078,7 +1078,7 @@ Public Module Module1
             SELECT DISTINCT departure_time 
             FROM flight_table 
             WHERE destination = @Destination 
-              AND LOWER(status) = 'waiting'
+              AND LOWER(status) IN ('waiting', 'delayed') 
             ORDER BY departure_time", con)
 
             cmd.Parameters.AddWithValue("@Destination", destination)
