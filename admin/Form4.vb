@@ -1,5 +1,5 @@
-﻿Imports SharedModule
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
+Imports SharedModule
 Public Class Form4
     Private flightID As String
     Public FlightWasCancelled As Boolean = False

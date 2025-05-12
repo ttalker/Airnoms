@@ -3,32 +3,22 @@ Imports MySql.Data.MySqlClient
 Imports SharedModule
 
 Public Class Form5
-    ' Optional: Store passed flight data for use inside the form
+
     Private flightID As String
-    'Private destination As String
-    'Private depDate As Date
-    'Private depTime As String
 
-    ' Call this method from the main form to load passengers for a specific flight
-    Public Sub LoadPassengers(fID As String) ', dest As String, dDate As Date, dTime As String) ', dest As String, dDate As Date, dTime As String
+    Public Sub LoadPassengers(fID As String)
         flightID = fID
-        'destination = dest
-        'depDate = dDate
-        'depTime = dTime
-
         Try
             openCon()
 
-            Dim query As String = "SELECT flight_id, fullname, class, seat_number 
-                                   FROM transaction_table 
-                                   WHERE flight_id = @flightID"
+            Dim query As String = "SELECT flight_id, fullname, seat_class AS class, seat_number 
+                       FROM transaction_table 
+                       WHERE flight_id = @flightID"
+
 
 
             Using cmd As New MySqlCommand(query, con)
                 cmd.Parameters.AddWithValue("@flightID", flightID)
-                'cmd.Parameters.AddWithValue("@destination", destination)
-                'cmd.Parameters.AddWithValue("@depDate", depDate)
-                'cmd.Parameters.AddWithValue("@depTime", depTime)
 
                 Dim adapter As New MySqlDataAdapter(cmd)
                 Dim table As New DataTable()

@@ -5,7 +5,10 @@ Public Class Form4
     Dim bookinginfo As New BookingInfo()
     Public Property tripIndicator As String
 
+
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         MakeTransparent(btnHomeUser)
         MakeTransparent(btnBookingUser)
         MakeTransparent(btnSupportUser)
@@ -70,7 +73,6 @@ Public Class Form4
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
 
-        'Dim bookinginfo As BookingInfo = New BookingInfo()
 
         If Not ValidateForm() Then
             Return
@@ -83,7 +85,7 @@ Public Class Form4
                 Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
                 If nameCtrl IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(nameCtrl.Text) Then
                     Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
-                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirth1DatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
                     Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
@@ -116,27 +118,33 @@ Public Class Form4
                 Return
             End Try
         Next
-        ' Ensure this is done before creating bookinginfo
+
+        Dim flightId As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text))
+
+        If String.IsNullOrEmpty(flightId) Then
+            MessageBox.Show("No matching flight found for the selected route and time.", "Flight Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
         bookinginfo = New BookingInfo(
-            tripType:=tripIndicator,
-            departure:=cbxDepartureUser.Text,
-            destination:=cbxDestinationUser.Text,
-            departDate:=DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text),
-            arrivalDate:=DateTime.Parse(dtpArrivalDateUser.Value.ToShortDateString() & " " & cbxArrivalTimeUser.Text),
-            bookingDate:=DateTime.Now,
-            bookerFullName:=tbxFullnameUser.Text,
-            bookerAge:=Integer.Parse(tbxAgeUser.Text),
-            bookerBirthDate:=dtpDateBirthUser.Value,
-            bookerGender:=cbxGenderUser.Text,
-            bookerAddress:=tbxAddressUser.Text,
-            bookerIsPWD:=chbPWDUser.Checked,
-            bookerSeatNumber:=cbxSeatNumberUser.Text,
-            bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
-            coPassengers:=copassengers,
-            countPassenger:=countPassenger,
-            FlightId:=GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text))
-)
+                tripType:=tripIndicator,
+                departure:=cbxDepartureUser.Text,
+                destination:=cbxDestinationUser.Text,
+                departDate:=DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text),
+                arrivalDate:=DateTime.Parse(dtpArrivalDateUser.Value.ToShortDateString() & " " & cbxArrivalTimeUser.Text),
+                bookingDate:=DateTime.Now,
+                bookerFullName:=tbxFullnameUser.Text,
+                bookerAge:=Integer.Parse(tbxAgeUser.Text),
+                bookerBirthDate:=dtpDateBirthUser.Value,
+                bookerGender:=cbxGenderUser.Text,
+                bookerAddress:=tbxAddressUser.Text,
+                bookerIsPWD:=chbPWDUser.Checked,
+                bookerSeatNumber:=cbxSeatNumberUser.Text,
+                bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
+                coPassengers:=copassengers,
+                countPassenger:=countPassenger,
+                FlightId:=flightId
+            )
 
         MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
                "Co-passengers: " & bookinginfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
@@ -218,7 +226,7 @@ Public Class Form4
             End If
         End If
 
-        If dtpDepartDateUser.Value.Date <= DateTime.Now.Date Then
+        If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
             ErrorProvider1.SetError(dtpDepartDateUser, "Booking must be made at least a day in advance.")
             MessageBox.Show("You cannot book a trip for today or a past date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             isValid = False
@@ -256,7 +264,7 @@ Public Class Form4
     Private Sub SaveBookingToDatabase(booking As BookingInfo)
         Try
             openCon()
-            Dim departDateTime As DateTime = DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text)
+            Dim departDate As DateTime = dtpDepartDateUser.Value.Date.Add(TimeSpan.Parse(cbxDepartTimeUser.Text))
             Dim flightID As String = booking.FlightID
 
             ' Get the flight ID based on destination, departure, and time
@@ -340,6 +348,7 @@ Public Class Form4
 
         cbxDepartureUser.SelectedIndex = -1
         cbxDestinationUser.SelectedIndex = -1
+        MessageBox.Show("Item count: " & cbxDepartureUser.Items.Count.ToString())
         cbxDepartTimeUser.SelectedIndex = -1
         cbxArrivalTimeUser.SelectedIndex = -1
 
@@ -415,7 +424,6 @@ Public Class Form4
 
     ' 2. When the date changes, check if flights exist, and reload times if a destination is already chosen
     Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDateUser.ValueChanged
-        cbxDepartureUser.Items.Clear()
         cbxDepartTimeUser.Text = ""
 
         If FlightsExistForDate(dtpDepartDateUser.Value.Date) = False Then
@@ -424,8 +432,6 @@ Public Class Form4
             LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
         End If
     End Sub
-
-
 
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

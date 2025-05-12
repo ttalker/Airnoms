@@ -523,21 +523,15 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
-
-    Public Sub ExitToUserForm(currentForm As Form)
+    Public Sub ExitToUserForm(currentForm As Form) ' exit to user form
         Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
         If result = DialogResult.Yes Then
             currentForm.Hide()
-
-
-            '' Create and show the login form from the other project
-            'Dim loginForm As New userForm.Form1()
-            'loginForm.Show()
+            Dim loginForm As New userForm.Form1()
+            loginForm.Show()
         End If
     End Sub
-
-
     Public Function GenerateSeats(Type As AircraftType) As (seatmap As Dictionary(Of String, String), capacity As Integer)
         Dim seatmap As New Dictionary(Of String, String)
         Dim seat As String

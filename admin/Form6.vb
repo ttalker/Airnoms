@@ -48,19 +48,31 @@ Public Class Form6
 
             Dim capacity = planeCapacities(planeType)
 
+
             ' Generate new flight ID
             Dim nextFlightNum = GetNextFlightNumber()
             Dim flightID = $"FL{nextFlightNum:D3}"
 
-            ' Insert into database
             openCon()
+            Using checkCmd As New MySqlCommand("SELECT COUNT(*) FROM flight_table WHERE pilot = @Pilot AND departure_date = @Date", con)
+                checkCmd.Parameters.AddWithValue("@Pilot", pilot)
+                checkCmd.Parameters.AddWithValue("@Date", departureDate)
+
+                Dim count = Convert.ToInt32(checkCmd.ExecuteScalar())
+                If count > 0 Then
+                    MessageBox.Show("This pilot is already assigned to another flight on the selected date.", "Pilot Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Return
+                End If
+            End Using
+
+            '  Insert flight
             Using cmd As New MySqlCommand("
-                INSERT INTO flight_table 
-                (flight_id, plane_type, pilot, departure, destination, departure_date, 
-                 departure_time, arrival_time, capacity, status)
-                VALUES 
-                (@FlightID, @PlaneType, @Pilot, @Departure, @Destination, @DepartureDate, 
-                 @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
+                    INSERT INTO flight_table 
+                    (flight_id, plane_type, pilot, departure, destination, departure_date, 
+                     departure_time, arrival_time, capacity, status)
+                    VALUES 
+                    (@FlightID, @PlaneType, @Pilot, @Departure, @Destination, @DepartureDate, 
+                     @DepartureTime, @ArrivalTime, @Capacity, @Status)", con)
 
                 cmd.Parameters.AddWithValue("@FlightID", flightID)
                 cmd.Parameters.AddWithValue("@PlaneType", planeType)
@@ -75,7 +87,6 @@ Public Class Form6
 
                 cmd.ExecuteNonQuery()
             End Using
-
             MessageBox.Show("Flight added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
@@ -115,12 +126,13 @@ Public Class Form6
         ' Load Available Pilots
         LoadAvailablePilots()
     End Sub
+    Private ReadOnly allPilots As New List(Of String) From {
+    "Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith",
+    "Capt. Gualberto", "Capt. Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"
+}
 
     Private Sub LoadAvailablePilots()
         cbxPilotAddFlight.Items.Clear()
-
-        Dim allPilots = {"Capt. Reyes", "Capt. Santos", "Capt. Lee", "Capt. Tanaka", "Capt. Smith",
-                     "Capt. Gualberto", "Capt. Maglalang", "Capt. Barba", "Capt. Pilar", "Capt. Jayat"}
 
         Dim assignedPilots As New HashSet(Of String)()
 
@@ -141,25 +153,30 @@ Public Class Form6
         End Try
 
         Dim availablePilots = allPilots.Where(Function(p) Not assignedPilots.Contains(p)).ToArray()
+
         cbxPilotAddFlight.DropDownStyle = ComboBoxStyle.DropDown
-        cbxPilotAddFlight.Items.AddRange(availablePilots)
+        cbxPilotAddFlight.Items.AddRange(availablePilots.Distinct().ToArray())
     End Sub
 
 
     Private Sub btnAddPilot_Click(sender As Object, e As EventArgs) Handles btnAddPilot.Click
-        Dim newPilot As String = InputBox("Enter the new pilot's name (e.g., 'Capt. Cruz'):", "Add Pilot")
+        Dim newPilot As String = InputBox("Enter the new pilot's name (e.g., 'Capt. Cruz'):", "Add Pilot").Trim()
 
-        If Not String.IsNullOrWhiteSpace(newPilot) Then
-            If Not cbxPilotAddFlight.Items.Contains(newPilot) Then
-                cbxPilotAddFlight.Items.Add(newPilot)
-                cbxPilotAddFlight.SelectedItem = newPilot
-                MessageBox.Show("Pilot added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Pilot already exists in the list.", "Duplicate Pilot", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-        Else
+        If String.IsNullOrWhiteSpace(newPilot) Then
             MessageBox.Show("Pilot name cannot be empty.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
         End If
+
+        ' Avoid duplicates by checking both dropdown and allPilots list
+        If cbxPilotAddFlight.Items.Contains(newPilot) OrElse allPilots.Contains(newPilot) Then
+            MessageBox.Show("Pilot already exists in the list.", "Duplicate Pilot", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        allPilots.Add(newPilot)
+        cbxPilotAddFlight.Items.Add(newPilot)
+        cbxPilotAddFlight.SelectedItem = newPilot
+        MessageBox.Show("Pilot added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
 End Class
