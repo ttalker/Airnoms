@@ -30,7 +30,6 @@ Partial Class Form2
         cbxPassengerTicket = New ComboBox()
         btnProcessTicket = New Button()
         btnSupport = New Button()
-        pbxCashierTicket = New PictureBox()
         btnExit = New Button()
         btnNextTicket = New Button()
         btnResetTicket = New Button()
@@ -54,7 +53,6 @@ Partial Class Form2
         lblTaxTicket = New Label()
         lblTicketAmt = New Label()
         lblClass = New Label()
-        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -91,10 +89,10 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(1248, 707)
+        btnCalculate.Location = New Point(1250, 695)
         btnCalculate.Margin = New Padding(3, 2, 3, 2)
         btnCalculate.Name = "btnCalculate"
-        btnCalculate.Size = New Size(185, 54)
+        btnCalculate.Size = New Size(194, 71)
         btnCalculate.TabIndex = 38
         btnCalculate.Text = " "
         btnCalculate.UseVisualStyleBackColor = False
@@ -102,7 +100,7 @@ Partial Class Form2
         ' cbxPassengerTicket
         ' 
         cbxPassengerTicket.FormattingEnabled = True
-        cbxPassengerTicket.Location = New Point(272, 270)
+        cbxPassengerTicket.Location = New Point(262, 274)
         cbxPassengerTicket.Margin = New Padding(3, 2, 3, 2)
         cbxPassengerTicket.Name = "cbxPassengerTicket"
         cbxPassengerTicket.Size = New Size(177, 23)
@@ -127,15 +125,6 @@ Partial Class Form2
         btnSupport.TabIndex = 10
         btnSupport.Text = " "
         btnSupport.UseVisualStyleBackColor = True
-        ' 
-        ' pbxCashierTicket
-        ' 
-        pbxCashierTicket.BackgroundImage = My.Resources.Resources.TICKET_PAGE__2_
-        pbxCashierTicket.Location = New Point(2, -1)
-        pbxCashierTicket.Name = "pbxCashierTicket"
-        pbxCashierTicket.Size = New Size(1551, 910)
-        pbxCashierTicket.TabIndex = 39
-        pbxCashierTicket.TabStop = False
         ' 
         ' btnExit
         ' 
@@ -176,7 +165,7 @@ Partial Class Form2
         lblDepartDateTicket.AutoSize = True
         lblDepartDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDepartDateTicket.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblDepartDateTicket.Location = New Point(272, 365)
+        lblDepartDateTicket.Location = New Point(262, 368)
         lblDepartDateTicket.Name = "lblDepartDateTicket"
         lblDepartDateTicket.Size = New Size(57, 20)
         lblDepartDateTicket.TabIndex = 43
@@ -187,7 +176,7 @@ Partial Class Form2
         lblArrivalDateTicket.AutoSize = True
         lblArrivalDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblArrivalDateTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblArrivalDateTicket.Location = New Point(272, 419)
+        lblArrivalDateTicket.Location = New Point(262, 420)
         lblArrivalDateTicket.Name = "lblArrivalDateTicket"
         lblArrivalDateTicket.Size = New Size(57, 20)
         lblArrivalDateTicket.TabIndex = 44
@@ -198,7 +187,7 @@ Partial Class Form2
         lblDepartTimeTicket.AutoSize = True
         lblDepartTimeTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDepartTimeTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblDepartTimeTicket.Location = New Point(597, 364)
+        lblDepartTimeTicket.Location = New Point(588, 368)
         lblDepartTimeTicket.Name = "lblDepartTimeTicket"
         lblDepartTimeTicket.Size = New Size(57, 20)
         lblDepartTimeTicket.TabIndex = 45
@@ -209,7 +198,7 @@ Partial Class Form2
         lblArrivalTimeTicket.AutoSize = True
         lblArrivalTimeTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblArrivalTimeTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblArrivalTimeTicket.Location = New Point(597, 417)
+        lblArrivalTimeTicket.Location = New Point(588, 420)
         lblArrivalTimeTicket.Name = "lblArrivalTimeTicket"
         lblArrivalTimeTicket.Size = New Size(57, 20)
         lblArrivalTimeTicket.TabIndex = 46
@@ -220,7 +209,7 @@ Partial Class Form2
         lblGenderTicket.AutoSize = True
         lblGenderTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblGenderTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblGenderTicket.Location = New Point(269, 757)
+        lblGenderTicket.Location = New Point(262, 759)
         lblGenderTicket.Name = "lblGenderTicket"
         lblGenderTicket.Size = New Size(57, 20)
         lblGenderTicket.TabIndex = 50
@@ -231,7 +220,7 @@ Partial Class Form2
         lblDateOfBirthTicket.AutoSize = True
         lblDateOfBirthTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDateOfBirthTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblDateOfBirthTicket.Location = New Point(269, 703)
+        lblDateOfBirthTicket.Location = New Point(262, 705)
         lblDateOfBirthTicket.Name = "lblDateOfBirthTicket"
         lblDateOfBirthTicket.Size = New Size(57, 20)
         lblDateOfBirthTicket.TabIndex = 49
@@ -242,7 +231,7 @@ Partial Class Form2
         lblFullNameTicket.AutoSize = True
         lblFullNameTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblFullNameTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblFullNameTicket.Location = New Point(269, 655)
+        lblFullNameTicket.Location = New Point(262, 658)
         lblFullNameTicket.Name = "lblFullNameTicket"
         lblFullNameTicket.Size = New Size(57, 20)
         lblFullNameTicket.TabIndex = 48
@@ -253,7 +242,7 @@ Partial Class Form2
         lblBookingDateTicket.AutoSize = True
         lblBookingDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBookingDateTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblBookingDateTicket.Location = New Point(269, 605)
+        lblBookingDateTicket.Location = New Point(262, 609)
         lblBookingDateTicket.Name = "lblBookingDateTicket"
         lblBookingDateTicket.Size = New Size(57, 20)
         lblBookingDateTicket.TabIndex = 47
@@ -264,7 +253,7 @@ Partial Class Form2
         lblBaggageAllowanceTicket.AutoSize = True
         lblBaggageAllowanceTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBaggageAllowanceTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblBaggageAllowanceTicket.Location = New Point(608, 752)
+        lblBaggageAllowanceTicket.Location = New Point(601, 759)
         lblBaggageAllowanceTicket.Name = "lblBaggageAllowanceTicket"
         lblBaggageAllowanceTicket.Size = New Size(57, 20)
         lblBaggageAllowanceTicket.TabIndex = 54
@@ -275,7 +264,7 @@ Partial Class Form2
         lblDestinationTicket.AutoSize = True
         lblDestinationTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDestinationTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblDestinationTicket.Location = New Point(608, 697)
+        lblDestinationTicket.Location = New Point(601, 705)
         lblDestinationTicket.Name = "lblDestinationTicket"
         lblDestinationTicket.Size = New Size(66, 20)
         lblDestinationTicket.TabIndex = 53
@@ -286,7 +275,7 @@ Partial Class Form2
         lblSeatNumTicket.AutoSize = True
         lblSeatNumTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblSeatNumTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblSeatNumTicket.Location = New Point(608, 650)
+        lblSeatNumTicket.Location = New Point(601, 657)
         lblSeatNumTicket.Name = "lblSeatNumTicket"
         lblSeatNumTicket.Size = New Size(66, 20)
         lblSeatNumTicket.TabIndex = 52
@@ -297,7 +286,7 @@ Partial Class Form2
         lblBookedUnderTicket.AutoSize = True
         lblBookedUnderTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBookedUnderTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblBookedUnderTicket.Location = New Point(608, 607)
+        lblBookedUnderTicket.Location = New Point(601, 610)
         lblBookedUnderTicket.Name = "lblBookedUnderTicket"
         lblBookedUnderTicket.Size = New Size(66, 20)
         lblBookedUnderTicket.TabIndex = 51
@@ -308,7 +297,7 @@ Partial Class Form2
         lblAdressTicket.AutoSize = True
         lblAdressTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblAdressTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblAdressTicket.Location = New Point(272, 810)
+        lblAdressTicket.Location = New Point(262, 813)
         lblAdressTicket.Name = "lblAdressTicket"
         lblAdressTicket.Size = New Size(66, 20)
         lblAdressTicket.TabIndex = 55
@@ -319,7 +308,7 @@ Partial Class Form2
         lblPWDTicket.AutoSize = True
         lblPWDTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblPWDTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblPWDTicket.Location = New Point(610, 807)
+        lblPWDTicket.Location = New Point(601, 813)
         lblPWDTicket.Name = "lblPWDTicket"
         lblPWDTicket.Size = New Size(66, 20)
         lblPWDTicket.TabIndex = 56
@@ -330,7 +319,7 @@ Partial Class Form2
         lblChangeTicket.AutoSize = True
         lblChangeTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblChangeTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblChangeTicket.Location = New Point(1121, 666)
+        lblChangeTicket.Location = New Point(1106, 669)
         lblChangeTicket.Name = "lblChangeTicket"
         lblChangeTicket.Size = New Size(66, 20)
         lblChangeTicket.TabIndex = 59
@@ -341,7 +330,7 @@ Partial Class Form2
         lblTotalTicket.AutoSize = True
         lblTotalTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblTotalTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblTotalTicket.Location = New Point(1121, 393)
+        lblTotalTicket.Location = New Point(1106, 394)
         lblTotalTicket.Name = "lblTotalTicket"
         lblTotalTicket.Size = New Size(66, 20)
         lblTotalTicket.TabIndex = 58
@@ -352,7 +341,7 @@ Partial Class Form2
         lblTaxTicket.AutoSize = True
         lblTaxTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblTaxTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblTaxTicket.Location = New Point(1121, 324)
+        lblTaxTicket.Location = New Point(1106, 327)
         lblTaxTicket.Name = "lblTaxTicket"
         lblTaxTicket.Size = New Size(66, 20)
         lblTaxTicket.TabIndex = 57
@@ -363,7 +352,7 @@ Partial Class Form2
         lblTicketAmt.AutoSize = True
         lblTicketAmt.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblTicketAmt.Font = New Font("Microsoft Sans Serif", 12F)
-        lblTicketAmt.Location = New Point(1121, 279)
+        lblTicketAmt.Location = New Point(1106, 280)
         lblTicketAmt.Name = "lblTicketAmt"
         lblTicketAmt.Size = New Size(66, 20)
         lblTicketAmt.TabIndex = 60
@@ -374,7 +363,7 @@ Partial Class Form2
         lblClass.AutoSize = True
         lblClass.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblClass.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblClass.Location = New Point(269, 313)
+        lblClass.Location = New Point(262, 318)
         lblClass.Name = "lblClass"
         lblClass.Size = New Size(57, 20)
         lblClass.TabIndex = 61
@@ -384,6 +373,7 @@ Partial Class Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackgroundImage = My.Resources.Resources.TICKET_PAGE__1___1_
         ClientSize = New Size(1547, 911)
         Controls.Add(lblClass)
         Controls.Add(lblTicketAmt)
@@ -414,11 +404,9 @@ Partial Class Form2
         Controls.Add(btnProcessTicket)
         Controls.Add(btnTicket)
         Controls.Add(btnBooking)
-        Controls.Add(pbxCashierTicket)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form2"
         Text = "TICKET PROCESSING"
-        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -432,7 +420,6 @@ Partial Class Form2
     Friend WithEvents btnCalculate As Button
     Friend WithEvents tbxTicketPayment As TextBox
     Friend WithEvents btnSupport As Button
-    Friend WithEvents pbxCashierTicket As PictureBox
     Friend WithEvents btnExit As Button
     Friend WithEvents btnNextTicket As Button
     Friend WithEvents btnResetTicket As Button
