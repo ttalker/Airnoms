@@ -76,13 +76,6 @@ Public Class Form2
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
 
-        cbxPassengerTicket.Items.Clear()
-
-        ' Add each passenger to the ComboBox
-        For Each passenger As PassengerInfo In allPassengers
-            cbxPassengerTicket.Items.Add(passenger.FullName) ' Or any other property, such as FullName or SeatNumber
-        Next
-
 
 
     End Sub
@@ -92,28 +85,7 @@ Public Class Form2
     End Sub
 
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
-        Dim selectedIndex As Integer = cbxPassengerTicket.SelectedIndex
 
-        If selectedIndex >= 0 AndAlso selectedIndex < allPassengers.Count Then
-            Dim selectedPassenger As PassengerInfo = allPassengers(selectedIndex)
-
-            ' Display in labels
-            lblFullNameTicket.Text = selectedPassenger.FullName
-            lblDateOfBirthTicket.Text = selectedPassenger.DateOfBirth.ToShortDateString()
-            lblGenderTicket.Text = selectedPassenger.Gender
-            lblSeatNumTicket.Text = selectedPassenger.SeatNumber
-            lblBaggageAllowanceTicket.Text = selectedPassenger.BaggageAllowance
-            lblPWDTicket.Text = If(selectedPassenger.IsPWD, "Yes", "No")
-            lblAdressTicket.Text = CurrentBooking.BookerAddress.ToString
-            lblBookingDateTicket.Text = CurrentBooking.BookingDate.ToShortDateString()
-            lblDestinationTicket.Text = CurrentBooking.Destination
-            lblDepartDateTicket.Text = CurrentBooking.DepartDate.ToShortDateString()
-            lblArrivalDateTicket.Text = CurrentBooking.ArrivalDate.ToShortDateString()
-            lblDepartTimeTicket.Text = CurrentBooking.DepartTime
-            lblArrivalTimeTicket.Text = CurrentBooking.ArrivalTime
-            lblBookedUnderTicket.Text = CurrentBooking.BookerFullName
-
-        End If
     End Sub
 
     Private Sub cbxClassTicket_SelectedIndexChanged(sender As Object, e As EventArgs)
