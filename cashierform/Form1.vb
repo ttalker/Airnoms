@@ -58,7 +58,7 @@ Public Class Form1
 
         LoadAllDestinations(cbxDestination)
 
-        Dim result = GenerateSeats(AircraftType.AirbusA330_300)
+        Dim result = GenerateSeats(AircraftType.AirbusA320)
         Dim seatmap = result.seatmap
         Dim capacity = result.capacity
 
@@ -315,6 +315,12 @@ Public Class Form1
             Exit Sub
         End If
 
+        Dim flightId As Integer = GetFlightIdByDestinationAndTime(cbxDestination.Text, parsedDepartureDate)
+        If flightId = -1 Then
+            MessageBox.Show("No matching flight found for the selected destination and departure time.")
+            Exit Sub
+        End If
+
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
                 tripType:=ticketIdentifier, ' Use your trip identifier here
@@ -359,16 +365,15 @@ Public Class Form1
 
         ' Add the information to the database
         Try
-            openCon() ' opens con
-
+            openCon()
             For Each passenger As PassengerInfo In allPassengers
                 Using cmd As New MySqlCommand("
             INSERT INTO customer_table 
             (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
-             booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
+             booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id) 
             VALUES 
             (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
-             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con) ' <<< use con here
+             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime, @flightId)", con)
 
                     cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
                     cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
@@ -385,6 +390,7 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
                     cmd.Parameters.AddWithValue("@departTime", parsedDepartureDate)
                     cmd.Parameters.AddWithValue("@arriveTime", parsedArrivalDate)
+                    cmd.Parameters.AddWithValue("@flightId", flightId)
 
                     cmd.ExecuteNonQuery()
                 End Using

@@ -900,6 +900,26 @@ Public Module Module1
     End Function
 
 
+    Public Function GetFlightIdByDestinationAndTime(destination As String, departureTime As DateTime) As Integer
+        Dim flightId As Integer = -1 ' Default return value if not found
+        Try
+            openCon()
+            Dim cmd As New MySqlCommand("SELECT flight_id FROM flight_table WHERE destination = @destination AND departure_time = @departureTime LIMIT 1", con)
+            cmd.Parameters.AddWithValue("@destination", destination)
+            cmd.Parameters.AddWithValue("@departureTime", departureTime)
+
+            Dim reader As MySqlDataReader = cmd.ExecuteReader()
+            If reader.Read() Then
+                flightId = Convert.ToInt32(reader("flight_id"))
+            End If
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Failed to retrieve flight ID: " & ex.Message)
+        Finally
+            If con.State = ConnectionState.Open Then con.Close()
+        End Try
+        Return flightId
+    End Function
 
 End Module
 
