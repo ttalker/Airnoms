@@ -432,7 +432,7 @@ Public Class Form1
     End Sub
 
     Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
-        If FlightsExistForDate(dtpDepartDate.Value) = False Then
+        If FlightsExistForDate(dtpDepartDate.Value.Date) = False Then
             MessageBox.Show("No flights are scheduled for the selected departure date.")
         End If
 
