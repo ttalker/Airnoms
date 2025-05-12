@@ -19,11 +19,9 @@ Public Class Form2
         Me.Hide()
         Form1.Show()
 
-
     End Sub
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
-
 
         Show()
         Form1.Hide()
@@ -71,6 +69,7 @@ Public Class Form2
         btnNextTicket.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
         btnCalculate.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnCalculate.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' hover effect of the button next ticket and calculate
+        btnProcessTicket.Enabled = False
 
         ' Set the background color of the form to transparent   
 
@@ -89,57 +88,7 @@ Public Class Form2
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
-        Dim departure = CurrentBooking.Departure
-        Dim destination = CurrentBooking.Destination
 
-        For Each passenger As PassengerInfo In allPassengers
-            ' Skip if already processed
-            If ProcessedPassengers.Contains(passenger.FullName) Then
-                MessageBox.Show($"{passenger.FullName} has already been processed.")
-                Continue For
-            End If
-
-            Dim baseFare As Decimal
-
-            'Try
-            '    Select Case passenger.FareClass.ToLower()
-            '        Case "economy"
-            '            baseFare = GetEconomyFare(departure, destination)
-            '        Case "business"
-            '            baseFare = GetBusinessFare(departure, destination)
-            '        Case "first"
-            '            baseFare = GetFirstClassFare(departure, destination)
-            '        Case Else
-            '            MessageBox.Show($"{passenger.FullName} has an invalid fare class.")
-            '            Continue For
-            '    End Select
-            'Catch ex As Exception
-            '    MessageBox.Show($"Error processing fare for {passenger.FullName}: {ex.Message}")
-            '    Continue For
-            'End Try
-
-            ' Get baggage price
-            Dim baggagePrice As Integer
-            If Not BaggagePrices.TryGetValue(passenger.BaggageAllowance, baggagePrice) Then
-                MessageBox.Show($"{passenger.FullName} has an invalid baggage option.")
-                Continue For
-            End If
-
-            ' Apply 20% discount if PWD or senior
-            Dim discount As Decimal = 0
-            If passenger.IsPWD OrElse passenger.Age >= 60 Then
-                discount = baseFare * 0.2D
-            End If
-
-            Dim finalFare As Decimal = (baseFare - discount) + baggagePrice
-            TotalFare += finalFare
-            ProcessedPassengers.Add(passenger.FullName)
-
-            ' Optional: display per-passenger fare
-            MessageBox.Show($"{passenger.FullName} fare: {finalFare:C}")
-        Next
-
-        MessageBox.Show($"Total Fare for all processed passengers: {TotalFare:C}")
     End Sub
 
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged

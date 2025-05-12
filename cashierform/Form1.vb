@@ -2,6 +2,7 @@
 Imports MySql.Data.MySqlClient
 Imports SharedModule
 Imports System.Windows.Forms
+Imports System.Windows.Forms.VisualStyles
 
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
@@ -61,13 +62,6 @@ Public Class Form1
         Dim seatmap = result.seatmap
         Dim capacity = result.capacity
 
-        ' Output to console/debug window
-        For Each seat As KeyValuePair(Of String, String) In seatmap
-            Debug.WriteLine($"Seat: {seat.Key}, Class: {seat.Value}")
-        Next
-
-        ' Show total capacity
-        MessageBox.Show("Total seats: " & capacity.ToString(), "Seatmap Test")
     End Sub
 
 
@@ -198,18 +192,26 @@ Public Class Form1
             Provide_cbxError(cbxDepartureTime, ErrorProvider1)
             hasError = True
         End If
-        If String.IsNullOrWhiteSpace(cbxArrivalTime.Text) Then
-            Provide_cbxError(cbxArrivalTime, ErrorProvider1)
-            hasError = True
+
+        'only error checks if the flight is round trip
+        If ticketIdentifier = "Round Trip" Then
+            If String.IsNullOrWhiteSpace(cbxArrivalTime.Text) Then
+                Provide_cbxError(cbxArrivalTime, ErrorProvider1)
+                hasError = True
+            End If
+
+            If Not Date.TryParse(dtpArrivalDate.Text, Nothing) Then
+                MessageBox.Show("Invalid arrival date format.")
+                hasError = True
+            End If
         End If
+
+
         If Not Date.TryParse(dtpDepartDate.Text, Nothing) Then
             MessageBox.Show("Invalid departure date format.")
             hasError = True
         End If
-        If Not Date.TryParse(dtpArrivalDate.Text, Nothing) Then
-            MessageBox.Show("Invalid arrival date format.")
-            hasError = True
-        End If
+
 
 
         'Check for errors and exit the process if there is errors 
@@ -314,6 +316,12 @@ Public Class Form1
             Exit Sub
         End If
 
+        Dim flightId As Integer = GetFlightIdByDestinationAndTime(cbxDestination.Text, parsedDepartureDate)
+        If flightId = -1 Then
+            MessageBox.Show("No matching flight found for the selected destination and departure time.")
+            Exit Sub
+        End If
+
         ' === 5. Store into BookingInfo ===
         Dim booking As New BookingInfo(
                 tripType:=ticketIdentifier, ' Use your trip identifier here
@@ -359,16 +367,15 @@ Public Class Form1
 
         ' Add the information to the database
         Try
-            openCon() ' opens con
-
+            openCon()
             For Each passenger As PassengerInfo In allPassengers
                 Using cmd As New MySqlCommand("
-            INSERT INTO customer_table 
-            (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
-             booked_under, number_of_passengers, trip_type, departure_time, arrival_time) 
-            VALUES 
-            (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
-             @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime)", con)
+        INSERT INTO customer_table 
+        (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance, seat_number, pwd_status, 
+         booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id, booking_date) 
+        VALUES 
+        (@fullname, @address, @age, @dob, @gender, @destination, @departure, @baggage, @seat, @pwd, 
+         @bookedUnder, @numPassengers, @tripType, @departTime, @arriveTime, @flightId, @bookingDate)", con)
 
                     cmd.Parameters.AddWithValue("@fullname", passenger.FullName)
                     cmd.Parameters.AddWithValue("@address", tbxAddress.Text)
@@ -385,6 +392,8 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@tripType", ticketIdentifier)
                     cmd.Parameters.AddWithValue("@departTime", parsedDepartureDate)
                     cmd.Parameters.AddWithValue("@arriveTime", parsedArrivalDate)
+                    cmd.Parameters.AddWithValue("@flightId", flightId)
+                    cmd.Parameters.AddWithValue("@bookingDate", CurrentBooking.BookingDate)
 
                     cmd.ExecuteNonQuery()
                 End Using
@@ -422,7 +431,9 @@ Public Class Form1
         cbxDepartureTime.Text = ""
 
         If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
-            LoadDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+            LoadAvailableDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
+
+
         End If
     End Sub
 
@@ -431,6 +442,25 @@ Public Class Form1
             MessageBox.Show("No flights are scheduled for the selected departure date.")
         End If
 
+    End Sub
+
+    Private Sub cbxDepartureTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDepartureTime.SelectedIndexChanged
+        cbxSeatNumber.Items.Clear()
+        Dim destination As String = cbxDestination.Text
+        Dim departureTime As String = cbxDepartureTime.Text
+
+        ' Step 1: Get Flight ID
+        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, departureTime)
+
+        If flightId <> "" Then
+            ' Step 2: Get Aircraft Type
+            Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, departureTime)
+
+            ' Step 3: Load Available Seats
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumber)
+        Else
+            MessageBox.Show("No flight found for the given destination and time.")
+        End If
     End Sub
 End Class
 

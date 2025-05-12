@@ -263,7 +263,6 @@ Partial Class Form1
         ' 
         cbxSeatNumber.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxSeatNumber.FormattingEnabled = True
-        cbxSeatNumber.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumber.Location = New Point(602, 345)
         cbxSeatNumber.Margin = New Padding(3, 2, 3, 2)
         cbxSeatNumber.Name = "cbxSeatNumber"

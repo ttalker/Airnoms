@@ -21,15 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\cashierform\cashierform.vbproj" />
     <ProjectReference Include="..\SharedModule\SharedModule.vbproj" />
-
   </ItemGroup>
 
-  <ItemGroup>
-
-	  <Reference Include="userForm">
-		  <HintPath>..\userform\bin\Debug\net8.0-windows\userForm.dll</HintPath>
-	  </Reference>
-  </ItemGroup> 
 
   <ItemGroup>
     <Compile Update="My Project\Application.Designer.vb">
