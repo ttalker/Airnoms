@@ -47,6 +47,7 @@ Public Class Form2
         MakeTransparent(btnResetTicket)
         MakeTransparent(btnNextTicket)
         MakeTransparent(btnProcessTicket)
+        MakeTransparent(btnSearch)
 
         btnBooking.Parent = pbxCashierTicket
         btnTicket.Parent = pbxCashierTicket
@@ -55,6 +56,7 @@ Public Class Form2
         btnCalculate.Parent = pbxCashierTicket
         btnResetTicket.Parent = pbxCashierTicket
         btnNextTicket.Parent = pbxCashierTicket
+        btnSearch.Parent = pbxCashierTicket
         btnProcessTicket.Parent = pbxCashierTicket ' transparency of the buttons
 
         hoverButton(btnBooking)
@@ -63,6 +65,7 @@ Public Class Form2
         hoverButton(btnExit)
         hoverButton(btnCalculate)
         hoverButton(btnResetTicket)
+        hoverButton(btnSearch)
         hoverButton(btnProcessTicket) ' hover effect of the buttons
 
         btnNextTicket.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)

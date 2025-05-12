@@ -54,6 +54,7 @@ Partial Class Form2
         lblTaxTicket = New Label()
         lblTicketAmt = New Label()
         lblClass = New Label()
+        btnSearch = New Button()
         CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -380,11 +381,22 @@ Partial Class Form2
         lblClass.TabIndex = 61
         lblClass.Text = "Label1"
         ' 
+        ' btnSearch
+        ' 
+        btnSearch.Location = New Point(462, 265)
+        btnSearch.Margin = New Padding(3, 2, 3, 2)
+        btnSearch.Name = "btnSearch"
+        btnSearch.Size = New Size(90, 34)
+        btnSearch.TabIndex = 62
+        btnSearch.Text = " "
+        btnSearch.UseVisualStyleBackColor = True
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1547, 911)
+        Controls.Add(btnSearch)
         Controls.Add(lblClass)
         Controls.Add(lblTicketAmt)
         Controls.Add(lblChangeTicket)
@@ -456,4 +468,5 @@ Partial Class Form2
     Friend WithEvents lblBookedUnderTicket As Label
     Friend WithEvents lblTicketAmt As Label
     Friend WithEvents lblClass As Label
+    Friend WithEvents btnSearch As Button
 End Class
