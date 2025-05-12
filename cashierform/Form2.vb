@@ -1,4 +1,5 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports SharedModule
 
 
@@ -78,12 +79,16 @@ Public Class Form2
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
+        cbxPassengerTicket.AutoCompleteMode = AutoCompleteMode.None
+        cbxPassengerTicket.DropDownStyle = ComboBoxStyle.DropDown
+
         'Load bookers
         Dim bookers = LoadBookers()
 
         For Each booker In bookers
             cbxPassengerTicket.Items.Add(booker)
         Next
+        Dim current_dict = bookingDictionary
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
@@ -94,9 +99,52 @@ Public Class Form2
 
     End Sub
 
-    Private Sub cbxClassTicket_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Try
+            Dim searchText As String = cbxPassengerTicket.Text.Trim().ToLower()
+            cbxPassengerTicket.Items.Clear()
 
+            For Each key In bookingDictionary.Keys
+                If searchText = "" OrElse key.ToLower().Contains(searchText) Then
+                    cbxPassengerTicket.Items.Add(key)
+                End If
+            Next
+
+            ' Show dropdown if there are results
+            If cbxPassengerTicket.Items.Count > 0 Then
+                cbxPassengerTicket.DroppedDown = True
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Search error: " & ex.Message)
+        End Try
     End Sub
 
+    Private Sub cbxPassengerTicket_TextChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.TextChanged
+        Dim text As String = cbxPassengerTicket.Text
+        Dim selectionStart As Integer = cbxPassengerTicket.SelectionStart
 
+        ' Filter matches
+        Dim matches = bookingDictionary.Keys.Where(Function(k) k.ToLower().Contains(text.ToLower())).ToList()
+
+        ' Only update if there are matches
+        If matches.Count > 0 Then
+            ' Temporarily prevent event re-firing
+            RemoveHandler cbxPassengerTicket.TextChanged, AddressOf cbxPassengerTicket_TextChanged
+
+            cbxPassengerTicket.BeginUpdate()
+            cbxPassengerTicket.Items.Clear()
+            cbxPassengerTicket.Items.AddRange(matches.ToArray())
+            cbxPassengerTicket.DroppedDown = True
+            cbxPassengerTicket.SelectedIndex = -1
+            cbxPassengerTicket.Text = text
+            cbxPassengerTicket.SelectionStart = selectionStart
+            cbxPassengerTicket.SelectionLength = 0
+            cbxPassengerTicket.EndUpdate()
+
+            AddHandler cbxPassengerTicket.TextChanged, AddressOf cbxPassengerTicket_TextChanged
+        Else
+            cbxPassengerTicket.DroppedDown = False
+        End If
+    End Sub
 End Class
