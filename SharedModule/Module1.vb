@@ -1133,7 +1133,8 @@ Public Module Module1
     .BookingDate = If(IsDBNull(readerBookers("booking_date")), Date.MinValue, Convert.ToDateTime(readerBookers("booking_date"))),
     .DepartureTime = If(IsDBNull(readerBookers("departure_time")), "", readerBookers("departure_time").ToString()),
     .ArrivalTime = If(IsDBNull(readerBookers("arrival_time")), "", readerBookers("arrival_time").ToString()),
-    .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString())
+    .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString()),
+    .BookedUnder = If(IsDBNull(readerBookers("booked_under")), "", readerBookers("booked_under").ToString())
 }
 
                         bookingDictionary.Add(key, booking)
@@ -1150,6 +1151,23 @@ Public Module Module1
         End Try
 
         Return bookerKeys
+    End Function
+
+
+    Public Function GetSeatClassBySeatKey(seatKey As String, planeType As AircraftType) As String
+        Try
+            Dim seatData = GenerateSeats(planeType)
+            Dim seatMap As Dictionary(Of String, String) = seatData.seatmap
+
+            If seatMap.ContainsKey(seatKey) Then
+                Return seatMap(seatKey)
+            Else
+                Return "Unknown"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error getting seat class: " & ex.Message)
+            Return "Error"
+        End Try
     End Function
 
 End Module
@@ -1171,6 +1189,8 @@ Public Class Customers
     Public Property DepartureTime As String
     Public Property ArrivalTime As String
     Public Property FlightID As String
+
+    Public Property BookedUnder As String
 End Class
 
 Public Class PassengerInfo
@@ -1323,11 +1343,14 @@ Public Enum AircraftType
 End Enum
 
 Public Class TransactionInfo
-    Public Property TransactionID As String
+    Public Property FlightID As String
     Public Property BookerName As String
     Public Property BookerID As String
-    Public Property TransactionDate As Date
-    Public Property TotalAmount As Decimal
-    Public Property PaymentMethod As String
-    Public Property ReferenceNumber As String
+    Public Property SeatClass As String
+
+    Public Property SeatNumber As String
+    Public Property BasePrice As Double
+    Public Property Tax As Double
+    Public Property Discount As Double
+    Public Property 
 End Class

@@ -9,7 +9,7 @@ Public Class Form2
     Private ProcessedPassengers As New HashSet(Of String)
     Private TotalFare As Decimal = 0
 
-
+    Dim current_dict = bookingDictionary
     Public BaggagePrices As New Dictionary(Of String, Integer) From {
     {"10kg", 1000},
     {"20kg", 1800},
@@ -88,36 +88,98 @@ Public Class Form2
         For Each booker In bookers
             cbxPassengerTicket.Items.Add(booker)
         Next
-        Dim current_dict = bookingDictionary
+
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
 
     End Sub
+    Private Sub Assign_Customer()
+        Dim current_booker As Customers = current_dict(cbxPassengerTicket.Text)
+        'assign all the fields to a variable for easy access
+        Dim customerID = current_booker.CustomerID
+        Dim fullName = current_booker.FullName
+        Dim age = current_booker.Age
+        Dim dateOfBirth = current_booker.DateOfBirth
+        Dim gender = current_booker.Gender
+        Dim seatNumber = current_booker.SeatNumber
+        Dim baggageAllowance = current_booker.BaggageAllowance
+        Dim address = current_booker.Address
+        Dim pwdStatus = current_booker.PWDStatus
+        Dim departure = current_booker.Departure
+        Dim destination = current_booker.Destination
+        Dim tripType = current_booker.TripType
+        Dim bookingDate = current_booker.BookingDate
+        Dim departureTime = current_booker.DepartureTime
+        Dim arrivalTime = current_booker.ArrivalTime
+        Dim flightID = current_booker.FlightID
+        Dim booked_under = current_booker.BookedUnder
 
-    Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
+        Dim plane_type = GetPlaneTypeByDestinationAndTime(destination, departureTime, bookingDate)
+        'generate seatmap and confirm the seatclass
+        Dim seat_map = GenerateSeats(plane_type).seatmap
+        Dim class_type = seat_map(seatNumber)
+
+
+        lblClass.Text = class_type
+        lblDepartDateTicket.Text = departure
+        lblDepartTimeTicket.Text = departureTime
+        lblArrivalDateTicket.Text = bookingDate.AddDays(1).ToShortDateString() ' example, if arrival is next day
+        lblArrivalTimeTicket.Text = arrivalTime
+        lblBookingDateTicket.Text = bookingDate.ToShortDateString()
+        lblBookedUnderTicket.Text = booked_under
+        lblFullNameTicket.Text = fullName
+        lblSeatNumTicket.Text = seatNumber
+        lblDateOfBirthTicket.Text = dateOfBirth.ToShortDateString()
+        lblDestinationTicket.Text = destination
+        lblGenderTicket.Text = gender
+        lblBaggageAllowanceTicket.Text = baggageAllowance
+        lblAdressTicket.Text = address
+        lblPWDTicket.Text = If(pwdStatus, "Yes", "No")
 
     End Sub
-
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        Try
-            Dim searchText As String = cbxPassengerTicket.Text.Trim().ToLower()
-            cbxPassengerTicket.Items.Clear()
+        If Not String.IsNullOrWhiteSpace(cbxPassengerTicket.Text) Then
+            Try
+                Dim searchText As String = cbxPassengerTicket.Text.Trim().ToLower()
+                cbxPassengerTicket.Items.Clear()
 
-            For Each key In bookingDictionary.Keys
-                If searchText = "" OrElse key.ToLower().Contains(searchText) Then
-                    cbxPassengerTicket.Items.Add(key)
+                Dim found As Boolean = False
+
+                For Each key In bookingDictionary.Keys
+                    If searchText = "" OrElse key.ToLower().Contains(searchText) Then
+                        cbxPassengerTicket.Items.Add(key)
+                        found = True
+                    End If
+                Next
+
+                ' If no results were found, show a message box
+                If Not found Then
+                    MessageBox.Show("No matching passenger found in the dictionary.")
+                Else
+                    ' Show dropdown if there are results
+                    If cbxPassengerTicket.Items.Count > 0 Then
+                        cbxPassengerTicket.DroppedDown = True
+                    End If
+
+                    ' Call Assign_Customer() if a match is found
+                    Assign_Customer()
+
+                    ' Label everything
+
+
+
+
+
                 End If
-            Next
 
-            ' Show dropdown if there are results
-            If cbxPassengerTicket.Items.Count > 0 Then
-                cbxPassengerTicket.DroppedDown = True
-            End If
+            Catch ex As Exception
+                MessageBox.Show("Search error: " & ex.Message)
+            End Try
+        Else
+            MessageBox.Show("Please select a valid passenger")
+        End If
 
-        Catch ex As Exception
-            MessageBox.Show("Search error: " & ex.Message)
-        End Try
     End Sub
 
     Private Sub cbxPassengerTicket_TextChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.TextChanged
