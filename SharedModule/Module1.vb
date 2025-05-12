@@ -976,31 +976,23 @@ Public Module Module1
     End Function
 
 
-    Public Function GetFlightIdByDestinationAndTime(destination As String, departureTime As String) As String
-        Dim flightId As String = ""
+    Public Function GetFlightIdByDestinationAndTime(destination As String, departureTime As String, flightDate As Date) As String
         Try
-            Dim parsedTime As DateTime
-            If Not DateTime.TryParse(departureTime, parsedTime) Then
-                MessageBox.Show("Invalid departure time format.")
-                Return ""
-            End If
-
             openCon()
-            Dim cmd As New MySqlCommand("SELECT flight_id FROM flight_table WHERE destination = @destination AND departure_time = @departureTime LIMIT 1", con)
-            cmd.Parameters.AddWithValue("@destination", destination)
-            cmd.Parameters.AddWithValue("@departureTime", parsedTime)
+            Using cmd As New MySqlCommand("SELECT flight_id FROM flight_table WHERE destination = @Destination AND departure_time = @Time AND departure_date = @Date", con)
+                cmd.Parameters.AddWithValue("@Destination", destination)
+                cmd.Parameters.AddWithValue("@Time", departureTime)
+                cmd.Parameters.AddWithValue("@Date", flightDate.Date)
 
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
-            If reader.Read() Then
-                flightId = reader("flight_id").ToString()
-            End If
-            reader.Close()
+                Dim result = cmd.ExecuteScalar()
+                Return If(result IsNot Nothing, result.ToString(), "")
+            End Using
         Catch ex As Exception
-            MessageBox.Show("Failed to retrieve flight ID: " & ex.Message)
+            MessageBox.Show($"Error getting flight ID: {ex.Message}")
+            Return ""
         Finally
             If con.State = ConnectionState.Open Then con.Close()
         End Try
-        Return flightId
     End Function
     Public Sub LoadAvailableSeats(flightId As String, planeType As AircraftType, comboBox As ComboBox)
         Try
@@ -1037,62 +1029,45 @@ Public Module Module1
     End Sub
 
 
-    Public Function GetPlaneTypeByDestinationAndTime(destination As String, departureTime As String) As AircraftType
-        Dim planeTypeStr As String = ""
+    Public Function GetPlaneTypeByDestinationAndTime(destination As String, departureTime As String, flightDate As Date) As AircraftType
         Try
-            Dim parsedTime As DateTime
-            If Not DateTime.TryParse(departureTime, parsedTime) Then
-                MessageBox.Show("Invalid departure time format.")
-                Return CType(0, AircraftType)
-            End If
-
             openCon()
-            Dim cmd As New MySqlCommand("SELECT plane_type FROM flight_table WHERE destination = @destination AND departure_time = @departureTime LIMIT 1", con)
-            cmd.Parameters.AddWithValue("@destination", destination)
-            cmd.Parameters.AddWithValue("@departureTime", parsedTime)
+            Using cmd As New MySqlCommand("SELECT plane_type FROM flight_table WHERE destination = @Destination AND departure_time = @Time AND departure_date = @Date", con)
+                cmd.Parameters.AddWithValue("@Destination", destination)
+                cmd.Parameters.AddWithValue("@Time", departureTime)
+                cmd.Parameters.AddWithValue("@Date", flightDate.Date)
 
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
-            If reader.Read() Then
-                planeTypeStr = reader("plane_type").ToString()
-            End If
-            reader.Close()
+                Dim result = cmd.ExecuteScalar()
+                If result IsNot Nothing Then
+                    Return CType([Enum].Parse(GetType(AircraftType), result.ToString()), AircraftType)
+                End If
+            End Using
         Catch ex As Exception
-            MessageBox.Show("Failed to retrieve plane type: " & ex.Message)
+            MessageBox.Show($"Error getting aircraft type: {ex.Message}")
         Finally
             If con.State = ConnectionState.Open Then con.Close()
         End Try
 
-        ' Convert string to enum
-        Try
-            Return CType([Enum].Parse(GetType(AircraftType), planeTypeStr, True), AircraftType)
-        Catch
-            MessageBox.Show("Unknown or invalid plane type: " & planeTypeStr)
-            Return CType(0, AircraftType)
-        End Try
+        'Return AircraftType.None ' Replace this with a default or fallback type
     End Function
 
-    Public Sub LoadAvailableDepartureTimesForDestination(destination As String, comboBox As ComboBox)
+    Public Sub LoadAvailableDepartureTimesForDestination(destination As String, flightDate As Date, cbx As ComboBox)
+        cbx.Items.Clear()
+
         Try
             openCon()
-            Dim cmd As New MySqlCommand("
-            SELECT DISTINCT departure_time 
-            FROM flight_table 
-            WHERE destination = @Destination 
-              AND LOWER(status) = 'waiting'
-            ORDER BY departure_time", con)
+            Using cmd As New MySqlCommand("SELECT departure_time FROM flight_table WHERE destination = @Destination AND departure_date = @Date", con)
+                cmd.Parameters.AddWithValue("@Destination", destination)
+                cmd.Parameters.AddWithValue("@Date", flightDate.Date)
 
-            cmd.Parameters.AddWithValue("@Destination", destination)
-
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
-            comboBox.Items.Clear()
-
-            While reader.Read()
-                comboBox.Items.Add(reader("departure_time").ToString())
-            End While
-
-            reader.Close()
+                Using reader = cmd.ExecuteReader()
+                    While reader.Read()
+                        cbx.Items.Add(reader("departure_time").ToString())
+                    End While
+                End Using
+            End Using
         Catch ex As Exception
-            MessageBox.Show("Failed to load available departure times: " & ex.Message)
+            MessageBox.Show($"Error loading departure times: {ex.Message}")
         Finally
             If con.State = ConnectionState.Open Then con.Close()
         End Try

@@ -315,8 +315,11 @@ Public Class Form1
             MessageBox.Show("Invalid arrival date or time format.")
             Exit Sub
         End If
+        Dim destination As String = cbxDestination.Text
+        Dim departureTime As String = parsedDepartureDate.ToString("HH:mm:ss") ' or "hh:mm tt" if using 12-hour time with AM/PM
+        Dim departureDate As Date = parsedDepartureDate.Date
 
-        Dim flightId = GetFlightIdByDestinationAndTime(cbxDestination.Text, parsedDepartureDate)
+        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, departureTime, departureDate)
 
 
         ' === 5. Store into BookingInfo ===
@@ -421,39 +424,48 @@ Public Class Form1
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
     End Sub
+    ' 1. When the destination changes, load available times for that destination on the selected date
     Private Sub cbxDestination_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestination.SelectedIndexChanged
+        cbxDepartureTime.Items.Clear()
+        cbxDepartureTime.Text = ""
+        cbxSeatNumber.Items.Clear()
+        cbxSeatNumber.Text = ""
+        If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestination.Text, dtpDepartDate.Value.Date, cbxDepartureTime)
+        End If
+    End Sub
+
+    ' 2. When the date changes, check if flights exist, and reload times if a destination is already chosen
+    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
+        cbxDepartureTime.Items.Clear()
         cbxDepartureTime.Text = ""
 
-        If Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
-            LoadAvailableDepartureTimesForDestination(cbxDestination.Text, cbxDepartureTime)
-
-
-        End If
-    End Sub
-
-    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDate.ValueChanged
-        If FlightsExistForDate(dtpDepartDate.Value) = False Then
+        If FlightsExistForDate(dtpDepartDate.Value.Date) = False Then
             MessageBox.Show("No flights are scheduled for the selected departure date.")
+        ElseIf Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestination.Text, dtpDepartDate.Value.Date, cbxDepartureTime)
         End If
-
     End Sub
 
+    ' 3. When a time is selected, look up the flight and aircraft type for that destination, time, and date
     Private Sub cbxDepartureTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDepartureTime.SelectedIndexChanged
         cbxSeatNumber.Items.Clear()
+        cbxSeatNumber.Text = ""
         Dim destination As String = cbxDestination.Text
-        Dim departureTime As String = cbxDepartureTime.Text
+        Dim timeText As String = cbxDepartureTime.Text
+        Dim dateValue As Date = dtpDepartDate.Value.Date
 
         ' Step 1: Get Flight ID
-        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, departureTime)
+        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, timeText, dateValue)
 
         If flightId <> "" Then
             ' Step 2: Get Aircraft Type
-            Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, departureTime)
+            Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, timeText, dateValue)
 
             ' Step 3: Load Available Seats
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumber)
         Else
-            MessageBox.Show("No flight found for the given destination and time.")
+            MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
     End Sub
 End Class
