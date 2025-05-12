@@ -91,7 +91,7 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(1258, 697)
+        btnCalculate.Location = New Point(1257, 697)
         btnCalculate.Margin = New Padding(3, 2, 3, 2)
         btnCalculate.Name = "btnCalculate"
         btnCalculate.Size = New Size(186, 74)
