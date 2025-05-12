@@ -10,7 +10,7 @@ Public Class Form2
 
     Private ProcessedPassengers As New HashSet(Of String)
     Private TotalFare As Decimal = 0
-    Dim transaction As TransactionInfo
+
     Dim current_dict = bookingDictionary
     Public BaggagePrices As New Dictionary(Of String, Integer) From {
     {"10 kg", 1000},
@@ -141,7 +141,7 @@ Public Class Form2
         Dim totalAmount As Double = baseFare + tax
 
         ' Create TransactionInfo object
-        Dim transaction As New TransactionInfo With {
+        CurrentTransaction = New TransactionInfo With {
             .FlightID = current_booker.FlightID,
             .BookerName = current_booker.FullName,
             .BookerID = current_booker.CustomerID,
@@ -162,10 +162,28 @@ Public Class Form2
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
+        Dim payment As Double
+        Dim total As Double
+        Dim change As Double
 
+        ' Remove currency symbols and commas for parsing
+        Dim totalText = lblTotalTicket.Text.Replace("₱", "").Replace(",", "").Trim()
+        Dim paymentText = tbxTicketPayment.Text.Replace("₱", "").Replace(",", "").Trim()
 
-
-        btnProcessTicket.Enabled = True
+        If Double.TryParse(paymentText, payment) AndAlso Double.TryParse(totalText, total) Then
+            If payment >= total Then
+                change = payment - total
+                btnProcessTicket.Enabled = True
+                btnCalculate.Enabled = False
+                lblChangeTicket.Text = change
+                MessageBox.Show("Payment accepted. Change: ₱" & change.ToString("F2"))
+            Else
+                btnProcessTicket.Enabled = False
+                MessageBox.Show("Insufficient payment. Please enter at least ₱" & total.ToString("F2"))
+            End If
+        Else
+            MessageBox.Show("Invalid input. Please enter numeric values for payment and total.")
+        End If
 
     End Sub
     Private Sub Assign_Customer()
@@ -290,15 +308,15 @@ Public Class Form2
                               "(flight_id, fullname, customer_id, seat_class, seat_number, base_price, discount, tax, total_amount) " &
                               "VALUES (@flight_id, @fullname, @customer_id, @seat_class, @seat_number, @base_price, @discount, @tax, @total_amount)"
             Using cmd As New MySqlCommand(query, con)
-                cmd.Parameters.AddWithValue("@flight_id", transaction.FlightID)
-                cmd.Parameters.AddWithValue("@fullname", transaction.BookerName)
-                cmd.Parameters.AddWithValue("@customer_id", transaction.BookerID)
-                cmd.Parameters.AddWithValue("@seat_class", transaction.SeatClass)
-                cmd.Parameters.AddWithValue("@seat_number", transaction.SeatNumber)
-                cmd.Parameters.AddWithValue("@base_price", transaction.BasePrice)
-                cmd.Parameters.AddWithValue("@discount", transaction.Discount)
-                cmd.Parameters.AddWithValue("@tax", transaction.Tax)
-                cmd.Parameters.AddWithValue("@total_amount", transaction.TotalAmount)
+                cmd.Parameters.AddWithValue("@flight_id", CurrentTransaction.FlightID)
+                cmd.Parameters.AddWithValue("@fullname", CurrentTransaction.BookerName)
+                cmd.Parameters.AddWithValue("@customer_id", CurrentTransaction.BookerID)
+                cmd.Parameters.AddWithValue("@seat_class", CurrentTransaction.SeatClass)
+                cmd.Parameters.AddWithValue("@seat_number", CurrentTransaction.SeatNumber)
+                cmd.Parameters.AddWithValue("@base_price", CurrentTransaction.BasePrice)
+                cmd.Parameters.AddWithValue("@discount", CurrentTransaction.Discount)
+                cmd.Parameters.AddWithValue("@tax", CurrentTransaction.Tax)
+                cmd.Parameters.AddWithValue("@total_amount", CurrentTransaction.TotalAmount)
 
                 cmd.ExecuteNonQuery()
             End Using
@@ -314,6 +332,6 @@ Public Class Form2
             btnProcessTicket.Enabled = False
         End Try
 
-
+        cbxPassengerTicket.Items.Remove(cbxPassengerTicket.Text)
     End Sub
 End Class

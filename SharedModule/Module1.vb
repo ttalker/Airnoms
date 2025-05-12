@@ -1170,6 +1170,8 @@ Public Module Module1
         End Try
     End Function
 
+
+    Public CurrentTransaction As TransactionInfo
 End Module
 
 Public Class Customers
