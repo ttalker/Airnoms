@@ -81,7 +81,9 @@ Public Class Form2
         'Load bookers
         Dim bookers = LoadBookers()
 
-
+        For Each booker In bookers
+            cbxPassengerTicket.Items.Add(booker)
+        Next
     End Sub
 
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click

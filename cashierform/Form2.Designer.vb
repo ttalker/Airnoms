@@ -383,10 +383,10 @@ Partial Class Form2
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(462, 265)
+        btnSearch.Location = New Point(463, 267)
         btnSearch.Margin = New Padding(3, 2, 3, 2)
         btnSearch.Name = "btnSearch"
-        btnSearch.Size = New Size(90, 34)
+        btnSearch.Size = New Size(86, 34)
         btnSearch.TabIndex = 62
         btnSearch.Text = " "
         btnSearch.UseVisualStyleBackColor = True

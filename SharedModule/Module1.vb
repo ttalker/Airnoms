@@ -1118,23 +1118,23 @@ Public Module Module1
 
                     If Not processedKeys.Contains(key) Then
                         Dim booking As New Customers With {
-                            .CustomerID = customerID,
-                            .FullName = fullname,
-                            .Age = Convert.ToInt32(readerBookers("age")),
-                            .DateOfBirth = Convert.ToDateTime(readerBookers("date_of_birth")),
-                            .Gender = readerBookers("gender").ToString(),
-                            .SeatNumber = readerBookers("seat_number").ToString(),
-                            .BaggageAllowance = readerBookers("baggage_allowance").ToString(),
-                            .Address = readerBookers("address").ToString(),
-                            .PWDStatus = Convert.ToBoolean(readerBookers("pwd_status")),
-                            .Departure = readerBookers("departure").ToString(),
-                            .Destination = readerBookers("destination").ToString(),
-                            .TripType = readerBookers("trip_type").ToString(),
-                            .BookingDate = Convert.ToDateTime(readerBookers("booking_date")),
-                            .DepartureTime = readerBookers("departure_time").ToString(),
-                            .ArrivalTime = readerBookers("arrival_time").ToString(),
-                            .FlightID = flightID
-                        }
+    .CustomerID = If(IsDBNull(readerBookers("customer_id")), "", readerBookers("customer_id").ToString()),
+    .FullName = If(IsDBNull(readerBookers("fullname")), "", readerBookers("fullname").ToString()),
+    .Age = If(IsDBNull(readerBookers("age")), 0, Convert.ToInt32(readerBookers("age"))),
+    .DateOfBirth = If(IsDBNull(readerBookers("date_of_birth")), Date.MinValue, Convert.ToDateTime(readerBookers("date_of_birth"))),
+    .Gender = If(IsDBNull(readerBookers("gender")), "", readerBookers("gender").ToString()),
+    .SeatNumber = If(IsDBNull(readerBookers("seat_number")), "", readerBookers("seat_number").ToString()),
+    .BaggageAllowance = If(IsDBNull(readerBookers("baggage_allowance")), "", readerBookers("baggage_allowance").ToString()),
+    .Address = If(IsDBNull(readerBookers("address")), "", readerBookers("address").ToString()),
+    .PWDStatus = If(IsDBNull(readerBookers("pwd_status")), False, readerBookers("pwd_status").ToString().Trim().ToLower() = "yes"),
+    .Departure = If(IsDBNull(readerBookers("departure")), "", readerBookers("departure").ToString()),
+    .Destination = If(IsDBNull(readerBookers("destination")), "", readerBookers("destination").ToString()),
+    .TripType = If(IsDBNull(readerBookers("trip_type")), "", readerBookers("trip_type").ToString()),
+    .BookingDate = If(IsDBNull(readerBookers("booking_date")), Date.MinValue, Convert.ToDateTime(readerBookers("booking_date"))),
+    .DepartureTime = If(IsDBNull(readerBookers("departure_time")), "", readerBookers("departure_time").ToString()),
+    .ArrivalTime = If(IsDBNull(readerBookers("arrival_time")), "", readerBookers("arrival_time").ToString()),
+    .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString())
+}
 
                         bookingDictionary.Add(key, booking)
                         bookerKeys.Add(key)
