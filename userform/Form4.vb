@@ -83,7 +83,7 @@ Public Class Form4
                 Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
                 If nameCtrl IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(nameCtrl.Text) Then
                     Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
-                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirth1DatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
                     Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
@@ -135,7 +135,7 @@ Public Class Form4
             bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
             coPassengers:=copassengers,
             countPassenger:=countPassenger,
-            FlightId:=FlightId
+            FlightId:=GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text))
 )
 
         MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
@@ -218,22 +218,17 @@ Public Class Form4
             End If
         End If
 
-        If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
-            ErrorProvider1.SetError(dtpDepartDateUser, "Departure date must be today or later.")
+        If dtpDepartDateUser.Value.Date <= DateTime.Now.Date Then
+            ErrorProvider1.SetError(dtpDepartDateUser, "Booking must be made at least a day in advance.")
+            MessageBox.Show("You cannot book a trip for today or a past date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             isValid = False
         End If
 
-        If dtpDepartDateUser.Value.Date = DateTime.Now.Date Then
-            ErrorProvider1.SetError(dtpDepartDateUser, "Booking for the same day is not allowed.")
-            MessageBox.Show("You cannot book a trip for today. Please select a future date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            isValid = False
-        End If
 
 
         Return isValid
     End Function
-    Dim departDateTime As DateTime = DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text)
-    Dim flightID As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, departDateTime)
+
     Private Function GetFlightID(departure As String, destination As String, departureTime As DateTime) As String
         Dim flightID As String = ""
         Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @Departure AND destination = @Destination AND departure_time = @DepartureTime LIMIT 1"
@@ -261,9 +256,10 @@ Public Class Form4
     Private Sub SaveBookingToDatabase(booking As BookingInfo)
         Try
             openCon()
+            Dim departDateTime As DateTime = DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text)
+            Dim flightID As String = booking.FlightID
 
             ' Get the flight ID based on destination, departure, and time
-            Dim flightID As String = GetFlightID(booking.Departure, booking.Destination, booking.DepartDate)
             If String.IsNullOrEmpty(flightID) Then
                 MessageBox.Show("Flight not found for the selected details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return
@@ -333,8 +329,7 @@ Public Class Form4
     End Sub
 
 
-    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click ' just resets everything
-
+    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
         tbxFullnameUser.Clear()
         tbxAgeUser.Clear()
         tbxAddressUser.Clear()
@@ -362,7 +357,7 @@ Public Class Form4
             Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
             If ageCtrl IsNot Nothing Then ageCtrl.Clear()
 
-            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
             If birthCtrl IsNot Nothing Then birthCtrl.Value = Date.Now
 
             Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
@@ -381,12 +376,51 @@ Public Class Form4
         MessageBox.Show("Form has been reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
-        If cbxDestinationUser.SelectedItem IsNot Nothing Then
-            ' Fixed: Pass the departure time combo box instead of the destination combo box
-            LoadDepartureTimesForDestination(cbxDestinationUser.SelectedItem.ToString(), cbxDepartTimeUser)
+    Private Sub cbxDepartTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDepartTimeUser.SelectedIndexChanged
+        cbxSeatNumberUser.Items.Clear()
+        cbxSeatNumberUser.Text = ""
+        Dim destination As String = cbxDestinationUser.Text
+        Dim timeText As String = cbxDepartTimeUser.Text
+        Dim dateValue As Date = dtpDepartDateUser.Value.Date
+
+        ' Step 1: Get Flight ID
+        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, timeText, dateValue)
+
+        If flightId <> "" Then
+            ' Step 2: Get Aircraft Type
+            Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, timeText, dateValue)
+
+            ' Step 3: Load Available Seats
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberUser)
+        Else
+            MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
     End Sub
+
+    Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
+        cbxDepartTimeUser.Items.Clear()
+        cbxDepartTimeUser.Text = ""
+        cbxSeatNumberUser.Items.Clear()
+        cbxSeatNumberUser.Text = ""
+        If Not String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
+        End If
+    End Sub
+
+    ' 2. When the date changes, check if flights exist, and reload times if a destination is already chosen
+    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDateUser.ValueChanged
+        cbxDepartureUser.Items.Clear()
+        cbxDepartTimeUser.Text = ""
+
+        If FlightsExistForDate(dtpDepartDateUser.Value.Date) = False Then
+            MessageBox.Show("No flights are scheduled for the selected departure date.")
+        ElseIf Not String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
+        End If
+    End Sub
+
+
+
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)

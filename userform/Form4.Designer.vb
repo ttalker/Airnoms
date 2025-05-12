@@ -117,7 +117,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger4
         ' 
-        cbxSeatNumberPassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger4.FormattingEnabled = True
         cbxSeatNumberPassenger4.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger4.Location = New Point(559, 738)
@@ -128,7 +128,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger5
         ' 
-        cbxSeatNumberPassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger5.FormattingEnabled = True
         cbxSeatNumberPassenger5.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger5.Location = New Point(559, 776)
@@ -139,7 +139,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger3
         ' 
-        cbxSeatNumberPassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger3.FormattingEnabled = True
         cbxSeatNumberPassenger3.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger3.Location = New Point(559, 701)
@@ -150,7 +150,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger2
         ' 
-        cbxSeatNumberPassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger2.FormattingEnabled = True
         cbxSeatNumberPassenger2.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger2.Location = New Point(559, 665)
@@ -161,7 +161,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger1
         ' 
-        cbxSeatNumberPassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger1.FormattingEnabled = True
         cbxSeatNumberPassenger1.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger1.Location = New Point(559, 627)
@@ -172,7 +172,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger4
         ' 
-        tbxFullnamePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger4.Location = New Point(104, 738)
         tbxFullnamePassenger4.Margin = New Padding(2)
         tbxFullnamePassenger4.Name = "tbxFullnamePassenger4"
@@ -181,7 +181,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger5
         ' 
-        tbxFullnamePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger5.Location = New Point(103, 776)
         tbxFullnamePassenger5.Margin = New Padding(2)
         tbxFullnamePassenger5.Name = "tbxFullnamePassenger5"
@@ -190,7 +190,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger3
         ' 
-        tbxFullnamePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger3.Location = New Point(104, 701)
         tbxFullnamePassenger3.Margin = New Padding(2)
         tbxFullnamePassenger3.Name = "tbxFullnamePassenger3"
@@ -199,7 +199,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger2
         ' 
-        tbxFullnamePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger2.Location = New Point(104, 665)
         tbxFullnamePassenger2.Margin = New Padding(2)
         tbxFullnamePassenger2.Name = "tbxFullnamePassenger2"
@@ -208,7 +208,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger1
         ' 
-        tbxFullnamePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger1.Location = New Point(104, 627)
         tbxFullnamePassenger1.Margin = New Padding(2)
         tbxFullnamePassenger1.Name = "tbxFullnamePassenger1"
@@ -226,7 +226,7 @@ Partial Class Form4
         ' 
         ' cbxDepartTimeUser
         ' 
-        cbxDepartTimeUser.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxDepartTimeUser.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxDepartTimeUser.FormattingEnabled = True
         cbxDepartTimeUser.Items.AddRange(New Object() {"09:00", "13:00"})
         cbxDepartTimeUser.Location = New Point(617, 394)
@@ -237,7 +237,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberUser
         ' 
-        cbxSeatNumberUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberUser.FormattingEnabled = True
         cbxSeatNumberUser.Location = New Point(1087, 312)
         cbxSeatNumberUser.Margin = New Padding(2)
@@ -267,7 +267,7 @@ Partial Class Form4
         ' 
         ' tbxFullnameUser
         ' 
-        tbxFullnameUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnameUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnameUser.Location = New Point(1086, 418)
         tbxFullnameUser.Margin = New Padding(2)
         tbxFullnameUser.Name = "tbxFullnameUser"
@@ -276,7 +276,7 @@ Partial Class Form4
         ' 
         ' tbxAgeUser
         ' 
-        tbxAgeUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgeUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgeUser.Location = New Point(1086, 473)
         tbxAgeUser.Margin = New Padding(2)
         tbxAgeUser.Name = "tbxAgeUser"
@@ -285,8 +285,8 @@ Partial Class Form4
         ' 
         ' dtpBookingDateUser
         ' 
-        dtpBookingDateUser.CalendarFont = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        dtpBookingDateUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBookingDateUser.CalendarFont = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
+        dtpBookingDateUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBookingDateUser.Location = New Point(1087, 254)
         dtpBookingDateUser.Margin = New Padding(2)
         dtpBookingDateUser.Name = "dtpBookingDateUser"
@@ -296,7 +296,7 @@ Partial Class Form4
         ' rbnOneWayTrip
         ' 
         rbnOneWayTrip.AutoSize = True
-        rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbnOneWayTrip.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0)
         rbnOneWayTrip.Location = New Point(513, 214)
         rbnOneWayTrip.Margin = New Padding(2)
         rbnOneWayTrip.Name = "rbnOneWayTrip"
@@ -308,7 +308,7 @@ Partial Class Form4
         ' rbnRoundTrip
         ' 
         rbnRoundTrip.AutoSize = True
-        rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        rbnRoundTrip.Font = New Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0)
         rbnRoundTrip.Location = New Point(652, 216)
         rbnRoundTrip.Margin = New Padding(2)
         rbnRoundTrip.Name = "rbnRoundTrip"
@@ -319,7 +319,7 @@ Partial Class Form4
         ' 
         ' dtpDepartDateUser
         ' 
-        dtpDepartDateUser.CalendarFont = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpDepartDateUser.CalendarFont = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpDepartDateUser.Location = New Point(617, 361)
         dtpDepartDateUser.Margin = New Padding(2)
         dtpDepartDateUser.Name = "dtpDepartDateUser"
@@ -336,7 +336,7 @@ Partial Class Form4
         ' 
         ' cbxDepartureUser
         ' 
-        cbxDepartureUser.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxDepartureUser.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxDepartureUser.FormattingEnabled = True
         cbxDepartureUser.Items.AddRange(New Object() {"Manila"})
         cbxDepartureUser.Location = New Point(549, 263)
@@ -347,7 +347,7 @@ Partial Class Form4
         ' 
         ' cbxDestinationUser
         ' 
-        cbxDestinationUser.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxDestinationUser.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxDestinationUser.FormattingEnabled = True
         cbxDestinationUser.Location = New Point(549, 319)
         cbxDestinationUser.Margin = New Padding(2)
@@ -366,7 +366,7 @@ Partial Class Form4
         ' 
         ' cbxSeatNumberPassenger6
         ' 
-        cbxSeatNumberPassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxSeatNumberPassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxSeatNumberPassenger6.FormattingEnabled = True
         cbxSeatNumberPassenger6.Items.AddRange(New Object() {"AC1"})
         cbxSeatNumberPassenger6.Location = New Point(559, 813)
@@ -377,7 +377,7 @@ Partial Class Form4
         ' 
         ' tbxFullnamePassenger6
         ' 
-        tbxFullnamePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxFullnamePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxFullnamePassenger6.Location = New Point(103, 813)
         tbxFullnamePassenger6.Margin = New Padding(2)
         tbxFullnamePassenger6.Name = "tbxFullnamePassenger6"
@@ -406,7 +406,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger6
         ' 
-        cbxGenderPassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger6.FormattingEnabled = True
         cbxGenderPassenger6.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger6.Location = New Point(476, 813)
@@ -417,7 +417,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger4
         ' 
-        cbxGenderPassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger4.FormattingEnabled = True
         cbxGenderPassenger4.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger4.Location = New Point(476, 738)
@@ -428,7 +428,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger5
         ' 
-        cbxGenderPassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger5.FormattingEnabled = True
         cbxGenderPassenger5.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger5.Location = New Point(476, 776)
@@ -439,7 +439,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger3
         ' 
-        cbxGenderPassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger3.FormattingEnabled = True
         cbxGenderPassenger3.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger3.Location = New Point(476, 701)
@@ -450,7 +450,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger2
         ' 
-        cbxGenderPassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger2.FormattingEnabled = True
         cbxGenderPassenger2.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger2.Location = New Point(476, 665)
@@ -461,7 +461,7 @@ Partial Class Form4
         ' 
         ' cbxGenderPassenger1
         ' 
-        cbxGenderPassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderPassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderPassenger1.FormattingEnabled = True
         cbxGenderPassenger1.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderPassenger1.Location = New Point(476, 627)
@@ -472,7 +472,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger6
         ' 
-        cbxBagAllowancePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger6.FormattingEnabled = True
         cbxBagAllowancePassenger6.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger6.Location = New Point(649, 813)
@@ -483,7 +483,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger4
         ' 
-        cbxBagAllowancePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger4.FormattingEnabled = True
         cbxBagAllowancePassenger4.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger4.Location = New Point(649, 738)
@@ -494,7 +494,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger5
         ' 
-        cbxBagAllowancePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger5.FormattingEnabled = True
         cbxBagAllowancePassenger5.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger5.Location = New Point(649, 776)
@@ -505,7 +505,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger3
         ' 
-        cbxBagAllowancePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger3.FormattingEnabled = True
         cbxBagAllowancePassenger3.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger3.Location = New Point(649, 701)
@@ -516,7 +516,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger2
         ' 
-        cbxBagAllowancePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger2.FormattingEnabled = True
         cbxBagAllowancePassenger2.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger2.Location = New Point(649, 665)
@@ -527,7 +527,7 @@ Partial Class Form4
         ' 
         ' cbxBagAllowancePassenger1
         ' 
-        cbxBagAllowancePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBagAllowancePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBagAllowancePassenger1.FormattingEnabled = True
         cbxBagAllowancePassenger1.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBagAllowancePassenger1.Location = New Point(649, 627)
@@ -538,7 +538,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger6
         ' 
-        tbxAgePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger6.Location = New Point(298, 813)
         tbxAgePassenger6.Margin = New Padding(2)
         tbxAgePassenger6.Name = "tbxAgePassenger6"
@@ -547,7 +547,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger4
         ' 
-        tbxAgePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger4.Location = New Point(299, 738)
         tbxAgePassenger4.Margin = New Padding(2)
         tbxAgePassenger4.Name = "tbxAgePassenger4"
@@ -556,7 +556,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger5
         ' 
-        tbxAgePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger5.Location = New Point(298, 776)
         tbxAgePassenger5.Margin = New Padding(2)
         tbxAgePassenger5.Name = "tbxAgePassenger5"
@@ -565,7 +565,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger3
         ' 
-        tbxAgePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger3.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger3.Location = New Point(299, 701)
         tbxAgePassenger3.Margin = New Padding(2)
         tbxAgePassenger3.Name = "tbxAgePassenger3"
@@ -574,7 +574,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger1
         ' 
-        tbxAgePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger1.Location = New Point(299, 627)
         tbxAgePassenger1.Margin = New Padding(2)
         tbxAgePassenger1.Name = "tbxAgePassenger1"
@@ -583,7 +583,7 @@ Partial Class Form4
         ' 
         ' tbxAgePassenger2
         ' 
-        tbxAgePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAgePassenger2.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAgePassenger2.Location = New Point(299, 665)
         tbxAgePassenger2.Margin = New Padding(2)
         tbxAgePassenger2.Name = "tbxAgePassenger2"
@@ -592,7 +592,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger1
         ' 
-        dtpBirthDatePassenger1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger1.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger1.Location = New Point(365, 627)
         dtpBirthDatePassenger1.Name = "dtpBirthDatePassenger1"
         dtpBirthDatePassenger1.Size = New Size(101, 25)
@@ -600,7 +600,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger2
         ' 
-        dtpBirthDatePassenger2.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger2.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger2.Location = New Point(365, 665)
         dtpBirthDatePassenger2.Name = "dtpBirthDatePassenger2"
         dtpBirthDatePassenger2.Size = New Size(101, 25)
@@ -608,7 +608,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger3
         ' 
-        dtpBirthDatePassenger3.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger3.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger3.Location = New Point(365, 701)
         dtpBirthDatePassenger3.Name = "dtpBirthDatePassenger3"
         dtpBirthDatePassenger3.Size = New Size(101, 25)
@@ -616,7 +616,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger6
         ' 
-        dtpBirthDatePassenger6.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger6.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger6.Location = New Point(367, 812)
         dtpBirthDatePassenger6.Name = "dtpBirthDatePassenger6"
         dtpBirthDatePassenger6.Size = New Size(101, 25)
@@ -624,7 +624,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger5
         ' 
-        dtpBirthDatePassenger5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger5.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger5.Location = New Point(367, 776)
         dtpBirthDatePassenger5.Name = "dtpBirthDatePassenger5"
         dtpBirthDatePassenger5.Size = New Size(101, 25)
@@ -632,7 +632,7 @@ Partial Class Form4
         ' 
         ' dtpBirthDatePassenger4
         ' 
-        dtpBirthDatePassenger4.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpBirthDatePassenger4.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpBirthDatePassenger4.Location = New Point(367, 738)
         dtpBirthDatePassenger4.Name = "dtpBirthDatePassenger4"
         dtpBirthDatePassenger4.Size = New Size(101, 25)
@@ -649,7 +649,7 @@ Partial Class Form4
         ' 
         ' cbxBgAllowanceUser
         ' 
-        cbxBgAllowanceUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxBgAllowanceUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxBgAllowanceUser.FormattingEnabled = True
         cbxBgAllowanceUser.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBgAllowanceUser.Location = New Point(1086, 367)
@@ -660,7 +660,7 @@ Partial Class Form4
         ' 
         ' tbxAddressUser
         ' 
-        tbxAddressUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbxAddressUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         tbxAddressUser.Location = New Point(1086, 614)
         tbxAddressUser.Margin = New Padding(2)
         tbxAddressUser.Name = "tbxAddressUser"
@@ -669,7 +669,7 @@ Partial Class Form4
         ' 
         ' dtpDateBirthUser
         ' 
-        dtpDateBirthUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtpDateBirthUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         dtpDateBirthUser.Location = New Point(1086, 521)
         dtpDateBirthUser.Margin = New Padding(2)
         dtpDateBirthUser.Name = "dtpDateBirthUser"
@@ -678,7 +678,7 @@ Partial Class Form4
         ' 
         ' cbxGenderUser
         ' 
-        cbxGenderUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        cbxGenderUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         cbxGenderUser.FormattingEnabled = True
         cbxGenderUser.Items.AddRange(New Object() {"Male", "Female", "Others"})
         cbxGenderUser.Location = New Point(1085, 568)
@@ -690,7 +690,7 @@ Partial Class Form4
         ' chbPWDUser
         ' 
         chbPWDUser.AutoSize = True
-        chbPWDUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        chbPWDUser.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0)
         chbPWDUser.Location = New Point(1087, 674)
         chbPWDUser.Name = "chbPWDUser"
         chbPWDUser.Size = New Size(15, 14)
@@ -744,7 +744,7 @@ Partial Class Form4
         ' 
         ' lblCover
         ' 
-        lblCover.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblCover.BackColor = Color.FromArgb(233, 244, 251)
         lblCover.Location = New Point(513, 428)
         lblCover.Name = "lblCover"
         lblCover.Size = New Size(273, 58)
