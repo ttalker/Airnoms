@@ -1,5 +1,7 @@
 ﻿Imports System.Runtime.CompilerServices
+Imports System.Transactions
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports MySql.Data.MySqlClient
 Imports SharedModule
 
 
@@ -8,12 +10,12 @@ Public Class Form2
 
     Private ProcessedPassengers As New HashSet(Of String)
     Private TotalFare As Decimal = 0
-
+    Dim transaction As TransactionInfo
     Dim current_dict = bookingDictionary
     Public BaggagePrices As New Dictionary(Of String, Integer) From {
-    {"10kg", 1000},
-    {"20kg", 1800},
-    {"40kg", 3000}
+    {"10 kg", 1000},
+    {"20 kg", 1800},
+    {"40 kg", 3000}
 }
     Private Sub btnBooking_Click(sender As Object, e As EventArgs) Handles btnBooking.Click
 
@@ -74,6 +76,7 @@ Public Class Form2
         btnCalculate.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnCalculate.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' hover effect of the button next ticket and calculate
         btnProcessTicket.Enabled = False
+        btnCalculate.Enabled = False
 
         ' Set the background color of the form to transparent   
 
@@ -91,7 +94,78 @@ Public Class Form2
 
     End Sub
 
+    Private Sub CalculateTicket()
+
+        Dim current_booker As Customers = current_dict(cbxPassengerTicket.Text)
+        Dim baseFare As Double
+        Dim destination = current_booker.Destination
+        Dim seatNumber = current_booker.SeatNumber
+        Dim departureTime = current_booker.DepartureTime
+        Dim pwdStatus = current_booker.PWDStatus
+        Dim departure = current_booker.Departure
+        Dim bookingDate = current_booker.BookingDate
+        Dim baggage = current_booker.BaggageAllowance
+        Dim plane_type = GetPlaneTypeByDestinationAndTime(destination, departureTime, bookingDate)
+        'generate seatmap and confirm the seatclass
+        Dim seat_map = GenerateSeats(plane_type).seatmap
+        Dim class_type = seat_map(seatNumber)
+        ' Get base fare depending on seat class
+        If class_type.ToLower() = "business" Then
+            baseFare = GetBusinessFare(departure, destination)
+        ElseIf class_type.ToLower() = "economy" Then
+            baseFare = GetEconomyFare(departure, destination)
+        ElseIf class_type.ToLower() = "first" Then
+            baseFare = GetFirstClassFare(departure, destination)
+        ElseIf class_type.ToLower() = "premium economy" Then
+            baseFare = GetEconomyFare(departure, destination) * 1.3 '30% increase based on economy seats
+        End If
+
+        'add fare based on baggage
+
+        Dim baggage_price = BaggagePrices(baggage)
+        baseFare += baggage_price
+
+        ' Compute discount
+        Dim discount As Double = 0
+        If current_booker.PWDStatus OrElse current_booker.Age >= 60 Then
+            discount = baseFare * 0.2 ' 20% discount
+        End If
+
+        'minus the discount
+        baseFare -= discount
+
+        ' Compute VAT (12%)
+        Dim tax As Double = (baseFare - discount) * 0.12
+
+        ' Compute total
+        Dim totalAmount As Double = baseFare + tax
+
+        ' Create TransactionInfo object
+        Dim transaction As New TransactionInfo With {
+            .FlightID = current_booker.FlightID,
+            .BookerName = current_booker.FullName,
+            .BookerID = current_booker.CustomerID,
+            .SeatClass = class_type,
+            .SeatNumber = seatNumber,
+            .BasePrice = baseFare,
+            .Discount = discount,
+            .Tax = tax,
+            .TotalAmount = totalAmount
+        }
+
+        Dim culturePH As New Globalization.CultureInfo("fil-PH")
+
+        lblTicketAmt.Text = baseFare.ToString("C2", culturePH)
+        lblTaxTicket.Text = tax.ToString("C2", culturePH)
+        lblTotalTicket.Text = totalAmount.ToString("C2", culturePH)
+
+    End Sub
+
     Private Sub btnCalculate_Click(sender As Object, e As EventArgs) Handles btnCalculate.Click
+
+
+
+        btnProcessTicket.Enabled = True
 
     End Sub
     Private Sub Assign_Customer()
@@ -164,13 +238,8 @@ Public Class Form2
 
                     ' Call Assign_Customer() if a match is found
                     Assign_Customer()
-
-                    ' Label everything
-
-
-
-
-
+                    CalculateTicket()
+                    btnCalculate.Enabled = True
                 End If
 
             Catch ex As Exception
@@ -178,8 +247,8 @@ Public Class Form2
             End Try
         Else
             MessageBox.Show("Please select a valid passenger")
+            btnCalculate.Enabled = False
         End If
-
     End Sub
 
     Private Sub cbxPassengerTicket_TextChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.TextChanged
@@ -208,5 +277,43 @@ Public Class Form2
         Else
             cbxPassengerTicket.DroppedDown = False
         End If
+    End Sub
+
+    Private Sub btnProcessTicket_Click(sender As Object, e As EventArgs) Handles btnProcessTicket.Click
+
+        Try
+
+            openCon()
+
+            ' Upload transaction to database
+            Dim query As String = "INSERT INTO transaction_table " &
+                              "(flight_id, fullname, customer_id, seat_class, seat_number, base_price, discount, tax, total_amount) " &
+                              "VALUES (@flight_id, @fullname, @customer_id, @seat_class, @seat_number, @base_price, @discount, @tax, @total_amount)"
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@flight_id", transaction.FlightID)
+                cmd.Parameters.AddWithValue("@fullname", transaction.BookerName)
+                cmd.Parameters.AddWithValue("@customer_id", transaction.BookerID)
+                cmd.Parameters.AddWithValue("@seat_class", transaction.SeatClass)
+                cmd.Parameters.AddWithValue("@seat_number", transaction.SeatNumber)
+                cmd.Parameters.AddWithValue("@base_price", transaction.BasePrice)
+                cmd.Parameters.AddWithValue("@discount", transaction.Discount)
+                cmd.Parameters.AddWithValue("@tax", transaction.Tax)
+                cmd.Parameters.AddWithValue("@total_amount", transaction.TotalAmount)
+
+                cmd.ExecuteNonQuery()
+            End Using
+
+            MessageBox.Show("Transaction successfully recorded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            MessageBox.Show("Error processing transaction: " & ex.Message, "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+            btnProcessTicket.Enabled = False
+        End Try
+
+
     End Sub
 End Class

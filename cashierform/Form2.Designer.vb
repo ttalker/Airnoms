@@ -221,7 +221,7 @@ Partial Class Form2
         lblGenderTicket.AutoSize = True
         lblGenderTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblGenderTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblGenderTicket.Location = New Point(269, 757)
+        lblGenderTicket.Location = New Point(269, 758)
         lblGenderTicket.Name = "lblGenderTicket"
         lblGenderTicket.Size = New Size(57, 20)
         lblGenderTicket.TabIndex = 50
@@ -265,7 +265,7 @@ Partial Class Form2
         lblBaggageAllowanceTicket.AutoSize = True
         lblBaggageAllowanceTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBaggageAllowanceTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblBaggageAllowanceTicket.Location = New Point(608, 752)
+        lblBaggageAllowanceTicket.Location = New Point(608, 758)
         lblBaggageAllowanceTicket.Name = "lblBaggageAllowanceTicket"
         lblBaggageAllowanceTicket.Size = New Size(57, 20)
         lblBaggageAllowanceTicket.TabIndex = 54
@@ -276,7 +276,7 @@ Partial Class Form2
         lblDestinationTicket.AutoSize = True
         lblDestinationTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDestinationTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblDestinationTicket.Location = New Point(608, 697)
+        lblDestinationTicket.Location = New Point(608, 703)
         lblDestinationTicket.Name = "lblDestinationTicket"
         lblDestinationTicket.Size = New Size(66, 20)
         lblDestinationTicket.TabIndex = 53
@@ -287,7 +287,7 @@ Partial Class Form2
         lblSeatNumTicket.AutoSize = True
         lblSeatNumTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblSeatNumTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblSeatNumTicket.Location = New Point(608, 650)
+        lblSeatNumTicket.Location = New Point(608, 653)
         lblSeatNumTicket.Name = "lblSeatNumTicket"
         lblSeatNumTicket.Size = New Size(66, 20)
         lblSeatNumTicket.TabIndex = 52
@@ -320,7 +320,7 @@ Partial Class Form2
         lblPWDTicket.AutoSize = True
         lblPWDTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblPWDTicket.Font = New Font("Microsoft Sans Serif", 12F)
-        lblPWDTicket.Location = New Point(610, 807)
+        lblPWDTicket.Location = New Point(610, 811)
         lblPWDTicket.Name = "lblPWDTicket"
         lblPWDTicket.Size = New Size(66, 20)
         lblPWDTicket.TabIndex = 56

@@ -334,7 +334,7 @@ Partial Class Form1
         ' 
         cbxBaggage.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxBaggage.FormattingEnabled = True
-        cbxBaggage.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxBaggage.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxBaggage.Location = New Point(646, 711)
         cbxBaggage.Margin = New Padding(3, 2, 3, 2)
         cbxBaggage.Name = "cbxBaggage"

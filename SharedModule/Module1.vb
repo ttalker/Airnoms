@@ -1352,5 +1352,5 @@ Public Class TransactionInfo
     Public Property BasePrice As Double
     Public Property Tax As Double
     Public Property Discount As Double
-    Public Property 
+    Public Property TotalAmount As Double
 End Class
