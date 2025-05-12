@@ -2,7 +2,9 @@
 'Imports userForm.Module1
 Imports MySql.Data.MySqlClient
 Imports SharedModule
+
 Public Class Form1
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnFlights)
@@ -35,7 +37,7 @@ Public Class Form1
         btnCancelFlight.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
 
 
-
+        Me.RefreshFlightData() ' Forces Form1 to reload with updated info
         GenerateAndSaveFlightsIfNotExist(Date.Today)
         AddStatusTimerToForm1_Load()
         UpdateFlightStatuses()
@@ -45,7 +47,9 @@ Public Class Form1
         Dim dt As New DataTable()
         Try
             openCon()
-            Dim query As String = "SELECT flight_id as 'Flight No.', 
+            Dim query As String = "SELECT flight_id as 'Flight No.',
+                                     plane_type as 'Plane Type',
+                                     pilot as 'Pilot',
                                      departure as 'From', 
                                      destination as 'To', 
                                      departure_date as 'Date',
@@ -98,6 +102,7 @@ Public Class Form1
             .SelectionForeColor = Color.Black
         End With
         ' Add color coding based on flight status
+        ' Add color coding based on flight status
         For Each row As DataGridViewRow In dgvFlights.Rows
             Dim status As String = row.Cells("Status").Value.ToString()
 
@@ -105,11 +110,21 @@ Public Class Form1
                 Case "Waiting"
                     row.DefaultCellStyle.BackColor = Color.LightYellow
                 Case "On Flight"
-                    row.DefaultCellStyle.BackColor = Color.LightBlue
+                    row.DefaultCellStyle.BackColor = Color.LightSkyBlue
                 Case "Arrived"
                     row.DefaultCellStyle.BackColor = Color.LightGreen
+                Case "Cancelled"
+                    row.DefaultCellStyle.BackColor = Color.LightCoral
+                Case "Delayed"
+                    row.DefaultCellStyle.BackColor = Color.Gold
+                Case Else
+                    row.DefaultCellStyle.BackColor = Color.White
             End Select
+
+            row.DefaultCellStyle.ForeColor = Color.Black ' Keeps text readable
         Next
+
+
     End Sub
 
     ' Timer to update flight statuses automatically
@@ -136,10 +151,21 @@ Public Class Form1
 
     ' Add this to your RefreshFlightData method
     Public Sub RefreshFlightData()
+        MessageBox.Show("RefreshFlightData method called", "Debug", MessageBoxButtons.OK)
+
         ' Update flight statuses first
         UpdateFlightStatuses()
+
         ' Then load flights
         LoadFlightsByDate(Date.Today)
+
+        ' Format DataGridView again to ensure coloring applies
+        FormatFlightDataGridView()
+
+        ' Force refresh of the UI
+        dgvFlights.Refresh()
+        dgvFlights.Update()
+        Me.Refresh()
     End Sub
 
     Private Sub btnFlights_Click(sender As Object, e As EventArgs) Handles btnFlights.Click
@@ -163,20 +189,47 @@ Public Class Form1
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
     End Sub
-
     Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
-        Form5.Show()
+        If dgvFlights.SelectedRows.Count > 0 Then
+            Dim selectedRow As DataGridViewRow = dgvFlights.SelectedRows(0)
+
+            ' Retrieve flight details from the selected row
+            Dim flightID As String = selectedRow.Cells("Flight No.").Value.ToString()
+
+            ' Create and show the passenger popup form
+            Dim passengerPopup As New Form5()
+            passengerPopup.LoadPassengers(flightID)
+            passengerPopup.Show()
+        Else
+            MessageBox.Show("Please select a flight to view passenger information.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
+
+
 
     Private Sub btnCancelFlight_Click(sender As Object, e As EventArgs) Handles btnCancelFlight.Click
-        Form4.Show()
+        If dgvFlights.SelectedRows.Count > 0 Then
+            Dim selectedRow As DataGridViewRow = dgvFlights.SelectedRows(0)
+            Dim selectedFlightID As String = selectedRow.Cells("Flight No.").Value.ToString()
+            Dim status As String = selectedRow.Cells("Status").Value.ToString()
+
+            If status = "Cancelled" OrElse status = "On Flight" OrElse status = "Arrived" Then
+                MessageBox.Show($"This flight is already {status} and cannot be cancelled or delayed.", "Action Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim popup As New Form4(Me)
+            popup.LoadFlightDetails(selectedFlightID)
+            popup.ShowDialog()
+        Else
+            MessageBox.Show("Please select a flight to cancel or delay.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
+
 
     Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
         'Form6.Show()
     End Sub
 
-    'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
-    '    Form5.Show()
-    'End Sub
+
 End Class
