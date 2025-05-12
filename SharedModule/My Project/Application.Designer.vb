@@ -8,6 +8,8 @@
 ' </auto-generated>
 '------------------------------------------------------------------------------
 
+Imports userForm
+
 Namespace My
 
     'NOTE: This file is auto-generated; do not modify it directly.  To make changes,
@@ -23,12 +25,8 @@ Namespace My
             Me.IsSingleInstance = False
             Me.EnableVisualStyles = True
             Me.SaveMySettingsOnExit = True
-            Me.ShutDownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
+            Me.ShutdownStyle = Global.Microsoft.VisualBasic.ApplicationServices.ShutdownMode.AfterMainFormCloses
         End Sub
 
-        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>
-        Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Form1
-        End Sub
     End Class
 End Namespace

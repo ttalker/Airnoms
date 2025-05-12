@@ -229,16 +229,17 @@ Public Class Form4
     Private Sub SaveBookingToDatabase(booking As BookingInfo) ' save function for database
         Try
             openCon()
-            Using cmd As New MySqlCommand("ALTER TABLE testing_table_customer MODIFY customer_id INT AUTO_INCREMENT;", conn)
+            Using cmd As New MySqlCommand("ALTER TABLE customer_table MODIFY customer_id INT AUTO_INCREMENT;", con)
                 cmd.ExecuteNonQuery()
             End Using
             ' Insert the main booker
             Dim insertQuery As String = "
-    INSERT INTO customer_table (fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+    INSERT INTO customer_table (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
     seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time)
-    VALUES (@FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime)"
+    VALUES (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime)"
 
-            Using cmd As New MySqlCommand(insertQuery, conn)
+            Using cmd As New MySqlCommand(insertQuery, con)
+                cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
                 cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
                 cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
                 cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
@@ -264,7 +265,8 @@ Public Class Form4
 
             ' Insert all co-passengers
             For Each p As PassengerInfo In booking.CoPassengers
-                Using passengerCmd As New MySqlCommand(insertQuery, conn)
+                Using passengerCmd As New MySqlCommand(insertQuery, con)
+                    passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
                     passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
                     passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress) ' Use booker's address for co-passengers
                     passengerCmd.Parameters.AddWithValue("@Age", p.Age)
@@ -293,7 +295,7 @@ Public Class Form4
         Catch ex As Exception
             MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            ' Make sure to close the connection
+            ' Make sure to close the conection
             If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
                 con.Close()
             End If
@@ -302,6 +304,7 @@ Public Class Form4
 
 
     Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click ' just resets everything
+
         tbxFullnameUser.Clear()
         tbxAgeUser.Clear()
         tbxAddressUser.Clear()
@@ -318,6 +321,7 @@ Public Class Form4
         dtpDateBirthUser.Value = Date.Now
         dtpDepartDateUser.Value = DateTime.Now
         dtpArrivalDateUser.Value = DateTime.Now
+        dtpBookingDateUser.Value = DateTime.Now
 
         rbnOneWayTrip.Checked = True
 
@@ -362,7 +366,8 @@ Public Class Form4
                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
             currentForm.Hide()
-            userForm.Form1.Show()
+            Form1.Show()
         End If
     End Sub
+
 End Class
