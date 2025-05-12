@@ -31,7 +31,6 @@ Partial Class Form2
         cbxPassengerTicket = New ComboBox()
         btnProcessTicket = New Button()
         btnSupport = New Button()
-        pbxCashierTicket = New PictureBox()
         btnExit = New Button()
         btnNextTicket = New Button()
         btnResetTicket = New Button()
@@ -54,8 +53,9 @@ Partial Class Form2
         lblTotalTicket = New Label()
         lblTaxTicket = New Label()
         lblTicketAmt = New Label()
-        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
+        pbxCashierTicket = New PictureBox()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnTicket
@@ -91,10 +91,10 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(1248, 707)
+        btnCalculate.Location = New Point(1258, 697)
         btnCalculate.Margin = New Padding(3, 2, 3, 2)
         btnCalculate.Name = "btnCalculate"
-        btnCalculate.Size = New Size(185, 54)
+        btnCalculate.Size = New Size(186, 74)
         btnCalculate.TabIndex = 38
         btnCalculate.Text = " "
         btnCalculate.UseVisualStyleBackColor = False
@@ -136,15 +136,6 @@ Partial Class Form2
         btnSupport.TabIndex = 10
         btnSupport.Text = " "
         btnSupport.UseVisualStyleBackColor = True
-        ' 
-        ' pbxCashierTicket
-        ' 
-        pbxCashierTicket.BackgroundImage = My.Resources.Resources.TICKET_PAGE2
-        pbxCashierTicket.Location = New Point(2, -1)
-        pbxCashierTicket.Name = "pbxCashierTicket"
-        pbxCashierTicket.Size = New Size(1551, 910)
-        pbxCashierTicket.TabIndex = 39
-        pbxCashierTicket.TabStop = False
         ' 
         ' btnExit
         ' 
@@ -378,6 +369,15 @@ Partial Class Form2
         lblTicketAmt.TabIndex = 60
         lblTicketAmt.Text = "Label15"
         ' 
+        ' pbxCashierTicket
+        ' 
+        pbxCashierTicket.BackgroundImage = My.Resources.Resources.TICKET_PAGE__1___1_1
+        pbxCashierTicket.Location = New Point(2, -1)
+        pbxCashierTicket.Name = "pbxCashierTicket"
+        pbxCashierTicket.Size = New Size(1551, 910)
+        pbxCashierTicket.TabIndex = 39
+        pbxCashierTicket.TabStop = False
+        ' 
         ' Form2
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -416,8 +416,8 @@ Partial Class Form2
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form2"
         Text = "TICKET PROCESSING"
-        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxCashierTicket, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -431,7 +431,6 @@ Partial Class Form2
     Friend WithEvents btnCalculate As Button
     Friend WithEvents tbxTicketPayment As TextBox
     Friend WithEvents btnSupport As Button
-    Friend WithEvents pbxCashierTicket As PictureBox
     Friend WithEvents btnExit As Button
     Friend WithEvents btnNextTicket As Button
     Friend WithEvents btnResetTicket As Button
@@ -454,4 +453,5 @@ Partial Class Form2
     Friend WithEvents lblSeatNumTicket As Label
     Friend WithEvents lblBookedUnderTicket As Label
     Friend WithEvents lblTicketAmt As Label
+    Friend WithEvents pbxCashierTicket As PictureBox
 End Class
