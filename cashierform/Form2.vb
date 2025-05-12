@@ -75,7 +75,8 @@ Public Class Form2
 
         Me.DoubleBuffered = True ' double buffered so the form wont tweak or lag
 
-
+        'Load bookers
+        Dim bookers = LoadBookers()
 
 
     End Sub
@@ -91,4 +92,6 @@ Public Class Form2
     Private Sub cbxClassTicket_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+
 End Class
