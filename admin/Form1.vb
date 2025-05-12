@@ -109,25 +109,21 @@ Public Class Form1
             Select Case status
                 Case "Waiting"
                     row.DefaultCellStyle.BackColor = Color.LightYellow
-                    row.DefaultCellStyle.ForeColor = Color.Black
                 Case "On Flight"
                     row.DefaultCellStyle.BackColor = Color.LightSkyBlue
-                    row.DefaultCellStyle.ForeColor = Color.Black
                 Case "Arrived"
                     row.DefaultCellStyle.BackColor = Color.LightGreen
-                    row.DefaultCellStyle.ForeColor = Color.Black
                 Case "Cancelled"
                     row.DefaultCellStyle.BackColor = Color.LightCoral
-                    row.DefaultCellStyle.ForeColor = Color.White
                 Case "Delayed"
                     row.DefaultCellStyle.BackColor = Color.Gold
-                    row.DefaultCellStyle.ForeColor = Color.Black
                 Case Else
-                    ' Optional: Default styling
                     row.DefaultCellStyle.BackColor = Color.White
-                    row.DefaultCellStyle.ForeColor = Color.Black
             End Select
+
+            row.DefaultCellStyle.ForeColor = Color.Black ' Keeps text readable
         Next
+
 
     End Sub
 
@@ -155,6 +151,8 @@ Public Class Form1
 
     ' Add this to your RefreshFlightData method
     Public Sub RefreshFlightData()
+        MessageBox.Show("RefreshFlightData method called", "Debug", MessageBoxButtons.OK)
+
         ' Update flight statuses first
         UpdateFlightStatuses()
 
@@ -163,6 +161,11 @@ Public Class Form1
 
         ' Format DataGridView again to ensure coloring applies
         FormatFlightDataGridView()
+
+        ' Force refresh of the UI
+        dgvFlights.Refresh()
+        dgvFlights.Update()
+        Me.Refresh()
     End Sub
 
     Private Sub btnFlights_Click(sender As Object, e As EventArgs) Handles btnFlights.Click
@@ -192,14 +195,11 @@ Public Class Form1
 
             ' Retrieve flight details from the selected row
             Dim flightID As String = selectedRow.Cells("Flight No.").Value.ToString()
-            'Dim destination As String = selectedRow.Cells("destination").Value.ToString()
-            'Dim depDate As String = selectedRow.Cells("Departure Date").Value.ToString()
-            'Dim depTime As String = selectedRow.Cells("Departure Time").Value.ToString()
 
             ' Create and show the passenger popup form
             Dim passengerPopup As New Form5()
             passengerPopup.LoadPassengers(flightID)
-            passengerPopup.ShowDialog()
+            passengerPopup.Show()
         Else
             MessageBox.Show("Please select a flight to view passenger information.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
@@ -207,22 +207,22 @@ Public Class Form1
 
 
 
-
-
     Private Sub btnCancelFlight_Click(sender As Object, e As EventArgs) Handles btnCancelFlight.Click
         If dgvFlights.SelectedRows.Count > 0 Then
             Dim selectedRow As DataGridViewRow = dgvFlights.SelectedRows(0)
             Dim selectedFlightID As String = selectedRow.Cells("Flight No.").Value.ToString()
+            Dim status As String = selectedRow.Cells("Status").Value.ToString()
 
-            Dim popup As New Form4()
+            If status = "Cancelled" OrElse status = "On Flight" OrElse status = "Arrived" Then
+                MessageBox.Show($"This flight is already {status} and cannot be cancelled or delayed.", "Action Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
+            Dim popup As New Form4(Me)
             popup.LoadFlightDetails(selectedFlightID)
             popup.ShowDialog()
-
-            If popup.FlightWasCancelled Then
-                RefreshFlightData() ' or LoadFlightsByDate(Date.Today) if you prefer
-            End If
         Else
-            MessageBox.Show("Please select a flight to cancel.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show("Please select a flight to cancel or delay.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 
@@ -231,7 +231,5 @@ Public Class Form1
         'Form6.Show()
     End Sub
 
-    'Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
-    '    Form5.Show()
-    'End Sub
+
 End Class

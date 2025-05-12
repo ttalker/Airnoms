@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports MySql.Data.MySqlClient
+Imports Org.BouncyCastle.Asn1.Cmp.Challenge
 Imports userForm
 
 Public Module Module1
@@ -27,7 +28,7 @@ Public Module Module1
         End Get
     End Property
 
-    ' Open admin database connection with proper error handling
+    ' Open admin database connection with proper error handling 
     Public Sub openCon()
         Try
             ' Initialize connection if needed
@@ -252,6 +253,7 @@ Public Module Module1
             ' Create a shuffled list of pilots to ensure random but unique assignment
             Dim rnd As New Random()
             Dim availablePilots As New List(Of String)(pilots)
+            Dim usedTimesPerDestination As New Dictionary(Of String, List(Of DateTime))()
 
             ' Fisher-Yates shuffle algorithm to randomize pilot order
             For i As Integer = availablePilots.Count - 1 To 1 Step -1
@@ -262,36 +264,47 @@ Public Module Module1
             Next
 
             For i As Integer = 0 To destinations.Length - 1
-                ' Get flight number
                 Dim flightNumber As Integer = startFlightNumber + i
                 Dim flightID As String = $"FL{flightNumber.ToString("D3")}"
+                Dim destination As String = destinations(i)
 
-                ' Set times
-                Dim departureTime As DateTime = flightDate.AddHours(6 + i) ' flights from 6AM onwards
+                ' Initialize list for this destination
+                If Not usedTimesPerDestination.ContainsKey(destination) Then
+                    usedTimesPerDestination(destination) = New List(Of DateTime)()
+                End If
+
+                ' Generate a unique departure time for this destination
+                Dim departureTime As DateTime
+                Dim attempt As Integer = 0
+
+                Do
+                    departureTime = flightDate.AddHours(rnd.Next(6, 23)).AddMinutes(rnd.Next(0, 60))
+                Loop While usedTimesPerDestination(destination).Contains(departureTime)
+
+                usedTimesPerDestination(destination).Add(departureTime)
+
                 Dim durationHours As Integer = rnd.Next(3, 15)
                 Dim arrivalTime As DateTime = departureTime.AddHours(durationHours)
                 Dim status As String = "Waiting"
 
-                ' Randomly select plane type
                 Dim planeType As String = planeTypes(rnd.Next(planeTypes.Length))
                 Dim capacity As Integer = planeCapacities(planeType)
 
-                ' Assign a unique pilot (cycling through if we have more flights than pilots)
                 Dim pilotIndex As Integer = i Mod availablePilots.Count
                 Dim pilot As String = availablePilots(pilotIndex)
 
                 flights.Add(New Flight(
-                    flightID,
-                    planeType,
-                    pilot,
-                    "Manila",
-                    destinations(i),
-                    departureTime.Date,
-                    departureTime.ToString("HH:mm:ss"), ' FIXED
-                    arrivalTime.ToString("HH:mm:ss"),    ' FIXED
-                    capacity,
-                    status
-                ))
+        flightID,
+        planeType,
+        pilot,
+        "Manila",
+        destination,
+        departureTime.Date,
+        departureTime.ToString("HH:mm:ss"),
+        arrivalTime.ToString("HH:mm:ss"),
+        capacity,
+        status
+    ))
             Next
         Catch ex As Exception
             MessageBox.Show($"Error generating flights: {ex.Message}", "Flight Generation Error",
@@ -389,77 +402,60 @@ Public Module Module1
 
     Public Sub UpdateFlightStatuses()
         Try
-            Dim now As DateTime = DateTime.Now
-            Dim today As Date = Date.Today
-
             openCon()
 
-            Dim query As String = "SELECT flight_id, departure_date, departure_time, arrival_time " &
-                                "FROM flight_table WHERE departure_date = @Today"
-
-            Dim cmd As New MySqlCommand(query, con)
-            cmd.Parameters.AddWithValue("@Today", today)
-
+            Dim cmd As New MySqlCommand("SELECT flight_id, departure_date, departure_time, arrival_time, status FROM flight_table", con)
             Dim reader As MySqlDataReader = cmd.ExecuteReader()
-            Dim flightsToUpdate As New List(Of Tuple(Of String, String))
+            Dim updates As New List(Of Tuple(Of String, String))()
 
             While reader.Read()
-                Try
-                    Dim flightId As String = reader("flight_id").ToString()
-                    Dim depDate As Date = CDate(reader("departure_date"))
-                    Dim depTime As String = reader("departure_time").ToString()
-                    Dim arrTime As String = reader("arrival_time").ToString()
+                Dim flightId As String = reader("flight_id").ToString()
+                Dim depDate As Date = Convert.ToDateTime(reader("departure_date"))
+                Dim depTime As TimeSpan = TimeSpan.Parse(reader("departure_time").ToString())
+                Dim arrTime As TimeSpan = TimeSpan.Parse(reader("arrival_time").ToString())
+                Dim status As String = reader("status").ToString()
 
-                    ' Validate time format before parsing
-                    If Not depTime.Contains(":") Or Not arrTime.Contains(":") Then
-                        Continue While
-                    End If
+                Dim now As DateTime = DateTime.Now
+                Dim depDateTime As DateTime = depDate.Add(depTime)
+                Dim arrDateTime As DateTime = depDate.Add(arrTime)
 
-                    ' Construct DateTime for departure
-                    Dim depHour As Integer = Integer.Parse(depTime.Split(":"c)(0))
-                    Dim depMin As Integer = Integer.Parse(depTime.Split(":"c)(1))
-                    Dim departureDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, depHour, depMin, 0)
+                ' Skip updating if flight is Cancelled
+                If status = "Cancelled" Then Continue While
 
-                    ' Construct DateTime for arrival, assuming it could be the next day
-                    Dim arrHour As Integer = Integer.Parse(arrTime.Split(":"c)(0))
-                    Dim arrMin As Integer = Integer.Parse(arrTime.Split(":"c)(1))
-                    Dim arrivalDateTime As New DateTime(depDate.Year, depDate.Month, depDate.Day, arrHour, arrMin, 0)
-                    If arrivalDateTime < departureDateTime Then
-                        arrivalDateTime = arrivalDateTime.AddDays(1) ' arrived after midnight
-                    End If
+                ' Allow Delayed status to persist until new status logically applies
+                If status = "Delayed" AndAlso now < depDateTime Then Continue While
 
-                    Dim status As String = "Waiting"
-                    If now > arrivalDateTime Then
-                        status = "Arrived"
-                    ElseIf now >= departureDateTime AndAlso now <= arrivalDateTime Then
-                        status = "On Flight"
-                    End If
+                ' Determine new status
+                Dim newStatus As String
+                If now < depDateTime Then
+                    newStatus = "Waiting"
+                ElseIf now >= depDateTime AndAlso now < arrDateTime Then
+                    newStatus = "On Flight"
+                Else
+                    newStatus = "Arrived"
+                End If
 
-                    flightsToUpdate.Add(New Tuple(Of String, String)(flightId, status))
-                Catch ex As Exception
-                    ' Skip problematic records but log the error
-                    Debug.WriteLine($"Error processing flight status: {ex.Message}")
-                End Try
+                If status <> newStatus Then
+                    updates.Add(New Tuple(Of String, String)(flightId, newStatus))
+                End If
             End While
-
             reader.Close()
 
-            ' Update statuses
-            For Each flightInfo In flightsToUpdate
-                Dim updateCmd As New MySqlCommand("UPDATE flight_table SET status = @Status WHERE flight_id = @FlightID", con)
-                updateCmd.Parameters.AddWithValue("@Status", flightInfo.Item2)
-                updateCmd.Parameters.AddWithValue("@FlightID", flightInfo.Item1)
+            ' Update only changed statuses
+            For Each update In updates
+                Dim updateCmd As New MySqlCommand("UPDATE flight_table SET status = @Status WHERE flight_id = @FlightId", con)
+                updateCmd.Parameters.AddWithValue("@Status", update.Item2)
+                updateCmd.Parameters.AddWithValue("@FlightId", update.Item1)
                 updateCmd.ExecuteNonQuery()
             Next
+
         Catch ex As Exception
-            MessageBox.Show($"Error updating flight statuses: {ex.Message}", "Database Error",
-                          MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error updating flight statuses: " & ex.Message)
         Finally
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
+            If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+
 
     Public Sub DeleteOldFlights()
         Try
@@ -513,60 +509,86 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
-    Public Sub DelayFlight(flightID As String, delayHours As Integer)
+    Public Sub DelayFlight(flightID As String, delayHours As Double)
         Try
             openCon()
 
-            ' Get current dep/arr times
             Dim cmdSelect As New MySqlCommand("SELECT departure_time, arrival_time FROM flight_table WHERE flight_id = @FlightID", con)
             cmdSelect.Parameters.AddWithValue("@FlightID", flightID)
 
             Dim reader As MySqlDataReader = cmdSelect.ExecuteReader()
-            Dim depTimeStr As String = ""
-            Dim arrTimeStr As String = ""
+            Dim depTimeStr As String = "", arrTimeStr As String = ""
 
             If reader.Read() Then
                 depTimeStr = reader("departure_time").ToString()
                 arrTimeStr = reader("arrival_time").ToString()
+            Else
+                MessageBox.Show("Flight ID not found.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                reader.Close()
+                Exit Sub
             End If
             reader.Close()
 
-            ' Parse and apply delay
-            ' Parse and apply delay
-            Dim depTime As DateTime = DateTime.ParseExact(depTimeStr, "HH:mm:ss", Nothing)
-            Dim arrTime As DateTime = DateTime.ParseExact(arrTimeStr, "HH:mm:ss", Nothing)
+            ' Validate time format
+            If Not TimeSpan.TryParse(depTimeStr, Nothing) OrElse Not TimeSpan.TryParse(arrTimeStr, Nothing) Then
+                MessageBox.Show("Invalid time format for flight.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
 
-            depTime = depTime.AddHours(delayHours)
-            arrTime = arrTime.AddHours(delayHours)
+            Dim depTime = TimeSpan.Parse(depTimeStr).Add(TimeSpan.FromHours(delayHours))
+            Dim arrTime = TimeSpan.Parse(arrTimeStr).Add(TimeSpan.FromHours(delayHours))
 
+            ' Optional: limit max time to 23:59
+            If depTime.TotalHours >= 24 Then depTime = depTime.Subtract(TimeSpan.FromDays(1))
+            If arrTime.TotalHours >= 24 Then arrTime = arrTime.Subtract(TimeSpan.FromDays(1))
 
-            ' Update in database
-            Dim cmdUpdate As New MySqlCommand("UPDATE flight_table SET departure_time = @NewDepTime, arrival_time = @NewArrTime, status = 'Delayed' WHERE flight_id = @FlightID", con)
-            cmdUpdate.Parameters.AddWithValue("@NewDepTime", depTime.ToString("HH:mm:ss"))
-            cmdUpdate.Parameters.AddWithValue("@NewArrTime", arrTime.ToString("HH:mm:ss"))
+            Dim cmdUpdate As New MySqlCommand("
+            UPDATE flight_table 
+            SET departure_time = @NewDepTime, 
+                arrival_time = @NewArrTime, 
+                status = 'Delayed' 
+            WHERE flight_id = @FlightID", con)
+
+            cmdUpdate.Parameters.AddWithValue("@NewDepTime", depTime.ToString("hh\:mm\:ss"))
+            cmdUpdate.Parameters.AddWithValue("@NewArrTime", arrTime.ToString("hh\:mm\:ss"))
             cmdUpdate.Parameters.AddWithValue("@FlightID", flightID)
 
             cmdUpdate.ExecuteNonQuery()
+            MessageBox.Show("Flight delayed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         Catch ex As Exception
             MessageBox.Show("Error delaying flight: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
-    Public Sub CancelFlight(flightID As String) ' flight cancellation
+
+
+
+
+
+    Public Sub CancelFlight(flightID As String)
         Try
             openCon()
-            Dim cmd As New MySqlCommand("UPDATE flight_table SET status = 'Cancelled' WHERE flight_id = @FlightID", con)
-            cmd.Parameters.AddWithValue("@FlightID", flightID)
-            cmd.ExecuteNonQuery()
+
+            Using cmd As New MySqlCommand("UPDATE flight_table SET status = 'Cancelled' WHERE flight_id = @FlightID", con)
+                cmd.Parameters.AddWithValue("@FlightID", flightID)
+                Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+
+                If rowsAffected > 0 Then
+                    MessageBox.Show("Flight cancelled successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Flight ID not found.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+            End Using
+
         Catch ex As Exception
-            MessageBox.Show("Error cancelling flight: " & ex.Message, "Cancel Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error cancelling flight: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Finally
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
+            If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+
 
     Public Sub ExitToUserForm(currentForm As Form)
         Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
