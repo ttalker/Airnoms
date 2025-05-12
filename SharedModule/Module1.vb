@@ -1225,3 +1225,12 @@ Public Enum AircraftType
     AirbusA350_900
 End Enum
 
+Public Class TransactionInfo
+    Public Property TransactionID As String
+    Public Property BookerName As String
+    Public Property BookerID As String
+    Public Property TransactionDate As Date
+    Public Property TotalAmount As Decimal
+    Public Property PaymentMethod As String
+    Public Property ReferenceNumber As String
+End Class
