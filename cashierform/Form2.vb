@@ -338,6 +338,7 @@ Public Class Form2
         End Try
 
         cbxPassengerTicket.Items.Remove(cbxPassengerTicket.Text)
+        ClearTicketLabels()
     End Sub
 
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
@@ -345,6 +346,54 @@ Public Class Form2
             Assign_Customer()
             CalculateTicket()
             btnCalculate.Enabled = True
+        End If
+    End Sub
+
+    Public Sub ClearTicketLabels()
+        lblClass.Text = ""
+        lblDepartDateTicket.Text = ""
+        lblDepartTimeTicket.Text = ""
+        lblArrivalDateTicket.Text = ""
+        lblArrivalTimeTicket.Text = ""
+        lblBookingDateTicket.Text = ""
+        lblBookedUnderTicket.Text = ""
+        lblFullNameTicket.Text = ""
+        lblSeatNumTicket.Text = ""
+        lblDateOfBirthTicket.Text = ""
+        lblDestinationTicket.Text = ""
+        lblGenderTicket.Text = ""
+        lblBaggageAllowanceTicket.Text = ""
+        lblAdressTicket.Text = ""
+        lblPWDTicket.Text = ""
+        lblTicketAmt.Text = ""
+        lblTaxTicket.Text = ""
+        lblTotalTicket.Text = ""
+        cbxPassengerTicket.Text = ""
+        tbxTicketPayment.Text = ""
+        lblChangeTicket.Text = ""
+    End Sub
+
+    Private Sub btnResetTicket_Click(sender As Object, e As EventArgs) Handles btnResetTicket.Click
+        ClearTicketLabels()
+        btnCalculate.Enabled = False
+        btnProcessTicket.Enabled = False
+    End Sub
+
+    Private Sub btnNextTicket_Click(sender As Object, e As EventArgs) Handles btnNextTicket.Click
+
+        If cbxPassengerTicket.Items.Count = 0 Then Exit Sub
+
+        ' If nothing is selected, select the first item
+        If cbxPassengerTicket.SelectedIndex = -1 Then
+            cbxPassengerTicket.SelectedIndex = 0
+        Else
+            ' Move to the next item if available
+            If cbxPassengerTicket.SelectedIndex < cbxPassengerTicket.Items.Count - 1 Then
+                cbxPassengerTicket.SelectedIndex += 1
+            Else
+                ' Optional: loop back to first item or disable next
+                MessageBox.Show("No more items to select.")
+            End If
         End If
     End Sub
 End Class
