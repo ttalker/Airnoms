@@ -130,6 +130,7 @@ Partial Class Form2
         Margin = New Padding(3, 2, 3, 2)
         MaximumSize = New Size(930, 648)
         Name = "Form2"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Create an Account"
         CType(pbxSignUp, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider, ComponentModel.ISupportInitialize).EndInit()

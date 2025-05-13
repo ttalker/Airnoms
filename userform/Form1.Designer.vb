@@ -105,6 +105,7 @@ Partial Class Form1
         Margin = New Padding(2)
         MaximumSize = New Size(931, 650)
         Name = "Form1"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "International Nom Airlines"
         CType(pbxSignIn, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider, ComponentModel.ISupportInitialize).EndInit()
