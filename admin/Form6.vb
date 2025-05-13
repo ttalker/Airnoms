@@ -30,6 +30,13 @@ Public Class Form6
                 Return
             End If
 
+            ' Combine date and time and check if it's in the past
+            Dim fullDepartureDateTime As DateTime = departureDate.AddHours(departureTime.Hour).AddMinutes(departureTime.Minute).AddSeconds(departureTime.Second)
+            If fullDepartureDateTime < DateTime.Now Then
+                MessageBox.Show("Cannot schedule a flight in the past. Please select a future date and time.", "Invalid Schedule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return
+            End If
+
             ' Calculate arrival time
             Dim rnd As New Random()
             Dim arrivalTime = departureTime.AddHours(rnd.Next(3, 11))

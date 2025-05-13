@@ -31,12 +31,15 @@ Public Class Form2
         LoadTransactions()
     End Sub
 
+    ' In Form2 and Form3, modify the btnFlights_Click methods:
     Private Sub btnFlights_Click(sender As Object, e As EventArgs) Handles btnFlights.Click
         Form1.Show()
         Me.Hide()
         Form3.Hide()
-    End Sub
 
+        ' Instead of calling RefreshFlightData(), directly call LoadFlightsByDate
+        Form1.LoadFlightsByDate(Date.Today)
+    End Sub
     Private Sub btnTransactions_Click(sender As Object, e As EventArgs) Handles btnTransactions.Click
         Me.Show()
         Form1.Hide()

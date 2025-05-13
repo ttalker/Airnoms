@@ -7,8 +7,6 @@ Public Class Form4
 
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
         MakeTransparent(btnHomeUser)
         MakeTransparent(btnBookingUser)
         MakeTransparent(btnSupportUser)
@@ -72,8 +70,6 @@ Public Class Form4
     End Sub
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
-
-
         If Not ValidateForm() Then
             Return
         End If
@@ -119,7 +115,25 @@ Public Class Form4
             End Try
         Next
 
-        Dim flightId As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text))
+        Dim selectedDate As Date = dtpDepartDateUser.Value.Date
+        Dim selectedTime As TimeSpan
+        If Not TimeSpan.TryParse(cbxDepartTimeUser.Text, selectedTime) Then
+            MessageBox.Show("Invalid departure time format. Please select a valid time.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim combinedDateTime As DateTime = selectedDate.Add(selectedTime)
+
+        ' Debug message for flight search parameters
+        MessageBox.Show("DEBUG FLIGHT SEARCH:" & vbCrLf &
+                "Departure: " & cbxDepartureUser.Text & vbCrLf &
+                "Destination: " & cbxDestinationUser.Text & vbCrLf &
+                "Date: " & selectedDate.ToString("yyyy-MM-dd") & vbCrLf &
+                "Time: " & selectedTime.ToString("hh\:mm") & vbCrLf &
+                "Combined DateTime: " & combinedDateTime.ToString("yyyy-MM-dd HH:mm:ss"))
+
+        ' Fix here: Get flight ID with correct parameters
+        Dim flightId As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, selectedDate, selectedTime)
 
         If String.IsNullOrEmpty(flightId) Then
             MessageBox.Show("No matching flight found for the selected route and time.", "Flight Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -152,7 +166,6 @@ Public Class Form4
 
         ' Save booking to database
         SaveBookingToDatabase(bookinginfo)
-
     End Sub
 
     Private Function ValidateForm() As Boolean
@@ -232,21 +245,22 @@ Public Class Form4
             isValid = False
         End If
 
-
-
         Return isValid
     End Function
 
-    Private Function GetFlightID(departure As String, destination As String, departureTime As DateTime) As String
+    ' FIXED: This function now correctly opens the connection and properly formats parameters
+    Private Function GetFlightID(departure As String, destination As String, departureDate As Date, departureTime As TimeSpan) As String
         Dim flightID As String = ""
-        Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @Departure AND destination = @Destination AND departure_time = @DepartureTime LIMIT 1"
-
         Try
             openCon()
+
+            Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @departure AND destination = @destination AND DATE(departure_date) = @date AND departure_time = @time"
+
             Using cmd As New MySqlCommand(query, con)
-                cmd.Parameters.AddWithValue("@Departure", departure)
-                cmd.Parameters.AddWithValue("@Destination", destination)
-                cmd.Parameters.AddWithValue("@DepartureTime", departureTime.ToString("yyyy-MM-dd HH:mm:ss"))
+                cmd.Parameters.AddWithValue("@departure", departure)
+                cmd.Parameters.AddWithValue("@destination", destination)
+                cmd.Parameters.AddWithValue("@date", departureDate.ToString("yyyy-MM-dd"))
+                cmd.Parameters.AddWithValue("@time", departureTime.ToString())
 
                 Dim result = cmd.ExecuteScalar()
                 If result IsNot Nothing Then
@@ -254,12 +268,15 @@ Public Class Form4
                 End If
             End Using
         Catch ex As Exception
-            MessageBox.Show("Error fetching flight ID: " & ex.Message)
+            MessageBox.Show("Error retrieving flight ID: " & ex.Message)
+        Finally
+            ' Ensure connection is closed
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
+            End If
         End Try
-
         Return flightID
     End Function
-
 
     Private Sub SaveBookingToDatabase(booking As BookingInfo)
         Try
@@ -281,7 +298,6 @@ Public Class Form4
         @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
 
             Using cmd As New MySqlCommand(insertQuery, con)
-
                 cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
                 cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
                 cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
@@ -336,7 +352,6 @@ Public Class Form4
         End Try
     End Sub
 
-
     Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
         tbxFullnameUser.Clear()
         tbxAgeUser.Clear()
@@ -388,9 +403,15 @@ Public Class Form4
     Private Sub cbxDepartTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDepartTimeUser.SelectedIndexChanged
         cbxSeatNumberUser.Items.Clear()
         cbxSeatNumberUser.Text = ""
+
         Dim destination As String = cbxDestinationUser.Text
         Dim timeText As String = cbxDepartTimeUser.Text
         Dim dateValue As Date = dtpDepartDateUser.Value.Date
+
+        Dim timeValue As DateTime
+        If DateTime.TryParse(timeText, timeValue) Then
+            timeText = timeValue.ToString("HH:mm:ss")
+        End If
 
         ' Step 1: Get Flight ID
         Dim flightId As String = GetFlightIdByDestinationAndTime(destination, timeText, dateValue)
@@ -433,10 +454,7 @@ Public Class Form4
         End If
     End Sub
 
-
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
     End Sub
-
-
 End Class

@@ -42,7 +42,9 @@ Public Class Form1
         AddStatusTimerToForm1_Load()
         UpdateFlightStatuses()
         LoadFlightsByDate(Date.Today)
+
     End Sub
+
     Public Sub LoadFlightsByDate(flightDate As Date)
         Dim dt As New DataTable()
         Try

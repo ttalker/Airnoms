@@ -38,6 +38,7 @@ Public Class Form3
         Form1.Show()
         Me.Hide()
         Form2.Hide()
+        Form1.LoadFlightsByDate(Date.Today)
     End Sub
     Private Sub btnTransactions_Click(sender As Object, e As EventArgs) Handles btnTransactions.Click
         Me.Hide()
