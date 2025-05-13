@@ -1048,7 +1048,7 @@ Public Module Module1
 
         Try
             openCon()
-            Using cmd As New MySqlCommand("SELECT departure_time FROM flight_table WHERE destination = @Destination AND departure_date = @Date", con)
+            Using cmd As New MySqlCommand("SELECT departure_time FROM flight_table WHERE destination = @Destination AND departure_date = @Date AND status <> 'Cancelled'", con)
                 cmd.Parameters.AddWithValue("@Destination", destination)
                 cmd.Parameters.AddWithValue("@Date", flightDate.Date)
 
