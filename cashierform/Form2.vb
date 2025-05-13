@@ -187,48 +187,52 @@ Public Class Form2
 
     End Sub
     Private Sub Assign_Customer()
-        Dim current_booker As Customers = current_dict(cbxPassengerTicket.Text)
-        'assign all the fields to a variable for easy access
-        Dim customerID = current_booker.CustomerID
-        Dim fullName = current_booker.FullName
-        Dim age = current_booker.Age
-        Dim dateOfBirth = current_booker.DateOfBirth
-        Dim gender = current_booker.Gender
-        Dim seatNumber = current_booker.SeatNumber
-        Dim baggageAllowance = current_booker.BaggageAllowance
-        Dim address = current_booker.Address
-        Dim pwdStatus = current_booker.PWDStatus
-        Dim departure = current_booker.Departure
-        Dim destination = current_booker.Destination
-        Dim tripType = current_booker.TripType
-        Dim bookingDate = current_booker.BookingDate
-        Dim departureTime = current_booker.DepartureTime
-        Dim arrivalTime = current_booker.ArrivalTime
-        Dim flightID = current_booker.FlightID
-        Dim booked_under = current_booker.BookedUnder
+        Dim selectedKey As String = cbxPassengerTicket.Text.Trim()
 
-        Dim plane_type = GetPlaneTypeByDestinationAndTime(destination, departureTime, bookingDate)
-        'generate seatmap and confirm the seatclass
-        Dim seat_map = GenerateSeats(plane_type).seatmap
-        Dim class_type = seat_map(seatNumber)
+        If current_dict.ContainsKey(selectedKey) Then
+            Dim current_booker As Customers = current_dict(selectedKey)
 
+            ' Assign all the fields to a variable for easy access
+            Dim customerID = current_booker.CustomerID
+            Dim fullName = current_booker.FullName
+            Dim age = current_booker.Age
+            Dim dateOfBirth = current_booker.DateOfBirth
+            Dim gender = current_booker.Gender
+            Dim seatNumber = current_booker.SeatNumber
+            Dim baggageAllowance = current_booker.BaggageAllowance
+            Dim address = current_booker.Address
+            Dim pwdStatus = current_booker.PWDStatus
+            Dim departure = current_booker.Departure
+            Dim destination = current_booker.Destination
+            Dim tripType = current_booker.TripType
+            Dim bookingDate = current_booker.BookingDate
+            Dim departureTime = current_booker.DepartureTime
+            Dim arrivalTime = current_booker.ArrivalTime
+            Dim flightID = current_booker.FlightID
+            Dim booked_under = current_booker.BookedUnder
 
-        lblClass.Text = class_type
-        lblDepartDateTicket.Text = departure
-        lblDepartTimeTicket.Text = departureTime
-        lblArrivalDateTicket.Text = bookingDate.AddDays(1).ToShortDateString() ' example, if arrival is next day
-        lblArrivalTimeTicket.Text = arrivalTime
-        lblBookingDateTicket.Text = bookingDate.ToShortDateString()
-        lblBookedUnderTicket.Text = booked_under
-        lblFullNameTicket.Text = fullName
-        lblSeatNumTicket.Text = seatNumber
-        lblDateOfBirthTicket.Text = dateOfBirth.ToShortDateString()
-        lblDestinationTicket.Text = destination
-        lblGenderTicket.Text = gender
-        lblBaggageAllowanceTicket.Text = baggageAllowance
-        lblAdressTicket.Text = address
-        lblPWDTicket.Text = If(pwdStatus, "Yes", "No")
+            Dim plane_type = GetPlaneTypeByDestinationAndTime(destination, departureTime, bookingDate)
+            Dim seat_map = GenerateSeats(plane_type).seatmap
+            Dim class_type = seat_map(seatNumber)
 
+            lblClass.Text = class_type
+            lblDepartDateTicket.Text = departure
+            lblDepartTimeTicket.Text = departureTime
+            lblArrivalDateTicket.Text = bookingDate.AddDays(1).ToShortDateString()
+            lblArrivalTimeTicket.Text = arrivalTime
+            lblBookingDateTicket.Text = bookingDate.ToShortDateString()
+            lblBookedUnderTicket.Text = booked_under
+            lblFullNameTicket.Text = fullName
+            lblSeatNumTicket.Text = seatNumber
+            lblDateOfBirthTicket.Text = dateOfBirth.ToShortDateString()
+            lblDestinationTicket.Text = destination
+            lblGenderTicket.Text = gender
+            lblBaggageAllowanceTicket.Text = baggageAllowance
+            lblAdressTicket.Text = address
+            lblPWDTicket.Text = If(pwdStatus, "Yes", "No")
+        Else
+            MessageBox.Show("Selected passenger not found in dictionary.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         If Not String.IsNullOrWhiteSpace(cbxPassengerTicket.Text) Then
@@ -330,8 +334,66 @@ Public Class Form2
                 con.Close()
             End If
             btnProcessTicket.Enabled = False
+            btnCalculate.Enabled = False
         End Try
 
         cbxPassengerTicket.Items.Remove(cbxPassengerTicket.Text)
+        ClearTicketLabels()
+    End Sub
+
+    Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
+        If bookingDictionary.ContainsKey(cbxPassengerTicket.Text) Then
+            Assign_Customer()
+            CalculateTicket()
+            btnCalculate.Enabled = True
+        End If
+    End Sub
+
+    Public Sub ClearTicketLabels()
+        lblClass.Text = ""
+        lblDepartDateTicket.Text = ""
+        lblDepartTimeTicket.Text = ""
+        lblArrivalDateTicket.Text = ""
+        lblArrivalTimeTicket.Text = ""
+        lblBookingDateTicket.Text = ""
+        lblBookedUnderTicket.Text = ""
+        lblFullNameTicket.Text = ""
+        lblSeatNumTicket.Text = ""
+        lblDateOfBirthTicket.Text = ""
+        lblDestinationTicket.Text = ""
+        lblGenderTicket.Text = ""
+        lblBaggageAllowanceTicket.Text = ""
+        lblAdressTicket.Text = ""
+        lblPWDTicket.Text = ""
+        lblTicketAmt.Text = ""
+        lblTaxTicket.Text = ""
+        lblTotalTicket.Text = ""
+        cbxPassengerTicket.Text = ""
+        tbxTicketPayment.Text = ""
+        lblChangeTicket.Text = ""
+    End Sub
+
+    Private Sub btnResetTicket_Click(sender As Object, e As EventArgs) Handles btnResetTicket.Click
+        ClearTicketLabels()
+        btnCalculate.Enabled = False
+        btnProcessTicket.Enabled = False
+    End Sub
+
+    Private Sub btnNextTicket_Click(sender As Object, e As EventArgs) Handles btnNextTicket.Click
+
+        If cbxPassengerTicket.Items.Count = 0 Then Exit Sub
+
+        ' If nothing is selected, select the first item
+        If cbxPassengerTicket.SelectedIndex = -1 Then
+            cbxPassengerTicket.SelectedIndex = 0
+        Else
+            ' Move to the next item if available
+            If cbxPassengerTicket.SelectedIndex < cbxPassengerTicket.Items.Count - 1 Then
+                cbxPassengerTicket.SelectedIndex += 1
+            Else
+                ' Optional: loop back to first item or disable next
+                MessageBox.Show("No more items to select.")
+            End If
+        End If
     End Sub
 End Class
