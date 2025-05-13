@@ -1072,9 +1072,128 @@ Public Module Module1
             If con.State = ConnectionState.Open Then con.Close()
         End Try
     End Sub
+
+
+    ' Global dictionary to store all unprocessed bookers
+    Public bookingDictionary As New Dictionary(Of String, Customers)
+
+    Public Function LoadBookers() As List(Of String)
+        Dim bookerKeys As New List(Of String)
+
+        Try
+            bookingDictionary.Clear()
+
+            ' Open connection
+            If con Is Nothing Then
+                con = New MySqlConnection()
+            End If
+
+            If con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+
+            con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
+            con.Open()
+
+            ' Get all processed bookers from transaction_table
+            Dim processedKeys As New HashSet(Of String)
+            Dim cmdProcessed As New MySqlCommand("SELECT fullname, flight_id FROM transaction_table", con)
+            Using readerProcessed = cmdProcessed.ExecuteReader()
+                While readerProcessed.Read()
+                    Dim fullname As String = readerProcessed("fullname").ToString()
+                    Dim customerID As String = readerProcessed("customer_id").ToString()
+                    Dim processedKey As String = fullname & "#" & customerID
+                    processedKeys.Add(processedKey)
+                End While
+            End Using
+
+            ' Load all customers from customer_table
+            Dim cmdBookers As New MySqlCommand("SELECT * FROM customer_table", con)
+            Using readerBookers = cmdBookers.ExecuteReader()
+                While readerBookers.Read()
+                    Dim fullname As String = readerBookers("fullname").ToString()
+                    Dim customerID As String = readerBookers("customer_id").ToString()
+                    Dim flightID As String = readerBookers("flight_id").ToString()
+                    Dim key As String = fullname & "#" & customerID
+
+                    If Not processedKeys.Contains(key) Then
+                        Dim booking As New Customers With {
+    .CustomerID = If(IsDBNull(readerBookers("customer_id")), "", readerBookers("customer_id").ToString()),
+    .FullName = If(IsDBNull(readerBookers("fullname")), "", readerBookers("fullname").ToString()),
+    .Age = If(IsDBNull(readerBookers("age")), 0, Convert.ToInt32(readerBookers("age"))),
+    .DateOfBirth = If(IsDBNull(readerBookers("date_of_birth")), Date.MinValue, Convert.ToDateTime(readerBookers("date_of_birth"))),
+    .Gender = If(IsDBNull(readerBookers("gender")), "", readerBookers("gender").ToString()),
+    .SeatNumber = If(IsDBNull(readerBookers("seat_number")), "", readerBookers("seat_number").ToString()),
+    .BaggageAllowance = If(IsDBNull(readerBookers("baggage_allowance")), "", readerBookers("baggage_allowance").ToString()),
+    .Address = If(IsDBNull(readerBookers("address")), "", readerBookers("address").ToString()),
+    .PWDStatus = If(IsDBNull(readerBookers("pwd_status")), False, readerBookers("pwd_status").ToString().Trim().ToLower() = "yes"),
+    .Departure = If(IsDBNull(readerBookers("departure")), "", readerBookers("departure").ToString()),
+    .Destination = If(IsDBNull(readerBookers("destination")), "", readerBookers("destination").ToString()),
+    .TripType = If(IsDBNull(readerBookers("trip_type")), "", readerBookers("trip_type").ToString()),
+    .BookingDate = If(IsDBNull(readerBookers("booking_date")), Date.MinValue, Convert.ToDateTime(readerBookers("booking_date"))),
+    .DepartureTime = If(IsDBNull(readerBookers("departure_time")), "", readerBookers("departure_time").ToString()),
+    .ArrivalTime = If(IsDBNull(readerBookers("arrival_time")), "", readerBookers("arrival_time").ToString()),
+    .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString()),
+    .BookedUnder = If(IsDBNull(readerBookers("booked_under")), "", readerBookers("booked_under").ToString())
+}
+
+                        bookingDictionary.Add(key, booking)
+                        bookerKeys.Add(key)
+                    End If
+                End While
+            End Using
+
+            con.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error loading bookers in module: " & ex.Message, "Module Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+        Return bookerKeys
+    End Function
+
+
+    Public Function GetSeatClassBySeatKey(seatKey As String, planeType As AircraftType) As String
+        Try
+            Dim seatData = GenerateSeats(planeType)
+            Dim seatMap As Dictionary(Of String, String) = seatData.seatmap
+
+            If seatMap.ContainsKey(seatKey) Then
+                Return seatMap(seatKey)
+            Else
+                Return "Unknown"
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error getting seat class: " & ex.Message)
+            Return "Error"
+        End Try
+    End Function
+
+
+    Public CurrentTransaction As TransactionInfo
 End Module
 
+Public Class Customers
+    Public Property CustomerID As String
+    Public Property FullName As String
+    Public Property Age As Integer
+    Public Property DateOfBirth As Date
+    Public Property Gender As String
+    Public Property SeatNumber As String
+    Public Property BaggageAllowance As String
+    Public Property Address As String
+    Public Property PWDStatus As Boolean
+    Public Property Departure As String
+    Public Property Destination As String
+    Public Property TripType As String
+    Public Property BookingDate As Date
+    Public Property DepartureTime As String
+    Public Property ArrivalTime As String
+    Public Property FlightID As String
 
+    Public Property BookedUnder As String
+End Class
 
 Public Class PassengerInfo
     Public Property FullName As String
@@ -1225,3 +1344,15 @@ Public Enum AircraftType
     AirbusA350_900
 End Enum
 
+Public Class TransactionInfo
+    Public Property FlightID As String
+    Public Property BookerName As String
+    Public Property BookerID As String
+    Public Property SeatClass As String
+
+    Public Property SeatNumber As String
+    Public Property BasePrice As Double
+    Public Property Tax As Double
+    Public Property Discount As Double
+    Public Property TotalAmount As Double
+End Class
