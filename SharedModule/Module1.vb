@@ -1092,7 +1092,7 @@ Public Module Module1
 
             ' Get all processed bookers from transaction_table including customer_id
             Dim processedKeys As New HashSet(Of String)
-            Dim cmdProcessed As New MySqlCommand("SELECT fullname, customer_id, flight_id FROM transaction_table", con)
+            Dim cmdProcessed As New MySqlCommand("SELECT fullname, flight_id, customer_id FROM transaction_table", con)
             Using readerProcessed = cmdProcessed.ExecuteReader()
                 While readerProcessed.Read()
                     Dim fullname As String = readerProcessed("fullname").ToString()
