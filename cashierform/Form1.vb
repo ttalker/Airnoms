@@ -8,7 +8,7 @@ Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
     Public Shared Property support_form As New Form3()
 
-
+    Dim allseats As New List(Of String)
 
 
     Private Sub btnTicket_Click(sender As Object, e As EventArgs) Handles btnTicket.Click
@@ -444,6 +444,8 @@ Public Class Form1
             MessageBox.Show("No flights are scheduled for the selected departure date.")
         ElseIf Not String.IsNullOrWhiteSpace(cbxDestination.Text) Then
             LoadAvailableDepartureTimesForDestination(cbxDestination.Text, dtpDepartDate.Value.Date, cbxDepartureTime)
+            LoadSeats(cbxSeatNumber)
+
         End If
     End Sub
 
@@ -464,12 +466,72 @@ Public Class Form1
 
             ' Step 3: Load Available Seats
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumber)
+            For Each item In cbxSeatNumber.Items
+                allseats.Add(item)
+            Next
+
         Else
             MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
     End Sub
 
+    Private Sub LoadSeats(seatComboBox As ComboBox)
+
+        ' Load all available seats into the ComboBox
+        For Each item As String In allseats
+            seatComboBox.Items.Add(item)
+        Next
+    End Sub
+
+
     Private Sub cbxSeatNumber_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxSeatNumber.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxSeatNumber.Text) Then
+            allseats.Remove(cbxSeatNumber.Text) ' Remove selected seat from the list
+        End If
+        LoadSeats(cbxpassseat1)
+
+    End Sub
+
+    Private Sub cbxpassseat1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat1.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat1.Text) Then
+            allseats.Remove(cbxpassseat1.Text) ' Remove the selected seat from the list
+        End If
+
+        LoadSeats(cbxpassseat2)
+    End Sub
+
+    Private Sub cbxpassseat2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat2.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat2.Text) Then
+            allseats.Remove(cbxpassseat2.Text) ' Remove the selected seat from the list
+        End If
+        LoadSeats(cbxpassseat3)
+    End Sub
+
+    Private Sub cbxpassseat3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat3.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat3.Text) Then
+            allseats.Remove(cbxpassseat3.Text) ' Remove the selected seat from the list
+        End If
+        LoadSeats(cbxpassseat4)
+    End Sub
+
+    Private Sub cbxpassseat4_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat4.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat4.Text) Then
+            allseats.Remove(cbxpassseat4.Text) ' Remove the selected seat from the list
+        End If
+        LoadSeats(cbxpassseat5)
+    End Sub
+
+    Private Sub cbxpassseat5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat5.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat5.Text) Then
+            allseats.Remove(cbxpassseat5.Text) ' Remove the selected seat from the list
+        End If
+        LoadSeats(cbxpassseat6)
+    End Sub
+
+    Private Sub cbxpassseat6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxpassseat6.SelectedIndexChanged
+        If Not String.IsNullOrEmpty(cbxpassseat6.Text) Then
+            allseats.Remove(cbxpassseat6.Text) ' Remove the selected seat from the list
+        End If
 
     End Sub
 End Class

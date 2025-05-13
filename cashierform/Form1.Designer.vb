@@ -365,7 +365,6 @@ Partial Class Form1
         ' 
         cbxpassseat1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxpassseat1.FormattingEnabled = True
-        cbxpassseat1.Items.AddRange(New Object() {"AC1"})
         cbxpassseat1.Location = New Point(1257, 301)
         cbxpassseat1.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat1.Name = "cbxpassseat1"
@@ -452,7 +451,6 @@ Partial Class Form1
         ' 
         cbxpassseat2.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat2.FormattingEnabled = True
-        cbxpassseat2.Items.AddRange(New Object() {"AC1"})
         cbxpassseat2.Location = New Point(1257, 373)
         cbxpassseat2.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat2.Name = "cbxpassseat2"
@@ -521,7 +519,6 @@ Partial Class Form1
         ' 
         cbxpassseat3.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat3.FormattingEnabled = True
-        cbxpassseat3.Items.AddRange(New Object() {"AC1"})
         cbxpassseat3.Location = New Point(1257, 450)
         cbxpassseat3.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat3.Name = "cbxpassseat3"
@@ -590,7 +587,6 @@ Partial Class Form1
         ' 
         cbxpassseat4.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat4.FormattingEnabled = True
-        cbxpassseat4.Items.AddRange(New Object() {"AC1"})
         cbxpassseat4.Location = New Point(1257, 526)
         cbxpassseat4.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat4.Name = "cbxpassseat4"
@@ -659,7 +655,6 @@ Partial Class Form1
         ' 
         cbxpassseat5.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat5.FormattingEnabled = True
-        cbxpassseat5.Items.AddRange(New Object() {"AC1"})
         cbxpassseat5.Location = New Point(1257, 603)
         cbxpassseat5.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat5.Name = "cbxpassseat5"
@@ -728,7 +723,6 @@ Partial Class Form1
         ' 
         cbxpassseat6.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat6.FormattingEnabled = True
-        cbxpassseat6.Items.AddRange(New Object() {"AC1"})
         cbxpassseat6.Location = New Point(1257, 677)
         cbxpassseat6.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat6.Name = "cbxpassseat6"
