@@ -466,5 +466,9 @@ Public Class Form1
             MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
     End Sub
+
+    Private Sub cbxSeatNumber_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxSeatNumber.SelectedIndexChanged
+
+    End Sub
 End Class
 
