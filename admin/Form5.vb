@@ -1,16 +1,31 @@
-﻿Imports System.Security.Cryptography.X509Certificates
+﻿Imports System.Net.PeerToPeer
+Imports System.Security.Cryptography.X509Certificates
 Imports MySql.Data.MySqlClient
 Imports SharedModule
 
 Public Class Form5
 
     Private flightID As String
+    Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgvPassengers.BackgroundColor = Me.BackColor
+        MakeTransparent(btnSearch)
+        MakeTransparent(btnBack)
+
+        btnBack.Parent = pbxViewFlight
+        btnSearch.Parent = pbxViewFlight
+        hoverButton(btnSearch)
+        hoverButton(btnBack)
+
+        btnSearch.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnSearch.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+
+
+    End Sub
 
     Public Sub LoadPassengers(fID As String)
         flightID = fID
         Try
             openCon()
-
             Dim query As String = "SELECT flight_id, fullname, seat_class AS class, seat_number 
                        FROM transaction_table 
                        WHERE flight_id = @flightID"
@@ -40,6 +55,24 @@ Public Class Form5
                     .RowHeadersVisible = False
                     .ReadOnly = True
                 End With
+                ' Header styling
+                With dgvPassengers.ColumnHeadersDefaultCellStyle
+                    .BackColor = Color.FromArgb(17, 47, 78) ' Dark blue header
+                    .ForeColor = Color.White                ' White header text
+                    .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+                End With
+
+                dgvPassengers.EnableHeadersVisualStyles = False
+
+                ' Row styling
+                With dgvPassengers.DefaultCellStyle
+                    .BackColor = Color.White                ' White row background
+                    .ForeColor = Color.Black                ' Black text
+                    .Font = New Font("Segoe UI", 10, FontStyle.Regular)
+                    .SelectionBackColor = Color.LightBlue
+                    .SelectionForeColor = Color.Black
+                End With
+
             End Using
         Catch ex As Exception
             MessageBox.Show("Error retrieving passengers: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -48,9 +81,6 @@ Public Class Form5
         End Try
     End Sub
 
-    Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvPassengers.BackgroundColor = Me.BackColor
-    End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchText As String = tbxSearchInput.Text.Trim().ToLower()
@@ -80,4 +110,7 @@ Public Class Form5
         End If
     End Sub
 
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        Me.Close()
+    End Sub
 End Class

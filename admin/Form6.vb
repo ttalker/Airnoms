@@ -2,7 +2,35 @@
 Imports SharedModule
 
 Public Class Form6
+    Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        cbxDepartureAddFlight.Items.Clear()
+        cbxDepartureAddFlight.Items.Add("Manila")
+        cbxDepartureAddFlight.SelectedIndex = 0
+        cbxDepartureAddFlight.Enabled = False ' Optional: prevent changing it
 
+        MakeTransparent(btnAddFlight)
+        MakeTransparent(btnAddPilot)
+        MakeTransparent(btnReturn)
+        MakeTransparent(btnClear)
+
+        btnAddFlight.Parent = pbxAddFlight
+        btnAddPilot.Parent = pbxAddFlight
+        btnReturn.Parent = pbxAddFlight
+        btnClear.Parent = pbxAddFlight
+
+        hoverButton(btnAddFlight)
+        hoverButton(btnAddPilot)
+        hoverButton(btnReturn)
+        hoverButton(btnClear)
+
+        btnAddPilot.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnAddPilot.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+
+        btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnClear.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+
+        LoadForm6Data()
+    End Sub
     Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
         Try
             ' Basic validation
@@ -95,6 +123,14 @@ Public Class Form6
                 cmd.ExecuteNonQuery()
             End Using
             MessageBox.Show("Flight added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            cbxDestinationAddFlight.SelectedIndex = -1
+            cbxPilotAddFlight.SelectedIndex = -1
+            cbxPilotAddFlight.Text = String.Empty
+            cbxPlaneTypeAddFlight.SelectedIndex = -1
+            tbxDepartTimeAddFlight.Text = String.Empty
+
+            dtpDepartureDateAddFlight.Value = DateTime.Now.Date
+            LoadAvailablePilots()
 
         Catch ex As Exception
             MessageBox.Show("Error adding flight: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -103,13 +139,7 @@ Public Class Form6
         End Try
     End Sub
 
-    Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        cbxDepartureAddFlight.Items.Clear()
-        cbxDepartureAddFlight.Items.Add("Manila")
-        cbxDepartureAddFlight.SelectedIndex = 0
-        cbxDepartureAddFlight.Enabled = False ' Optional: prevent changing it
-        LoadForm6Data()
-    End Sub
+
 
     Private Sub LoadForm6Data()
         cbxDepartureAddFlight.Items.Clear()
@@ -184,6 +214,22 @@ Public Class Form6
         cbxPilotAddFlight.Items.Add(newPilot)
         cbxPilotAddFlight.SelectedItem = newPilot
         MessageBox.Show("Pilot added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
+        Me.Close()
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        cbxDestinationAddFlight.SelectedIndex = -1
+        cbxPilotAddFlight.SelectedIndex = -1
+        cbxPilotAddFlight.Text = String.Empty
+        cbxPlaneTypeAddFlight.SelectedIndex = -1
+        tbxDepartTimeAddFlight.Text = String.Empty
+
+        dtpDepartureDateAddFlight.Value = DateTime.Now.Date
+        LoadAvailablePilots()
+        MessageBox.Show("Fields cleared.", "Cleared", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
 End Class

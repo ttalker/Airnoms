@@ -2,7 +2,7 @@
 Imports cashierform
 Imports SharedModule
 Public Class Form3
-
+    Public Property supportForm As New cashierform.Form3
     Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnHomeUser)
         MakeTransparent(btnBookingUser)
@@ -30,12 +30,12 @@ Public Class Form3
     End Sub
 
     Private Sub btnSupportUser_Click(sender As Object, e As EventArgs) Handles btnSupportUser.Click
-        Dim supportForm As New cashierform.Form3
         supportForm.Show()
     End Sub
 
     Private Sub btnExitUser_Click(sender As Object, e As EventArgs) Handles btnExitUser.Click
         ExitToUserForm(Me)
+        supportForm.Close()
     End Sub
 
 

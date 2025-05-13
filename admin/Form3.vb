@@ -45,11 +45,6 @@ Public Class Form3
         Form1.Hide()
         Form2.Show()
     End Sub
-    Private Sub btnBookings_Click(sender As Object, e As EventArgs) Handles btnBookings.Click
-        Me.Hide()
-        Form1.Hide()
-        Form2.Show()
-    End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)

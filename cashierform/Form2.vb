@@ -35,9 +35,7 @@ Public Class Form2
         Form1.support_form.Show()
     End Sub
 
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        ExitToUserForm(Me)
-    End Sub
+
 
 
 
@@ -51,7 +49,7 @@ Public Class Form2
         MakeTransparent(btnNextTicket)
         MakeTransparent(btnProcessTicket)
         MakeTransparent(btnSearch)
-
+        MakeTransparent(btnCalculate)
         btnBooking.Parent = pbxCashierTicket
         btnTicket.Parent = pbxCashierTicket
         btnSupport.Parent = pbxCashierTicket
@@ -61,6 +59,7 @@ Public Class Form2
         btnNextTicket.Parent = pbxCashierTicket
         btnSearch.Parent = pbxCashierTicket
         btnProcessTicket.Parent = pbxCashierTicket ' transparency of the buttons
+        btnCalculate.Parent = pbxCashierTicket
 
         hoverButton(btnBooking)
         hoverButton(btnTicket)
@@ -69,7 +68,9 @@ Public Class Form2
         hoverButton(btnCalculate)
         hoverButton(btnResetTicket)
         hoverButton(btnSearch)
-        hoverButton(btnProcessTicket) ' hover effect of the buttons
+        hoverButton(btnProcessTicket)
+        hoverButton(btnNextTicket)
+        ' hover effect of the buttons
 
         btnNextTicket.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnNextTicket.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
@@ -395,5 +396,8 @@ Public Class Form2
                 MessageBox.Show("No more items to select.")
             End If
         End If
+    End Sub
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        ExitToUserForm(Me)
     End Sub
 End Class

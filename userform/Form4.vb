@@ -4,6 +4,7 @@ Imports SharedModule
 Public Class Form4
     Dim bookinginfo As New BookingInfo()
     Public Property tripIndicator As String
+    Public Property supportForm As New cashierform.Form3
     Private isUpdatingSeats As Boolean = False
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -65,7 +66,6 @@ Public Class Form4
     End Sub
 
     Private Sub btnSupportUser_Click(sender As Object, e As EventArgs) Handles btnSupportUser.Click
-        Dim supportForm As New cashierform.Form3
         supportForm.Show()
     End Sub
 
@@ -166,6 +166,48 @@ Public Class Form4
 
         ' Save booking to database
         SaveBookingToDatabase(bookinginfo)
+        tbxFullnameUser.Clear()
+        tbxAgeUser.Clear()
+        tbxAddressUser.Clear()
+        cbxGenderUser.SelectedIndex = -1
+        cbxSeatNumberUser.SelectedIndex = -1
+        cbxBgAllowanceUser.SelectedIndex = -1
+        chbPWDUser.Checked = False
+
+        cbxDepartureUser.SelectedIndex = -1
+        cbxDestinationUser.SelectedIndex = -1
+        cbxDepartTimeUser.SelectedIndex = -1
+        cbxArrivalTimeUser.SelectedIndex = -1
+
+        dtpDateBirthUser.Value = Date.Now
+        dtpDepartDateUser.Value = DateTime.Now
+        dtpArrivalDateUser.Value = DateTime.Now
+        dtpBookingDateUser.Value = DateTime.Now
+
+        rbnOneWayTrip.Checked = True
+
+        For i As Integer = 1 To 6
+            Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
+            If nameCtrl IsNot Nothing Then nameCtrl.Clear()
+
+            Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
+            If ageCtrl IsNot Nothing Then ageCtrl.Clear()
+
+            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+            If birthCtrl IsNot Nothing Then birthCtrl.Value = Date.Now
+
+            Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If genderCtrl IsNot Nothing Then genderCtrl.SelectedIndex = -1
+
+            Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If seatCtrl IsNot Nothing Then seatCtrl.SelectedIndex = -1
+
+            Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
+            If baggageCtrl IsNot Nothing Then baggageCtrl.SelectedIndex = -1
+
+            Dim pwdCtrl = TryCast(Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault(), CheckBox)
+            If pwdCtrl IsNot Nothing Then pwdCtrl.Checked = False
+        Next
     End Sub
 
     Private Function ValidateForm() As Boolean
@@ -511,6 +553,8 @@ End Sub
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+
         ExitToUserForm(Me)
+        supportForm.Close()
     End Sub
 End Class

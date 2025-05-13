@@ -83,99 +83,118 @@ Partial Class Form3
         ' lblBookingDateAdmin
         ' 
         lblBookingDateAdmin.AutoSize = True
-        lblBookingDateAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblBookingDateAdmin.Location = New Point(1168, 267)
+        lblBookingDateAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblBookingDateAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblBookingDateAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblBookingDateAdmin.Location = New Point(1168, 273)
         lblBookingDateAdmin.Name = "lblBookingDateAdmin"
-        lblBookingDateAdmin.Size = New Size(57, 20)
+        lblBookingDateAdmin.Size = New Size(14, 21)
         lblBookingDateAdmin.TabIndex = 13
-        lblBookingDateAdmin.Text = "Label2"
+        lblBookingDateAdmin.Text = " "
         ' 
         ' lblSeatNumAdmin
         ' 
         lblSeatNumAdmin.AutoSize = True
-        lblSeatNumAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblSeatNumAdmin.Location = New Point(1168, 320)
+        lblSeatNumAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblSeatNumAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblSeatNumAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblSeatNumAdmin.Location = New Point(1168, 326)
         lblSeatNumAdmin.Name = "lblSeatNumAdmin"
-        lblSeatNumAdmin.Size = New Size(57, 20)
+        lblSeatNumAdmin.Size = New Size(14, 21)
         lblSeatNumAdmin.TabIndex = 14
-        lblSeatNumAdmin.Text = "Label2"
+        lblSeatNumAdmin.Text = " "
         ' 
         ' lblBaggageAllowanceAdmin
         ' 
         lblBaggageAllowanceAdmin.AutoSize = True
-        lblBaggageAllowanceAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblBaggageAllowanceAdmin.Location = New Point(1168, 374)
+        lblBaggageAllowanceAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblBaggageAllowanceAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblBaggageAllowanceAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblBaggageAllowanceAdmin.Location = New Point(1168, 380)
         lblBaggageAllowanceAdmin.Name = "lblBaggageAllowanceAdmin"
-        lblBaggageAllowanceAdmin.Size = New Size(57, 20)
+        lblBaggageAllowanceAdmin.Size = New Size(14, 21)
         lblBaggageAllowanceAdmin.TabIndex = 15
-        lblBaggageAllowanceAdmin.Text = "Label2"
+        lblBaggageAllowanceAdmin.Text = " "
         ' 
         ' lblFullNameAdmin
         ' 
         lblFullNameAdmin.AutoSize = True
-        lblFullNameAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblFullNameAdmin.Location = New Point(1168, 430)
+        lblFullNameAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblFullNameAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblFullNameAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblFullNameAdmin.Location = New Point(1168, 436)
         lblFullNameAdmin.Name = "lblFullNameAdmin"
-        lblFullNameAdmin.Size = New Size(57, 20)
+        lblFullNameAdmin.Size = New Size(14, 21)
         lblFullNameAdmin.TabIndex = 16
-        lblFullNameAdmin.Text = "Label2"
+        lblFullNameAdmin.Text = " "
         ' 
         ' lblAgeAdmin
         ' 
         lblAgeAdmin.AutoSize = True
-        lblAgeAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblAgeAdmin.Location = New Point(1168, 489)
+        lblAgeAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblAgeAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblAgeAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblAgeAdmin.Location = New Point(1168, 495)
         lblAgeAdmin.Name = "lblAgeAdmin"
-        lblAgeAdmin.Size = New Size(57, 20)
+        lblAgeAdmin.Size = New Size(14, 21)
         lblAgeAdmin.TabIndex = 17
-        lblAgeAdmin.Text = "Label2"
+        lblAgeAdmin.Text = " "
         ' 
         ' lblDateOfBirthAdmin
         ' 
         lblDateOfBirthAdmin.AutoSize = True
-        lblDateOfBirthAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblDateOfBirthAdmin.Location = New Point(1168, 543)
+        lblDateOfBirthAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblDateOfBirthAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblDateOfBirthAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblDateOfBirthAdmin.Location = New Point(1168, 549)
         lblDateOfBirthAdmin.Name = "lblDateOfBirthAdmin"
-        lblDateOfBirthAdmin.Size = New Size(57, 20)
+        lblDateOfBirthAdmin.Size = New Size(14, 21)
         lblDateOfBirthAdmin.TabIndex = 18
-        lblDateOfBirthAdmin.Text = "Label2"
+        lblDateOfBirthAdmin.Text = " "
         ' 
         ' lblGenderAdmin
         ' 
         lblGenderAdmin.AutoSize = True
-        lblGenderAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblGenderAdmin.Location = New Point(1168, 598)
+        lblGenderAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblGenderAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblGenderAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblGenderAdmin.Location = New Point(1168, 604)
         lblGenderAdmin.Name = "lblGenderAdmin"
-        lblGenderAdmin.Size = New Size(57, 20)
+        lblGenderAdmin.Size = New Size(14, 21)
         lblGenderAdmin.TabIndex = 19
-        lblGenderAdmin.Text = "Label2"
+        lblGenderAdmin.Text = " "
         ' 
         ' lblAddressAdmin
         ' 
         lblAddressAdmin.AutoSize = True
-        lblAddressAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblAddressAdmin.Location = New Point(1168, 657)
+        lblAddressAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblAddressAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblAddressAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblAddressAdmin.Location = New Point(1168, 663)
         lblAddressAdmin.Name = "lblAddressAdmin"
-        lblAddressAdmin.Size = New Size(57, 20)
+        lblAddressAdmin.Size = New Size(14, 21)
         lblAddressAdmin.TabIndex = 20
-        lblAddressAdmin.Text = "Label2"
+        lblAddressAdmin.Text = " "
         ' 
         ' lblPWDAdmin
         ' 
         lblPWDAdmin.AutoSize = True
-        lblPWDAdmin.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblPWDAdmin.Location = New Point(1168, 716)
+        lblPWDAdmin.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblPWDAdmin.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold)
+        lblPWDAdmin.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblPWDAdmin.Location = New Point(1168, 722)
         lblPWDAdmin.Name = "lblPWDAdmin"
-        lblPWDAdmin.Size = New Size(57, 20)
+        lblPWDAdmin.Size = New Size(14, 21)
         lblPWDAdmin.TabIndex = 21
-        lblPWDAdmin.Text = "Label2"
+        lblPWDAdmin.Text = " "
         ' 
         ' tbxSearchInput
         ' 
-        tbxSearchInput.Font = New Font("Microsoft Sans Serif", 21.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbxSearchInput.Location = New Point(94, 239)
+        tbxSearchInput.Font = New Font("Segoe UI Semibold", 15F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        tbxSearchInput.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        tbxSearchInput.Location = New Point(109, 242)
         tbxSearchInput.Name = "tbxSearchInput"
-        tbxSearchInput.Size = New Size(289, 40)
+        tbxSearchInput.Size = New Size(275, 34)
         tbxSearchInput.TabIndex = 22
         ' 
         ' dgvBookings
