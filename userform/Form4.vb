@@ -4,7 +4,7 @@ Imports SharedModule
 Public Class Form4
     Dim bookinginfo As New BookingInfo()
     Public Property tripIndicator As String
-
+    Private isUpdatingSeats As Boolean = False
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnHomeUser)
@@ -363,7 +363,6 @@ Public Class Form4
 
         cbxDepartureUser.SelectedIndex = -1
         cbxDestinationUser.SelectedIndex = -1
-        MessageBox.Show("Item count: " & cbxDepartureUser.Items.Count.ToString())
         cbxDepartTimeUser.SelectedIndex = -1
         cbxArrivalTimeUser.SelectedIndex = -1
 
@@ -420,7 +419,7 @@ Public Class Form4
             ' Step 2: Get Aircraft Type
             Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, timeText, dateValue)
 
-            ' Step 3: Load Available Seats
+            ' Step 3: Load Available Seats into each ComboBox
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberUser)
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger1)
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger2)
@@ -428,9 +427,55 @@ Public Class Form4
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger4)
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger5)
             LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger6)
+
+            ' Update seat availability to remove duplicates if any preselection exists
+            UpdateSeatAvailability()
         Else
             MessageBox.Show("No flight found for the given destination, time, and date.")
         End If
+    End Sub
+
+    Private Sub UpdateSeatAvailability()
+        If isUpdatingSeats Then Exit Sub
+        isUpdatingSeats = True
+
+        Try
+            Dim allComboBoxes As ComboBox() = {
+            cbxSeatNumberUser, cbxSeatNumberPassenger1, cbxSeatNumberPassenger2,
+            cbxSeatNumberPassenger3, cbxSeatNumberPassenger4,
+            cbxSeatNumberPassenger5, cbxSeatNumberPassenger6
+        }
+
+            Dim selectedSeats = allComboBoxes.
+            Where(Function(cb) Not String.IsNullOrWhiteSpace(cb.Text)).
+            Select(Function(cb) cb.Text).ToList()
+
+            For Each cb In allComboBoxes
+                Dim currentSelection = cb.Text
+                If cb.Items.Count > 0 Then
+                    Dim items As New List(Of String)
+                    For Each item In cb.Items
+                        items.Add(item.ToString())
+                    Next
+
+                    Dim filteredSeats = items.
+                    Where(Function(seat) Not selectedSeats.Contains(seat) OrElse seat = currentSelection).ToList()
+
+                    cb.BeginUpdate()
+                    cb.Items.Clear()
+                    cb.Items.AddRange(filteredSeats.ToArray())
+                    cb.EndUpdate()
+
+                    If filteredSeats.Contains(currentSelection) Then
+                        cb.Text = currentSelection
+                    Else
+                        cb.Text = ""
+                    End If
+                End If
+            Next
+        Finally
+            isUpdatingSeats = False
+        End Try
     End Sub
 
     Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
@@ -444,7 +489,7 @@ Public Class Form4
     End Sub
 
     ' 2. When the date changes, check if flights exist, and reload times if a destination is already chosen
-    Private Sub dtpDepartDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDateUser.ValueChanged
+    Private Sub dtpDepartDateUser_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDateUser.ValueChanged
         cbxDepartTimeUser.Text = ""
 
         If FlightsExistForDate(dtpDepartDateUser.Value.Date) = False Then
@@ -452,6 +497,17 @@ Public Class Form4
         ElseIf Not String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
             LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
         End If
+    End Sub
+    Private Sub SeatNumber_Changed(sender As Object, e As EventArgs) Handles _
+    cbxSeatNumberUser.SelectedIndexChanged,
+    cbxSeatNumberPassenger1.SelectedIndexChanged,
+    cbxSeatNumberPassenger2.SelectedIndexChanged,
+    cbxSeatNumberPassenger3.SelectedIndexChanged,
+    cbxSeatNumberPassenger4.SelectedIndexChanged,
+    cbxSeatNumberPassenger5.SelectedIndexChanged,
+    cbxSeatNumberPassenger6.SelectedIndexChanged
+
+        UpdateSeatAvailability()
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
