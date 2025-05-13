@@ -1073,9 +1073,12 @@ Public Module Module1
         Dim bookerKeys As New List(Of String)
 
         Try
-            bookingDictionary.Clear()
+            If bookingDictionary Is Nothing Then
+                bookingDictionary = New Dictionary(Of String, Customers)()
+            Else
+                bookingDictionary.Clear()
+            End If
 
-            ' Open connection
             If con Is Nothing Then
                 con = New MySqlConnection()
             End If
@@ -1084,12 +1087,12 @@ Public Module Module1
                 con.Close()
             End If
 
-            con.ConnectionString = "server=100.89.19.71; username=root; password=; database=comprog_db"
+            con.ConnectionString = "server=100.89.19.71; user id=root; password=; database=comprog_db"
             con.Open()
 
-            ' Get all processed bookers from transaction_table
+            ' Get all processed bookers from transaction_table including customer_id
             Dim processedKeys As New HashSet(Of String)
-            Dim cmdProcessed As New MySqlCommand("SELECT fullname, flight_id FROM transaction_table", con)
+            Dim cmdProcessed As New MySqlCommand("SELECT fullname, customer_id, flight_id FROM transaction_table", con)
             Using readerProcessed = cmdProcessed.ExecuteReader()
                 While readerProcessed.Read()
                     Dim fullname As String = readerProcessed("fullname").ToString()
@@ -1105,29 +1108,28 @@ Public Module Module1
                 While readerBookers.Read()
                     Dim fullname As String = readerBookers("fullname").ToString()
                     Dim customerID As String = readerBookers("customer_id").ToString()
-                    Dim flightID As String = readerBookers("flight_id").ToString()
                     Dim key As String = fullname & "#" & customerID
 
                     If Not processedKeys.Contains(key) Then
                         Dim booking As New Customers With {
-    .CustomerID = If(IsDBNull(readerBookers("customer_id")), "", readerBookers("customer_id").ToString()),
-    .FullName = If(IsDBNull(readerBookers("fullname")), "", readerBookers("fullname").ToString()),
-    .Age = If(IsDBNull(readerBookers("age")), 0, Convert.ToInt32(readerBookers("age"))),
-    .DateOfBirth = If(IsDBNull(readerBookers("date_of_birth")), Date.MinValue, Convert.ToDateTime(readerBookers("date_of_birth"))),
-    .Gender = If(IsDBNull(readerBookers("gender")), "", readerBookers("gender").ToString()),
-    .SeatNumber = If(IsDBNull(readerBookers("seat_number")), "", readerBookers("seat_number").ToString()),
-    .BaggageAllowance = If(IsDBNull(readerBookers("baggage_allowance")), "", readerBookers("baggage_allowance").ToString()),
-    .Address = If(IsDBNull(readerBookers("address")), "", readerBookers("address").ToString()),
-    .PWDStatus = If(IsDBNull(readerBookers("pwd_status")), False, readerBookers("pwd_status").ToString().Trim().ToLower() = "yes"),
-    .Departure = If(IsDBNull(readerBookers("departure")), "", readerBookers("departure").ToString()),
-    .Destination = If(IsDBNull(readerBookers("destination")), "", readerBookers("destination").ToString()),
-    .TripType = If(IsDBNull(readerBookers("trip_type")), "", readerBookers("trip_type").ToString()),
-    .BookingDate = If(IsDBNull(readerBookers("booking_date")), Date.MinValue, Convert.ToDateTime(readerBookers("booking_date"))),
-    .DepartureTime = If(IsDBNull(readerBookers("departure_time")), "", readerBookers("departure_time").ToString()),
-    .ArrivalTime = If(IsDBNull(readerBookers("arrival_time")), "", readerBookers("arrival_time").ToString()),
-    .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString()),
-    .BookedUnder = If(IsDBNull(readerBookers("booked_under")), "", readerBookers("booked_under").ToString())
-}
+                        .CustomerID = If(IsDBNull(readerBookers("customer_id")), "", readerBookers("customer_id").ToString()),
+                        .FullName = If(IsDBNull(readerBookers("fullname")), "", readerBookers("fullname").ToString()),
+                        .Age = If(IsDBNull(readerBookers("age")), 0, Convert.ToInt32(readerBookers("age"))),
+                        .DateOfBirth = If(IsDBNull(readerBookers("date_of_birth")), Date.MinValue, Convert.ToDateTime(readerBookers("date_of_birth"))),
+                        .Gender = If(IsDBNull(readerBookers("gender")), "", readerBookers("gender").ToString()),
+                        .SeatNumber = If(IsDBNull(readerBookers("seat_number")), "", readerBookers("seat_number").ToString()),
+                        .BaggageAllowance = If(IsDBNull(readerBookers("baggage_allowance")), "", readerBookers("baggage_allowance").ToString()),
+                        .Address = If(IsDBNull(readerBookers("address")), "", readerBookers("address").ToString()),
+                        .PWDStatus = If(IsDBNull(readerBookers("pwd_status")), False, readerBookers("pwd_status").ToString().Trim().ToLower() = "yes"),
+                        .Departure = If(IsDBNull(readerBookers("departure")), "", readerBookers("departure").ToString()),
+                        .Destination = If(IsDBNull(readerBookers("destination")), "", readerBookers("destination").ToString()),
+                        .TripType = If(IsDBNull(readerBookers("trip_type")), "", readerBookers("trip_type").ToString()),
+                        .BookingDate = If(IsDBNull(readerBookers("booking_date")), Date.MinValue, Convert.ToDateTime(readerBookers("booking_date"))),
+                        .DepartureTime = If(IsDBNull(readerBookers("departure_time")), "", readerBookers("departure_time").ToString()),
+                        .ArrivalTime = If(IsDBNull(readerBookers("arrival_time")), "", readerBookers("arrival_time").ToString()),
+                        .FlightID = If(IsDBNull(readerBookers("flight_id")), "", readerBookers("flight_id").ToString()),
+                        .BookedUnder = If(IsDBNull(readerBookers("booked_under")), "", readerBookers("booked_under").ToString())
+                    }
 
                         bookingDictionary.Add(key, booking)
                         bookerKeys.Add(key)
@@ -1139,11 +1141,12 @@ Public Module Module1
 
         Catch ex As Exception
             MessageBox.Show("Error loading bookers in module: " & ex.Message, "Module Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
         Return bookerKeys
     End Function
+
 
 
     Public Function GetSeatClassBySeatKey(seatKey As String, planeType As AircraftType) As String

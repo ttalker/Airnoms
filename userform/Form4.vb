@@ -278,79 +278,79 @@ Public Class Form4
         Return flightID
     End Function
 
-    Private Sub SaveBookingToDatabase(booking As BookingInfo)
-        Try
-            openCon()
-            Dim departDate As DateTime = dtpDepartDateUser.Value.Date.Add(TimeSpan.Parse(cbxDepartTimeUser.Text))
-            Dim flightID As String = booking.FlightID
+   Private Sub SaveBookingToDatabase(booking As BookingInfo)
+    Try
+        openCon()
 
-            ' Get the flight ID based on destination, departure, and time
-            If String.IsNullOrEmpty(flightID) Then
-                MessageBox.Show("Flight not found for the selected details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
+        ' Insert the main booker
+        Dim insertQuery As String = "
+            INSERT INTO customer_table 
+            (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+            seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id)
+            VALUES 
+            (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, 
+            @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
+
+        Using cmd As New MySqlCommand(insertQuery, con)
+            cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
+            cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
+            cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
+            cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
+            cmd.Parameters.AddWithValue("@DOB", booking.BookerBirthDate)
+            cmd.Parameters.AddWithValue("@Gender", booking.BookerGender)
+            cmd.Parameters.AddWithValue("@Destination", booking.Destination)
+            cmd.Parameters.AddWithValue("@Departure", booking.Departure)
+            cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
+            cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
+            cmd.Parameters.AddWithValue("@PWD", If(booking.BookerIsPWD, "Yes", "No"))
+            cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+            cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+            cmd.Parameters.AddWithValue("@TripType", booking.TripType)
+            cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
+            cmd.ExecuteNonQuery()
+        End Using
+
+        ' Insert co-passengers, excluding any that match the main booker by fullname and birthdate or other unique identifiers
+        For Each p As PassengerInfo In booking.CoPassengers
+            ' Skip if co-passenger is the main booker (compare fullname and birthdate or other unique fields)
+            If p.FullName.Trim().ToLower() = booking.BookerFullName.Trim().ToLower() AndAlso
+               p.DateOfBirth.Date = booking.BookerBirthDate.Date Then
+                Continue For
             End If
 
-            ' Insert the main booker
-            Dim insertQuery As String = "
-        INSERT INTO customer_table (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
-        seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id)
-        VALUES (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, 
-        @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
-
-            Using cmd As New MySqlCommand(insertQuery, con)
-                cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
-                cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
-                cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
-                cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
-                cmd.Parameters.AddWithValue("@DOB", booking.BookerBirthDate)
-                cmd.Parameters.AddWithValue("@Gender", booking.BookerGender)
-                cmd.Parameters.AddWithValue("@Destination", booking.Destination)
-                cmd.Parameters.AddWithValue("@Departure", booking.Departure)
-                cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
-                cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
-                cmd.Parameters.AddWithValue("@PWD", If(booking.BookerIsPWD, "Yes", "No"))
-                cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
-                cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
-                cmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
-                cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
-                cmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
-                cmd.ExecuteNonQuery()
+            Using passengerCmd As New MySqlCommand(insertQuery, con)
+                passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
+                passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
+                passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress) ' Or separate address if available
+                passengerCmd.Parameters.AddWithValue("@Age", p.Age)
+                passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
+                passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
+                passengerCmd.Parameters.AddWithValue("@Destination", booking.Destination)
+                passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
+                passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
+                passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
+                passengerCmd.Parameters.AddWithValue("@PWD", If(p.IsPWD, "Yes", "No"))
+                passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+                passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+                passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
+                passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+                passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+                passengerCmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
+                passengerCmd.ExecuteNonQuery()
             End Using
+        Next
 
-            ' Insert all co-passengers
-            For Each p As PassengerInfo In booking.CoPassengers
-                Using passengerCmd As New MySqlCommand(insertQuery, con)
-                    passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
-                    passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
-                    passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
-                    passengerCmd.Parameters.AddWithValue("@Age", p.Age)
-                    passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
-                    passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
-                    passengerCmd.Parameters.AddWithValue("@Destination", booking.Destination)
-                    passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
-                    passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
-                    passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
-                    passengerCmd.Parameters.AddWithValue("@PWD", If(p.IsPWD, "Yes", "No"))
-                    passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
-                    passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
-                    passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                    passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
-                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
-                    passengerCmd.Parameters.AddWithValue("@FlightID", flightID)
-                    passengerCmd.ExecuteNonQuery()
-                End Using
-            Next
+    Catch ex As Exception
+        MessageBox.Show("Error saving booking: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    Finally
+        If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+            con.Close()
+        End If
+    End Try
+End Sub
 
-            MessageBox.Show("Booking and passengers saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Catch ex As Exception
-            MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
-                con.Close()
-            End If
-        End Try
-    End Sub
 
     Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
         tbxFullnameUser.Clear()
