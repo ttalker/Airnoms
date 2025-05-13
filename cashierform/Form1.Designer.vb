@@ -345,7 +345,7 @@ Partial Class Form1
         ' 
         cbxpassbag1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxpassbag1.FormattingEnabled = True
-        cbxpassbag1.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxpassbag1.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxpassbag1.Location = New Point(1338, 301)
         cbxpassbag1.Margin = New Padding(3, 2, 3, 2)
         cbxpassbag1.Name = "cbxpassbag1"
@@ -365,7 +365,6 @@ Partial Class Form1
         ' 
         cbxpassseat1.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxpassseat1.FormattingEnabled = True
-        cbxpassseat1.Items.AddRange(New Object() {"AC1"})
         cbxpassseat1.Location = New Point(1257, 301)
         cbxpassseat1.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat1.Name = "cbxpassseat1"
@@ -452,7 +451,6 @@ Partial Class Form1
         ' 
         cbxpassseat2.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat2.FormattingEnabled = True
-        cbxpassseat2.Items.AddRange(New Object() {"AC1"})
         cbxpassseat2.Location = New Point(1257, 373)
         cbxpassseat2.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat2.Name = "cbxpassseat2"
@@ -521,7 +519,6 @@ Partial Class Form1
         ' 
         cbxpassseat3.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat3.FormattingEnabled = True
-        cbxpassseat3.Items.AddRange(New Object() {"AC1"})
         cbxpassseat3.Location = New Point(1257, 450)
         cbxpassseat3.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat3.Name = "cbxpassseat3"
@@ -541,7 +538,7 @@ Partial Class Form1
         ' 
         cbxpassbag3.Font = New Font("Segoe UI", 11.25F)
         cbxpassbag3.FormattingEnabled = True
-        cbxpassbag3.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxpassbag3.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxpassbag3.Location = New Point(1338, 450)
         cbxpassbag3.Margin = New Padding(3, 2, 3, 2)
         cbxpassbag3.Name = "cbxpassbag3"
@@ -590,7 +587,6 @@ Partial Class Form1
         ' 
         cbxpassseat4.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat4.FormattingEnabled = True
-        cbxpassseat4.Items.AddRange(New Object() {"AC1"})
         cbxpassseat4.Location = New Point(1257, 526)
         cbxpassseat4.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat4.Name = "cbxpassseat4"
@@ -610,7 +606,7 @@ Partial Class Form1
         ' 
         cbxpassbag4.Font = New Font("Segoe UI", 11.25F)
         cbxpassbag4.FormattingEnabled = True
-        cbxpassbag4.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxpassbag4.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxpassbag4.Location = New Point(1338, 526)
         cbxpassbag4.Margin = New Padding(3, 2, 3, 2)
         cbxpassbag4.Name = "cbxpassbag4"
@@ -659,7 +655,6 @@ Partial Class Form1
         ' 
         cbxpassseat5.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat5.FormattingEnabled = True
-        cbxpassseat5.Items.AddRange(New Object() {"AC1"})
         cbxpassseat5.Location = New Point(1257, 603)
         cbxpassseat5.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat5.Name = "cbxpassseat5"
@@ -679,7 +674,7 @@ Partial Class Form1
         ' 
         cbxpassbag5.Font = New Font("Segoe UI", 11.25F)
         cbxpassbag5.FormattingEnabled = True
-        cbxpassbag5.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxpassbag5.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxpassbag5.Location = New Point(1338, 603)
         cbxpassbag5.Margin = New Padding(3, 2, 3, 2)
         cbxpassbag5.Name = "cbxpassbag5"
@@ -728,7 +723,6 @@ Partial Class Form1
         ' 
         cbxpassseat6.Font = New Font("Segoe UI", 11.25F)
         cbxpassseat6.FormattingEnabled = True
-        cbxpassseat6.Items.AddRange(New Object() {"AC1"})
         cbxpassseat6.Location = New Point(1257, 677)
         cbxpassseat6.Margin = New Padding(3, 2, 3, 2)
         cbxpassseat6.Name = "cbxpassseat6"
@@ -748,7 +742,7 @@ Partial Class Form1
         ' 
         cbxpassbag6.Font = New Font("Segoe UI", 11.25F)
         cbxpassbag6.FormattingEnabled = True
-        cbxpassbag6.Items.AddRange(New Object() {"10kg", "20kg", "40kg"})
+        cbxpassbag6.Items.AddRange(New Object() {"10 kg", "20 kg", "40 kg"})
         cbxpassbag6.Location = New Point(1338, 677)
         cbxpassbag6.Margin = New Padding(3, 2, 3, 2)
         cbxpassbag6.Name = "cbxpassbag6"
