@@ -153,8 +153,6 @@ Public Class Form1
 
     ' Add this to your RefreshFlightData method
     Public Sub RefreshFlightData()
-        MessageBox.Show("RefreshFlightData method called", "Debug", MessageBoxButtons.OK)
-
         ' Update flight statuses first
         UpdateFlightStatuses()
 
