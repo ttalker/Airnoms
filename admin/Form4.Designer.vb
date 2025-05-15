@@ -100,6 +100,7 @@ Partial Class Form4
         Controls.Add(btnDelayFlight)
         Controls.Add(pbxCancelFlight)
         Name = "Form4"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FLIGHT CANCELLATION"
         CType(pbxCancelFlight, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

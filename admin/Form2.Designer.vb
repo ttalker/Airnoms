@@ -97,6 +97,7 @@ Partial Class Form2
         Controls.Add(btnFlights)
         Controls.Add(pbxAdmin)
         Name = "Form2"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "TRANSACTIONS"
         CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvTransactionHistory, ComponentModel.ISupportInitialize).EndInit()

@@ -151,6 +151,7 @@ Partial Class Form6
         Controls.Add(cbxDepartureAddFlight)
         Controls.Add(pbxAddFlight)
         Name = "Form6"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "ADD FLIGHT"
         CType(pbxAddFlight, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

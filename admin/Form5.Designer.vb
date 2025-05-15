@@ -85,6 +85,7 @@ Partial Class Form5
         Controls.Add(btnSearch)
         Controls.Add(pbxViewFlight)
         Name = "Form5"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "VIEW FLIGHT"
         CType(dgvPassengers, ComponentModel.ISupportInitialize).EndInit()
         CType(pbxViewFlight, ComponentModel.ISupportInitialize).EndInit()

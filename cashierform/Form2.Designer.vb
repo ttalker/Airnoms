@@ -33,7 +33,6 @@ Partial Class Form2
         btnSupport = New Button()
         pbxCashierTicket = New PictureBox()
         btnExit = New Button()
-        btnNextTicket = New Button()
         btnResetTicket = New Button()
         ErrorProvider1 = New ErrorProvider(components)
         lblDepartDateTicket = New Label()
@@ -93,7 +92,7 @@ Partial Class Form2
         ' btnCalculate
         ' 
         btnCalculate.BackColor = Color.Silver
-        btnCalculate.Location = New Point(1256, 696)
+        btnCalculate.Location = New Point(1257, 697)
         btnCalculate.Margin = New Padding(3, 2, 3, 2)
         btnCalculate.Name = "btnCalculate"
         btnCalculate.Size = New Size(185, 69)
@@ -112,7 +111,7 @@ Partial Class Form2
         ' 
         ' btnProcessTicket
         ' 
-        btnProcessTicket.Location = New Point(1275, 799)
+        btnProcessTicket.Location = New Point(1276, 799)
         btnProcessTicket.Margin = New Padding(3, 2, 3, 2)
         btnProcessTicket.Name = "btnProcessTicket"
         btnProcessTicket.Size = New Size(182, 68)
@@ -133,7 +132,7 @@ Partial Class Form2
         ' pbxCashierTicket
         ' 
         pbxCashierTicket.BackgroundImage = CType(resources.GetObject("pbxCashierTicket.BackgroundImage"), Image)
-        pbxCashierTicket.Location = New Point(2, -1)
+        pbxCashierTicket.Location = New Point(3, -1)
         pbxCashierTicket.Name = "pbxCashierTicket"
         pbxCashierTicket.Size = New Size(1551, 910)
         pbxCashierTicket.TabIndex = 39
@@ -149,19 +148,9 @@ Partial Class Form2
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
         ' 
-        ' btnNextTicket
-        ' 
-        btnNextTicket.Location = New Point(1077, 800)
-        btnNextTicket.Margin = New Padding(3, 2, 3, 2)
-        btnNextTicket.Name = "btnNextTicket"
-        btnNextTicket.Size = New Size(182, 68)
-        btnNextTicket.TabIndex = 41
-        btnNextTicket.Text = " "
-        btnNextTicket.UseVisualStyleBackColor = True
-        ' 
         ' btnResetTicket
         ' 
-        btnResetTicket.Location = New Point(873, 800)
+        btnResetTicket.Location = New Point(1068, 799)
         btnResetTicket.Margin = New Padding(3, 2, 3, 2)
         btnResetTicket.Name = "btnResetTicket"
         btnResetTicket.Size = New Size(182, 68)
@@ -191,7 +180,7 @@ Partial Class Form2
         lblArrivalDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblArrivalDateTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblArrivalDateTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblArrivalDateTicket.Location = New Point(272, 419)
+        lblArrivalDateTicket.Location = New Point(272, 421)
         lblArrivalDateTicket.Name = "lblArrivalDateTicket"
         lblArrivalDateTicket.Size = New Size(14, 21)
         lblArrivalDateTicket.TabIndex = 44
@@ -227,7 +216,7 @@ Partial Class Form2
         lblGenderTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblGenderTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblGenderTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblGenderTicket.Location = New Point(269, 760)
+        lblGenderTicket.Location = New Point(269, 759)
         lblGenderTicket.Name = "lblGenderTicket"
         lblGenderTicket.Size = New Size(14, 21)
         lblGenderTicket.TabIndex = 50
@@ -239,7 +228,7 @@ Partial Class Form2
         lblDateOfBirthTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblDateOfBirthTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblDateOfBirthTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblDateOfBirthTicket.Location = New Point(269, 708)
+        lblDateOfBirthTicket.Location = New Point(269, 707)
         lblDateOfBirthTicket.Name = "lblDateOfBirthTicket"
         lblDateOfBirthTicket.Size = New Size(14, 21)
         lblDateOfBirthTicket.TabIndex = 49
@@ -263,7 +252,7 @@ Partial Class Form2
         lblBookingDateTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBookingDateTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblBookingDateTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblBookingDateTicket.Location = New Point(269, 605)
+        lblBookingDateTicket.Location = New Point(272, 609)
         lblBookingDateTicket.Name = "lblBookingDateTicket"
         lblBookingDateTicket.Size = New Size(14, 21)
         lblBookingDateTicket.TabIndex = 47
@@ -275,7 +264,7 @@ Partial Class Form2
         lblBaggageAllowanceTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBaggageAllowanceTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblBaggageAllowanceTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblBaggageAllowanceTicket.Location = New Point(605, 759)
+        lblBaggageAllowanceTicket.Location = New Point(606, 759)
         lblBaggageAllowanceTicket.Name = "lblBaggageAllowanceTicket"
         lblBaggageAllowanceTicket.Size = New Size(14, 21)
         lblBaggageAllowanceTicket.TabIndex = 54
@@ -299,7 +288,7 @@ Partial Class Form2
         lblSeatNumTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblSeatNumTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblSeatNumTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblSeatNumTicket.Location = New Point(605, 658)
+        lblSeatNumTicket.Location = New Point(604, 658)
         lblSeatNumTicket.Name = "lblSeatNumTicket"
         lblSeatNumTicket.Size = New Size(14, 21)
         lblSeatNumTicket.TabIndex = 52
@@ -311,7 +300,7 @@ Partial Class Form2
         lblBookedUnderTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblBookedUnderTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblBookedUnderTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblBookedUnderTicket.Location = New Point(605, 608)
+        lblBookedUnderTicket.Location = New Point(604, 608)
         lblBookedUnderTicket.Name = "lblBookedUnderTicket"
         lblBookedUnderTicket.Size = New Size(14, 21)
         lblBookedUnderTicket.TabIndex = 51
@@ -323,7 +312,7 @@ Partial Class Form2
         lblAdressTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblAdressTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblAdressTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblAdressTicket.Location = New Point(272, 815)
+        lblAdressTicket.Location = New Point(271, 814)
         lblAdressTicket.Name = "lblAdressTicket"
         lblAdressTicket.Size = New Size(14, 21)
         lblAdressTicket.TabIndex = 55
@@ -335,7 +324,7 @@ Partial Class Form2
         lblPWDTicket.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
         lblPWDTicket.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblPWDTicket.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
-        lblPWDTicket.Location = New Point(607, 812)
+        lblPWDTicket.Location = New Point(608, 812)
         lblPWDTicket.Name = "lblPWDTicket"
         lblPWDTicket.Size = New Size(14, 21)
         lblPWDTicket.TabIndex = 56
@@ -437,7 +426,6 @@ Partial Class Form2
         Controls.Add(lblArrivalDateTicket)
         Controls.Add(lblDepartDateTicket)
         Controls.Add(btnResetTicket)
-        Controls.Add(btnNextTicket)
         Controls.Add(btnExit)
         Controls.Add(btnCalculate)
         Controls.Add(tbxTicketPayment)
@@ -467,7 +455,6 @@ Partial Class Form2
     Friend WithEvents btnSupport As Button
     Friend WithEvents pbxCashierTicket As PictureBox
     Friend WithEvents btnExit As Button
-    Friend WithEvents btnNextTicket As Button
     Friend WithEvents btnResetTicket As Button
     Friend WithEvents ErrorProvider1 As ErrorProvider
     Friend WithEvents lblGenderTicket As Label
