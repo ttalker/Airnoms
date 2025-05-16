@@ -38,8 +38,11 @@ Public Class Form2
 
 
 
-
+    Private Sub Form2_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        RefreshPassengerComboBox()
+    End Sub
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RefreshPassengerComboBox()
         MakeTransparent(btnBooking)
         MakeTransparent(btnTicket)
         MakeTransparent(btnSupport)
@@ -117,9 +120,24 @@ Public Class Form2
         End If
 
         'add fare based on baggage
+        ' Normalize baggage string to match dictionary keys
+        Dim baggageKey As String = baggage.Trim().ToLower().Replace(" ", "")
+        Select Case baggageKey
+            Case "10kg" : baggageKey = "10 kg"
+            Case "20kg" : baggageKey = "20 kg"
+            Case "40kg" : baggageKey = "40 kg"
+            Case Else
+                MessageBox.Show($"Unknown baggage allowance: '{baggage}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                baggageKey = Nothing
+        End Select
 
-        Dim baggage_price = BaggagePrices(baggage)
-        baseFare += baggage_price
+        If baggageKey IsNot Nothing AndAlso BaggagePrices.ContainsKey(baggageKey) Then
+            Dim baggage_price = BaggagePrices(baggageKey)
+            baseFare += baggage_price
+        ElseIf baggageKey IsNot Nothing Then
+            MessageBox.Show($"Baggage price for '{baggageKey}' not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
 
         ' Compute discount
         Dim discount As Double = 0
@@ -268,6 +286,8 @@ Public Class Form2
         End If
     End Sub
 
+
+    ' passengers for tickets
     Private Sub cbxPassengerTicket_TextChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.TextChanged
         Dim text As String = cbxPassengerTicket.Text
         Dim selectionStart As Integer = cbxPassengerTicket.SelectionStart
@@ -293,6 +313,7 @@ Public Class Form2
     End Sub
 
 
+    ' for processing ticket button
     Private Sub btnProcessTicket_Click(sender As Object, e As EventArgs) Handles btnProcessTicket.Click
 
         Try
@@ -349,7 +370,13 @@ Public Class Form2
         End If
     End Sub
 
-
+    Public Sub RefreshPassengerComboBox()
+        cbxPassengerTicket.Items.Clear()
+        Dim bookers = LoadBookers()
+        For Each booker In bookers
+            cbxPassengerTicket.Items.Add(booker)
+        Next
+    End Sub
     Public Sub ClearTicketLabels()
         lblClass.Text = ""
         lblDepartDateTicket.Text = ""

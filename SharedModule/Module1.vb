@@ -339,6 +339,7 @@ Public Module Module1
         End Try
     End Sub
 
+    'getting the next number availabble for flights
     Public Function GetNextFlightNumber() As Integer
         Try
             openCon()
@@ -354,6 +355,7 @@ Public Module Module1
         End Try
     End Function
 
+    'updating flight status dyanmically after change
     Public Sub UpdateFlightStatuses()
         Try
             openCon()
@@ -405,6 +407,7 @@ Public Module Module1
         End Try
     End Sub
 
+    'deletion of old flights
     Public Sub DeleteOldFlights()
         Try
             openCon()
@@ -420,6 +423,7 @@ Public Module Module1
         End Try
     End Sub
 
+    'loading all destinations dynamically
     Public Sub LoadAllDestinations(comboBox As ComboBox)
         Try
             openCon()
@@ -438,6 +442,7 @@ Public Module Module1
         End Try
     End Sub
 
+    ' loading departures dynamically
     Public Sub LoadDepartureTimesForDestination(destination As String, comboBox As ComboBox)
         Try
             openCon()
@@ -457,6 +462,7 @@ Public Module Module1
         End Try
     End Sub
 
+    'for delaying flights
     Public Sub DelayFlight(flightID As String, delayHours As Double)
         Try
             openCon()

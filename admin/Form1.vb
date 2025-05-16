@@ -224,10 +224,15 @@ Public Class Form1
             Dim popup As New Form4(Me)
             popup.LoadFlightDetails(selectedFlightID)
             popup.ShowDialog()
+
+            ' >>> ADD THIS LINE TO REFRESH THE GRID <<<
+            Me.RefreshFlightData()
+
         Else
             MessageBox.Show("Please select a flight to cancel or delay.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
+
 
 
     Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
