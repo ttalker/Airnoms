@@ -22,23 +22,23 @@ Partial Class Form4
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        PictureBox1 = New PictureBox()
+        pbxCancelFlight = New PictureBox()
         btnDelayFlight = New Button()
         btnCancelFlight = New Button()
         btnReturn = New Button()
         lblFlight_Id = New Label()
         RichTextBox1 = New RichTextBox()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxCancelFlight, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' PictureBox1
+        ' pbxCancelFlight
         ' 
-        PictureBox1.BackgroundImage = My.Resources.Resources.delay_flight_
-        PictureBox1.Location = New Point(0, 0)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(640, 452)
-        PictureBox1.TabIndex = 0
-        PictureBox1.TabStop = False
+        pbxCancelFlight.BackgroundImage = My.Resources.Resources.delay_flight_
+        pbxCancelFlight.Location = New Point(0, 0)
+        pbxCancelFlight.Name = "pbxCancelFlight"
+        pbxCancelFlight.Size = New Size(640, 452)
+        pbxCancelFlight.TabIndex = 0
+        pbxCancelFlight.TabStop = False
         ' 
         ' btnDelayFlight
         ' 
@@ -46,7 +46,7 @@ Partial Class Form4
         btnDelayFlight.Name = "btnDelayFlight"
         btnDelayFlight.Size = New Size(130, 41)
         btnDelayFlight.TabIndex = 1
-        btnDelayFlight.Text = "Button1"
+        btnDelayFlight.Text = " "
         btnDelayFlight.UseVisualStyleBackColor = True
         ' 
         ' btnCancelFlight
@@ -55,7 +55,7 @@ Partial Class Form4
         btnCancelFlight.Name = "btnCancelFlight"
         btnCancelFlight.Size = New Size(130, 41)
         btnCancelFlight.TabIndex = 2
-        btnCancelFlight.Text = "Button2"
+        btnCancelFlight.Text = " "
         btnCancelFlight.UseVisualStyleBackColor = True
         ' 
         ' btnReturn
@@ -64,18 +64,20 @@ Partial Class Form4
         btnReturn.Name = "btnReturn"
         btnReturn.Size = New Size(126, 46)
         btnReturn.TabIndex = 3
-        btnReturn.Text = "Button3"
+        btnReturn.Text = " "
         btnReturn.UseVisualStyleBackColor = True
         ' 
         ' lblFlight_Id
         ' 
         lblFlight_Id.AutoSize = True
-        lblFlight_Id.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lblFlight_Id.Location = New Point(226, 154)
+        lblFlight_Id.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblFlight_Id.Font = New Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblFlight_Id.ForeColor = Color.FromArgb(CByte(11), CByte(39), CByte(66))
+        lblFlight_Id.Location = New Point(224, 155)
         lblFlight_Id.Name = "lblFlight_Id"
-        lblFlight_Id.Size = New Size(56, 21)
+        lblFlight_Id.Size = New Size(14, 21)
         lblFlight_Id.TabIndex = 4
-        lblFlight_Id.Text = "Label1"
+        lblFlight_Id.Text = " "
         ' 
         ' RichTextBox1
         ' 
@@ -96,15 +98,16 @@ Partial Class Form4
         Controls.Add(btnReturn)
         Controls.Add(btnCancelFlight)
         Controls.Add(btnDelayFlight)
-        Controls.Add(PictureBox1)
+        Controls.Add(pbxCancelFlight)
         Name = "Form4"
-        Text = "Form4"
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "FLIGHT CANCELLATION"
+        CType(pbxCancelFlight, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents pbxCancelFlight As PictureBox
     Friend WithEvents btnDelayFlight As Button
     Friend WithEvents btnCancelFlight As Button
     Friend WithEvents btnReturn As Button

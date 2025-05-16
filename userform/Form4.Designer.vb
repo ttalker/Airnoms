@@ -97,7 +97,7 @@ Partial Class Form4
         ' 
         ' btnBookingUser
         ' 
-        btnBookingUser.Location = New Point(279, 26)
+        btnBookingUser.Location = New Point(279, 25)
         btnBookingUser.Margin = New Padding(2)
         btnBookingUser.Name = "btnBookingUser"
         btnBookingUser.Size = New Size(182, 68)
@@ -228,7 +228,6 @@ Partial Class Form4
         ' 
         cbxDepartTimeUser.Font = New Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbxDepartTimeUser.FormattingEnabled = True
-        cbxDepartTimeUser.Items.AddRange(New Object() {"09:00", "13:00"})
         cbxDepartTimeUser.Location = New Point(617, 394)
         cbxDepartTimeUser.Margin = New Padding(2)
         cbxDepartTimeUser.Name = "cbxDepartTimeUser"
@@ -386,7 +385,7 @@ Partial Class Form4
         ' 
         ' btnSupportUser
         ' 
-        btnSupportUser.Location = New Point(482, 27)
+        btnSupportUser.Location = New Point(481, 26)
         btnSupportUser.Margin = New Padding(2)
         btnSupportUser.Name = "btnSupportUser"
         btnSupportUser.Size = New Size(182, 68)
@@ -758,7 +757,7 @@ Partial Class Form4
         ' 
         AutoScaleDimensions = New SizeF(96F, 96F)
         AutoScaleMode = AutoScaleMode.Dpi
-        ClientSize = New Size(1547, 881)
+        ClientSize = New Size(1547, 911)
         Controls.Add(lblCover)
         Controls.Add(chbPWDPassenger6)
         Controls.Add(chbPWDPassenger5)

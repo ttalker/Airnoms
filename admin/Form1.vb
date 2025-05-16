@@ -1,5 +1,5 @@
 ﻿'Imports cashierform
-'Imports userForm.Module1
+Imports userForm
 Imports MySql.Data.MySqlClient
 Imports SharedModule
 
@@ -42,7 +42,9 @@ Public Class Form1
         AddStatusTimerToForm1_Load()
         UpdateFlightStatuses()
         LoadFlightsByDate(Date.Today)
+
     End Sub
+
     Public Sub LoadFlightsByDate(flightDate As Date)
         Dim dt As New DataTable()
         Try
@@ -151,8 +153,6 @@ Public Class Form1
 
     ' Add this to your RefreshFlightData method
     Public Sub RefreshFlightData()
-        MessageBox.Show("RefreshFlightData method called", "Debug", MessageBoxButtons.OK)
-
         ' Update flight statuses first
         UpdateFlightStatuses()
 
@@ -189,6 +189,9 @@ Public Class Form1
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         ExitToUserForm(Me)
     End Sub
+
+
+
     Private Sub btnViewFlightAdmin_Click(sender As Object, e As EventArgs) Handles btnViewFlightAdmin.Click
         If dgvFlights.SelectedRows.Count > 0 Then
             Dim selectedRow As DataGridViewRow = dgvFlights.SelectedRows(0)
@@ -221,14 +224,19 @@ Public Class Form1
             Dim popup As New Form4(Me)
             popup.LoadFlightDetails(selectedFlightID)
             popup.ShowDialog()
+
+            ' >>> ADD THIS LINE TO REFRESH THE GRID <<<
+            Me.RefreshFlightData()
+
         Else
             MessageBox.Show("Please select a flight to cancel or delay.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 
 
+
     Private Sub btnAddFlight_Click(sender As Object, e As EventArgs) Handles btnAddFlight.Click
-        'Form6.Show()
+        Form6.Show()
     End Sub
 
 

@@ -1,5 +1,5 @@
-﻿Imports SharedModule
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
+Imports SharedModule
 Public Class Form4
     Private flightID As String
     Public FlightWasCancelled As Boolean = False
@@ -7,6 +7,25 @@ Public Class Form4
 
     ' Reference to Form1 to call refresh directly
     Private parentForm As Form1
+
+    Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        MakeTransparent(btnDelayFlight)
+        MakeTransparent(btnCancelFlight)
+        MakeTransparent(btnReturn)
+        ' Set the form's background color to transparent
+
+        btnDelayFlight.Parent = pbxCancelFlight
+        btnCancelFlight.Parent = pbxCancelFlight
+        btnReturn.Parent = pbxCancelFlight
+
+        hoverButton(btnDelayFlight)
+        hoverButton(btnCancelFlight)
+        hoverButton(btnReturn)
+        ' Set the form's background color to transparent
+        btnDelayFlight.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
+        btnDelayFlight.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+
+    End Sub
 
     ' Modified constructor to accept parent form
     Public Sub New(form1Reference As Form1)
@@ -98,4 +117,5 @@ Public Class Form4
     Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         Me.Close()
     End Sub
+
 End Class

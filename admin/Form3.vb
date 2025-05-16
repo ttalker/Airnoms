@@ -1,5 +1,4 @@
-﻿'Imports cashierform
-'Imports userForm.Module1
+﻿
 Imports SharedModule
 Imports MySql.Data.MySqlClient
 Imports userForm
@@ -39,13 +38,9 @@ Public Class Form3
         Form1.Show()
         Me.Hide()
         Form2.Hide()
+        Form1.LoadFlightsByDate(Date.Today)
     End Sub
     Private Sub btnTransactions_Click(sender As Object, e As EventArgs) Handles btnTransactions.Click
-        Me.Hide()
-        Form1.Hide()
-        Form2.Show()
-    End Sub
-    Private Sub btnBookings_Click(sender As Object, e As EventArgs) Handles btnBookings.Click
         Me.Hide()
         Form1.Hide()
         Form2.Show()
@@ -158,15 +153,39 @@ Public Class Form3
             Return
         End If
 
+        ' Safe booking_date handling
+        If Not IsDBNull(selectedRow.Cells("booking_date").Value) AndAlso selectedRow.Cells("booking_date").Value IsNot Nothing Then
+            Dim bookingDate As DateTime
+            If DateTime.TryParse(selectedRow.Cells("booking_date").Value.ToString(), bookingDate) Then
+                lblBookingDateAdmin.Text = bookingDate.ToString("yyyy-MM-dd")
+            Else
+                lblBookingDateAdmin.Text = "Invalid Date"
+            End If
+        Else
+            lblBookingDateAdmin.Text = "No Date"
+        End If
+
         lblFullNameAdmin.Text = selectedRow.Cells("Full Name").Value.ToString()
-        lblBookingDateAdmin.Text = selectedRow.Cells("booking_date").Value.ToString()
         lblSeatNumAdmin.Text = selectedRow.Cells("seat_number").Value.ToString()
         lblBaggageAllowanceAdmin.Text = selectedRow.Cells("baggage_allowance").Value.ToString()
         lblAgeAdmin.Text = selectedRow.Cells("age").Value.ToString()
-        lblDateOfBirthAdmin.Text = selectedRow.Cells("date_of_birth").Value.ToString()
+
+        ' Safe date_of_birth handling
+        If Not IsDBNull(selectedRow.Cells("date_of_birth").Value) AndAlso selectedRow.Cells("date_of_birth").Value IsNot Nothing Then
+            Dim dob As DateTime
+            If DateTime.TryParse(selectedRow.Cells("date_of_birth").Value.ToString(), dob) Then
+                lblDateOfBirthAdmin.Text = dob.ToString("yyyy-MM-dd")
+            Else
+                lblDateOfBirthAdmin.Text = "Invalid DOB"
+            End If
+        Else
+            lblDateOfBirthAdmin.Text = "No DOB"
+        End If
+
         lblGenderAdmin.Text = selectedRow.Cells("gender").Value.ToString()
         lblAddressAdmin.Text = selectedRow.Cells("address").Value.ToString()
         lblPWDAdmin.Text = selectedRow.Cells("pwd_status").Value.ToString()
     End Sub
+
 
 End Class

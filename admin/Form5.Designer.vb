@@ -22,30 +22,31 @@ Partial Class Form5
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form5))
         btnSearch = New Button()
         btnBack = New Button()
         dgvPassengers = New DataGridView()
         tbxSearchInput = New TextBox()
+        pbxViewFlight = New PictureBox()
         CType(dgvPassengers, ComponentModel.ISupportInitialize).BeginInit()
+        CType(pbxViewFlight, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btnSearch
         ' 
-        btnSearch.Location = New Point(224, 72)
+        btnSearch.Location = New Point(225, 72)
         btnSearch.Name = "btnSearch"
         btnSearch.Size = New Size(101, 35)
         btnSearch.TabIndex = 0
-        btnSearch.Text = "SEARCH"
+        btnSearch.Text = " "
         btnSearch.UseVisualStyleBackColor = True
         ' 
         ' btnBack
         ' 
-        btnBack.Location = New Point(478, 432)
+        btnBack.Location = New Point(479, 431)
         btnBack.Name = "btnBack"
         btnBack.Size = New Size(110, 44)
         btnBack.TabIndex = 1
-        btnBack.Text = "BACK"
+        btnBack.Text = " "
         btnBack.UseVisualStyleBackColor = True
         ' 
         ' dgvPassengers
@@ -64,19 +65,30 @@ Partial Class Form5
         tbxSearchInput.Size = New Size(152, 27)
         tbxSearchInput.TabIndex = 3
         ' 
+        ' pbxViewFlight
+        ' 
+        pbxViewFlight.BackgroundImage = My.Resources.Resources.Admin_Panel_view_flight___2_
+        pbxViewFlight.Location = New Point(1, -2)
+        pbxViewFlight.Name = "pbxViewFlight"
+        pbxViewFlight.Size = New Size(625, 503)
+        pbxViewFlight.TabIndex = 5
+        pbxViewFlight.TabStop = False
+        ' 
         ' Form5
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         ClientSize = New Size(626, 500)
         Controls.Add(tbxSearchInput)
         Controls.Add(dgvPassengers)
         Controls.Add(btnBack)
         Controls.Add(btnSearch)
+        Controls.Add(pbxViewFlight)
         Name = "Form5"
-        Text = "Form5"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "VIEW FLIGHT"
         CType(dgvPassengers, ComponentModel.ISupportInitialize).EndInit()
+        CType(pbxViewFlight, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -85,4 +97,5 @@ Partial Class Form5
     Friend WithEvents btnBack As Button
     Friend WithEvents dgvPassengers As DataGridView
     Friend WithEvents tbxSearchInput As TextBox
+    Friend WithEvents pbxViewFlight As PictureBox
 End Class

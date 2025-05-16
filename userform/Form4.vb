@@ -4,6 +4,8 @@ Imports SharedModule
 Public Class Form4
     Dim bookinginfo As New BookingInfo()
     Public Property tripIndicator As String
+    Public Property supportForm As New cashierform.Form3
+    Private isUpdatingSeats As Boolean = False
 
     Private Sub Form4_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MakeTransparent(btnHomeUser)
@@ -64,14 +66,10 @@ Public Class Form4
     End Sub
 
     Private Sub btnSupportUser_Click(sender As Object, e As EventArgs) Handles btnSupportUser.Click
-        Dim supportForm As New cashierform.Form3
         supportForm.Show()
     End Sub
 
     Private Sub btnBookUser_Click(sender As Object, e As EventArgs) Handles btnBookUser.Click
-
-        'Dim bookinginfo As BookingInfo = New BookingInfo()
-
         If Not ValidateForm() Then
             Return
         End If
@@ -83,7 +81,7 @@ Public Class Form4
                 Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
                 If nameCtrl IsNot Nothing AndAlso Not String.IsNullOrWhiteSpace(nameCtrl.Text) Then
                     Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
-                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+                    Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
                     Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
                     Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
@@ -116,27 +114,51 @@ Public Class Form4
                 Return
             End Try
         Next
-        ' Ensure this is done before creating bookinginfo
+
+        Dim selectedDate As Date = dtpDepartDateUser.Value.Date
+        Dim selectedTime As TimeSpan
+        If Not TimeSpan.TryParse(cbxDepartTimeUser.Text, selectedTime) Then
+            MessageBox.Show("Invalid departure time format. Please select a valid time.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim combinedDateTime As DateTime = selectedDate.Add(selectedTime)
+
+        ' Debug message for flight search parameters
+        MessageBox.Show("DEBUG FLIGHT SEARCH:" & vbCrLf &
+                "Departure: " & cbxDepartureUser.Text & vbCrLf &
+                "Destination: " & cbxDestinationUser.Text & vbCrLf &
+                "Date: " & selectedDate.ToString("yyyy-MM-dd") & vbCrLf &
+                "Time: " & selectedTime.ToString("hh\:mm") & vbCrLf &
+                "Combined DateTime: " & combinedDateTime.ToString("yyyy-MM-dd HH:mm:ss"))
+
+        ' Fix here: Get flight ID with correct parameters
+        Dim flightId As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, selectedDate, selectedTime)
+
+        If String.IsNullOrEmpty(flightId) Then
+            MessageBox.Show("No matching flight found for the selected route and time.", "Flight Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
 
         bookinginfo = New BookingInfo(
-            tripType:=tripIndicator,
-            departure:=cbxDepartureUser.Text,
-            destination:=cbxDestinationUser.Text,
-            departDate:=DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text),
-            arrivalDate:=DateTime.Parse(dtpArrivalDateUser.Value.ToShortDateString() & " " & cbxArrivalTimeUser.Text),
-            bookingDate:=DateTime.Now,
-            bookerFullName:=tbxFullnameUser.Text,
-            bookerAge:=Integer.Parse(tbxAgeUser.Text),
-            bookerBirthDate:=dtpDateBirthUser.Value,
-            bookerGender:=cbxGenderUser.Text,
-            bookerAddress:=tbxAddressUser.Text,
-            bookerIsPWD:=chbPWDUser.Checked,
-            bookerSeatNumber:=cbxSeatNumberUser.Text,
-            bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
-            coPassengers:=copassengers,
-            countPassenger:=countPassenger,
-            FlightId:=FlightId
-)
+                tripType:=tripIndicator,
+                departure:=cbxDepartureUser.Text,
+                destination:=cbxDestinationUser.Text,
+                departDate:=DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text),
+                arrivalDate:=DateTime.Parse(dtpArrivalDateUser.Value.ToShortDateString() & " " & cbxArrivalTimeUser.Text),
+                bookingDate:=DateTime.Now,
+                bookerFullName:=tbxFullnameUser.Text,
+                bookerAge:=Integer.Parse(tbxAgeUser.Text),
+                bookerBirthDate:=dtpDateBirthUser.Value,
+                bookerGender:=cbxGenderUser.Text,
+                bookerAddress:=tbxAddressUser.Text,
+                bookerIsPWD:=chbPWDUser.Checked,
+                bookerSeatNumber:=cbxSeatNumberUser.Text,
+                bookerBaggageAllowance:=cbxBgAllowanceUser.Text,
+                coPassengers:=copassengers,
+                countPassenger:=countPassenger,
+                FlightId:=flightId
+            )
 
         MessageBox.Show("Booking completed successfully for " & bookinginfo.BookerFullName & "." & vbNewLine &
                "Co-passengers: " & bookinginfo.CoPassengers.Count & vbNewLine & "Total passengers: " & countPassenger,
@@ -144,7 +166,48 @@ Public Class Form4
 
         ' Save booking to database
         SaveBookingToDatabase(bookinginfo)
+        tbxFullnameUser.Clear()
+        tbxAgeUser.Clear()
+        tbxAddressUser.Clear()
+        cbxGenderUser.SelectedIndex = -1
+        cbxSeatNumberUser.SelectedIndex = -1
+        cbxBgAllowanceUser.SelectedIndex = -1
+        chbPWDUser.Checked = False
 
+        cbxDepartureUser.SelectedIndex = -1
+        cbxDestinationUser.SelectedIndex = -1
+        cbxDepartTimeUser.SelectedIndex = -1
+        cbxArrivalTimeUser.SelectedIndex = -1
+
+        dtpDateBirthUser.Value = Date.Now
+        dtpDepartDateUser.Value = DateTime.Now
+        dtpArrivalDateUser.Value = DateTime.Now
+        dtpBookingDateUser.Value = DateTime.Now
+
+        rbnOneWayTrip.Checked = True
+
+        For i As Integer = 1 To 6
+            Dim nameCtrl = TryCast(Me.Controls.Find("tbxFullnamePassenger" & i, True).FirstOrDefault(), TextBox)
+            If nameCtrl IsNot Nothing Then nameCtrl.Clear()
+
+            Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
+            If ageCtrl IsNot Nothing Then ageCtrl.Clear()
+
+            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+            If birthCtrl IsNot Nothing Then birthCtrl.Value = Date.Now
+
+            Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If genderCtrl IsNot Nothing Then genderCtrl.SelectedIndex = -1
+
+            Dim seatCtrl = TryCast(Me.Controls.Find("cbxSeatNumberPassenger" & i, True).FirstOrDefault(), ComboBox)
+            If seatCtrl IsNot Nothing Then seatCtrl.SelectedIndex = -1
+
+            Dim baggageCtrl = TryCast(Me.Controls.Find("cbxBagAllowancePassenger" & i, True).FirstOrDefault(), ComboBox)
+            If baggageCtrl IsNot Nothing Then baggageCtrl.SelectedIndex = -1
+
+            Dim pwdCtrl = TryCast(Me.Controls.Find("chbPWDPassenger" & i, True).FirstOrDefault(), CheckBox)
+            If pwdCtrl IsNot Nothing Then pwdCtrl.Checked = False
+        Next
     End Sub
 
     Private Function ValidateForm() As Boolean
@@ -219,31 +282,27 @@ Public Class Form4
         End If
 
         If dtpDepartDateUser.Value.Date < DateTime.Now.Date Then
-            ErrorProvider1.SetError(dtpDepartDateUser, "Departure date must be today or later.")
+            ErrorProvider1.SetError(dtpDepartDateUser, "Booking must be made at least a day in advance.")
+            MessageBox.Show("You cannot book a trip for today or a past date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             isValid = False
         End If
-
-        If dtpDepartDateUser.Value.Date = DateTime.Now.Date Then
-            ErrorProvider1.SetError(dtpDepartDateUser, "Booking for the same day is not allowed.")
-            MessageBox.Show("You cannot book a trip for today. Please select a future date.", "Invalid Booking Date", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            isValid = False
-        End If
-
 
         Return isValid
     End Function
-    Dim departDateTime As DateTime = DateTime.Parse(dtpDepartDateUser.Value.ToShortDateString() & " " & cbxDepartTimeUser.Text)
-    Dim flightID As String = GetFlightID(cbxDepartureUser.Text, cbxDestinationUser.Text, departDateTime)
-    Private Function GetFlightID(departure As String, destination As String, departureTime As DateTime) As String
-        Dim flightID As String = ""
-        Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @Departure AND destination = @Destination AND departure_time = @DepartureTime LIMIT 1"
 
+    ' FIXED: This function now correctly opens the connection and properly formats parameters
+    Private Function GetFlightID(departure As String, destination As String, departureDate As Date, departureTime As TimeSpan) As String
+        Dim flightID As String = ""
         Try
             openCon()
+
+            Dim query As String = "SELECT flight_id FROM flight_table WHERE departure = @departure AND destination = @destination AND DATE(departure_date) = @date AND departure_time = @time"
+
             Using cmd As New MySqlCommand(query, con)
-                cmd.Parameters.AddWithValue("@Departure", departure)
-                cmd.Parameters.AddWithValue("@Destination", destination)
-                cmd.Parameters.AddWithValue("@DepartureTime", departureTime.ToString("yyyy-MM-dd HH:mm:ss"))
+                cmd.Parameters.AddWithValue("@departure", departure)
+                cmd.Parameters.AddWithValue("@destination", destination)
+                cmd.Parameters.AddWithValue("@date", departureDate.ToString("yyyy-MM-dd"))
+                cmd.Parameters.AddWithValue("@time", departureTime.ToString())
 
                 Dim result = cmd.ExecuteScalar()
                 If result IsNot Nothing Then
@@ -251,90 +310,91 @@ Public Class Form4
                 End If
             End Using
         Catch ex As Exception
-            MessageBox.Show("Error fetching flight ID: " & ex.Message)
-        End Try
-
-        Return flightID
-    End Function
-
-
-    Private Sub SaveBookingToDatabase(booking As BookingInfo)
-        Try
-            openCon()
-
-            ' Get the flight ID based on destination, departure, and time
-            Dim flightID As String = GetFlightID(booking.Departure, booking.Destination, booking.DepartDate)
-            If String.IsNullOrEmpty(flightID) Then
-                MessageBox.Show("Flight not found for the selected details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Return
-            End If
-
-            ' Insert the main booker
-            Dim insertQuery As String = "
-        INSERT INTO customer_table (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
-        seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id)
-        VALUES (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, 
-        @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
-
-            Using cmd As New MySqlCommand(insertQuery, con)
-
-                cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
-                cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
-                cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
-                cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
-                cmd.Parameters.AddWithValue("@DOB", booking.BookerBirthDate)
-                cmd.Parameters.AddWithValue("@Gender", booking.BookerGender)
-                cmd.Parameters.AddWithValue("@Destination", booking.Destination)
-                cmd.Parameters.AddWithValue("@Departure", booking.Departure)
-                cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
-                cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
-                cmd.Parameters.AddWithValue("@PWD", If(booking.BookerIsPWD, "Yes", "No"))
-                cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
-                cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
-                cmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
-                cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
-                cmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
-                cmd.ExecuteNonQuery()
-            End Using
-
-            ' Insert all co-passengers
-            For Each p As PassengerInfo In booking.CoPassengers
-                Using passengerCmd As New MySqlCommand(insertQuery, con)
-                    passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
-                    passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
-                    passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
-                    passengerCmd.Parameters.AddWithValue("@Age", p.Age)
-                    passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
-                    passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
-                    passengerCmd.Parameters.AddWithValue("@Destination", booking.Destination)
-                    passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
-                    passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
-                    passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
-                    passengerCmd.Parameters.AddWithValue("@PWD", If(p.IsPWD, "Yes", "No"))
-                    passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
-                    passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
-                    passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
-                    passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
-                    passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
-                    passengerCmd.Parameters.AddWithValue("@FlightID", flightID)
-                    passengerCmd.ExecuteNonQuery()
-                End Using
-            Next
-
-            MessageBox.Show("Booking and passengers saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        Catch ex As Exception
-            MessageBox.Show("Database Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Error retrieving flight ID: " & ex.Message)
         Finally
+            ' Ensure connection is closed
             If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
                 con.Close()
             End If
         End Try
-    End Sub
+        Return flightID
+    End Function
+
+   Private Sub SaveBookingToDatabase(booking As BookingInfo)
+    Try
+        openCon()
+
+        ' Insert the main booker
+        Dim insertQuery As String = "
+            INSERT INTO customer_table 
+            (booking_date, fullname, address, age, date_of_birth, gender, destination, departure, baggage_allowance,
+            seat_number, pwd_status, booked_under, number_of_passengers, trip_type, departure_time, arrival_time, flight_id)
+            VALUES 
+            (@BookingDate, @FullName, @Address, @Age, @DOB, @Gender, @Destination, @Departure, @Baggage, @Seat, @PWD, 
+            @BookedUnder, @NumPassengers, @TripType, @DepartureTime, @ArrivalTime, @FlightID)"
+
+        Using cmd As New MySqlCommand(insertQuery, con)
+            cmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
+            cmd.Parameters.AddWithValue("@FullName", booking.BookerFullName)
+            cmd.Parameters.AddWithValue("@Address", booking.BookerAddress)
+            cmd.Parameters.AddWithValue("@Age", booking.BookerAge)
+            cmd.Parameters.AddWithValue("@DOB", booking.BookerBirthDate)
+            cmd.Parameters.AddWithValue("@Gender", booking.BookerGender)
+            cmd.Parameters.AddWithValue("@Destination", booking.Destination)
+            cmd.Parameters.AddWithValue("@Departure", booking.Departure)
+            cmd.Parameters.AddWithValue("@Baggage", booking.BookerBaggageAllowance)
+            cmd.Parameters.AddWithValue("@Seat", booking.BookerSeatNumber)
+            cmd.Parameters.AddWithValue("@PWD", If(booking.BookerIsPWD, "Yes", "No"))
+            cmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+            cmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+            cmd.Parameters.AddWithValue("@TripType", booking.TripType)
+            cmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+            cmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
+            cmd.ExecuteNonQuery()
+        End Using
+
+        ' Insert co-passengers, excluding any that match the main booker by fullname and birthdate or other unique identifiers
+        For Each p As PassengerInfo In booking.CoPassengers
+            ' Skip if co-passenger is the main booker (compare fullname and birthdate or other unique fields)
+            If p.FullName.Trim().ToLower() = booking.BookerFullName.Trim().ToLower() AndAlso
+               p.DateOfBirth.Date = booking.BookerBirthDate.Date Then
+                Continue For
+            End If
+
+            Using passengerCmd As New MySqlCommand(insertQuery, con)
+                passengerCmd.Parameters.AddWithValue("@BookingDate", booking.BookingDate)
+                passengerCmd.Parameters.AddWithValue("@FullName", p.FullName)
+                passengerCmd.Parameters.AddWithValue("@Address", booking.BookerAddress) ' Or separate address if available
+                passengerCmd.Parameters.AddWithValue("@Age", p.Age)
+                passengerCmd.Parameters.AddWithValue("@DOB", p.DateOfBirth)
+                passengerCmd.Parameters.AddWithValue("@Gender", p.Gender)
+                passengerCmd.Parameters.AddWithValue("@Destination", booking.Destination)
+                passengerCmd.Parameters.AddWithValue("@Departure", booking.Departure)
+                passengerCmd.Parameters.AddWithValue("@Baggage", p.BaggageAllowance)
+                passengerCmd.Parameters.AddWithValue("@Seat", p.SeatNumber)
+                passengerCmd.Parameters.AddWithValue("@PWD", If(p.IsPWD, "Yes", "No"))
+                passengerCmd.Parameters.AddWithValue("@BookedUnder", booking.BookerFullName)
+                passengerCmd.Parameters.AddWithValue("@NumPassengers", booking.countPassenger)
+                passengerCmd.Parameters.AddWithValue("@TripType", booking.TripType)
+                passengerCmd.Parameters.AddWithValue("@DepartureTime", booking.DepartDate.ToString("HH:mm:ss"))
+                passengerCmd.Parameters.AddWithValue("@ArrivalTime", booking.ArrivalDate.ToString("HH:mm:ss"))
+                passengerCmd.Parameters.AddWithValue("@FlightID", booking.FlightID)
+                passengerCmd.ExecuteNonQuery()
+            End Using
+        Next
+
+    Catch ex As Exception
+        MessageBox.Show("Error saving booking: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    Finally
+        If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+            con.Close()
+        End If
+    End Try
+End Sub
 
 
-    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click ' just resets everything
-
+    Private Sub btnResetUser_Click(sender As Object, e As EventArgs) Handles btnResetUser.Click
         tbxFullnameUser.Clear()
         tbxAgeUser.Clear()
         tbxAddressUser.Clear()
@@ -362,7 +422,7 @@ Public Class Form4
             Dim ageCtrl = TryCast(Me.Controls.Find("tbxAgePassenger" & i, True).FirstOrDefault(), TextBox)
             If ageCtrl IsNot Nothing Then ageCtrl.Clear()
 
-            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirtDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
+            Dim birthCtrl = TryCast(Me.Controls.Find("dtpBirthDatePassenger" & i, True).FirstOrDefault(), DateTimePicker)
             If birthCtrl IsNot Nothing Then birthCtrl.Value = Date.Now
 
             Dim genderCtrl = TryCast(Me.Controls.Find("cbxGenderPassenger" & i, True).FirstOrDefault(), ComboBox)
@@ -381,23 +441,120 @@ Public Class Form4
         MessageBox.Show("Form has been reset.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
-        If cbxDestinationUser.SelectedItem IsNot Nothing Then
-            ' Fixed: Pass the departure time combo box instead of the destination combo box
-            LoadDepartureTimesForDestination(cbxDestinationUser.SelectedItem.ToString(), cbxDepartTimeUser)
+    Private Sub cbxDepartTime_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDepartTimeUser.SelectedIndexChanged
+        cbxSeatNumberUser.Items.Clear()
+        cbxSeatNumberUser.Text = ""
+
+        Dim destination As String = cbxDestinationUser.Text
+        Dim timeText As String = cbxDepartTimeUser.Text
+        Dim dateValue As Date = dtpDepartDateUser.Value.Date
+
+        Dim timeValue As DateTime
+        If DateTime.TryParse(timeText, timeValue) Then
+            timeText = timeValue.ToString("HH:mm:ss")
         End If
+
+        ' Step 1: Get Flight ID
+        Dim flightId As String = GetFlightIdByDestinationAndTime(destination, timeText, dateValue)
+
+        If flightId <> "" Then
+            ' Step 2: Get Aircraft Type
+            Dim aircraft As AircraftType = GetPlaneTypeByDestinationAndTime(destination, timeText, dateValue)
+
+            ' Step 3: Load Available Seats into each ComboBox
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberUser)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger1)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger2)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger3)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger4)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger5)
+            LoadAvailableSeats(flightId, aircraft, cbxSeatNumberPassenger6)
+
+            ' Update seat availability to remove duplicates if any preselection exists
+            UpdateSeatAvailability()
+        Else
+            MessageBox.Show("No flight found for the given destination, time, and date.")
+        End If
+    End Sub
+
+    Private Sub UpdateSeatAvailability()
+        If isUpdatingSeats Then Exit Sub
+        isUpdatingSeats = True
+
+        Try
+            Dim allComboBoxes As ComboBox() = {
+            cbxSeatNumberUser, cbxSeatNumberPassenger1, cbxSeatNumberPassenger2,
+            cbxSeatNumberPassenger3, cbxSeatNumberPassenger4,
+            cbxSeatNumberPassenger5, cbxSeatNumberPassenger6
+        }
+
+            Dim selectedSeats = allComboBoxes.
+            Where(Function(cb) Not String.IsNullOrWhiteSpace(cb.Text)).
+            Select(Function(cb) cb.Text).ToList()
+
+            For Each cb In allComboBoxes
+                Dim currentSelection = cb.Text
+                If cb.Items.Count > 0 Then
+                    Dim items As New List(Of String)
+                    For Each item In cb.Items
+                        items.Add(item.ToString())
+                    Next
+
+                    Dim filteredSeats = items.
+                    Where(Function(seat) Not selectedSeats.Contains(seat) OrElse seat = currentSelection).ToList()
+
+                    cb.BeginUpdate()
+                    cb.Items.Clear()
+                    cb.Items.AddRange(filteredSeats.ToArray())
+                    cb.EndUpdate()
+
+                    If filteredSeats.Contains(currentSelection) Then
+                        cb.Text = currentSelection
+                    Else
+                        cb.Text = ""
+                    End If
+                End If
+            Next
+        Finally
+            isUpdatingSeats = False
+        End Try
+    End Sub
+
+    Private Sub cbxDestinationUser_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxDestinationUser.SelectedIndexChanged
+        cbxDepartTimeUser.Items.Clear()
+        cbxDepartTimeUser.Text = ""
+        cbxSeatNumberUser.Items.Clear()
+        cbxSeatNumberUser.Text = ""
+        If Not String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
+        End If
+    End Sub
+
+    ' 2. When the date changes, check if flights exist, and reload times if a destination is already chosen
+    Private Sub dtpDepartDateUser_ValueChanged(sender As Object, e As EventArgs) Handles dtpDepartDateUser.ValueChanged
+        cbxDepartTimeUser.Text = ""
+
+        If FlightsExistForDate(dtpDepartDateUser.Value.Date) = False Then
+            MessageBox.Show("No flights are scheduled for the selected departure date.")
+        ElseIf Not String.IsNullOrWhiteSpace(cbxDestinationUser.Text) Then
+            LoadAvailableDepartureTimesForDestination(cbxDestinationUser.Text, dtpDepartDateUser.Value.Date, cbxDepartTimeUser)
+        End If
+    End Sub
+    Private Sub SeatNumber_Changed(sender As Object, e As EventArgs) Handles _
+    cbxSeatNumberUser.SelectedIndexChanged,
+    cbxSeatNumberPassenger1.SelectedIndexChanged,
+    cbxSeatNumberPassenger2.SelectedIndexChanged,
+    cbxSeatNumberPassenger3.SelectedIndexChanged,
+    cbxSeatNumberPassenger4.SelectedIndexChanged,
+    cbxSeatNumberPassenger5.SelectedIndexChanged,
+    cbxSeatNumberPassenger6.SelectedIndexChanged
+
+        UpdateSeatAvailability()
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        ExitToUserForm(Me)
-    End Sub
-    Public Sub ExitToUserForm(currentForm As Form) ' function for exit 
-        Dim result As DialogResult = MessageBox.Show("Do you want to log out?", "Exit",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            currentForm.Hide()
-            Form1.Show()
-        End If
-    End Sub
 
+        ExitToUserForm(Me)
+        supportForm.Close()
+    End Sub
 End Class

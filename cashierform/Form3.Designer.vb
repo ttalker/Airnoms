@@ -322,6 +322,7 @@ Partial Class Form3
         Controls.Add(pbx7879)
         Margin = New Padding(3, 2, 3, 2)
         Name = "Form3"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FLIGHTS"
         pnlPlane.ResumeLayout(False)
         pnlPlane.PerformLayout()

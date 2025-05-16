@@ -35,32 +35,32 @@ Public Class Form2
         Form1.support_form.Show()
     End Sub
 
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        ExitToUserForm(Me)
+
+
+
+    Private Sub Form2_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        RefreshPassengerComboBox()
     End Sub
-
-
-
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RefreshPassengerComboBox()
         MakeTransparent(btnBooking)
         MakeTransparent(btnTicket)
         MakeTransparent(btnSupport)
         MakeTransparent(btnExit)
         MakeTransparent(btnCalculate)
         MakeTransparent(btnResetTicket)
-        MakeTransparent(btnNextTicket)
         MakeTransparent(btnProcessTicket)
         MakeTransparent(btnSearch)
-
+        MakeTransparent(btnCalculate)
         btnBooking.Parent = pbxCashierTicket
         btnTicket.Parent = pbxCashierTicket
         btnSupport.Parent = pbxCashierTicket
         btnExit.Parent = pbxCashierTicket
         btnCalculate.Parent = pbxCashierTicket
         btnResetTicket.Parent = pbxCashierTicket
-        btnNextTicket.Parent = pbxCashierTicket
         btnSearch.Parent = pbxCashierTicket
         btnProcessTicket.Parent = pbxCashierTicket ' transparency of the buttons
+        btnCalculate.Parent = pbxCashierTicket
 
         hoverButton(btnBooking)
         hoverButton(btnTicket)
@@ -69,10 +69,9 @@ Public Class Form2
         hoverButton(btnCalculate)
         hoverButton(btnResetTicket)
         hoverButton(btnSearch)
-        hoverButton(btnProcessTicket) ' hover effect of the buttons
+        hoverButton(btnProcessTicket)
 
-        btnNextTicket.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
-        btnNextTicket.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255)
+        ' hover effect of the buttons
         btnCalculate.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255, 255)
         btnCalculate.FlatAppearance.MouseDownBackColor = Color.FromArgb(90, 255, 255, 255) ' hover effect of the button next ticket and calculate
         btnProcessTicket.Enabled = False
@@ -121,9 +120,24 @@ Public Class Form2
         End If
 
         'add fare based on baggage
+        ' Normalize baggage string to match dictionary keys
+        Dim baggageKey As String = baggage.Trim().ToLower().Replace(" ", "")
+        Select Case baggageKey
+            Case "10kg" : baggageKey = "10 kg"
+            Case "20kg" : baggageKey = "20 kg"
+            Case "40kg" : baggageKey = "40 kg"
+            Case Else
+                MessageBox.Show($"Unknown baggage allowance: '{baggage}'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                baggageKey = Nothing
+        End Select
 
-        Dim baggage_price = BaggagePrices(baggage)
-        baseFare += baggage_price
+        If baggageKey IsNot Nothing AndAlso BaggagePrices.ContainsKey(baggageKey) Then
+            Dim baggage_price = BaggagePrices(baggageKey)
+            baseFare += baggage_price
+        ElseIf baggageKey IsNot Nothing Then
+            MessageBox.Show($"Baggage price for '{baggageKey}' not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
 
         ' Compute discount
         Dim discount As Double = 0
@@ -166,7 +180,6 @@ Public Class Form2
         Dim total As Double
         Dim change As Double
 
-        ' Remove currency symbols and commas for parsing
         Dim totalText = lblTotalTicket.Text.Replace("₱", "").Replace(",", "").Trim()
         Dim paymentText = tbxTicketPayment.Text.Replace("₱", "").Replace(",", "").Trim()
 
@@ -175,17 +188,17 @@ Public Class Form2
                 change = payment - total
                 btnProcessTicket.Enabled = True
                 btnCalculate.Enabled = False
-                lblChangeTicket.Text = change
-                MessageBox.Show("Payment accepted. Change: ₱" & change.ToString("F2"))
+                lblChangeTicket.Text = change.ToString("F2")  ' Format to 2 decimals
+                MessageBox.Show($"Payment accepted. Change: ₱{change.ToString("F2")}")
             Else
                 btnProcessTicket.Enabled = False
-                MessageBox.Show("Insufficient payment. Please enter at least ₱" & total.ToString("F2"))
+                MessageBox.Show($"Insufficient payment. Please enter at least ₱{total.ToString("F2")}")
             End If
         Else
             MessageBox.Show("Invalid input. Please enter numeric values for payment and total.")
         End If
-
     End Sub
+
     Private Sub Assign_Customer()
         Dim selectedKey As String = cbxPassengerTicket.Text.Trim()
 
@@ -273,23 +286,21 @@ Public Class Form2
         End If
     End Sub
 
+
+    ' passengers for tickets
     Private Sub cbxPassengerTicket_TextChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.TextChanged
         Dim text As String = cbxPassengerTicket.Text
         Dim selectionStart As Integer = cbxPassengerTicket.SelectionStart
 
-        ' Filter matches
         Dim matches = bookingDictionary.Keys.Where(Function(k) k.ToLower().Contains(text.ToLower())).ToList()
 
-        ' Only update if there are matches
         If matches.Count > 0 Then
-            ' Temporarily prevent event re-firing
             RemoveHandler cbxPassengerTicket.TextChanged, AddressOf cbxPassengerTicket_TextChanged
 
             cbxPassengerTicket.BeginUpdate()
             cbxPassengerTicket.Items.Clear()
             cbxPassengerTicket.Items.AddRange(matches.ToArray())
             cbxPassengerTicket.DroppedDown = True
-            cbxPassengerTicket.SelectedIndex = -1
             cbxPassengerTicket.Text = text
             cbxPassengerTicket.SelectionStart = selectionStart
             cbxPassengerTicket.SelectionLength = 0
@@ -301,6 +312,8 @@ Public Class Form2
         End If
     End Sub
 
+
+    ' for processing ticket button
     Private Sub btnProcessTicket_Click(sender As Object, e As EventArgs) Handles btnProcessTicket.Click
 
         Try
@@ -337,10 +350,18 @@ Public Class Form2
             btnCalculate.Enabled = False
         End Try
 
-        cbxPassengerTicket.Items.Remove(cbxPassengerTicket.Text)
+        If cbxPassengerTicket.SelectedItem IsNot Nothing Then
+            ' Remove from ComboBox
+            cbxPassengerTicket.Items.Remove(cbxPassengerTicket.SelectedItem)
+            ' Remove from bookingDictionary to prevent reappearing
+            If bookingDictionary.ContainsKey(cbxPassengerTicket.Text) Then
+                bookingDictionary.Remove(cbxPassengerTicket.Text)
+            End If
+        End If
+
+
         ClearTicketLabels()
     End Sub
-
     Private Sub cbxPassengerTicket_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbxPassengerTicket.SelectedIndexChanged
         If bookingDictionary.ContainsKey(cbxPassengerTicket.Text) Then
             Assign_Customer()
@@ -349,6 +370,13 @@ Public Class Form2
         End If
     End Sub
 
+    Public Sub RefreshPassengerComboBox()
+        cbxPassengerTicket.Items.Clear()
+        Dim bookers = LoadBookers()
+        For Each booker In bookers
+            cbxPassengerTicket.Items.Add(booker)
+        Next
+    End Sub
     Public Sub ClearTicketLabels()
         lblClass.Text = ""
         lblDepartDateTicket.Text = ""
@@ -371,6 +399,8 @@ Public Class Form2
         cbxPassengerTicket.Text = ""
         tbxTicketPayment.Text = ""
         lblChangeTicket.Text = ""
+        cbxPassengerTicket.Text = ""
+
     End Sub
 
     Private Sub btnResetTicket_Click(sender As Object, e As EventArgs) Handles btnResetTicket.Click
@@ -379,21 +409,7 @@ Public Class Form2
         btnProcessTicket.Enabled = False
     End Sub
 
-    Private Sub btnNextTicket_Click(sender As Object, e As EventArgs) Handles btnNextTicket.Click
-
-        If cbxPassengerTicket.Items.Count = 0 Then Exit Sub
-
-        ' If nothing is selected, select the first item
-        If cbxPassengerTicket.SelectedIndex = -1 Then
-            cbxPassengerTicket.SelectedIndex = 0
-        Else
-            ' Move to the next item if available
-            If cbxPassengerTicket.SelectedIndex < cbxPassengerTicket.Items.Count - 1 Then
-                cbxPassengerTicket.SelectedIndex += 1
-            Else
-                ' Optional: loop back to first item or disable next
-                MessageBox.Show("No more items to select.")
-            End If
-        End If
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        ExitToUserForm(Me)
     End Sub
 End Class

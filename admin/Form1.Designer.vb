@@ -130,6 +130,7 @@ Partial Class Form1
         Controls.Add(btnFlights)
         Controls.Add(pbxAdmin)
         Name = "Form1"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FLIGHTS"
         CType(pbxAdmin, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvFlights, ComponentModel.ISupportInitialize).EndInit()

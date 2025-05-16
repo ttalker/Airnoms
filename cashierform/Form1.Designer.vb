@@ -38,7 +38,6 @@ Partial Class Form1
         tbxAddress = New TextBox()
         cbxDepartureTime = New ComboBox()
         cbxArrivalTime = New ComboBox()
-        BTNFILL = New Button()
         cbxSeatNumber = New ComboBox()
         btnSupport = New Button()
         pbxCashierBooking = New PictureBox()
@@ -91,6 +90,7 @@ Partial Class Form1
         chkpasspwd6 = New CheckBox()
         cbxpassbag6 = New ComboBox()
         btnExit = New Button()
+        lblCoverCashier = New Label()
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).BeginInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -143,10 +143,9 @@ Partial Class Form1
         rbnOneWayTrip.Location = New Point(202, 240)
         rbnOneWayTrip.Margin = New Padding(3, 2, 3, 2)
         rbnOneWayTrip.Name = "rbnOneWayTrip"
-        rbnOneWayTrip.Size = New Size(31, 24)
+        rbnOneWayTrip.Size = New Size(14, 13)
         rbnOneWayTrip.TabIndex = 0
         rbnOneWayTrip.TabStop = True
-        rbnOneWayTrip.Text = " "
         rbnOneWayTrip.UseVisualStyleBackColor = False
         ' 
         ' rbnRoundTrip
@@ -157,10 +156,9 @@ Partial Class Form1
         rbnRoundTrip.Location = New Point(400, 240)
         rbnRoundTrip.Margin = New Padding(3, 2, 3, 2)
         rbnRoundTrip.Name = "rbnRoundTrip"
-        rbnRoundTrip.Size = New Size(31, 24)
+        rbnRoundTrip.Size = New Size(14, 13)
         rbnRoundTrip.TabIndex = 1
         rbnRoundTrip.TabStop = True
-        rbnRoundTrip.Text = " "
         rbnRoundTrip.UseVisualStyleBackColor = False
         ' 
         ' cbxDeparture
@@ -248,16 +246,6 @@ Partial Class Form1
         cbxArrivalTime.Name = "cbxArrivalTime"
         cbxArrivalTime.Size = New Size(134, 28)
         cbxArrivalTime.TabIndex = 30
-        ' 
-        ' BTNFILL
-        ' 
-        BTNFILL.Location = New Point(696, 824)
-        BTNFILL.Margin = New Padding(2)
-        BTNFILL.Name = "BTNFILL"
-        BTNFILL.Size = New Size(79, 20)
-        BTNFILL.TabIndex = 33
-        BTNFILL.Text = "FILL UP"
-        BTNFILL.UseVisualStyleBackColor = True
         ' 
         ' cbxSeatNumber
         ' 
@@ -759,12 +747,21 @@ Partial Class Form1
         btnExit.Text = " "
         btnExit.UseVisualStyleBackColor = True
         ' 
+        ' lblCoverCashier
+        ' 
+        lblCoverCashier.BackColor = Color.FromArgb(CByte(233), CByte(244), CByte(251))
+        lblCoverCashier.Location = New Point(141, 427)
+        lblCoverCashier.Name = "lblCoverCashier"
+        lblCoverCashier.Size = New Size(615, 58)
+        lblCoverCashier.TabIndex = 124
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1547, 916)
+        Controls.Add(lblCoverCashier)
         Controls.Add(cbxpassgen6)
         Controls.Add(dtppassbday6)
         Controls.Add(tbxpassAge6)
@@ -817,7 +814,6 @@ Partial Class Form1
         Controls.Add(btnTicket)
         Controls.Add(cbxSeatNumber)
         Controls.Add(btnBooking)
-        Controls.Add(BTNFILL)
         Controls.Add(btnBook)
         Controls.Add(cbxArrivalTime)
         Controls.Add(btnClear)
@@ -835,6 +831,7 @@ Partial Class Form1
         Margin = New Padding(2)
         MaximumSize = New Size(1563, 969)
         Name = "Form1"
+        StartPosition = FormStartPosition.CenterScreen
         Text = " CASHIER"
         CType(pbxCashierBooking, ComponentModel.ISupportInitialize).EndInit()
         CType(ErrorProvider1, ComponentModel.ISupportInitialize).EndInit()
@@ -866,7 +863,6 @@ Partial Class Form1
     Friend WithEvents tbxAddress As TextBox
     Friend WithEvents cbxDepartureTime As ComboBox
     Friend WithEvents cbxArrivalTime As ComboBox
-    Friend WithEvents BTNFILL As Button
     Friend WithEvents cbxSeatNumber As ComboBox
     Friend WithEvents btnSupport As Button
     Friend WithEvents pbxCashierBooking As PictureBox
@@ -919,4 +915,5 @@ Partial Class Form1
     Friend WithEvents chkpasspwd2 As CheckBox
     Friend WithEvents cbxpassbag2 As ComboBox
     Friend WithEvents btnExit As Button
+    Friend WithEvents lblCoverCashier As Label
 End Class

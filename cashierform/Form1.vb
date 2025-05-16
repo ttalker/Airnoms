@@ -1,8 +1,6 @@
 ﻿
 Imports MySql.Data.MySqlClient
 Imports SharedModule
-Imports System.Windows.Forms
-Imports System.Windows.Forms.VisualStyles
 
 Public Class Form1
     Public Property ticketIdentifier As String ' for ticket identifier'
@@ -70,27 +68,16 @@ Public Class Form1
         ticketIdentifier = "One Way Trip" 'identifies for one way trip'
         dtpArrivalDate.Visible = False
         cbxArrivalTime.Visible = False
+        lblCoverCashier.Visible = False
     End Sub
 
     Private Sub rbnRoundTrip_CheckedChanged(sender As Object, e As EventArgs) Handles rbnRoundTrip.CheckedChanged
         ticketIdentifier = "Round Trip" 'identifies for round trip'
         dtpArrivalDate.Visible = True
         cbxArrivalTime.Visible = True
-
+        lblCoverCashier.Visible = True
     End Sub
 
-    Private Sub BTNFILL_Click(sender As Object, e As EventArgs) Handles BTNFILL.Click
-        tbxFullname.Text = "Kelvin Dave M. Rivera"
-        tbxAddress.Text = "Tarlac"
-        cbxGender.Text = "Male"
-        cbxDeparture.Text = "Tarlac"
-        cbxDestination.Text = "Seoul, Korea"
-        cbxSeatNumber.Text = "1A"
-        cbxDepartureTime.Text = "2:00 PM"
-        cbxArrivalTime.Text = "2:00 PM"
-        dtpArrivalDate.Text = "May 1, 2025"
-
-    End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         'Clear all the inputs 

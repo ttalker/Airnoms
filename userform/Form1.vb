@@ -1,7 +1,7 @@
 ﻿Imports SharedModule
-'Imports admin
-'Imports cashierform
-Imports MySql.Data.MySqlClient
+Imports MySql.Data.MySqlClient '
+Imports admin
+Imports cashierform
 Public Class Form1
     Public Shared Property login_form As New Form1()
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
